@@ -12,23 +12,23 @@ To be added
 
 ## Team Info
 
-<!--- Do design team want last names and do they want links to something other than GitHub? --->
+<!--- Do design team want links to something other than GitHub? --->
 - [Palin Wiseman](https://github.com/PBWiseman)
   - Developer
 - [Chase Bennett-Hill](https://github.com/ChaseBENNC9)
   - Developer
 - [Erika Stuart](https://github.com/erokasyuart)
   - Developer
-- Emma
+- Emma Jackson
   - Concept Artist
   - UI Designer
-- Nathaniel
+- Nathaniel Vernardakis
   - 3D Artist
   - Sound Designer
-- Julie
+- Julie Ferguson
   - Concept Artist
   - UI Designer
-- Ben
+- Benjamin Mead
   - Developer
   - 3D Artist
 
