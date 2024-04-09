@@ -28,7 +28,7 @@ To be added
 - Julie Ferguson
   - Concept Artist
   - UI Designer
-- Benjamin Mead
+- [Benjamin Mead](https://github.com/bean00173)
   - Developer
   - 3D Artist
 
