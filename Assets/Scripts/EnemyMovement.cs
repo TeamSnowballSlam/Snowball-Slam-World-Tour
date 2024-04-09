@@ -4,20 +4,29 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private List<GameObject> targets;
     private NavMeshAgent agent;
-    public Transform currentTarget;
+    private Vector3 randomPosition;
+     private Vector3 fowardRight = new Vector3(1, 0, 1); 
+     private Vector3 fowardLeft = new Vector3(-1, 0, 1);
+     private Vector3 backRight = new Vector3(1, 0, -1);
+     private Vector3 backLeft = new Vector3(-1, 0, -1);
+     private Vector3 forward = new Vector3(0, 0, 1);
+     private Vector3 back = new Vector3(0, 0, -1);
+     private Vector3 right = new Vector3(1, 0, 0);
+     private Vector3 left = new Vector3(-1, 0, 0);
+     private Vector3[] directions;
+
 
     void Start()
     {
-        targets = new List<GameObject>();
-        targets.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+        directions = new Vector3[8] {forward, back, right, left, fowardRight, fowardLeft, backRight, backLeft};
+
         agent = GetComponent<NavMeshAgent>();
 
-        currentTarget = targets[Random.Range(0, targets.Count)].transform;
-        if (currentTarget != null)
+         randomPosition = new Vector3(Random.Range(-4, 4), 1.26f, Random.Range(-4, 4));
+        if (randomPosition != null)
         {
-            GoToTarget(currentTarget);
+            GoToTarget(randomPosition);
         }
     }
 
@@ -33,14 +42,13 @@ public class EnemyMovement : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            currentTarget = targets[Random.Range(0, targets.Count)].transform;
-            GoToTarget(currentTarget);
+         randomPosition = new Vector3(Random.Range(-4, 4), 1.26f, Random.Range(-4, 4));
+            GoToTarget(randomPosition);
         }
     }
 
-    private void GoToTarget(Transform target)
+    private void GoToTarget(Vector3 target)
     {
-        agent.SetDestination(target.position - new Vector3(0, 0, 5f));
-        
+        agent.SetDestination(target);
     }
 }
