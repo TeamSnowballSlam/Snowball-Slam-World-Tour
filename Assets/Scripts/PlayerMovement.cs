@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -62,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     private Animator animator;
-    private Vector3 moveInput;
+    private Vector2 moveInput;
 
     // Start is called before the first frame update
     void Awake()
@@ -73,12 +74,28 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector3(moveInput.x * CurrentSpeed, moveInput.y * CurrentSpeed, 0);
+        rb.velocity = new Vector3(moveInput.x * CurrentSpeed, 0, moveInput.y * CurrentSpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+        Debug.Log(moveInput);
+        IsMoving = moveInput != Vector2.zero; //If the move input is not zero then the player is moving
+        
+        // if (moveInput.x < 0)
+        // {
+        //     transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        // }
+        // else if (moveInput.x > 0)
+        // {
+        //     transform.localScale = new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        // }
     }
 }
