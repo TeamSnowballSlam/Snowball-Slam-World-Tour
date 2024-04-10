@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 left = new Vector3(-1, 0, 0);
     private Vector3[] directions;
     public bool isMoving = false;
+    public bool isRotating = false;
 
     void Start()
     {
@@ -34,7 +35,6 @@ public class EnemyMovement : MonoBehaviour
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
 
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(player.position);
     }
 
     // void ThrowSnowball(Vector3 direction)
@@ -46,38 +46,47 @@ public class EnemyMovement : MonoBehaviour
     // }
     void Update()
     {
-        if (!isMoving)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            print(agent.remainingDistance);
+            Debug.Log("Space pressed");
 
-            float singleStep = 1f * Time.deltaTime;
-
-            Vector3 randomPosition = new (
-                Random.Range(-4, 4),
-                gameObject.transform.position.y,
-                Random.Range(-4, 4)
-            );
-            Vector3 targetDirection = (gameObject.transform.position - randomPosition).normalized;
-            Vector3 newDirection = Vector3.RotateTowards(
-                transform.forward,
-                targetDirection,
-                singleStep,
-                0.0f
-            );
-
-            transform.rotation = Quaternion.LookRotation(newDirection);
-            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
-
-            GoToTarget(randomPosition);
+            if (!isMoving)
+            {
+                 randomPosition =
+                    new(Random.Range(-4, 4), gameObject.transform.position.y, Random.Range(-4, 4));
+                // RotateToTarget((transform.position -randomPosition).normalized, 50f);
+                GoToTarget(randomPosition);
+            }
+            else
+            Debug.Log("Already moving");
         }
-        else if (agent.remainingDistance < 1f)
-        {
+        if (Vector3.Distance(transform.position, randomPosition) < 0.01f)
             isMoving = false;
+    }
+
+    private IEnumerator RotateToTarget(Vector3 targetDirection, float speed)
+    {
+        Debug.Log("Rotating");
+        isRotating = true;
+
+        Vector3 newDirection = Vector3.RotateTowards(
+            transform.forward,
+            targetDirection,
+            speed,
+            0.0f
+        );
+        transform.rotation = Quaternion.LookRotation(newDirection);
+        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+        if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(newDirection)) < 0.01)
+        {
+            isRotating = false;
+            yield return null;
         }
     }
 
     private void GoToTarget(Vector3 target)
     {
+        StartCoroutine(RotateToTarget((target - transform.position).normalized, 50f));
         agent.SetDestination(target);
         isMoving = true;
     }
