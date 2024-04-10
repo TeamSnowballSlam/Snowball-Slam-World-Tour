@@ -40,7 +40,13 @@ public class EnemyMovement : MonoBehaviour
                 Destroy(GameObject.Find("TARGET"));
             if (!isMoving)
             {
-                randomPosition = transform.position + Random.Range(1, 5) * Directions.directions[Random.Range(0, 8)];
+                int randomMultiplier = Random.Range(1, 5);
+                Vector3 randomDir =  Directions.directions[Random.Range(0, 8)];
+                randomPosition = transform.position + (randomMultiplier * randomDir);
+                Debug.Log("Random position: " + randomPosition);
+                Debug.Log("Direction: " + randomDir);
+                Debug.Log("Multiplier: " + randomMultiplier);
+                Debug.Log("Direction * Multiplier: " + (randomMultiplier * randomDir));
                 Bounds bounds = surface.navMeshData.sourceBounds;
                 if (randomPosition.x > bounds.min.x && randomPosition.x < bounds.max.x && randomPosition.z > bounds.min.z && randomPosition.z < bounds.max.z)
                 {
@@ -59,10 +65,11 @@ public class EnemyMovement : MonoBehaviour
             }
             else
             Debug.Log("Already moving");
-            Debug.Log(agent.remainingDistance + " " + Vector3.Distance(transform.position, randomPosition));
         // }
-        if (Vector3.Distance(transform.position, randomPosition) < 1.5f)
+        if (agent.remainingDistance < .05f)
+            gameObject.transform.position = randomPosition;
             isMoving = false;
+
         }
 
 
@@ -90,7 +97,7 @@ public class EnemyMovement : MonoBehaviour
         if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(newDirection)) < 0.01)
         {
             isRotating = false;
-            yield return null; 
+            yield return null;
         }
 
     }
