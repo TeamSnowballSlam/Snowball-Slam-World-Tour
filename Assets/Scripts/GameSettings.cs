@@ -4,5 +4,6 @@ using UnityEngine;
 
 public static class GameSettings
 {
-    public static bool TwoPlayers = false; // If true the game is multiplayer. This can be changed at any time
+    public static PenguinType Player1Penguin = PenguinType.None; // The penguin type for player 1
+    public static PenguinType Player2Penguin = PenguinType.None; // The penguin type for player 2
 }
