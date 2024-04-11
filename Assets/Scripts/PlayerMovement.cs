@@ -5,13 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] //To change in inspector
-    private float movementSpeed = 3f;
+    private const int movementSpeed = 7;
 
-    [SerializeField] //To change in inspector
-    private float slidingSpeed = 5f;
+    private const int slidingSpeed = 14;
 
-    public float CurrentSpeed
+    public int CurrentSpeed
     {
         get
         {
@@ -70,32 +68,27 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+
+        if (rb == null)
+        {
+            Debug.LogWarning("No Rigidbody component found.");
+        }
+        if (animator == null)
+        {
+            Debug.LogWarning("No Animator component found.");
+        }
     }
 
     void FixedUpdate()
     {
         rb.velocity = new Vector3(moveInput.x * CurrentSpeed, 0, moveInput.y * CurrentSpeed);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        Debug.Log(moveInput);
         IsMoving = moveInput != Vector2.zero; //If the move input is not zero then the player is moving
         
-        // if (moveInput.x < 0)
-        // {
-        //     transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        // }
-        // else if (moveInput.x > 0)
-        // {
-        //     transform.localScale = new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        // }
+        //Change direction of the player
     }
 }
