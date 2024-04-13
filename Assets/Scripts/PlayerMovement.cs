@@ -5,17 +5,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private const int movementSpeed = 7;
+    private const int movementSpeed = 7; //Placeholder values. Will change after testing
 
-    private const int slidingSpeed = 14;
+    private const int slidingSpeed = 14; //Placeholder values. Will change after testing
 
-    public int CurrentSpeed
+    public int CurrentSpeed //Returns the movement speed, sliding speed, or 0 depending on the player's state
     {
         get
         {
             if (IsSliding)
             {
-                //Change to sliding speed when implemented
+                //Sliding speed
                 return slidingSpeed;
             }
             if (IsMoving)
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private bool isMoving = false;
-    public bool IsMoving
+    public bool IsMoving //Property to set the IsMoving bool and update the animator
     {
         get
         {
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     }
     
     private bool isSliding = false;
-    public bool IsSliding
+    public bool IsSliding //Property to set the IsSliding bool and update the animator
     {
         get
         {
@@ -59,11 +59,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private Rigidbody rb;
-    private Animator animator;
-    private Vector2 moveInput;
+    private Rigidbody rb; //The player's Rigidbody component
+    private Animator animator; //The player's Animator component
+    private Vector2 moveInput; //The player's vector 2 move input
+    private Vector3 moveDirection; //Move input converted to a Vector3
+    private const float UPDATEDELAY = 0.05f; //The delay between direction facing updates
+    private float lastUpdate; //The time since the last direction update
 
-    // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -81,14 +83,22 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector3(moveInput.x * CurrentSpeed, 0, moveInput.y * CurrentSpeed);
+        rb.velocity = new Vector3(moveDirection.x * CurrentSpeed, 0, moveDirection.z * CurrentSpeed); //Move the player based on the move direction and speed
+        lastUpdate += Time.fixedDeltaTime;
+        if (lastUpdate >= UPDATEDELAY //I have added a delay between changing the facing direction otherwise it is almost impossible to end up facing diagonally
+            && moveDirection != transform.forward
+            && moveDirection != Vector3.zero)
+        {
+            transform.forward = moveDirection;
+            lastUpdate = 0;
+        }
     }
-    
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
+
         IsMoving = moveInput != Vector2.zero; //If the move input is not zero then the player is moving
-        
-        //Change direction of the player
     }
 }
