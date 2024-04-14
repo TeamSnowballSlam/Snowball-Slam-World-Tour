@@ -26,6 +26,7 @@ public class EnemyMovement : MonoBehaviour
     {
 
         agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
     }
 
     // void ThrowSnowball(Vector3 direction)
@@ -74,11 +75,12 @@ public class EnemyMovement : MonoBehaviour
         // }
         if (agent.remainingDistance <= 0.001f) //Checks if the agent has reached the target within a certain distance
         {
-            CheckForPlayerDirection(); //Checks if the player is in the 8 directions
-            if (state == EnemyStates.TargetingPlayer) 
-            {
-                Debug.DrawLine(transform.position, GetClosestPlayer().transform.position, Color.red); //Draws a line to the player
-            }
+            state = EnemyStates.Idle; //Sets the state to idle
+            //CheckForPlayerDirection(); //Checks if the player is in the 8 directions
+            // if (state == EnemyStates.TargetingPlayer) 
+            // {
+            //     Debug.DrawLine(transform.position, GetClosestPlayer().transform.position, Color.red); //Draws a line to the player
+            // }
         }
 
     }
@@ -122,36 +124,36 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator RotateToTarget(Vector3 targetDirection, float speed) //Rotates the agent to face the target given the target direction and speed
+    private void RotateToTarget(Vector3 targetDirection) //Rotates the agent to face the target given the target direction and speed
     {
         Debug.Log("Rotating");
         state = EnemyStates.Rotating; //Sets the state to rotating
-
-        Vector3 newDirection = Vector3.RotateTowards( //Gets the direction to rotate to
-            transform.forward,
-            targetDirection,
-            speed,
-            0.0f
-        );
-        while (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(newDirection)) > 0.01) //Rotates the agent to face the target while the angle is greater than 0.01
-        {
-            transform.rotation = Quaternion.RotateTowards( //Rotates the agent to face the target
-                transform.rotation,
-                Quaternion.LookRotation(newDirection),
-                10f
-            );
-            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0); //Locks the rotation on the x and z axis
-        }
-        if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(newDirection)) < 0.01)
-        {
-            state = EnemyStates.Idle; //Sets the state to idle
-            yield return null;
-        }
+        transform.forward = targetDirection; //Sets the forward direction of the agent to the target direction
+        // Vector3 newDirection = Vector3.RotateTowards( //Gets the direction to rotate to
+        //     transform.forward,
+        //     targetDirection,
+        //     speed,
+        //     0.0f
+        // );
+        // while (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(newDirection)) > 0.01) //Rotates the agent to face the target while the angle is greater than 0.01
+        // {
+        //     transform.rotation = Quaternion.RotateTowards( //Rotates the agent to face the target
+        //         transform.rotation,
+        //         Quaternion.LookRotation(newDirection),
+        //         10f
+        //     );
+        //     transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0); //Locks the rotation on the x and z axis
+        // }
+        // if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(newDirection)) < 0.01)
+        // {
+        //     state = EnemyStates.Idle; //Sets the state to idle
+        //     yield return null;
+        // }
     }
 
     private void GoToTarget(Vector3 target) //Sets the destination of the agent to the target position
     {
-        StartCoroutine(RotateToTarget((target - transform.position).normalized, 50f)); //Rotates the agent to face the target
+        RotateToTarget((target - transform.position).normalized); //Rotates the agent to face the target
         agent.SetDestination(target); //Starts moving the agent to the target position
         state = EnemyStates.Moving; //Sets the state to moving
     }
