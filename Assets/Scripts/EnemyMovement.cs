@@ -1,30 +1,32 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-    public enum EnemyStates //The states of the enemy
-    {
-        Idle, 
-        Moving,
-        Rotating,
-        Searching,
-        TargetingPlayer,
-        ThrowingSnowball
-    }
+public enum EnemyStates //The states of the enemy
+{
+    Idle,
+    Moving,
+    Rotating,
+    Searching,
+    TargetingPlayer,
+    ThrowingSnowball
+}
+
 public class EnemyMovement : MonoBehaviour
 {
     private NavMeshAgent agent; //The NavMeshAgent component
     public NavMeshSurface surface; //The NavMeshSurface component
     private Vector3 randomPosition; //The random position to move to
     public GameObject sphere; //The sphere prefab
-    private EnemyStates state = EnemyStates.Idle; //The state of the enemy
 
+    [SerializeField]
+    private EnemyStates state = EnemyStates.Idle; //The state of the enemy
 
     void Start()
     {
-
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
     }
@@ -38,51 +40,85 @@ public class EnemyMovement : MonoBehaviour
     // }
     void Update()
     {
-        //  if (Input.GetKeyDown(KeyCode.Space))
-        //  {
-        if (GameObject.Find("TARGET") != null) 
-            Destroy(GameObject.Find("TARGET"));
-        if (state == EnemyStates.Idle)
-        {
-            int randomMultiplier = Random.Range(1, 5); //Randomizes the multiplier
-            Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
-            randomPosition = transform.position + (randomMultiplier * randomDir); //Calculates the random position
-            Debug.Log("Random position: " + randomPosition);
-            Debug.Log("Direction: " + randomDir);
-            Debug.Log("Multiplier: " + randomMultiplier);
-            Debug.Log("Direction * Multiplier: " + (randomMultiplier * randomDir));
-            Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
-            if ( //Checks if the random position is within the bounds
-                randomPosition.x > bounds.min.x
-                && randomPosition.x < bounds.max.x
-                && randomPosition.z > bounds.min.z
-                && randomPosition.z < bounds.max.z
-            )
-            {
-                GoToTarget(randomPosition); //Moves the agent to the random position
-                GameObject go = Instantiate(sphere, randomPosition, Quaternion.identity); //Instantiates a sphere at the random position
-                go.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f); //Sets the scale of the sphere
-                go.name = "TARGET"; //Sets the name of the sphere
-            }
-            else
-            {
-                Debug.LogError("Out of bounds"); //Logs that the random position is out of bounds
-            } 
-        }
-        else
-            Debug.Log("Already moving"); //Logs that the agent is already moving
-            Debug.Log("Agent remaining distance: " + agent.remainingDistance);
+        // if (CheckForPlayerDirection() != Vector3.zero)
+        // {
+        //     print("DOING THIS SECTION 1");
+        //     Debug.DrawLine(
+        //         transform.position,
+        //         GetClosestPlayer().transform.position,
+        //         Color.blue,
+        //         1f
+        //     ); //Draws a line to the player
+        //     transform.forward = (
+        //         new Vector3(
+        //             GetClosestPlayer().transform.position.x,
+        //             0,
+        //             GetClosestPlayer().transform.position.z
+        //         ) - new Vector3(transform.position.x, 0, transform.position.z)
+        //     ).normalized; //Sets the forward direction of the agent to the direction to the player
+        //     state = EnemyStates.TargetingPlayer;
         // }
-        if (agent.remainingDistance <= 0.001f) //Checks if the agent has reached the target within a certain distance
-        {
-            state = EnemyStates.Idle; //Sets the state to idle
-            //CheckForPlayerDirection(); //Checks if the player is in the 8 directions
-            // if (state == EnemyStates.TargetingPlayer) 
-            // {
-            //     Debug.DrawLine(transform.position, GetClosestPlayer().transform.position, Color.red); //Draws a line to the player
-            // }
-        }
 
+
+        // else
+        {
+            if (state == EnemyStates.Idle)
+            {
+                if (CheckForPlayerDirection() != Vector3.zero)
+                {
+                    state = EnemyStates.TargetingPlayer;
+                }
+                else
+                {
+                    int randomMultiplier = Random.Range(1, 5); //Randomizes the multiplier
+                    Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
+                    randomPosition = transform.position + (randomMultiplier * randomDir); //Calculates the random position
+                    Debug.Log("Random position: " + randomPosition);
+                    Debug.Log("Direction: " + randomDir);
+                    Debug.Log("Multiplier: " + randomMultiplier);
+                    Debug.Log("Direction * Multiplier: " + (randomMultiplier * randomDir));
+                    Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
+                    if ( //Checks if the random position is within the bounds
+                        randomPosition.x > bounds.min.x
+                        && randomPosition.x < bounds.max.x
+                        && randomPosition.z > bounds.min.z
+                        && randomPosition.z < bounds.max.z
+                    )
+                    {
+                        GoToTarget(randomPosition); //Moves the agent to the random position
+                    }
+                }
+            }
+            else if (state == EnemyStates.Moving)
+            {
+                Debug.Log("Agent remaining distance: " + agent.remainingDistance);
+                if (
+                    agent.remainingDistance <= 0.001f
+                    || (CheckForPlayerDirection() != Vector3.zero)
+                ) //Checks if the agent has reached the target within a certain distance
+                {
+                    state = EnemyStates.Idle; //Sets the state to idle
+                    agent.ResetPath(); //Resets the path of the agent
+                }
+            }
+            else if (state == EnemyStates.TargetingPlayer)
+            {
+                Debug.Log("Targeting player");
+                Debug.DrawLine(
+                    transform.position,
+                    GetClosestPlayer().transform.position,
+                    Color.blue,
+                    1f
+                ); //Draws a line to the player
+                transform.forward = (
+                    new Vector3(
+                        GetClosestPlayer().transform.position.x,
+                        0,
+                        GetClosestPlayer().transform.position.z
+                    ) - new Vector3(transform.position.x, 0, transform.position.z)
+                ).normalized; //Sets the forward direction of the agent to the direction to the player
+            }
+        }
     }
 
     private GameObject GetClosestPlayer()
@@ -100,26 +136,43 @@ public class EnemyMovement : MonoBehaviour
                 closestPlayer = player; //Sets the closest player to the player
             }
         }
+        state = EnemyStates.Moving; //Sets the state to idle
         return closestPlayer; //Returns the closest player
     }
 
     private Vector3 CheckForPlayerDirection() //WIP METHOD NOT CURRENTLY WORKING
     {
         Transform player = GetClosestPlayer().transform; //Gets the closest player
+        List<Vector3> playerBuffer = new List<Vector3>(); //Initializes a list of positions surrounding the player
+        playerBuffer.Add(player.position); //Adds the player to the list
+        foreach (Vector3 d in Directions.directions) //Loops through all the directions
+        {
+            playerBuffer.Add(player.position + (d*0.5f)); //Adds the position surrounding the player to the list
+        }
+
+        foreach (Vector3 pb in playerBuffer) //Loops through all the positions surrounding the player
+        {
+            // Debug.DrawLine(transform.position, p, Color.green, 1f); //Draws a line to the player
+            
         if (
             Directions.directions.Contains(
-                Quaternion.LookRotation(player.position - transform.position).eulerAngles.normalized //Checks if the player is in 1 of the 8 directions
+                Quaternion.LookRotation(pb - transform.position).eulerAngles.normalized //Checks if the player is in 1 of the 8 directions
             )
         )
         {
             Debug.Log("Player can be targeted");
-            state = EnemyStates.TargetingPlayer; //Sets the state to targeting player 
-            return Quaternion.LookRotation(player.position - transform.position).eulerAngles.normalized; //Returns the direction to the player with a scale of 1
+            state = EnemyStates.TargetingPlayer; //Sets the state to targeting player
+
+            //  Debug.DrawLine(transform.position, player.position, Color.red, 5f); //Draws a line to the player
+
+            return Quaternion
+                .LookRotation(player.position - transform.position)
+                .eulerAngles.normalized; //Returns the direction to the player with a scale of 1
         }
-        else
+        }
+        
         {
             Debug.Log("Player is not near");
-            state = EnemyStates.Idle; //Sets the state to idle
             return Vector3.zero; //Returns a zero vector
         }
     }
@@ -129,26 +182,7 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log("Rotating");
         state = EnemyStates.Rotating; //Sets the state to rotating
         transform.forward = targetDirection; //Sets the forward direction of the agent to the target direction
-        // Vector3 newDirection = Vector3.RotateTowards( //Gets the direction to rotate to
-        //     transform.forward,
-        //     targetDirection,
-        //     speed,
-        //     0.0f
-        // );
-        // while (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(newDirection)) > 0.01) //Rotates the agent to face the target while the angle is greater than 0.01
-        // {
-        //     transform.rotation = Quaternion.RotateTowards( //Rotates the agent to face the target
-        //         transform.rotation,
-        //         Quaternion.LookRotation(newDirection),
-        //         10f
-        //     );
-        //     transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0); //Locks the rotation on the x and z axis
-        // }
-        // if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(newDirection)) < 0.01)
-        // {
-        //     state = EnemyStates.Idle; //Sets the state to idle
-        //     yield return null;
-        // }
+
     }
 
     private void GoToTarget(Vector3 target) //Sets the destination of the agent to the target position
