@@ -4,19 +4,26 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+    public enum EnemyStates
+    {
+        Idle,
+        Moving,
+        Rotating,
+        Searching,
+        TargetingPlayer,
+        ThrowingSnowball
+    }
 public class EnemyMovement : MonoBehaviour
 {
     private NavMeshAgent agent;
     public NavMeshSurface surface;
     private Vector3 randomPosition;
-
-    public bool isMoving = false;
-    public bool isRotating = false;
     public GameObject sphere;
+    private EnemyStates state = EnemyStates.Idle;
+
 
     void Start()
     {
-        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
 
         agent = GetComponent<NavMeshAgent>();
     }
@@ -34,7 +41,7 @@ public class EnemyMovement : MonoBehaviour
         //  {
         if (GameObject.Find("TARGET") != null)
             Destroy(GameObject.Find("TARGET"));
-        if (!isMoving)
+        if (state == EnemyStates.Idle)
         {
             int randomMultiplier = Random.Range(1, 5);
             Vector3 randomDir = Directions.directions[Random.Range(0, 8)];
@@ -63,16 +70,22 @@ public class EnemyMovement : MonoBehaviour
         }
         else
             Debug.Log("Already moving");
+            Debug.Log("Agent remaining distance: " + agent.remainingDistance);
         // }
-        if (agent.remainingDistance == 0.01f)
+        if (agent.remainingDistance <= 0.001f)
         {
-            isMoving = false;
+            CheckForPlayerDirection();
+            if (state == EnemyStates.TargetingPlayer)
+            {
+                Debug.DrawLine(transform.position, GetClosestPlayer().transform.position, Color.red);
+            }
         }
 
     }
 
     private GameObject GetClosestPlayer()
     {
+        state = EnemyStates.Searching;
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         GameObject closestPlayer = null;
         float closestDistance = Mathf.Infinity;
@@ -98,11 +111,13 @@ public class EnemyMovement : MonoBehaviour
         )
         {
             Debug.Log("Player can be targeted");
+            state = EnemyStates.TargetingPlayer;
             return Quaternion.LookRotation(player.position - transform.position).eulerAngles.normalized;
         }
         else
         {
             Debug.Log("Player is not near");
+            state = EnemyStates.Idle;
             return Vector3.zero;
         }
     }
@@ -110,7 +125,7 @@ public class EnemyMovement : MonoBehaviour
     private IEnumerator RotateToTarget(Vector3 targetDirection, float speed)
     {
         Debug.Log("Rotating");
-        isRotating = true;
+        state = EnemyStates.Rotating;
 
         Vector3 newDirection = Vector3.RotateTowards(
             transform.forward,
@@ -130,7 +145,7 @@ public class EnemyMovement : MonoBehaviour
         }
         if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(newDirection)) < 0.01)
         {
-            isRotating = false;
+            state = EnemyStates.Idle;
             yield return null;
         }
     }
@@ -139,6 +154,6 @@ public class EnemyMovement : MonoBehaviour
     {
         StartCoroutine(RotateToTarget((target - transform.position).normalized, 50f));
         agent.SetDestination(target);
-        isMoving = true;
+        state = EnemyStates.Moving;
     }
 }
