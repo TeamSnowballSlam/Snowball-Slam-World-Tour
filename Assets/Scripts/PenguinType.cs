@@ -7,7 +7,7 @@ public enum PenguinType
 {
     
     None,
-    Korora,
+    Kororā,
     Tawaki,
     Hoiho
 }

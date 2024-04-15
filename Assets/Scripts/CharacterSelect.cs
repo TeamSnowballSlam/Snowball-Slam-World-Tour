@@ -25,8 +25,8 @@ public class CharacterSelect : MonoBehaviour
             case "Hoiho":
                 GameSettings.Player1Penguin = PenguinType.Hoiho;
                 break;
-            case "Korora":
-                GameSettings.Player1Penguin = PenguinType.Korora;
+            case "Kororā":
+                GameSettings.Player1Penguin = PenguinType.Kororā;
                 break;
             case "Tawaki":
                 GameSettings.Player1Penguin = PenguinType.Tawaki;
@@ -48,8 +48,8 @@ public class CharacterSelect : MonoBehaviour
             case "Hoiho":
                 GameSettings.Player2Penguin = PenguinType.Hoiho;
                 break;
-            case "Korora":
-                GameSettings.Player2Penguin = PenguinType.Korora;
+            case "Kororā":
+                GameSettings.Player2Penguin = PenguinType.Kororā;
                 break;
             case "Tawaki":
                 GameSettings.Player2Penguin = PenguinType.Tawaki;
