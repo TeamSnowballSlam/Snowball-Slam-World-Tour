@@ -14,12 +14,6 @@ public class CharacterSelect : MonoBehaviour
         player2Select.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// Sets the penguin type for player 1
     /// </summary>
@@ -84,6 +78,9 @@ public class CharacterSelect : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Starts game with the currently selected level
+    /// </summary>
     public void StartGame()
     {
         if (GameSettings.SelectedLevel == Levels.None)
