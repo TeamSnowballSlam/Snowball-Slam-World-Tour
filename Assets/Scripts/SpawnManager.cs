@@ -42,7 +42,7 @@ public class SpawnManager : MonoBehaviour
         if (penguinType == PenguinType.None)
         {
             //Select a random penguin if there isn't one selected
-            penguinType = (PenguinType)Random.Range(0, 2);
+            penguinType = (PenguinType)Random.Range(1, 3);
         }
 
         //Load the selected penguin prefab

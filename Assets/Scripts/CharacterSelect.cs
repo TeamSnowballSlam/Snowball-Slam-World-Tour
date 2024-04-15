@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelect : MonoBehaviour
 {
+    public GameObject player2Select;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player2Select.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,29 +24,73 @@ public class CharacterSelect : MonoBehaviour
     /// Sets the penguin type for player 1
     /// </summary>
     /// <param name="penguinType">Penguin selected</param>
-    public void SetPenguinP1(PenguinType penguinType)
+    public void SetPenguinP1(string penguinType)
     {
-        GameSettings.Player1Penguin = penguinType;
+        switch (penguinType)
+        {
+            case "Hoiho":
+                GameSettings.Player1Penguin = PenguinType.Hoiho;
+                break;
+            case "Korora":
+                GameSettings.Player1Penguin = PenguinType.Korora;
+                break;
+            case "Tawaki":
+                GameSettings.Player1Penguin = PenguinType.Tawaki;
+                break;
+            default:
+                GameSettings.Player1Penguin = PenguinType.None;
+                break;
+        }
     }
 
     /// <summary>
     /// Sets the penguin type for player 2
     /// </summary>
     /// <param name="penguinType">Penguin selected</param>
-    public void SetPenguinP2(PenguinType penguinType)
+    public void SetPenguinP2(string penguinType)
     {
-        GameSettings.Player2Penguin = penguinType;
+        switch (penguinType)
+        {
+            case "Hoiho":
+                GameSettings.Player2Penguin = PenguinType.Hoiho;
+                break;
+            case "Korora":
+                GameSettings.Player2Penguin = PenguinType.Korora;
+                break;
+            case "Tawaki":
+                GameSettings.Player2Penguin = PenguinType.Tawaki;
+                break;
+            default:
+                GameSettings.Player2Penguin = PenguinType.None;
+                break;
+        }
     }
 
     /// <summary>
     /// Toggles the player 2 exists boolean
     /// </summary>
-    public void TogglePlayer2()
+    public void TogglePlayer2(GameObject player2Button)
     {
         GameSettings.Player2Exists = !GameSettings.Player2Exists;
         if (!GameSettings.Player2Exists)
         {
-            GameSettings.Player2Penguin = PenguinType.None;
+            player2Button.GetComponentInChildren<TextMeshProUGUI>().text = "Add Player 2";
+            player2Select.SetActive(false);
         }
+        else
+        {
+            player2Button.GetComponentInChildren<TextMeshProUGUI>().text = "Remove Player 2";
+            player2Select.SetActive(true);
+        }
+    }
+
+    public void StartGame()
+    {
+        if (GameSettings.SelectedLevel == Levels.None)
+        {
+            Debug.LogError("No level selected");
+            return;
+        }
+        SceneManager.LoadScene(GameSettings.SelectedLevel.ToString());
     }
 }
