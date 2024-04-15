@@ -20,21 +20,7 @@ public class CharacterSelect : MonoBehaviour
     /// <param name="penguinType">Penguin selected</param>
     public void SetPenguinP1(string penguinType)
     {
-        switch (penguinType)
-        {
-            case "Hoiho":
-                GameSettings.Player1Penguin = PenguinType.Hoiho;
-                break;
-            case "Kororā":
-                GameSettings.Player1Penguin = PenguinType.Kororā;
-                break;
-            case "Tawaki":
-                GameSettings.Player1Penguin = PenguinType.Tawaki;
-                break;
-            default:
-                GameSettings.Player1Penguin = PenguinType.None;
-                break;
-        }
+        GameSettings.Player1Penguin = penguinSwitch(penguinType);
     }
 
     /// <summary>
@@ -43,20 +29,21 @@ public class CharacterSelect : MonoBehaviour
     /// <param name="penguinType">Penguin selected</param>
     public void SetPenguinP2(string penguinType)
     {
+        GameSettings.Player2Penguin = penguinSwitch(penguinType);
+    }
+
+    private PenguinType penguinSwitch(string penguinType)
+    {
         switch (penguinType)
         {
             case "Hoiho":
-                GameSettings.Player2Penguin = PenguinType.Hoiho;
-                break;
+                return PenguinType.Hoiho;
             case "Kororā":
-                GameSettings.Player2Penguin = PenguinType.Kororā;
-                break;
+                return PenguinType.Kororā;
             case "Tawaki":
-                GameSettings.Player2Penguin = PenguinType.Tawaki;
-                break;
+                return PenguinType.Tawaki;
             default:
-                GameSettings.Player2Penguin = PenguinType.None;
-                break;
+                return PenguinType.None;
         }
     }
 
