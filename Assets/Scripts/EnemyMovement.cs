@@ -151,7 +151,7 @@ public class EnemyMovement : MonoBehaviour
         //foreach (Vector3 pb in playerBuffer) //Loops through all the positions surrounding the player
         // {
 
-       Vector3 direction = (player.position - agent.transform.position);
+       Vector3 direction = player.position - agent.transform.position;
        Debug.Log("Direction: " + direction);
 direction = direction.normalized;
         Debug.Log("Direction: " + direction);
@@ -161,15 +161,14 @@ direction = direction.normalized;
         // Check if player is aligned with any of the predefined directions
         foreach (Vector3 dir in Directions.directions)
         {
-           if (Vector3.Dot(direction.normalized, dir.normalized) > 0.99f)
+           if (Vector3.Dot(direction.normalized, dir.normalized) > 0.99f) //Check if the player is aligned with the predefined direction within a certain threshold 0.99
             {
                 return dir;
             }
 
         }
 
-        // If player is not aligned with any predefined direction
-        Debug.Log("Player is not aligned with any predefined direction");
+        Debug.Log("Player is not aligned with any of 8 directions");
         return Vector3.zero;
     //}
 
