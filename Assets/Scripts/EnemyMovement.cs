@@ -70,23 +70,23 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
-                    // int randomMultiplier = Random.Range(1, 5); //Randomizes the multiplier
-                    // Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
-                    // randomPosition = transform.position + (randomMultiplier * randomDir); //Calculates the random position
-                    // Debug.Log("Random position: " + randomPosition);
-                    // Debug.Log("Direction: " + randomDir);
-                    // Debug.Log("Multiplier: " + randomMultiplier);
-                    // Debug.Log("Direction * Multiplier: " + (randomMultiplier * randomDir));
-                    // Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
-                    // if ( //Checks if the random position is within the bounds
-                    //     randomPosition.x > bounds.min.x
-                    //     && randomPosition.x < bounds.max.x
-                    //     && randomPosition.z > bounds.min.z
-                    //     && randomPosition.z < bounds.max.z
-                    // )
-                    // {
-                    //     GoToTarget(randomPosition); //Moves the agent to the random position
-                    // }
+                    int randomMultiplier = Random.Range(1, 5); //Randomizes the multiplier
+                    Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
+                    randomPosition = transform.position + (randomMultiplier * randomDir); //Calculates the random position
+                    Debug.Log("Random position: " + randomPosition);
+                    Debug.Log("Direction: " + randomDir);
+                    Debug.Log("Multiplier: " + randomMultiplier);
+                    Debug.Log("Direction * Multiplier: " + (randomMultiplier * randomDir));
+                    Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
+                    if ( //Checks if the random position is within the bounds
+                        randomPosition.x > bounds.min.x
+                        && randomPosition.x < bounds.max.x
+                        && randomPosition.z > bounds.min.z
+                        && randomPosition.z < bounds.max.z
+                    )
+                    {
+                        GoToTarget(randomPosition); //Moves the agent to the random position
+                    }
                 }
             }
             else if (state == EnemyStates.Moving)
