@@ -103,8 +103,10 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator; //The player's Animator component
     private Vector2 moveInput; //The player's vector 2 move input
     private Vector2 lastInput; //The previous input
-    private bool slowingDown = false; //If the coroutine for slowing the player down is running
+    private Vector2 secondLastInput; //The input before the last input
     private double lastTime; //The time of the last input
+    private double secondLastTime; //The time of the input before the last input
+    private bool slowingDown = false; //If the coroutine for slowing the player down is running
     private Vector3 moveDirection; //Move input converted to a Vector3
     private float lastUpdate; //The time since the last direction update
     private IEnumerator coroutine; //The coroutine for slowing down
@@ -129,8 +131,20 @@ public class PlayerMovement : MonoBehaviour
     {
         if (slowingDown) //If the player is slowing down from sliding
         {
-            //The player is moved along the last move direction instead of the current (0,0) move direction
-            moveDirection = new Vector3(lastInput.x, 0, lastInput.y);
+            //If the second to last input was diagonal and the last input was straight and the time between the two inputs is very short
+            //then the user likely did not mean to go straight and they were just releasing the two keys
+            if ((secondLastInput.x != 0 && secondLastInput.y != 0) //If the second to last input was diagonal
+                && (lastInput.x == 0 || lastInput.y == 0) //If the last input was straight
+                && secondLastTime - lastTime < 0.1) //If the time between the two inputs is very short
+            {
+                //The player is moved along the second to last move direction instead of the last move direction
+                moveDirection = new Vector3(secondLastInput.x, 0, secondLastInput.y);
+            }
+            else
+            {
+                //The player is moved along the last move direction instead of the current (0,0) move direction
+                moveDirection = new Vector3(lastInput.x, 0, lastInput.y);
+            }
         }
         rb.velocity = new Vector3(moveDirection.x * CurrentSpeed, 0, moveDirection.z * CurrentSpeed); //Move the player based on the move direction and speed
         lastUpdate += Time.fixedDeltaTime;
@@ -176,6 +190,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 IsSliding = true;
             }
+            secondLastInput = lastInput;
+            secondLastTime = lastTime;
             lastInput = moveInput;
             lastTime = context.time;
         }
