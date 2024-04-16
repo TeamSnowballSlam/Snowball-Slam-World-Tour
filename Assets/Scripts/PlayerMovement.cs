@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private const float UPDATEDELAY = 0.05f; //The delay between direction facing updates
-    private const double DOUBLETAPDELAY = 0.5; //The amount of delay allowed between taps
+    private const double DOUBLETAPDELAY = 0.25; //The amount of delay allowed between taps
     private const int MOVEMENTSPEED = 7; //Placeholder values. Will change after testing
 
     private const int SLIDINGSPEED = 20; //Placeholder values. Will change after testing
@@ -106,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 secondLastInput; //The input before the last input
     private double lastTime; //The time of the last input
     private double secondLastTime; //The time of the input before the last input
+    private double startSlowingDownTime; //The time the player started slowing down
     private bool slowingDown = false; //If the coroutine for slowing the player down is running
     private Vector3 moveDirection; //Move input converted to a Vector3
     private float lastUpdate; //The time since the last direction update
@@ -135,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
             //then the user likely did not mean to go straight and they were just releasing the two keys
             if ((secondLastInput.x != 0 && secondLastInput.y != 0) //If the second to last input was diagonal
                 && (lastInput.x == 0 || lastInput.y == 0) //If the last input was straight
-                && secondLastTime - lastTime < 0.1) //If the time between the two inputs is very short
+                &&  startSlowingDownTime - lastTime < UPDATEDELAY) //If the time between the last input and the time the player starts slowing down is very short then they didn't have the single direction held for long
             {
                 //The player is moved along the second to last move direction instead of the last move direction
                 moveDirection = new Vector3(secondLastInput.x, 0, secondLastInput.y);
@@ -160,13 +161,17 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator SlowDown()
     {
         slowingDown = true;
+        startSlowingDownTime = Time.time;
         slowingDownSpeed = SLIDINGSPEED;
-        while (slowingDownSpeed > MOVEMENTSPEED && IsSliding && slowingDown)
+        while (slowingDownSpeed > MOVEMENTSPEED && slowingDown)
         {
             slowingDownSpeed--;
             yield return new WaitForFixedUpdate();
         }
-        IsSliding = false;
+        if (slowingDown) //If the player didn't end the loop due to restarting sliding
+        {
+            IsSliding = false;
+        }
         IsSlowingDown = false;
         slowingDown = false;
     }
@@ -181,7 +186,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //If the time between the last input and the current input is less than the double tap delay
             //And the move input is the same as the last input
-            if (context.time - lastTime < DOUBLETAPDELAY && moveInput == lastInput)
+            if (Time.time - lastTime < DOUBLETAPDELAY && moveInput == lastInput)
             {
                 IsSliding = true;
             }
@@ -191,9 +196,8 @@ public class PlayerMovement : MonoBehaviour
                 IsSliding = true;
             }
             secondLastInput = lastInput;
-            secondLastTime = lastTime;
             lastInput = moveInput;
-            lastTime = context.time;
+            lastTime = Time.time;
         }
     }
 }
