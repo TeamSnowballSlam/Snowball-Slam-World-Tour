@@ -436,7 +436,7 @@ Transform:
   m_GameObject: {fileID: 920718662}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -6.07, y: 1, z: 0}
+  m_LocalPosition: {x: -6, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2784e00fde0ae746bb955637e5a4894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snowball: {fileID: 8950912869131290729, guid: e3470e932c4611d4b92aa4819b1dbced,
+  snowballPrefab: {fileID: 8950912869131290729, guid: e3470e932c4611d4b92aa4819b1dbced,
     type: 3}
 --- !u!1 &923701114
 GameObject:
