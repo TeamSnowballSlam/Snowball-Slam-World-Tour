@@ -73,10 +73,6 @@ public class EnemyMovement : MonoBehaviour
                     int randomMultiplier = Random.Range(1, 5); //Randomizes the multiplier
                     Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
                     randomPosition = transform.position + (randomMultiplier * randomDir); //Calculates the random position
-                    Debug.Log("Random position: " + randomPosition);
-                    Debug.Log("Direction: " + randomDir);
-                    Debug.Log("Multiplier: " + randomMultiplier);
-                    Debug.Log("Direction * Multiplier: " + (randomMultiplier * randomDir));
                     Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
                     if ( //Checks if the random position is within the bounds
                         randomPosition.x > bounds.min.x
@@ -91,7 +87,6 @@ public class EnemyMovement : MonoBehaviour
             }
             else if (state == EnemyStates.Moving)
             {
-                Debug.Log("Agent remaining distance: " + agent.remainingDistance);
                 if (
                     agent.remainingDistance <= 0.001f
                     
@@ -106,7 +101,6 @@ public class EnemyMovement : MonoBehaviour
             }
             else if (state == EnemyStates.TargetingPlayer)
             {
-                Debug.Log("Targeting player");
                 Debug.DrawLine(
                     transform.position,
                     GetClosestPlayer().transform.position,
@@ -148,13 +142,9 @@ public class EnemyMovement : MonoBehaviour
         Transform player = GetClosestPlayer().transform; //Gets the closest player
 
 
-        //foreach (Vector3 pb in playerBuffer) //Loops through all the positions surrounding the player
-        // {
 
        Vector3 direction = player.position - agent.transform.position;
-       Debug.Log("Direction: " + direction);
 direction = direction.normalized;
-        Debug.Log("Direction: " + direction);
 
        direction.y = 0;
 
@@ -168,7 +158,6 @@ direction = direction.normalized;
 
         }
 
-        Debug.Log("Player is not aligned with any of 8 directions");
         return Vector3.zero;
 
     }
@@ -178,7 +167,6 @@ direction = direction.normalized;
 
     private void RotateToTarget(Vector3 targetDirection) //Rotates the agent to face the target given the target direction and speed
     {
-        Debug.Log("Rotating");
         state = EnemyStates.Rotating; //Sets the state to rotating
         transform.forward = targetDirection; //Sets the forward direction of the agent to the target direction
 
