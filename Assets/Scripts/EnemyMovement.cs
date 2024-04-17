@@ -31,36 +31,8 @@ public class EnemyMovement : MonoBehaviour
         agent.updateRotation = false;
     }
 
-    // void ThrowSnowball(Vector3 direction)
-    // {
-    /*
-    
-    
-    */
-    // }
     void Update()
     {
-        // if (CheckForPlayerDirection() != Vector3.zero)
-        // {
-        //     print("DOING THIS SECTION 1");
-        //     Debug.DrawLine(
-        //         transform.position,
-        //         GetClosestPlayer().transform.position,
-        //         Color.blue,
-        //         1f
-        //     ); //Draws a line to the player
-        //     transform.forward = (
-        //         new Vector3(
-        //             GetClosestPlayer().transform.position.x,
-        //             0,
-        //             GetClosestPlayer().transform.position.z
-        //         ) - new Vector3(transform.position.x, 0, transform.position.z)
-        //     ).normalized; //Sets the forward direction of the agent to the direction to the player
-        //     state = EnemyStates.TargetingPlayer;
-        // }
-
-
-        // else
         {
             if (state == EnemyStates.Idle)
             {
