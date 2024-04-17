@@ -170,31 +170,7 @@ direction = direction.normalized;
 
         Debug.Log("Player is not aligned with any of 8 directions");
         return Vector3.zero;
-    //}
 
-        // Determine the direction
-
-        // if (
-        //     Directions.directions.Contains(
-        //         Quaternion.LookRotation(pb - transform.position).eulerAngles.normalized //Checks if the player is in 1 of the 8 directions
-        //     )
-        // )
-        // {
-        //     Debug.Log("Player can be targeted");
-        //     state = EnemyStates.TargetingPlayer; //Sets the state to targeting player
-
-        //     //  Debug.DrawLine(transform.position, player.position, Color.red, 5f); //Draws a line to the player
-
-        //     return Quaternion
-        //         .LookRotation(player.position - transform.position)
-        //         .eulerAngles.normalized; //Returns the direction to the player with a scale of 1
-        // }
-        // }
-        
-        // {
-        //     Debug.Log("Player is not near");
-        //     return Vector3.zero; //Returns a zero vector
-        // }
     }
 
     
