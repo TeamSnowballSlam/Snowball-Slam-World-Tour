@@ -29,10 +29,4 @@ public class ThrowSnowballs : MonoBehaviour
         snowball.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse);
     }
-
-    void OnCollisionEnter(Collision other)
-    {
-        Debug.Log("Collisdoodn");
-        Destroy(gameObject);
-    }
 }
