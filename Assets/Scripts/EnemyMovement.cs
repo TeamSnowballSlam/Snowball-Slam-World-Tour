@@ -20,7 +20,6 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent agent; //The NavMeshAgent component
     public NavMeshSurface surface; //The NavMeshSurface component
     private Vector3 randomPosition; //The random position to move to
-    public GameObject sphere; //The sphere prefab
 
     [SerializeField]
     private EnemyStates state = EnemyStates.Idle; //The state of the enemy
