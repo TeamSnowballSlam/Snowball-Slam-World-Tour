@@ -32,59 +32,56 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-            if (state == EnemyStates.Idle)
+        if (state == EnemyStates.Idle)
+        {
+            if (CheckForPlayerDirection() != Vector3.zero)
             {
-                if (CheckForPlayerDirection() != Vector3.zero)
+                state = EnemyStates.TargetingPlayer;
+            }
+            else
+            {
+                int randomMultiplier = Random.Range(1, 5); //Randomizes the multiplier
+                Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
+                randomPosition = transform.position + (randomMultiplier * randomDir); //Calculates the random position
+                Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
+                if ( //Checks if the random position is within the bounds
+                    randomPosition.x > bounds.min.x
+                    && randomPosition.x < bounds.max.x
+                    && randomPosition.z > bounds.min.z
+                    && randomPosition.z < bounds.max.z
+                )
                 {
-                    state = EnemyStates.TargetingPlayer;
-                }
-                else
-                {
-                    int randomMultiplier = Random.Range(1, 5); //Randomizes the multiplier
-                    Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
-                    randomPosition = transform.position + (randomMultiplier * randomDir); //Calculates the random position
-                    Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
-                    if ( //Checks if the random position is within the bounds
-                        randomPosition.x > bounds.min.x
-                        && randomPosition.x < bounds.max.x
-                        && randomPosition.z > bounds.min.z
-                        && randomPosition.z < bounds.max.z
-                    )
-                    {
-                        GoToTarget(randomPosition); //Moves the agent to the random position
-                    }
+                    GoToTarget(randomPosition); //Moves the agent to the random position
                 }
             }
-            else if (state == EnemyStates.Moving)
+        }
+        else if (state == EnemyStates.Moving)
+        {
+            if (agent.remainingDistance <= 0.001f) //Checks if the agent has reached the target within a certain distance
             {
-                if (
-                    agent.remainingDistance <= 0.001f
-                    
-                ) //Checks if the agent has reached the target within a certain distance
-                {
-                    state = EnemyStates.Idle; //Sets the state to Moving
-                }
-                else if (CheckForPlayerDirection() != Vector3.zero)
-                {
-                    state = EnemyStates.TargetingPlayer;
-                }
+                state = EnemyStates.Idle; //Sets the state to Moving
             }
-            else if (state == EnemyStates.TargetingPlayer)
+            else if (CheckForPlayerDirection() != Vector3.zero)
             {
-                Debug.DrawLine(
-                    transform.position,
-                    GetClosestPlayer().transform.position,
-                    Color.blue,
-                    1f
-                ); //Draws a line to the player
-                transform.forward = (
-                    new Vector3(
-                        GetClosestPlayer().transform.position.x,
-                        0,
-                        GetClosestPlayer().transform.position.z
-                    ) - new Vector3(transform.position.x, 0, transform.position.z)
-                ).normalized; //Sets the forward direction of the agent to the direction to the player
+                state = EnemyStates.TargetingPlayer;
             }
+        }
+        else if (state == EnemyStates.TargetingPlayer)
+        {
+            Debug.DrawLine(
+                transform.position,
+                GetClosestPlayer().transform.position,
+                Color.blue,
+                1f
+            ); //Draws a line to the player
+            transform.forward = (
+                new Vector3(
+                    GetClosestPlayer().transform.position.x,
+                    0,
+                    GetClosestPlayer().transform.position.z
+                ) - new Vector3(transform.position.x, 0, transform.position.z)
+            ).normalized; //Sets the forward direction of the agent to the direction to the player
+        }
     }
 
     private GameObject GetClosestPlayer()
@@ -110,35 +107,27 @@ public class EnemyMovement : MonoBehaviour
     {
         Transform player = GetClosestPlayer().transform; //Gets the closest player
 
+        Vector3 direction = player.position - agent.transform.position;
+        direction = direction.normalized;
 
-
-       Vector3 direction = player.position - agent.transform.position;
-direction = direction.normalized;
-
-       direction.y = 0;
+        direction.y = 0;
 
         // Check if player is aligned with any of the predefined directions
         foreach (Vector3 dir in Directions.directions)
         {
-           if (Vector3.Dot(direction.normalized, dir.normalized) > 0.99f) //Check if the player is aligned with the predefined direction within a certain threshold 0.99
+            if (Vector3.Dot(direction.normalized, dir.normalized) > 0.99f) //Check if the player is aligned with the predefined direction within a certain threshold 0.99
             {
                 return dir;
             }
-
         }
 
         return Vector3.zero;
-
     }
-
-    
-    
 
     private void RotateToTarget(Vector3 targetDirection) //Rotates the agent to face the target given the target direction and speed
     {
         state = EnemyStates.Rotating; //Sets the state to rotating
         transform.forward = targetDirection; //Sets the forward direction of the agent to the target direction
-
     }
 
     private void GoToTarget(Vector3 target) //Sets the destination of the agent to the target position
