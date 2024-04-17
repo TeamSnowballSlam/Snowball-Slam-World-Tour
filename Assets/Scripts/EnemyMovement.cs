@@ -63,7 +63,7 @@ public class EnemyMovement : MonoBehaviour
                     
                 ) //Checks if the agent has reached the target within a certain distance
                 {
-                    state = EnemyStates.Idle; //Sets the state to idle
+                    state = EnemyStates.Idle; //Sets the state to Moving
                 }
                 else if (CheckForPlayerDirection() != Vector3.zero)
                 {
