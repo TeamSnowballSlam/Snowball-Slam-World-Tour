@@ -32,7 +32,6 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        {
             if (state == EnemyStates.Idle)
             {
                 if (CheckForPlayerDirection() != Vector3.zero)
@@ -86,7 +85,6 @@ public class EnemyMovement : MonoBehaviour
                     ) - new Vector3(transform.position.x, 0, transform.position.z)
                 ).normalized; //Sets the forward direction of the agent to the direction to the player
             }
-        }
     }
 
     private GameObject GetClosestPlayer()
