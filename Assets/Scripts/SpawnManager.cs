@@ -11,8 +11,21 @@ public class SpawnManager : MonoBehaviour
     public void Start()
     {
         penguinSelect(GameSettings.Player1Penguin, "WASD");
-        penguinSelect(GameSettings.Player2Penguin, "Arrows");
+        if (GameSettings.Player2Exists)
+        {
+            penguinSelect(GameSettings.Player2Penguin, "Arrows");
+        }
     }
+
+    public void spawnPlayerTwo()
+    {
+        if (!GameSettings.Player2Exists)
+        {
+            penguinSelect(GameSettings.Player2Penguin, "Arrows");
+            GameSettings.Player2Exists = true;
+        }
+    }
+
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         playerInput.gameObject.GetComponent<PlayerDetails>().playerID = playerInput.playerIndex; //Setting the player ID to the player index
