@@ -1,14 +1,11 @@
 ---
 name: New Feature
 about: New features and improvements
-title: ''
+title: 'Feature: '
 labels: 
 assignees: ''
 
 ---
-
-**User Stories**
-One or more user stories that prompted this issue.
 
 **Description**
 Describe the new feature or improvement and why it is needed.
