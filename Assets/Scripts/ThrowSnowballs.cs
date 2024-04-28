@@ -8,12 +8,6 @@ public class ThrowSnowballs : MonoBehaviour
     private GameObject snowball; // instantiate of snowballPrefab
     private Vector3 snowballPosition;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        snowballPosition = new Vector3(transform.position.x, 1.5f, transform.position.z); // thrown at face level
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +19,7 @@ public class ThrowSnowballs : MonoBehaviour
 
     private void ThrowSnowball()
     {
+        snowballPosition = new Vector3(transform.position.x, 1.5f, transform.position.z); // thrown at face level
         snowball = Instantiate(snowballPrefab, snowballPosition + transform.forward, Quaternion.identity); // snowballPrefab is instantiated
         snowball.transform.position = snowballPosition + transform.forward; // snowball is positioned in front of player
         snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
