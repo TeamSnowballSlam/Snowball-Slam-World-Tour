@@ -23,9 +23,12 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField]
     private EnemyStates state = EnemyStates.Idle; //The state of the enemy
+    private float throwTime; //The time to throw the snowball
+    private float delayTime = 1.5f; //The delay time between throws
 
     void Start()
     {
+        throwTime = Time.time; //Sets the throw time to the current time
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
     }
@@ -81,12 +84,31 @@ public class EnemyMovement : MonoBehaviour
                     GetClosestPlayer().transform.position.z
                 ) - new Vector3(transform.position.x, 0, transform.position.z)
             ).normalized; //Sets the forward direction of the agent to the direction to the player
+            if(Time.time > throwTime + delayTime)
+            {
+        
+            GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
+            throwTime = Time.time; //Sets the throw time to the current time
+            }
+            else
+            {
+                    Debug.Log("Time.deltaTime: " + Time.time);
+                    Debug.Log("throwTime: " + throwTime);
+                    Debug.Log("delayTime + throwtime: " + delayTime + throwTime);
+
+            }
+            
+
+        }
+        else if (state == EnemyStates.ThrowingSnowball)
+        {
+            GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
         }
     }
 
     private GameObject GetClosestPlayer()
     {
-        state = EnemyStates.Searching; //Sets the state to searching
+        // state = EnemyStates.Searching; //Sets the state to searching
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player"); //Gets all the players in the scene
         GameObject closestPlayer = null; //Initializes the closest player to null
         float closestDistance = Mathf.Infinity; //Initializes the closest distance to infinity
@@ -99,7 +121,7 @@ public class EnemyMovement : MonoBehaviour
                 closestPlayer = player; //Sets the closest player to the player
             }
         }
-        state = EnemyStates.Moving; //Sets the state to idle
+        state = EnemyStates.Moving; 
         return closestPlayer; //Returns the closest player
     }
 
