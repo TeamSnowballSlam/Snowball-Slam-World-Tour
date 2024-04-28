@@ -84,21 +84,11 @@ public class EnemyMovement : MonoBehaviour
                     GetClosestPlayer().transform.position.z
                 ) - new Vector3(transform.position.x, 0, transform.position.z)
             ).normalized; //Sets the forward direction of the agent to the direction to the player
-            if(Time.time > throwTime + delayTime)
+            if (Time.time > throwTime + delayTime)
             {
-        
-            GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
-            throwTime = Time.time; //Sets the throw time to the current time
+                GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
+                throwTime = Time.time; //Sets the throw time to the current time
             }
-            else
-            {
-                    Debug.Log("Time.deltaTime: " + Time.time);
-                    Debug.Log("throwTime: " + throwTime);
-                    Debug.Log("delayTime + throwtime: " + delayTime + throwTime);
-
-            }
-            
-
         }
         else if (state == EnemyStates.ThrowingSnowball)
         {
@@ -121,13 +111,14 @@ public class EnemyMovement : MonoBehaviour
                 closestPlayer = player; //Sets the closest player to the player
             }
         }
-        state = EnemyStates.Moving; 
+        state = EnemyStates.Moving;
         return closestPlayer; //Returns the closest player
     }
 
     private Vector3 CheckForPlayerDirection() //WIP METHOD NOT CURRENTLY WORKING
     {
-        if (GetClosestPlayer() == null) return Vector3.zero; //If there is no player, return zero vector
+        if (GetClosestPlayer() == null)
+            return Vector3.zero; //If there is no player, return zero vector
         Transform player = GetClosestPlayer().transform; //Gets the closest player
 
         Vector3 direction = player.position - agent.transform.position;
