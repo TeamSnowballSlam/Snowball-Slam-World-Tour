@@ -105,6 +105,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Vector3 CheckForPlayerDirection() //WIP METHOD NOT CURRENTLY WORKING
     {
+        if (GetClosestPlayer() == null) return Vector3.zero; //If there is no player, return zero vector
         Transform player = GetClosestPlayer().transform; //Gets the closest player
 
         Vector3 direction = player.position - agent.transform.position;
