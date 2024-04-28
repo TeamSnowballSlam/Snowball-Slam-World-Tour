@@ -5,8 +5,9 @@ using UnityEngine;
 
 public enum PenguinType
 {
-    Korora,
+    
+    None,
+    Kororā,
     Tawaki,
-    Hoiho,
-    None
+    Hoiho
 }

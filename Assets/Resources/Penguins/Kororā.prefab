@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 260794963107410271}
   - component: {fileID: 7209638717088781891}
   m_Layer: 0
-  m_Name: Korora
+  m_Name: "Koror\u0101"
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
