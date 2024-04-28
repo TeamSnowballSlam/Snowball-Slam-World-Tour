@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 3728871631595060702}
   - component: {fileID: 1495108256170291770}
   - component: {fileID: 4836813668585397964}
+  - component: {fileID: 591450828154694337}
   m_Layer: 0
   m_Name: Tawaki
   m_TagString: Player
@@ -313,7 +314,19 @@ MonoBehaviour:
     m_ActionId: e1c8d5f0-3cdd-4ff1-a8c6-95f6e37c4e5f
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/rightArrow,/Keyboard/leftArrow,/Keyboard/downArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 591450828154694337}
+        m_TargetAssemblyTypeName: ThrowSnowballs, Assembly-CSharp
+        m_MethodName: ThrowSnowball
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: b5b6239f-af51-4b7d-84f8-15c6c4c1117e
     m_ActionName: Player/Fire[/Keyboard/g,/Keyboard/period]
   - m_PersistentCalls:
@@ -360,24 +373,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9c65686e-b943-4f43-96ab-6e8220bc4ffe
     m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3728871631595060702}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: OnSlide
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 528f9405-1a1d-46b1-bfb2-46428d1182a9
-    m_ActionName: Player/Sliding[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &591450828154694337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8536711974540740973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2784e00fde0ae746bb955637e5a4894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snowballPrefab: {fileID: 8950912869131290729, guid: e3470e932c4611d4b92aa4819b1dbced,
+    type: 3}
