@@ -27,7 +27,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void SettingsButton()
     {
-        // Go to settings
+        //Go to settings
     }
 
     /// <summary>
