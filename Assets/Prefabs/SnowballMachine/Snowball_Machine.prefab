@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7629244463419974192
+--- !u!1001 &6547447389877084936
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,68 +8,114 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: cea4621ed9732074eb139f80d9e2ea4f,
+    - target: {fileID: -8679921383154817045, guid: dba728bb3b1897e46b04e79dd400cf71,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.42120883
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: cea4621ed9732074eb139f80d9e2ea4f,
+    - target: {fileID: -8679921383154817045, guid: dba728bb3b1897e46b04e79dd400cf71,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.33
+      value: 1.35
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: cea4621ed9732074eb139f80d9e2ea4f,
+    - target: {fileID: -8679921383154817045, guid: dba728bb3b1897e46b04e79dd400cf71,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.9736692
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: cea4621ed9732074eb139f80d9e2ea4f,
+    - target: {fileID: -8679921383154817045, guid: dba728bb3b1897e46b04e79dd400cf71,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071066
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: cea4621ed9732074eb139f80d9e2ea4f,
+    - target: {fileID: -8679921383154817045, guid: dba728bb3b1897e46b04e79dd400cf71,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: cea4621ed9732074eb139f80d9e2ea4f,
+    - target: {fileID: -8679921383154817045, guid: dba728bb3b1897e46b04e79dd400cf71,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.70710695
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: cea4621ed9732074eb139f80d9e2ea4f,
+    - target: {fileID: -8679921383154817045, guid: dba728bb3b1897e46b04e79dd400cf71,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: cea4621ed9732074eb139f80d9e2ea4f,
+    - target: {fileID: -8679921383154817045, guid: dba728bb3b1897e46b04e79dd400cf71,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: cea4621ed9732074eb139f80d9e2ea4f,
+    - target: {fileID: -8679921383154817045, guid: dba728bb3b1897e46b04e79dd400cf71,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: cea4621ed9732074eb139f80d9e2ea4f,
+    - target: {fileID: -8679921383154817045, guid: dba728bb3b1897e46b04e79dd400cf71,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: cea4621ed9732074eb139f80d9e2ea4f,
+    - target: {fileID: -6547223059409353530, guid: dba728bb3b1897e46b04e79dd400cf71,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 315f6c80baf38004989c14c303145c22, type: 2}
+    - target: {fileID: -4628224688037785303, guid: dba728bb3b1897e46b04e79dd400cf71,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 315f6c80baf38004989c14c303145c22, type: 2}
+    - target: {fileID: 919132149155446097, guid: dba728bb3b1897e46b04e79dd400cf71,
         type: 3}
       propertyPath: m_Name
-      value: Snowball_Machine
+      value: SM_Snowball_Machine
       objectReference: {fileID: 0}
-    - target: {fileID: 5866666021909216657, guid: cea4621ed9732074eb139f80d9e2ea4f,
+    - target: {fileID: 1567107424331199580, guid: dba728bb3b1897e46b04e79dd400cf71,
         type: 3}
-      propertyPath: m_Controller
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 9100000, guid: e1cb37af3193c3f44b703d63039a2b3a, type: 2}
+      objectReference: {fileID: 2100000, guid: 315f6c80baf38004989c14c303145c22, type: 2}
+    - target: {fileID: 3759534133164816092, guid: dba728bb3b1897e46b04e79dd400cf71,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 315f6c80baf38004989c14c303145c22, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cea4621ed9732074eb139f80d9e2ea4f, type: 3}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dba728bb3b1897e46b04e79dd400cf71,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2532767269962999597}
+  m_SourcePrefab: {fileID: 100100000, guid: dba728bb3b1897e46b04e79dd400cf71, type: 3}
+--- !u!1 &6204937087719022169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dba728bb3b1897e46b04e79dd400cf71,
+    type: 3}
+  m_PrefabInstance: {fileID: 6547447389877084936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2532767269962999597
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6204937087719022169}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e1cb37af3193c3f44b703d63039a2b3a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
