@@ -9,7 +9,7 @@ public class SnowballCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy")) //If the snowball hits an enemy
         {
-            LevelManager.instance.UpdateScore("Player"); //Update the player's score 
+            LevelManager.instance.UpdateScore("Player"); //Update the player's score
         }
         else if (collision.gameObject.CompareTag("Player")) //If the snowball hits the player
         {
@@ -17,6 +17,5 @@ public class SnowballCollision : MonoBehaviour
         }
 
         Destroy(gameObject); //destroys itself no matter what it hits, snowball or border
-
     }
 }

@@ -26,8 +26,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private int secondsRemaining = 60; //The time remaining in the level
 
-
-
     [SerializeField]
     private int targetScore = 15; //The score needed to win the level
 
@@ -47,7 +45,9 @@ public class LevelManager : MonoBehaviour
     private float currentTime;
 
     private Teams playerTeam = Teams.Penguins;
-    [SerializeField] private Teams enemyTeam = Teams.Kangaroos;
+
+    [SerializeField]
+    private Teams enemyTeam = Teams.Kangaroos;
 
     public static LevelManager instance;
 

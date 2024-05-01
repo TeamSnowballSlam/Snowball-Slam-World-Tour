@@ -150,6 +150,4 @@ public class EnemyMovement : MonoBehaviour
         agent.SetDestination(target); //Starts moving the agent to the target position
         state = EnemyStates.Moving; //Sets the state to moving
     }
-
-
 }
