@@ -26,8 +26,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private int secondsRemaining = 60; //The time remaining in the level
 
-    [SerializeField]
-    private int startDelay = 3; //The delay before the level starts
+
+
     [SerializeField]
     private int targetScore = 15; //The score needed to win the level
 
@@ -38,10 +38,16 @@ public class LevelManager : MonoBehaviour
     private bool timerStarted = false;
 
     private TextMeshProUGUI playerScoreText;
+    private TextMeshProUGUI playerScoreTitle;
     private TextMeshProUGUI enemyScoreText;
+    private TextMeshProUGUI enemyScoreTitle;
+
     private TextMeshProUGUI timerText;
+
     private float currentTime;
 
+    private Teams playerTeam = Teams.Penguins;
+    [SerializeField] private Teams enemyTeam = Teams.Kangaroos;
 
     public static LevelManager instance;
 
@@ -64,8 +70,13 @@ public class LevelManager : MonoBehaviour
         enemyScoreText = GameObject.Find("EnemyScore").GetComponent<TextMeshProUGUI>();
         timerText = GameObject.Find("LevelTimer").GetComponent<TextMeshProUGUI>();
 
+        playerScoreTitle = GameObject.Find("PlayerScoreTitle").GetComponent<TextMeshProUGUI>();
+        enemyScoreTitle = GameObject.Find("EnemyScoreTitle").GetComponent<TextMeshProUGUI>();
+
         playerScoreText.text = playerScore.ToString();
         enemyScoreText.text = enemyScore.ToString();
+        playerScoreTitle.text = GetTeamName(playerTeam);
+        enemyScoreTitle.text = GetTeamName(enemyTeam);
 
         //Format the time to display as MM:SS
         string formattedTime = string.Format(
@@ -118,22 +129,46 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private string GetTeamName(Teams team)
+    {
+        if (team == Teams.Penguins)
+        {
+            return "Penguins";
+        }
+        else if (team == Teams.Kangaroos)
+        {
+            return "Kangaroos";
+        }
+        else if (team == Teams.RedPandas)
+        {
+            return "Red Pandas";
+        }
+        else if (team == Teams.Capybaras)
+        {
+            return "Capybaras";
+        }
+        else
+        {
+            return "Unknown";
+        }
+    }
 
     private void DisplayWinner(string winner)
     {
         if (winner == "Player")
         {
-            timerText.text = "Player Wins!";
+            timerText.text = "Penguins Wins!";
         }
         else if (winner == "Enemy")
         {
-            timerText.text = "Enemy Wins!";
+            timerText.text = "Penguins Lost!";
         }
         else
         {
             timerText.text = "Draw!";
         }
     }
+
     private string CheckForWinner()
     {
         if (secondsRemaining <= 0)
@@ -159,7 +194,7 @@ public class LevelManager : MonoBehaviour
             }
             else if (enemyScore >= targetScore)
             {
-            return "Enemy";
+                return "Enemy";
             }
             else
             {
