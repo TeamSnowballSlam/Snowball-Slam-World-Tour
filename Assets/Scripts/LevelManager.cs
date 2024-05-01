@@ -28,6 +28,8 @@ public class LevelManager : MonoBehaviour
 
         playerScoreText.text =  currentScore.ToString();
         enemyScoreText.text = enemyScore.ToString();
+
+        //Format the time to display as MM:SS
         string formattedTime = string.Format("{0:00}:{1:00}", secondsRemaining / 60, secondsRemaining % 60);
         timerText.text = formattedTime;
         currentTime = Time.time;
@@ -42,6 +44,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            //Update the timer every second if the round is not over
             if (Time.time > currentTime + 1 && !roundOver)
             {
                 if(secondsRemaining > 0)
