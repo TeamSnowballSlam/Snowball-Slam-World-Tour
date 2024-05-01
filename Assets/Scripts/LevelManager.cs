@@ -44,10 +44,10 @@ public class LevelManager : MonoBehaviour
 
     private float currentTime;
 
-    private Teams playerTeam = Teams.Penguins;
+    private Teams playerTeam = Teams.Penguins; //Which team the player is on
 
     [SerializeField]
-    private Teams enemyTeam = Teams.Kangaroos;
+    private Teams enemyTeam = Teams.Kangaroos; //Which team the enemy is on
 
     public static LevelManager instance;
 
@@ -66,6 +66,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Initialize the text objects
         playerScoreText = GameObject.Find("PlayerScore").GetComponent<TextMeshProUGUI>();
         enemyScoreText = GameObject.Find("EnemyScore").GetComponent<TextMeshProUGUI>();
         timerText = GameObject.Find("LevelTimer").GetComponent<TextMeshProUGUI>();
@@ -129,6 +130,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method will return the name of the team based on the enum value
+    /// </summary>
+    /// <param name="team">The Team to be returned as a string</param>
+    /// <returns>The specified team as a string</returns>
     private string GetTeamName(Teams team)
     {
         if (team == Teams.Penguins)
@@ -153,6 +159,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method will display the winner of the match
+    /// </summary>
+    /// <param name="winner">The team that won the match</param>
     private void DisplayWinner(string winner)
     {
         if (winner == "Player")
@@ -168,6 +178,11 @@ public class LevelManager : MonoBehaviour
             timerText.text = "Draw!";
         }
     }
+
+    /// <summary>
+    /// This method will check for the winner of the match
+    /// </summary>
+    /// <returns>The winner as a string</returns>
 
     private string CheckForWinner()
     {
