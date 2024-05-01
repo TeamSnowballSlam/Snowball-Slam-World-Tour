@@ -24,7 +24,12 @@ public class LevelManager : MonoBehaviour
     private int enemyScore = 0;
 
     [SerializeField]
-    private int secondsRemaining = 60;
+    private int secondsRemaining = 60; //The time remaining in the level
+
+    [SerializeField]
+    private int startDelay = 3; //The delay before the level starts
+    [SerializeField]
+    private int targetScore = 15; //The score needed to win the level
 
     [Header("Colors")]
     public Color mediumColor;
@@ -36,6 +41,7 @@ public class LevelManager : MonoBehaviour
     private TextMeshProUGUI enemyScoreText;
     private TextMeshProUGUI timerText;
     private float currentTime;
+
 
     public static LevelManager instance;
 
@@ -82,7 +88,7 @@ public class LevelManager : MonoBehaviour
             //Update the timer every second if the round is not over
             if (Time.time > currentTime + 1 && !roundOver)
             {
-                if (secondsRemaining > 0)
+                if (secondsRemaining > 0 && playerScore < targetScore && enemyScore < targetScore)
                 {
                     currentTime = Time.time;
                     secondsRemaining -= 1;
@@ -106,7 +112,58 @@ public class LevelManager : MonoBehaviour
                 else
                 {
                     roundOver = true;
+                    DisplayWinner(CheckForWinner());
                 }
+            }
+        }
+    }
+
+
+    private void DisplayWinner(string winner)
+    {
+        if (winner == "Player")
+        {
+            timerText.text = "Player Wins!";
+        }
+        else if (winner == "Enemy")
+        {
+            timerText.text = "Enemy Wins!";
+        }
+        else
+        {
+            timerText.text = "Draw!";
+        }
+    }
+    private string CheckForWinner()
+    {
+        if (secondsRemaining <= 0)
+        {
+            if (playerScore > enemyScore)
+            {
+                return "Player";
+            }
+            else if (enemyScore > playerScore)
+            {
+                return "Enemy";
+            }
+            else
+            {
+                return "Draw";
+            }
+        }
+        else
+        {
+            if (playerScore >= targetScore)
+            {
+                return "Player";
+            }
+            else if (enemyScore >= targetScore)
+            {
+            return "Enemy";
+            }
+            else
+            {
+                return "Draw";
             }
         }
     }
@@ -125,6 +182,8 @@ public class LevelManager : MonoBehaviour
     /// <param name="team">The name of the team which will be given points</param>
     public void UpdateScore(string team)
     {
+        if (roundOver)
+            return;
         if (team == "Player")
         {
             playerScore += 1;
