@@ -151,11 +151,5 @@ public class EnemyMovement : MonoBehaviour
         state = EnemyStates.Moving; //Sets the state to moving
     }
 
-    void OnColliderEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Snowball"))
-        {
-            //LevelManager.instance.UpdateScore("Player");
-        }
-    }
+
 }
