@@ -67,5 +67,21 @@ public class LevelManager : MonoBehaviour
         timerStarted = true;
     }
 
+    public void UpdateScore(string team)
+    {
+        if(team == "Player")
+        {
+            currentScore += 1;
+            playerScoreText.text = currentScore.ToString();
+        }
+        else if(team == "Enemy")
+        {
+            enemyScore += 1;
+            enemyScoreText.text = enemyScore.ToString();
+        }
+        else return;
+    }
+    
+
 
 }
