@@ -26,7 +26,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
         type: 3}
@@ -36,7 +36,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
         type: 3}
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
         type: 3}
@@ -91,6 +91,22 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2921289539451140405}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fac4156c6ed86244d8298a02f33413b8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7196317128498043512}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fac4156c6ed86244d8298a02f33413b8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7236593136866158991}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fac4156c6ed86244d8298a02f33413b8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6806585376740479986}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fac4156c6ed86244d8298a02f33413b8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3085364569004700037}
   m_SourcePrefab: {fileID: 100100000, guid: fac4156c6ed86244d8298a02f33413b8, type: 3}
 --- !u!1 &2387896443102519406 stripped
 GameObject:
@@ -119,3 +135,76 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &7196317128498043512
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387896443102519406}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7798625
+  m_Height: 2.73099
+  m_Direction: 1
+  m_Center: {x: -0.04914224, y: 0.15701175, z: -0.1214906}
+--- !u!195 &7236593136866158991
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387896443102519406}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &6806585376740479986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387896443102519406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7d7a4fc4c5c17409bd7072caf4633c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surface: {fileID: 0}
+  state: 0
+--- !u!114 &3085364569004700037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387896443102519406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2784e00fde0ae746bb955637e5a4894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snowballPrefab: {fileID: 8950912869131290729, guid: e3470e932c4611d4b92aa4819b1dbced,
+    type: 3}
