@@ -34,10 +34,34 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(!timerStarted)
+        {
+            StartCountdown();
+        }
+        else
+        {
+            if (Time.time > currentTime + 1 && !roundOver)
+            {
+                if(secondsRemaining > 0)
+                {
+                    currentTime = Time.time;
+                    secondsRemaining -= 1;
+                    string formattedTime = string.Format("{0:00}:{1:00}", secondsRemaining / 60, secondsRemaining % 60);
+                    timerText.text = formattedTime;
+                }
+                else
+                {
+                    roundOver = true;
+                }
+            }
+        }
+    }
+
+    private void StartCountdown()
+    {
+        timerStarted = true;
     }
 
 
