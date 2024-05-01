@@ -10,6 +10,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int currentScore = 0;
     [SerializeField] private int enemyScore = 0;
     [SerializeField] private int secondsRemaining = 60;
+
+    public Color mediumColor;
+    public Color criticalColor;
     private bool roundOver = false;
     private bool timerStarted = false;
 
@@ -17,6 +20,7 @@ public class LevelManager : MonoBehaviour
     private TextMeshProUGUI enemyScoreText;
     private TextMeshProUGUI timerText;
     private float currentTime;
+   
 
 
     // Start is called before the first frame update
@@ -53,6 +57,14 @@ public class LevelManager : MonoBehaviour
                     secondsRemaining -= 1;
                     string formattedTime = string.Format("{0:00}:{1:00}", secondsRemaining / 60, secondsRemaining % 60);
                     timerText.text = formattedTime;
+                    if(secondsRemaining <= 5)
+                    {
+                        timerText.color = criticalColor;
+                    }
+                    else if(secondsRemaining <= 10)
+                    {
+                        timerText.color = mediumColor;
+                    }
                 }
                 else
                 {
