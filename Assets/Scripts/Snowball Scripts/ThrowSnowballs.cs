@@ -14,7 +14,6 @@ public class ThrowSnowballs : MonoBehaviour
 
     void Start()
     {
-        //snowInventory = GameObject.Find("SnowInventory").GetComponent<SnowInventory>();
         snowInventory = GetComponent<SnowInventory>();
     }
 
@@ -41,6 +40,5 @@ public class ThrowSnowballs : MonoBehaviour
             Quaternion.identity
         ); // snowballPrefab is instantiated
         snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
-        
     }
 }
