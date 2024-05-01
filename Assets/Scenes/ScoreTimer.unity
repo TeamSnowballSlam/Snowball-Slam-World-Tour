@@ -863,7 +863,7 @@ MonoBehaviour:
   playerScore: 0
   enemyScore: 0
   secondsRemaining: 120
-  delayTime: 10
+  delayTime: 3
   targetScore: 15
   mediumColor: {r: 1, g: 0.5209463, b: 0, a: 1}
   criticalColor: {r: 1, g: 0, b: 0, a: 1}
