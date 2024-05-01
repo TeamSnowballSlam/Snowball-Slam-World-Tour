@@ -35,6 +35,8 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        if(LevelManager.instance.roundOver || !LevelManager.instance.roundStarted) { return;} //prevents enemy from moving when round is over or not started
+
         if (state == EnemyStates.Idle)
         {
             if (CheckForPlayerDirection() != Vector3.zero)

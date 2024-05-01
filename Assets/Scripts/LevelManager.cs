@@ -35,8 +35,9 @@ public class LevelManager : MonoBehaviour
     [Header("Colors")]
     public Color mediumColor;
     public Color criticalColor;
-    private bool roundOver = false;
-    private bool roundStarted = false;
+    public bool roundOver = false;
+    public bool roundStarted = false;
+    
 
     private TextMeshProUGUI playerScoreText;
     private TextMeshProUGUI playerScoreTitle;
