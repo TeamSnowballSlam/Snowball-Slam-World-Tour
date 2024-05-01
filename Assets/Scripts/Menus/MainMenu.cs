@@ -7,27 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private Toggle[] levelToggles; //Need to manually add each toggle in the inspector
 
-    /// <summary>
-    /// Opens the level select menu
-    /// </summary>
-    public void PlayButton()
-    {
-        // Go to level select
-    }
-
-    /// <summary>
-    /// Opens the settings menu
-    /// </summary>
-    public void SettingsButton()
-    {
-        //Go to settings
-    }
+    //Something here for only allowing later levels to be selected when they are unlocked?
 
     /// <summary>
     /// Quits the game
@@ -36,5 +19,35 @@ public class MainMenu : MonoBehaviour
     {
         // Quit the game
         Application.Quit();
+    }
+
+    /// <summary>
+    /// Loads the character select menu
+    /// </summary>
+    public void CharacterSelect()
+    {
+        if (GameSettings.SelectedLevel != Levels.None)
+        {
+            SceneManager.LoadScene("CharacterSelect");
+        }
+        else
+        {
+            Debug.LogError("No level selected");
+        }
+    }
+
+    /// <summary>
+    /// Sets the selected level
+    /// </summary>
+    public void LevelSelect()
+    {
+        foreach (Toggle toggle in levelToggles)
+        {
+            if (toggle.isOn)
+            {
+                //This converts the string name of the toggle to the enum value and sets the selected level
+                GameSettings.SelectedLevel = (Levels)System.Enum.Parse(typeof(Levels), toggle.name);
+            }
+        }
     }
 }
