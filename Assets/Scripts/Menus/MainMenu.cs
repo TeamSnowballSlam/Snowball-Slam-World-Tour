@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject player2Select;
     // Start is called before the first frame update
     void Start()
     {
