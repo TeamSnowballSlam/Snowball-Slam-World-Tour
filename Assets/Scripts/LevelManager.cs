@@ -27,13 +27,16 @@ public class LevelManager : MonoBehaviour
     private int secondsRemaining = 60; //The time remaining in the level
 
     [SerializeField]
+    private int delayTime = 10; //The delay time before the level starts
+
+    [SerializeField]
     private int targetScore = 15; //The score needed to win the level
 
     [Header("Colors")]
     public Color mediumColor;
     public Color criticalColor;
     private bool roundOver = false;
-    private bool timerStarted = false;
+    private bool roundStarted = false;
 
     private TextMeshProUGUI playerScoreText;
     private TextMeshProUGUI playerScoreTitle;
@@ -41,6 +44,7 @@ public class LevelManager : MonoBehaviour
     private TextMeshProUGUI enemyScoreTitle;
 
     private TextMeshProUGUI timerText;
+    private TextMeshProUGUI timerTitle;
 
     private float currentTime;
 
@@ -73,58 +77,69 @@ public class LevelManager : MonoBehaviour
 
         playerScoreTitle = GameObject.Find("PlayerScoreTitle").GetComponent<TextMeshProUGUI>();
         enemyScoreTitle = GameObject.Find("EnemyScoreTitle").GetComponent<TextMeshProUGUI>();
+        timerTitle = GameObject.Find("LevelTimerTitle").GetComponent<TextMeshProUGUI>();
 
         playerScoreText.text = playerScore.ToString();
         enemyScoreText.text = enemyScore.ToString();
         playerScoreTitle.text = GetTeamName(playerTeam);
         enemyScoreTitle.text = GetTeamName(enemyTeam);
 
-        //Format the time to display as MM:SS
-        string formattedTime = string.Format(
-            "{0:00}:{1:00}",
-            secondsRemaining / 60,
-            secondsRemaining % 60
-        );
-        timerText.text = formattedTime;
+        timerTitle.text = "Starting in ";
+        timerText.text = delayTime.ToString();
         currentTime = Time.time;
     }
 
     void Update()
     {
-        if (!timerStarted)
-        {
-            StartCountdown();
-        }
-        else
         {
             //Update the timer every second if the round is not over
             if (Time.time > currentTime + 1 && !roundOver)
             {
-                if (secondsRemaining > 0 && playerScore < targetScore && enemyScore < targetScore)
+                if (delayTime > 0)
                 {
                     currentTime = Time.time;
-                    secondsRemaining -= 1;
-                    string formattedTime = string.Format(
-                        "{0:00}:{1:00}",
-                        secondsRemaining / 60,
-                        secondsRemaining % 60
-                    );
-                    timerText.text = formattedTime;
-
-                    //Once the timer reaches either threshold, change the color of the text
-                    if (secondsRemaining <= 5)
-                    {
-                        timerText.color = criticalColor;
-                    }
-                    else if (secondsRemaining <= 10)
-                    {
-                        timerText.color = mediumColor;
-                    }
+                    delayTime -= 1;
+                    timerTitle.text = "Starting in ";
+                    timerText.text = delayTime.ToString();
                 }
                 else
                 {
-                    roundOver = true;
-                    DisplayWinner(CheckForWinner());
+                    if (!roundStarted)
+                    {
+                        StartCountdown();
+                    }
+                    if (
+                        secondsRemaining > 0
+                        && playerScore < targetScore
+                        && enemyScore < targetScore && !roundOver && roundStarted
+                    )
+                    {
+                        currentTime = Time.time;
+                        secondsRemaining -= 1;
+                        timerTitle.text = "Time Remaining";
+                        //Format the time to be displayed as MM:SS
+                        string formattedTime = string.Format(
+                            "{0:00}:{1:00}",
+                            secondsRemaining / 60,
+                            secondsRemaining % 60
+                        );
+                        timerText.text = formattedTime;
+
+                        //Once the timer reaches either threshold, change the color of the text
+                        if (secondsRemaining <= 5)
+                        {
+                            timerText.color = criticalColor;
+                        }
+                        else if (secondsRemaining <= 10)
+                        {
+                            timerText.color = mediumColor;
+                        }
+                    }
+                    else
+                    {
+                        roundOver = true;
+                        DisplayWinner(CheckForWinner());
+                    }
                 }
             }
         }
@@ -223,7 +238,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private void StartCountdown()
     {
-        timerStarted = true;
+        roundStarted = true;
     }
 
     /// <summary>
@@ -232,7 +247,7 @@ public class LevelManager : MonoBehaviour
     /// <param name="team">The name of the team which will be given points</param>
     public void UpdateScore(string team)
     {
-        if (roundOver)
+        if (roundOver || !roundStarted)
             return;
         if (team == "Player")
         {
