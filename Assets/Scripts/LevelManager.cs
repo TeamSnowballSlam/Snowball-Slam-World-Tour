@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
     private int secondsRemaining = 60; //The time remaining in the level
 
     [SerializeField]
-    private int delayTime = 10; //The delay time before the level starts
+    private float delayTime = 10; //The delay time before the level starts
 
     [SerializeField]
     private int targetScore = 15; //The score needed to win the level
@@ -39,6 +39,11 @@ public class LevelManager : MonoBehaviour
     public bool roundStarted = false;
     
 
+    public List<Transform> endGameWinnerSpawnPoints = new List<Transform>();
+    public List<Transform> endGameLoserSpawnPoints = new List<Transform>();
+
+    public GameObject mainCamera;
+    public GameObject endGameCamera;
     private TextMeshProUGUI playerScoreText;
     private TextMeshProUGUI playerScoreTitle;
     private TextMeshProUGUI enemyScoreText;
@@ -71,6 +76,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera.SetActive( true);
+        endGameCamera.SetActive( false);
         //Initialize the text objects
         playerScoreText = GameObject.Find("PlayerScore").GetComponent<TextMeshProUGUI>();
         enemyScoreText = GameObject.Find("EnemyScore").GetComponent<TextMeshProUGUI>();
@@ -181,6 +188,8 @@ public class LevelManager : MonoBehaviour
     /// <param name="winner">The team that won the match</param>
     private void DisplayWinner(string winner)
     {
+        mainCamera.SetActive( false);
+        endGameCamera.SetActive( true);
         if (winner == "Player")
         {
             timerText.text = "Penguins Wins!";
