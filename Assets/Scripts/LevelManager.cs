@@ -190,9 +190,15 @@ public class LevelManager : MonoBehaviour
     {
         mainCamera.SetActive( false);
         endGameCamera.SetActive( true);
+        GameObject[] snowballs = GameObject.FindGameObjectsWithTag("Snowball");
+        foreach (GameObject snowball in snowballs)
+        {
+            Destroy(snowball);
+        }
         if (winner == "Player")
         {
-            timerText.text = "Penguins Wins!";
+            timerText.text = "Penguins Win!";
+            timerText.color = Color.green;
             GameObject.FindGameObjectsWithTag("Player")[0].transform.position = endGameWinnerSpawnPoints[0].position;
             if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
             {
@@ -213,6 +219,7 @@ public class LevelManager : MonoBehaviour
             GameObject.FindGameObjectsWithTag("Enemy")[1].transform.position = endGameWinnerSpawnPoints[1].position;
 
             timerText.text = "Penguins Lost!";
+            timerText.color = criticalColor;
         }
         else
         {
