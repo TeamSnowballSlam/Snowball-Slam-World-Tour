@@ -35,8 +35,6 @@ public class LevelManager : MonoBehaviour
     [Header("Colors")]
     public Color mediumColor;
     public Color criticalColor;
-    public bool roundOver = false;
-    public bool roundStarted = false;
     
 
     public List<Transform> endGameWinnerSpawnPoints = new List<Transform>();
@@ -78,6 +76,7 @@ public class LevelManager : MonoBehaviour
     {
         mainCamera.SetActive( true);
         endGameCamera.SetActive( false);
+        GameSettings.currentGameState = GameStates.PreGame;
         //Initialize the text objects
         playerScoreText = GameObject.Find("PlayerScore").GetComponent<TextMeshProUGUI>();
         enemyScoreText = GameObject.Find("EnemyScore").GetComponent<TextMeshProUGUI>();
@@ -101,7 +100,7 @@ public class LevelManager : MonoBehaviour
     {
         {
             //Update the timer every second if the round is not over
-            if (Time.time > currentTime + 1 && !roundOver)
+            if (Time.time > currentTime + 1 && (GameSettings.currentGameState == GameStates.PreGame || GameSettings.currentGameState == GameStates.InGame))
             {
                 if (delayTime > 0)
                 {
@@ -112,14 +111,14 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
-                    if (!roundStarted)
-                    {
+                    // if (!roundStarted)
+                    // {
                         StartCountdown();
-                    }
+                    // }
                     if (
                         secondsRemaining > 0
                         && playerScore < targetScore
-                        && enemyScore < targetScore && !roundOver && roundStarted
+                        && enemyScore < targetScore && GameSettings.currentGameState == GameStates.InGame /*!roundOver && roundStarted*/
                     )
                     {
                         currentTime = Time.time;
@@ -145,8 +144,8 @@ public class LevelManager : MonoBehaviour
                     }
                     else
                     {
-                        roundOver = true;
                         DisplayWinner(CheckForWinner());
+                        GameSettings.currentGameState = GameStates.PostGame;
                     }
                 }
             }
@@ -272,7 +271,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private void StartCountdown()
     {
-        roundStarted = true;
+        GameSettings.currentGameState = GameStates.InGame;
     }
 
     /// <summary>
@@ -281,7 +280,7 @@ public class LevelManager : MonoBehaviour
     /// <param name="team">The name of the team which will be given points</param>
     public void UpdateScore(string team)
     {
-        if (roundOver || !roundStarted)
+        if (GameSettings.currentGameState != GameStates.InGame || playerScore == targetScore || enemyScore == targetScore)
             return;
         if (team == "Player")
         {

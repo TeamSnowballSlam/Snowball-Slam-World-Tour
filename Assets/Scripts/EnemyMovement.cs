@@ -35,10 +35,9 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if(LevelManager.instance.roundOver || !LevelManager.instance.roundStarted) 
-        { 
+        if (GameSettings.currentGameState != GameStates.InGame)
             agent.isStopped = true;
-            return;} //prevents enemy from moving when round is over or not started
+            return;
 
         if (state == EnemyStates.Idle)
         {

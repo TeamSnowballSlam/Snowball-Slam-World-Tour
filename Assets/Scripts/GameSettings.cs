@@ -9,4 +9,5 @@ public static class GameSettings
     public static bool Player2Exists = false; // If player 2 exists. This is set in character select or when player 2 hot joins
     public static Levels SelectedLevel = Levels.Movement; // The level selected for the game
     //Hardcoded to Movement for testing
+    public static GameStates currentGameState = GameStates.PreGame; // The current state of the game
 }
