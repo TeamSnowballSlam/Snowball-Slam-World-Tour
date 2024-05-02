@@ -193,9 +193,25 @@ public class LevelManager : MonoBehaviour
         if (winner == "Player")
         {
             timerText.text = "Penguins Wins!";
+            GameObject.FindGameObjectsWithTag("Player")[0].transform.position = endGameWinnerSpawnPoints[0].position;
+            if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
+            {
+                GameObject.FindGameObjectsWithTag("Player")[1].transform.position = endGameWinnerSpawnPoints[1].position;
+            }
+            GameObject.FindGameObjectsWithTag("Enemy")[0].transform.position = endGameLoserSpawnPoints[0].position;
+            GameObject.FindGameObjectsWithTag("Enemy")[1].transform.position = endGameLoserSpawnPoints[1].position;
+
         }
         else if (winner == "Enemy")
         {
+            GameObject.FindGameObjectsWithTag("Player")[0].transform.position = endGameLoserSpawnPoints[0].position;
+            if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
+            {
+                GameObject.FindGameObjectsWithTag("Player")[1].transform.position = endGameLoserSpawnPoints[1].position;
+            }
+            GameObject.FindGameObjectsWithTag("Enemy")[0].transform.position = endGameWinnerSpawnPoints[0].position;
+            GameObject.FindGameObjectsWithTag("Enemy")[1].transform.position = endGameWinnerSpawnPoints[1].position;
+
             timerText.text = "Penguins Lost!";
         }
         else
