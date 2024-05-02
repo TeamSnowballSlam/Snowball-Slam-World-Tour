@@ -246,7 +246,7 @@ public class LevelManager : MonoBehaviour
     /// <param name="team">The name of the team which will be given points</param>
     public void UpdateScore(string team)
     {
-        if (GameSettings.currentGameState != GameStates.InGame)
+        if (GameSettings.currentGameState != GameStates.InGame || playerScore == targetScore || enemyScore == targetScore)
             return;
         if (team == "Player")
         {
