@@ -138,6 +138,7 @@ public class LevelManager : MonoBehaviour
                     else
                     {
                         DisplayWinner(CheckForWinner());
+                        GameSettings.currentGameState = GameStates.PostGame;
                     }
                 }
             }
