@@ -12,8 +12,8 @@ public class ThrowSnowballs : MonoBehaviour
 
     public void ThrowSnowball(InputAction.CallbackContext context)
     {
-        if(LevelManager.instance.roundOver || !LevelManager.instance.roundStarted) { return;}
-
+        if (GameSettings.currentGameState != GameStates.InGame)
+            return;
         snowballPosition = new Vector3(transform.position.x, 1.5f, transform.position.z); // thrown at face level
         snowball = Instantiate(
             snowballPrefab,
