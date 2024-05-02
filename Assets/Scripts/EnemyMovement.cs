@@ -36,8 +36,10 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         if (GameSettings.currentGameState != GameStates.InGame)
+        {
             agent.isStopped = true;
             return;
+        }
 
         if (state == EnemyStates.Idle)
         {
