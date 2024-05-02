@@ -35,9 +35,6 @@ public class LevelManager : MonoBehaviour
     [Header("Colors")]
     public Color mediumColor;
     public Color criticalColor;
-    public bool roundOver = false;
-    public bool roundStarted = false;
-    
 
     private TextMeshProUGUI playerScoreText;
     private TextMeshProUGUI playerScoreTitle;
@@ -94,7 +91,7 @@ public class LevelManager : MonoBehaviour
     {
         {
             //Update the timer every second if the round is not over
-            if (Time.time > currentTime + 1 && !roundOver)
+            if (Time.time > currentTime + 1 && GameSettings.currentGameState == GameStates.PreGame)
             {
                 if (delayTime > 0)
                 {
@@ -105,14 +102,14 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
-                    if (!roundStarted)
+                    if (GameSettings.currentGameState != GameStates.InGame)
                     {
                         StartCountdown();
                     }
                     if (
                         secondsRemaining > 0
                         && playerScore < targetScore
-                        && enemyScore < targetScore && !roundOver && roundStarted
+                        && enemyScore < targetScore && GameSettings.currentGameState == GameStates.InGame
                     )
                     {
                         currentTime = Time.time;
@@ -138,7 +135,7 @@ public class LevelManager : MonoBehaviour
                     }
                     else
                     {
-                        roundOver = true;
+                        GameSettings.currentGameState = GameStates.PostGame;
                         DisplayWinner(CheckForWinner());
                     }
                 }
@@ -239,7 +236,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private void StartCountdown()
     {
-        roundStarted = true;
+        GameSettings.currentGameState = GameStates.InGame;
     }
 
     /// <summary>
@@ -248,7 +245,7 @@ public class LevelManager : MonoBehaviour
     /// <param name="team">The name of the team which will be given points</param>
     public void UpdateScore(string team)
     {
-        if (roundOver || !roundStarted)
+        if (GameSettings.currentGameState != GameStates.InGame)
             return;
         if (team == "Player")
         {
