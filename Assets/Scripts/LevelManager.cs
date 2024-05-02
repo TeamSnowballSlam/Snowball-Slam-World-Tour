@@ -217,6 +217,14 @@ public class LevelManager : MonoBehaviour
         else
         {
             timerText.text = "Draw!";
+            GameObject.FindGameObjectsWithTag("Player")[0].transform.position = endGameWinnerSpawnPoints[0].position;
+            if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
+            {
+                GameObject.FindGameObjectsWithTag("Player")[1].transform.position = endGameWinnerSpawnPoints[1].position;
+            }
+            GameObject.FindGameObjectsWithTag("Enemy")[0].transform.position = endGameWinnerSpawnPoints[2].position;
+            GameObject.FindGameObjectsWithTag("Enemy")[1].transform.position = endGameWinnerSpawnPoints[3].position;
+
         }
     }
 
