@@ -223,6 +223,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             timerText.text = "Draw!";
+            timerText.color = Color.black;
             GameObject.FindGameObjectsWithTag("Player")[0].transform.position = endGameWinnerSpawnPoints[0].position;
             if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
             {

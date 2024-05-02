@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -893,13 +893,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScore: 0
   enemyScore: 0
-  secondsRemaining: 5
+  secondsRemaining: 120
   delayTime: 3
   targetScore: 15
   mediumColor: {r: 1, g: 0.5209463, b: 0, a: 1}
   criticalColor: {r: 1, g: 0, b: 0, a: 1}
-  roundOver: 0
-  roundStarted: 0
   endGameWinnerSpawnPoints:
   - {fileID: 1581906329}
   - {fileID: 1165934965}
