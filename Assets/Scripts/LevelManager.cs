@@ -35,6 +35,7 @@ public class LevelManager : MonoBehaviour
     [Header("Colors")]
     public Color mediumColor;
     public Color criticalColor;
+    
 
     private TextMeshProUGUI playerScoreText;
     private TextMeshProUGUI playerScoreTitle;
@@ -68,6 +69,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameSettings.currentGameState = GameStates.PreGame;
         //Initialize the text objects
         playerScoreText = GameObject.Find("PlayerScore").GetComponent<TextMeshProUGUI>();
         enemyScoreText = GameObject.Find("EnemyScore").GetComponent<TextMeshProUGUI>();
@@ -91,7 +93,7 @@ public class LevelManager : MonoBehaviour
     {
         {
             //Update the timer every second if the round is not over
-            if (Time.time > currentTime + 1 && GameSettings.currentGameState == GameStates.PreGame)
+            if (Time.time > currentTime + 1 && (GameSettings.currentGameState == GameStates.PreGame || GameSettings.currentGameState == GameStates.InGame))
             {
                 if (delayTime > 0)
                 {
@@ -102,14 +104,14 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
-                    if (GameSettings.currentGameState != GameStates.InGame)
-                    {
+                    // if (!roundStarted)
+                    // {
                         StartCountdown();
-                    }
+                    // }
                     if (
                         secondsRemaining > 0
                         && playerScore < targetScore
-                        && enemyScore < targetScore && GameSettings.currentGameState == GameStates.InGame
+                        && enemyScore < targetScore && GameSettings.currentGameState == GameStates.InGame /*!roundOver && roundStarted*/
                     )
                     {
                         currentTime = Time.time;
@@ -135,7 +137,6 @@ public class LevelManager : MonoBehaviour
                     }
                     else
                     {
-                        GameSettings.currentGameState = GameStates.PostGame;
                         DisplayWinner(CheckForWinner());
                     }
                 }
