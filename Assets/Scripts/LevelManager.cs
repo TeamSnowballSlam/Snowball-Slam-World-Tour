@@ -35,10 +35,10 @@ public class LevelManager : MonoBehaviour
     [Header("Colors")]
     public Color mediumColor;
     public Color criticalColor;
-    
 
     public List<Transform> endGameWinnerSpawnPoints = new List<Transform>();
     public List<Transform> endGameLoserSpawnPoints = new List<Transform>();
+    public List<Transform> endGameDrawSpawnPoints = new List<Transform>();
 
     public GameObject mainCamera;
     public GameObject endGameCamera;
@@ -74,8 +74,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera.SetActive( true);
-        endGameCamera.SetActive( false);
+        mainCamera.SetActive(true);
+        endGameCamera.SetActive(false);
         GameSettings.currentGameState = GameStates.PreGame;
         //Initialize the text objects
         playerScoreText = GameObject.Find("PlayerScore").GetComponent<TextMeshProUGUI>();
@@ -100,7 +100,13 @@ public class LevelManager : MonoBehaviour
     {
         {
             //Update the timer every second if the round is not over
-            if (Time.time > currentTime + 1 && (GameSettings.currentGameState == GameStates.PreGame || GameSettings.currentGameState == GameStates.InGame))
+            if (
+                Time.time > currentTime + 1
+                && (
+                    GameSettings.currentGameState == GameStates.PreGame
+                    || GameSettings.currentGameState == GameStates.InGame
+                )
+            )
             {
                 if (delayTime > 0)
                 {
@@ -113,12 +119,13 @@ public class LevelManager : MonoBehaviour
                 {
                     // if (!roundStarted)
                     // {
-                        StartCountdown();
+                    StartCountdown();
                     // }
                     if (
                         secondsRemaining > 0
                         && playerScore < targetScore
-                        && enemyScore < targetScore && GameSettings.currentGameState == GameStates.InGame /*!roundOver && roundStarted*/
+                        && enemyScore < targetScore
+                        && GameSettings.currentGameState == GameStates.InGame /*!roundOver && roundStarted*/
                     )
                     {
                         currentTime = Time.time;
@@ -187,8 +194,8 @@ public class LevelManager : MonoBehaviour
     /// <param name="winner">The team that won the match</param>
     private void DisplayWinner(string winner)
     {
-        mainCamera.SetActive( false);
-        endGameCamera.SetActive( true);
+        mainCamera.SetActive(false);
+        endGameCamera.SetActive(true);
         GameObject[] snowballs = GameObject.FindGameObjectsWithTag("Snowball");
         foreach (GameObject snowball in snowballs)
         {
@@ -198,28 +205,46 @@ public class LevelManager : MonoBehaviour
         {
             timerText.text = "Penguins Win!";
             timerText.color = Color.green;
-            GameObject.FindGameObjectsWithTag("Player")[0].transform.position = endGameWinnerSpawnPoints[0].position;
+            GameObject p1 = 
+                GameObject.FindGameObjectsWithTag("Player")[0];
+            
+            p1.transform.parent = endGameWinnerSpawnPoints[0];
+            p1.transform.localPosition = Vector3.zero;
+
             if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
             {
-                GameObject.FindGameObjectsWithTag("Player")[1].transform.position = endGameWinnerSpawnPoints[1].position;
+                GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
+                p2.transform.parent = endGameWinnerSpawnPoints[1];
+                p2.transform.localPosition = Vector3.zero;
             }
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
             {
-                GameObject.FindGameObjectsWithTag("Enemy")[i].transform.SetPositionAndRotation(endGameLoserSpawnPoints[i].position, Quaternion.Euler(Vector3.zero));
+                GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
+                e.transform.parent = endGameLoserSpawnPoints[i];
+                e.transform.localPosition = Vector3.zero;
+                e.transform.localRotation = Quaternion.Euler(Vector3.zero);
             }
         }
         else if (winner == "Enemy")
         {
-            GameObject.FindGameObjectsWithTag("Player")[0].transform.transform.SetPositionAndRotation(endGameLoserSpawnPoints[0].position, Quaternion.Euler(Vector3.zero));
+            GameObject p1 = 
+                GameObject.FindGameObjectsWithTag("Player")[0];
+            p1.transform.parent = endGameLoserSpawnPoints[0];
+            p1.transform.localPosition = Vector3.zero;
 
             if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
             {
-                GameObject.FindGameObjectsWithTag("Player")[1].transform.transform.SetPositionAndRotation(endGameLoserSpawnPoints[1].position, Quaternion.Euler(Vector3.zero));
+                GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
+                p2.transform.parent = endGameLoserSpawnPoints[1];
+                p2.transform.localPosition = Vector3.zero;
             }
 
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
             {
-                GameObject.FindGameObjectsWithTag("Enemy")[i].transform.SetPositionAndRotation(endGameWinnerSpawnPoints[i].position, Quaternion.Euler(Vector3.zero));
+                GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
+                e.transform.parent = endGameWinnerSpawnPoints[i];
+                e.transform.localPosition = Vector3.zero;
+                e.transform.localRotation = Quaternion.Euler(Vector3.zero);
             }
             timerText.text = "Penguins Lost!";
             timerText.color = criticalColor;
@@ -227,14 +252,27 @@ public class LevelManager : MonoBehaviour
         else
         {
             timerText.text = "Draw!";
-            timerText.color = Color.black;
-            GameObject.FindGameObjectsWithTag("Player")[0].transform.position = endGameWinnerSpawnPoints[0].position;
+            timerText.color = Color.white;
+             GameObject p1 = 
+                GameObject.FindGameObjectsWithTag("Player")[0];
+            
+            p1.transform.parent = endGameDrawSpawnPoints[1];
+            p1.transform.localPosition = Vector3.zero;
+
             if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
             {
-                GameObject.FindGameObjectsWithTag("Player")[1].transform.position = endGameWinnerSpawnPoints[1].position;
+                GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
+                p2.transform.parent = endGameDrawSpawnPoints[0];
+                p2.transform.localPosition = Vector3.zero;
             }
-            GameObject.FindGameObjectsWithTag("Enemy")[0].transform.position = endGameWinnerSpawnPoints[2].position;
-            GameObject.FindGameObjectsWithTag("Enemy")[1].transform.position = endGameWinnerSpawnPoints[3].position;
+
+            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+            {
+                GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
+                e.transform.parent = endGameDrawSpawnPoints[i+2];
+                e.transform.localPosition = Vector3.zero;
+                e.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            }
 
         }
     }
@@ -292,7 +330,11 @@ public class LevelManager : MonoBehaviour
     /// <param name="team">The name of the team which will be given points</param>
     public void UpdateScore(string team)
     {
-        if (GameSettings.currentGameState != GameStates.InGame || playerScore == targetScore || enemyScore == targetScore)
+        if (
+            GameSettings.currentGameState != GameStates.InGame
+            || playerScore == targetScore
+            || enemyScore == targetScore
+        )
             return;
         if (team == "Player")
         {
