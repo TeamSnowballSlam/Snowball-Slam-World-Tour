@@ -210,10 +210,11 @@ public class LevelManager : MonoBehaviour
         }
         else if (winner == "Enemy")
         {
-            GameObject.FindGameObjectsWithTag("Player")[0].transform.position = endGameLoserSpawnPoints[0].position;
+            GameObject.FindGameObjectsWithTag("Player")[0].transform.transform.SetPositionAndRotation(endGameLoserSpawnPoints[0].position, Quaternion.Euler(Vector3.zero));
+
             if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
             {
-                GameObject.FindGameObjectsWithTag("Player")[1].transform.position = endGameLoserSpawnPoints[1].position;
+                GameObject.FindGameObjectsWithTag("Player")[1].transform.transform.SetPositionAndRotation(endGameLoserSpawnPoints[1].position, Quaternion.Euler(Vector3.zero));
             }
 
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
