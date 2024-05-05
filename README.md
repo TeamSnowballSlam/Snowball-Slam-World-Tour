@@ -60,7 +60,7 @@ Some of the most important changes for each update are as follows:
 
 | Version   | Release Date | Features                                           |
 |-----------|--------------|----------------------------------------------------|
-| v1.0.0    | TBD   | TBD     |
+| v1.0.0    | April 29 2024   | Character Selection, Enemy Movement, Hotjoining, Player Movement, Sliding, Throwing Snowballs     | 
 
 ## Roadmap
 
