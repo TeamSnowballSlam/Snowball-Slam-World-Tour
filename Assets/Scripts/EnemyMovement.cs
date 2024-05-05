@@ -40,6 +40,10 @@ public class EnemyMovement : MonoBehaviour
             agent.isStopped = true;
             return;
         }
+        else if (GameSettings.currentGameState == GameStates.InGame)
+        {
+            agent.isStopped = false;
+        }
 
         if (state == EnemyStates.Idle)
         {
