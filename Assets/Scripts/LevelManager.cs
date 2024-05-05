@@ -203,9 +203,10 @@ public class LevelManager : MonoBehaviour
             {
                 GameObject.FindGameObjectsWithTag("Player")[1].transform.position = endGameWinnerSpawnPoints[1].position;
             }
-            GameObject.FindGameObjectsWithTag("Enemy")[0].transform.position = endGameLoserSpawnPoints[0].position;
-            GameObject.FindGameObjectsWithTag("Enemy")[1].transform.position = endGameLoserSpawnPoints[1].position;
-
+            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+            {
+                GameObject.FindGameObjectsWithTag("Enemy")[i].transform.SetPositionAndRotation(endGameLoserSpawnPoints[i].position, Quaternion.Euler(Vector3.zero));
+            }
         }
         else if (winner == "Enemy")
         {
@@ -214,9 +215,11 @@ public class LevelManager : MonoBehaviour
             {
                 GameObject.FindGameObjectsWithTag("Player")[1].transform.position = endGameLoserSpawnPoints[1].position;
             }
-            GameObject.FindGameObjectsWithTag("Enemy")[0].transform.position = endGameWinnerSpawnPoints[0].position;
-            GameObject.FindGameObjectsWithTag("Enemy")[1].transform.position = endGameWinnerSpawnPoints[1].position;
 
+            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+            {
+                GameObject.FindGameObjectsWithTag("Enemy")[i].transform.SetPositionAndRotation(endGameWinnerSpawnPoints[i].position, Quaternion.Euler(Vector3.zero));
+            }
             timerText.text = "Penguins Lost!";
             timerText.color = criticalColor;
         }
