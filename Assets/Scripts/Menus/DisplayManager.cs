@@ -12,7 +12,7 @@ public class DisplayManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown frameRateDropdown;
     [SerializeField] private Toggle vsyncToggle;
 
-    private Resolution[] resolutions;
+    private List<Resolution> resolutions = new List<Resolution>();
 
     // Calling this in awake so it sets display settings asap when the game is opened
     void Awake()
@@ -85,20 +85,21 @@ public class DisplayManager : MonoBehaviour
     /// </summary>
     private void PopulateResolutions()
     {
-        resolutions = Screen.resolutions;
+        Resolution[] originalResolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
         //This uses a hashset as it is the most efficient way to check for duplicates
         //If not used then there will be duplicate resolutions for monitors that can do the same res but with different HZ
         HashSet<string> uniqueResolutions = new HashSet<string>();
 
-        foreach (var res in resolutions)
+        foreach (var res in originalResolutions)
         {
             string resolutionString = res.width + "x" + res.height;
             if (!uniqueResolutions.Contains(resolutionString))
             {
                 resolutionDropdown.options.Add(new TMP_Dropdown.OptionData(resolutionString));
                 uniqueResolutions.Add(resolutionString);
+                resolutions.Add(res);
             }
         }
     }
@@ -203,7 +204,7 @@ public class DisplayManager : MonoBehaviour
         //PlayerPrefs.DeleteAll();
 
         //These are all inside try catch blocks as the PlayerPrefs values could have index out of range errors if the player changes monitors to one that doesn't support the resolution they had set
-        //It;s also just a good idea so it doesn't crash in case of manual editing of the file or random errors/data corruption.
+        //It's also just a good idea so it doesn't crash in case of manual editing of the file or random errors/data corruption.
 
         int resolutionIndex = resolutionDropdown.options.Count - 1; //Default is the top resolution the monitor supports in case the PlayerPrefs value is invalid
         try
@@ -214,6 +215,7 @@ public class DisplayManager : MonoBehaviour
         {
             Debug.LogWarning("Resolution set to invalid index, setting to default.");
         }
+        Debug.Log(resolutionIndex);
         resolutionDropdown.value = resolutionIndex;
         ApplyResolution(resolutionIndex);        
 

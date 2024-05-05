@@ -14,8 +14,12 @@ public class DELETE : MonoBehaviour
         // Get VSync status
         bool vsyncEnabled = QualitySettings.vSyncCount > 0;
 
+        // Get current resolution
+        Resolution currentResolution = Screen.currentResolution;
+
         // Update text
         frameRateText.text = "Frame Rate: " + Mathf.RoundToInt(currentFrameRate) + "\n" +
-                             "VSync: " + (vsyncEnabled ? "Enabled" : "Disabled");
+                             "VSync: " + (vsyncEnabled ? "Enabled" : "Disabled" + "\n" +
+                             "Resolution: " + currentResolution.width + "x" + currentResolution.height);
     }
 }
