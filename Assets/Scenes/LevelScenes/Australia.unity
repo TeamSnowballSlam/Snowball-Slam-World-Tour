@@ -1700,7 +1700,7 @@ GameObject:
   - component: {fileID: 2133027558}
   - component: {fileID: 2133027557}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DELETE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
