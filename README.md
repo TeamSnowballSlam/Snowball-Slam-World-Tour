@@ -35,11 +35,13 @@ To be added
 ## How to play
 
 To be added
-<!--- Add the info from the presentation 
 
+<!-- 
 | Action                    | Key/Button             |
 |---------------------------|------------------------|
-| Action                   | Key                      | --->
+| Movement                   | **Player 1:** WASD  **Player 2:** Arrows                      | 
+| Throw Snowball | **Player 1:** Q  **Player 2:** Left Shift |
+| Interact |  **Player 1:** E  **Player 2:** Left Ctrl | -->
 
 ## Get Involved
 
