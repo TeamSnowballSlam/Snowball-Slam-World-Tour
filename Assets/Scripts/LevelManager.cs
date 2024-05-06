@@ -104,10 +104,9 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
-                    // if (!roundStarted)
-                    // {
+
                         StartCountdown();
-                    // }
+
                     if (
                         secondsRemaining > 0
                         && playerScore < targetScore
@@ -152,26 +151,20 @@ public class LevelManager : MonoBehaviour
     /// <returns>The specified team as a string</returns>
     private string GetTeamName(Teams team)
     {
-        if (team == Teams.Penguins)
+        switch (team)
         {
-            return "Penguins";
+            case Teams.Penguins:
+                return "Penguins";
+            case Teams.Kangaroos:
+                return "Kangaroos";
+            case Teams.RedPandas:
+                return "Red Pandas";
+            case Teams.Capybaras:
+                return "Capybaras";
+            default:
+                return "Unknown";
         }
-        else if (team == Teams.Kangaroos)
-        {
-            return "Kangaroos";
-        }
-        else if (team == Teams.RedPandas)
-        {
-            return "Red Pandas";
-        }
-        else if (team == Teams.Capybaras)
-        {
-            return "Capybaras";
-        }
-        else
-        {
-            return "Unknown";
-        }
+
     }
 
     /// <summary>
