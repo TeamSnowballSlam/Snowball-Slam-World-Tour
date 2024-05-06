@@ -173,18 +173,19 @@ public class LevelManager : MonoBehaviour
     /// <param name="winner">The team that won the match</param>
     private void DisplayWinner(string winner)
     {
-        if (winner == "Player")
+        switch (winner)
         {
-            timerText.text = "Penguins Wins!";
-        }
-        else if (winner == "Enemy")
-        {
+            case "Player":
+                timerText.text = "Penguins Wins!";
+                break;
+            case "Enemy":
             timerText.text = "Penguins Lost!";
+                break;
+            default:
+                timerText.text = "Draw!";
+                break;
         }
-        else
-        {
-            timerText.text = "Draw!";
-        }
+
     }
 
     /// <summary>
