@@ -35,6 +35,8 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        if (GameSettings.currentGameState != GameStates.InGame)
+            return;
         if (state == EnemyStates.Idle)
         {
             if (CheckForPlayerDirection() != Vector3.zero)
