@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [Header("Level Management")]
@@ -58,6 +58,8 @@ public class LevelManager : MonoBehaviour
     private Teams enemyTeam = Teams.Kangaroos; //Which team the enemy is on
 
     public static LevelManager instance;
+    public GameObject restartButton;
+    public GameObject continueButton;
 
     void Awake()
     {
@@ -74,6 +76,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+                restartButton.SetActive(false);
+        continueButton.SetActive(false);
         mainCamera.SetActive(true);
         endGameCamera.SetActive(false);
         GameSettings.currentGameState = GameStates.PreGame;
@@ -196,6 +200,8 @@ public class LevelManager : MonoBehaviour
     {
         mainCamera.SetActive(false);
         endGameCamera.SetActive(true);
+        restartButton.SetActive(true);
+        continueButton.SetActive(true);
         GameObject[] snowballs = GameObject.FindGameObjectsWithTag("Snowball");
         foreach (GameObject snowball in snowballs)
         {
@@ -348,5 +354,17 @@ public class LevelManager : MonoBehaviour
         }
         else
             return;
+    }
+
+
+
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene( UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+    public void Continue()
+    {
+        //SceneManager.LoadScene("MainMenu"); //Commented out until we merge
     }
 }
