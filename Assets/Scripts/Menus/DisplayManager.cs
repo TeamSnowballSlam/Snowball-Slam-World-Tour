@@ -35,7 +35,6 @@ public class DisplayManager : MonoBehaviour
     public void OnDisplayModeChanged(int index)
     {
         ApplyDisplayMode(index);
-        SaveSettings();
     }
     
     /// <summary>
@@ -45,7 +44,6 @@ public class DisplayManager : MonoBehaviour
     public void OnResolutionChanged(int index)
     {
         ApplyResolution(index);
-        SaveSettings();
     }
 
     /// <summary>
@@ -55,7 +53,6 @@ public class DisplayManager : MonoBehaviour
     public void OnFrameRateChanged(int index)
     {
         ApplyFrameRate(index);
-        SaveSettings();
     }
 
     /// <summary>
@@ -65,7 +62,6 @@ public class DisplayManager : MonoBehaviour
     public void OnVsyncChanged(bool value)
     {
         ApplyVsync(value);
-        SaveSettings();
     }
 
     /// <summary>
@@ -215,7 +211,6 @@ public class DisplayManager : MonoBehaviour
         {
             Debug.LogWarning("Resolution set to invalid index, setting to default.");
         }
-        Debug.Log(resolutionIndex);
         resolutionDropdown.value = resolutionIndex;
         ApplyResolution(resolutionIndex);        
 
