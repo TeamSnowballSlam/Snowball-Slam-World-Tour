@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hoiho
       objectReference: {fileID: 0}
+    - target: {fileID: 3510566590247864102, guid: c783104df62eee54fbdf6dadbbe6cdf0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc369f0a5ccce9f4eb7833ba057a4911, type: 2}
     - target: {fileID: 4163730884033810741, guid: c783104df62eee54fbdf6dadbbe6cdf0,
         type: 3}
       propertyPath: m_Name
