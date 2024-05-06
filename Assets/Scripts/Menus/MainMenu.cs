@@ -22,21 +22,6 @@ public class MainMenu : MonoBehaviour
     }
 
     /// <summary>
-    /// Loads the character select menu
-    /// </summary>
-    public void CharacterSelect()
-    {
-        if (GameSettings.SelectedLevel != Levels.None)
-        {
-            SceneManager.LoadScene("CharacterSelect");
-        }
-        else
-        {
-            Debug.LogError("No level selected");
-        }
-    }
-
-    /// <summary>
     /// Sets the selected level
     /// </summary>
     public void LevelSelect()
