@@ -63,8 +63,7 @@ Some of the most important changes for each update are as follows:
 | Version   | Release Date | Features                                           |
 |-----------|--------------|----------------------------------------------------|
 | v1.0.0    | April 29 2024   | Character Selection, Enemy Movement, Hotjoining, Player Movement, Sliding, Throwing Snowballs     | 
-| v1.1.0 | May 07 2024 | TBD |  
-<!---Main Menu, Level Selection, Settings, Replenish Snowballs, Snowball Inventory, End Screen, Level Timer / Score UI---> |
+| v1.1.0 | May 07 2024 | Main Menu, Level Selection, Settings, Snowball Inventory, End Screen, Level Timer / Score UI  |
 
 ## Roadmap
 
