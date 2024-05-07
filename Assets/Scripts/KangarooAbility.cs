@@ -17,7 +17,7 @@ public class KangarooAbility : MonoBehaviour
 
     public GameObject joeyPrefab; //The joey prefab
     public bool hasActiveTurret; //The list of active turrets
-     [Range(1, 100)]
+     [Range(0, 100)]
     public int turretSpawnChance = 50;
     
     // Start is called before the first frame update
