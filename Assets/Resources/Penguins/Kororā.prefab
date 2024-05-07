@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 260794963107410271}
   - component: {fileID: 7209638717088781891}
   - component: {fileID: 7398037770491866107}
+  - component: {fileID: 5648932069822976297}
   m_Layer: 0
   m_Name: "Koror\u0101"
   m_TagString: Player
@@ -392,3 +393,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowballPrefab: {fileID: 8950912869131290729, guid: e3470e932c4611d4b92aa4819b1dbced,
     type: 3}
+  snowInventory: {fileID: 0}
+--- !u!114 &5648932069822976297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8536711974540740973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1ec78b65a4f6f41b3cfb84c8ee011c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmo: 5
+  ammoText: {fileID: 0}
