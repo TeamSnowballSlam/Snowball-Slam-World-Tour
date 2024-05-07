@@ -13,15 +13,22 @@ public class JoeyTurret : MonoBehaviour
     public int fireRate; //The rate of fire for the ability
     public float expireTime = 15f; //The time before the ability expires
     public GameObject parent; //The parent object of the ability
+
+    private float spawnTime; //The time the ability was spawned
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnTime = Time.time; //Sets the spawn time to the current time
+        Debug.Log("Ability Spawned at: " + spawnTime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Time.time - spawnTime >= expireTime) //If the ability has expired
+        {
+            Debug.Log("Ability Expired at: " + Time.time);
+            Destroy(gameObject); //Destroy the ability
+        }
     }
 }
