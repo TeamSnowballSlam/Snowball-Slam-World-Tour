@@ -270,6 +270,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
+      propertyPath: joeyPrefab
+      value: 
+      objectReference: {fileID: 4411431618142465773, guid: 3cb461ff64a7b534eb39c863f32cf184,
+        type: 3}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
       propertyPath: turretSpawnChance
       value: 0
       objectReference: {fileID: 0}
@@ -1133,6 +1139,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
+      propertyPath: joeyPrefab
+      value: 
+      objectReference: {fileID: 4411431618142465773, guid: 3cb461ff64a7b534eb39c863f32cf184,
+        type: 3}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
       propertyPath: turretSpawnChance
       value: 0
       objectReference: {fileID: 0}
@@ -1882,6 +1894,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
+      propertyPath: joeyPrefab
+      value: 
+      objectReference: {fileID: 4411431618142465773, guid: 3cb461ff64a7b534eb39c863f32cf184,
+        type: 3}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
       propertyPath: turretSpawnChance
       value: 0
       objectReference: {fileID: 0}
@@ -2102,6 +2120,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: joeyPrefab
+      value: 
+      objectReference: {fileID: 4411431618142465773, guid: 3cb461ff64a7b534eb39c863f32cf184,
+        type: 3}
     - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: turretSpawnChance
