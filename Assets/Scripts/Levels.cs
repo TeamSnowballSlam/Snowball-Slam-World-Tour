@@ -10,5 +10,6 @@ public enum Levels
 {
     None,
     Australia,
-    Movement //Temporarily added for testing
+    Asia,
+    SouthAmerica
 }

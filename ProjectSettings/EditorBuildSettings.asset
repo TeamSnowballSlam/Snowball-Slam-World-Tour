@@ -6,11 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CharacterSelect.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: c4a4396de0caad14fa8d3c62ad255b2c
   - enabled: 1
-    path: Assets/Scenes/Movement.unity
-    guid: c05efad5e08e98d429f4e28ff96947d9
+    path: Assets/Scenes/LevelScenes/Asia.unity
+    guid: c17d2b1abda7d8f48a7993ca4d960c9c
+  - enabled: 1
+    path: Assets/Scenes/LevelScenes/Australia.unity
+    guid: 7b5050528fb14e045b31cd721017b8e7
+  - enabled: 1
+    path: Assets/Scenes/LevelScenes/SouthAmerica.unity
+    guid: c485d68a8d9af41448c4439884fd2dc6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ee0b8a024e3a7ad4c8a0fd7d65516d25,
       type: 2}
