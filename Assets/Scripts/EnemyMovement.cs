@@ -26,10 +26,11 @@ public class EnemyMovement : MonoBehaviour
     private float throwTime; //The time to throw the snowball
     private float delayTime = 1.5f; //The delay time between throws
 
-    private int turretChance = 2; // the chance of spawning a turret is 1 in turretChance
+    private int turretChance;
 
     void Start()
     {
+        turretChance = GetComponent<KangarooAbility>().turretSpawnChance;
         throwTime = Time.time; //Sets the throw time to the current time
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -78,7 +79,7 @@ public class EnemyMovement : MonoBehaviour
                 {
                     int random = Random.Range(1, turretChance+1); //Randomizes the number between 1 and the turretChance
                     Debug.Log(random);
-                    if ( random == turretChance)
+                    if ( random <= turretChance)
                     {
                         Debug.Log("Placing turret");
                         GetComponent<KangarooAbility>().PlaceTurret();
