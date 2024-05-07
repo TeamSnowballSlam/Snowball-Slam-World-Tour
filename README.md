@@ -35,11 +35,13 @@ To be added
 ## How to play
 
 To be added
-<!--- Add the info from the presentation 
 
+<!-- 
 | Action                    | Key/Button             |
 |---------------------------|------------------------|
-| Action                   | Key                      | --->
+| Movement                   | **Player 1:** WASD  **Player 2:** Arrows                      | 
+| Throw Snowball | **Player 1:** Q  **Player 2:** Left Shift |
+| Interact |  **Player 1:** E  **Player 2:** Left Ctrl | -->
 
 ## Get Involved
 
@@ -60,7 +62,8 @@ Some of the most important changes for each update are as follows:
 
 | Version   | Release Date | Features                                           |
 |-----------|--------------|----------------------------------------------------|
-| v1.0.0    | TBD   | TBD     |
+| v1.0.0    | April 29 2024   | Character Selection, Enemy Movement, Hotjoining, Player Movement, Sliding, Throwing Snowballs     | 
+| v1.1.0 | May 07 2024 | Main Menu, Level Selection, Settings, Snowball Inventory, End Screen, Level Timer / Score UI  |
 
 ## Roadmap
 
