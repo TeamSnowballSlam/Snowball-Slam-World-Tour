@@ -282,5 +282,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0
   expireTime: 15
-  joeyPrefab: {fileID: 3657889275645270786, guid: cd140a05a25c50745b1578d791176ac8,
+  joeyPrefab: {fileID: 3657889275645270786, guid: 6d61729d34369424186a1c46c9db0d0c,
     type: 3}
