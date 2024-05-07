@@ -281,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 8365738364325036822, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8365738364325036822, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
@@ -1139,7 +1139,7 @@ PrefabInstance:
     - target: {fileID: 8365738364325036822, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8365738364325036822, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
@@ -1860,7 +1860,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 5966ca2b4a7966b4a8eb7cf2a9eedca0, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 88fb358ddcab3b04d8c71f823c1108c4, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &1418434500
 PrefabInstance:
@@ -1883,7 +1883,7 @@ PrefabInstance:
     - target: {fileID: 8365738364325036822, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8365738364325036822, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
@@ -2100,7 +2100,7 @@ PrefabInstance:
     - target: {fileID: 8365738364325036822, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8365738364325036822, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
