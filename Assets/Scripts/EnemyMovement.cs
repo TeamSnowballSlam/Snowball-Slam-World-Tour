@@ -77,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 if (!GetComponent<KangarooAbility>().hasActiveTurret) //Checks if the agent has the KangarooAbility component and does not have an active turret
                 {
-                    int random = Random.Range(1, turretChance+1); //Randomizes the number between 1 and the turretChance
+                    int random = Random.Range(1, 101); //Randomizes the number between 1 and the 100
                     Debug.Log(random);
                     if ( random <= turretChance)
                     {
