@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [Header("Level Management")]
@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
     private int secondsRemaining = 60; //The time remaining in the level
 
     [SerializeField]
-    private int delayTime = 10; //The delay time before the level starts
+    private float delayTime = 10; //The delay time before the level starts
 
     [SerializeField]
     private int targetScore = 15; //The score needed to win the level
@@ -35,8 +35,13 @@ public class LevelManager : MonoBehaviour
     [Header("Colors")]
     public Color mediumColor;
     public Color criticalColor;
-    
 
+    public List<Transform> endGameWinnerSpawnPoints = new List<Transform>();
+    public List<Transform> endGameLoserSpawnPoints = new List<Transform>();
+    public List<Transform> endGameDrawSpawnPoints = new List<Transform>();
+
+    public GameObject mainCamera;
+    public GameObject endGameCamera;
     private TextMeshProUGUI playerScoreText;
     private TextMeshProUGUI playerScoreTitle;
     private TextMeshProUGUI enemyScoreText;
@@ -53,6 +58,8 @@ public class LevelManager : MonoBehaviour
     private Teams enemyTeam = Teams.Kangaroos; //Which team the enemy is on
 
     public static LevelManager instance;
+    public GameObject restartButton;
+    public GameObject continueButton;
 
     void Awake()
     {
@@ -69,6 +76,10 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+                restartButton.SetActive(false);
+        continueButton.SetActive(false);
+        mainCamera.SetActive(true);
+        endGameCamera.SetActive(false);
         GameSettings.currentGameState = GameStates.PreGame;
         //Initialize the text objects
         playerScoreText = GameObject.Find("PlayerScore").GetComponent<TextMeshProUGUI>();
@@ -93,7 +104,13 @@ public class LevelManager : MonoBehaviour
     {
         {
             //Update the timer every second if the round is not over
-            if (Time.time > currentTime + 1 && (GameSettings.currentGameState == GameStates.PreGame || GameSettings.currentGameState == GameStates.InGame))
+            if (
+                Time.time > currentTime + 1
+                && (
+                    GameSettings.currentGameState == GameStates.PreGame
+                    || GameSettings.currentGameState == GameStates.InGame
+                )
+            )
             {
                 if (delayTime > 0)
                 {
@@ -105,12 +122,15 @@ public class LevelManager : MonoBehaviour
                 else
                 {
 
+
                         StartCountdown();
+
 
                     if (
                         secondsRemaining > 0
                         && playerScore < targetScore
-                        && enemyScore < targetScore && GameSettings.currentGameState == GameStates.InGame /*!roundOver && roundStarted*/
+                        && enemyScore < targetScore
+                        && GameSettings.currentGameState == GameStates.InGame /*!roundOver && roundStarted*/
                     )
                     {
                         currentTime = Time.time;
@@ -173,17 +193,88 @@ public class LevelManager : MonoBehaviour
     /// <param name="winner">The team that won the match</param>
     private void DisplayWinner(string winner)
     {
-        switch (winner)
+        mainCamera.SetActive(false);
+        endGameCamera.SetActive(true);
+        restartButton.SetActive(true);
+        continueButton.SetActive(true);
+        GameObject[] snowballs = GameObject.FindGameObjectsWithTag("Snowball");
+        foreach (GameObject snowball in snowballs)
         {
-            case "Player":
-                timerText.text = "Penguins Wins!";
-                break;
-            case "Enemy":
+            Destroy(snowball);
+        }
+        if (winner == "Player")
+        {
+            timerText.text = "Penguins Win!";
+            timerText.color = Color.green;
+            GameObject p1 = 
+                GameObject.FindGameObjectsWithTag("Player")[0];
+            
+            p1.transform.parent = endGameWinnerSpawnPoints[0];
+            p1.transform.localPosition = Vector3.zero;
+
+            if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
+            {
+                GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
+                p2.transform.parent = endGameWinnerSpawnPoints[1];
+                p2.transform.localPosition = Vector3.zero;
+            }
+            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+            {
+                GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
+                e.transform.parent = endGameLoserSpawnPoints[i];
+                e.transform.localPosition = Vector3.zero;
+                e.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            }
+        }
+        else if (winner == "Enemy")
+        {
+            GameObject p1 = 
+                GameObject.FindGameObjectsWithTag("Player")[0];
+            p1.transform.parent = endGameLoserSpawnPoints[0];
+            p1.transform.localPosition = Vector3.zero;
+
+            if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
+            {
+                GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
+                p2.transform.parent = endGameLoserSpawnPoints[1];
+                p2.transform.localPosition = Vector3.zero;
+            }
+
+            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+            {
+                GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
+                e.transform.parent = endGameWinnerSpawnPoints[i];
+                e.transform.localPosition = Vector3.zero;
+                e.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            }
             timerText.text = "Penguins Lost!";
-                break;
-            default:
-                timerText.text = "Draw!";
-                break;
+            timerText.color = criticalColor;
+        }
+        else
+        {
+            timerText.text = "Draw!";
+            timerText.color = Color.white;
+             GameObject p1 = 
+                GameObject.FindGameObjectsWithTag("Player")[0];
+            
+            p1.transform.parent = endGameDrawSpawnPoints[1];
+            p1.transform.localPosition = Vector3.zero;
+
+            if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
+            {
+                GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
+                p2.transform.parent = endGameDrawSpawnPoints[0];
+                p2.transform.localPosition = Vector3.zero;
+            }
+
+            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+            {
+                GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
+                e.transform.parent = endGameDrawSpawnPoints[i+2];
+                e.transform.localPosition = Vector3.zero;
+                e.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            }
+
         }
 
     }
@@ -241,7 +332,11 @@ public class LevelManager : MonoBehaviour
     /// <param name="team">The name of the team which will be given points</param>
     public void UpdateScore(string team)
     {
-        if (GameSettings.currentGameState != GameStates.InGame || playerScore == targetScore || enemyScore == targetScore)
+        if (
+            GameSettings.currentGameState != GameStates.InGame
+            || playerScore == targetScore
+            || enemyScore == targetScore
+        )
             return;
         if (team == "Player")
         {
@@ -255,5 +350,17 @@ public class LevelManager : MonoBehaviour
         }
         else
             return;
+    }
+
+
+
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene( UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+    public void Continue()
+    {
+        //SceneManager.LoadScene("MainMenu"); //Commented out until we merge
     }
 }
