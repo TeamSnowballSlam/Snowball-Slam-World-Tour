@@ -358,6 +358,7 @@ public class LevelManager : MonoBehaviour
 
     public void Continue()
     {
+        GameSettings.Player2Exists = false;
         SceneManager.LoadScene("MainMenu"); //Commented out until we merge
     }
 }
