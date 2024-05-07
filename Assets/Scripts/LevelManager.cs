@@ -12,8 +12,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class LevelManager : MonoBehaviour
 {
     [Header("Level Management")]
@@ -60,6 +61,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public GameObject restartButton;
     public GameObject continueButton;
+    public GameObject addPlayerButton;
 
     void Awake()
     {
@@ -76,7 +78,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-                restartButton.SetActive(false);
+        restartButton.SetActive(false);
         continueButton.SetActive(false);
         mainCamera.SetActive(true);
         endGameCamera.SetActive(false);
@@ -121,10 +123,7 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
-
-
-                        StartCountdown();
-
+                    StartCountdown();
 
                     if (
                         secondsRemaining > 0
@@ -184,7 +183,6 @@ public class LevelManager : MonoBehaviour
             default:
                 return "Unknown";
         }
-
     }
 
     /// <summary>
@@ -195,8 +193,8 @@ public class LevelManager : MonoBehaviour
     {
         mainCamera.SetActive(false);
         endGameCamera.SetActive(true);
-        restartButton.SetActive(true);
-        continueButton.SetActive(true);
+        addPlayerButton.SetActive(false);
+
         GameObject[] snowballs = GameObject.FindGameObjectsWithTag("Snowball");
         foreach (GameObject snowball in snowballs)
         {
@@ -204,11 +202,12 @@ public class LevelManager : MonoBehaviour
         }
         if (winner == "Player")
         {
+            restartButton.SetActive(false);
+            continueButton.SetActive(true);
             timerText.text = "Penguins Win!";
             timerText.color = Color.green;
-            GameObject p1 = 
-                GameObject.FindGameObjectsWithTag("Player")[0];
-            
+            GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
+
             p1.transform.parent = endGameWinnerSpawnPoints[0];
             p1.transform.localPosition = Vector3.zero;
 
@@ -228,8 +227,9 @@ public class LevelManager : MonoBehaviour
         }
         else if (winner == "Enemy")
         {
-            GameObject p1 = 
-                GameObject.FindGameObjectsWithTag("Player")[0];
+            restartButton.SetActive(true);
+            continueButton.SetActive(true);
+            GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
             p1.transform.parent = endGameLoserSpawnPoints[0];
             p1.transform.localPosition = Vector3.zero;
 
@@ -252,11 +252,12 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            restartButton.SetActive(true);
+            continueButton.SetActive(true);
             timerText.text = "Draw!";
             timerText.color = Color.white;
-             GameObject p1 = 
-                GameObject.FindGameObjectsWithTag("Player")[0];
-            
+            GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
+
             p1.transform.parent = endGameDrawSpawnPoints[1];
             p1.transform.localPosition = Vector3.zero;
 
@@ -270,13 +271,11 @@ public class LevelManager : MonoBehaviour
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
             {
                 GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
-                e.transform.parent = endGameDrawSpawnPoints[i+2];
+                e.transform.parent = endGameDrawSpawnPoints[i + 2];
                 e.transform.localPosition = Vector3.zero;
                 e.transform.localRotation = Quaternion.Euler(Vector3.zero);
             }
-
         }
-
     }
 
     /// <summary>
@@ -352,15 +351,13 @@ public class LevelManager : MonoBehaviour
             return;
     }
 
-
-
-
     public void RestartLevel()
     {
-        SceneManager.LoadScene( UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
+
     public void Continue()
     {
-        //SceneManager.LoadScene("MainMenu"); //Commented out until we merge
+        SceneManager.LoadScene("MainMenu"); //Commented out until we merge
     }
 }

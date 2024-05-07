@@ -257,6 +257,7 @@ MonoBehaviour:
   enemyTeam: 3
   restartButton: {fileID: 7136844827635702155}
   continueButton: {fileID: 2185828985660131730}
+  addPlayerButton: {fileID: 8405326865080755859}
 --- !u!1 &908510306016648963
 GameObject:
   m_ObjectHideFlags: 0
