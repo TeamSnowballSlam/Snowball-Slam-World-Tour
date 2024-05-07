@@ -20,13 +20,21 @@ public class ReloadAmmo : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.name == "Player Snow Pile")
         {
-            Debug.Log("More snowballs pleathe!");
-            snowInventory = other.gameObject.GetComponent<SnowInventory>();
-            Debug.Log("Before Snowballs: " + snowInventory.currentAmmo);
-            snowInventory.currentAmmo = 5;
-            Debug.Log("After Snowballs: " + snowInventory.currentAmmo);
+            Debug.Log("Entered reload area");
+            snowInventory = GetComponent<SnowInventory>();
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                StartCoroutine(HoldReload());
+            }
         }
+    }
+
+    private IEnumerator HoldReload()
+    {
+        yield return new WaitForSeconds(3);
+        snowInventory.currentAmmo += 1;
+        Debug.Log("Updated snowballs: " + snowInventory.currentAmmo);
     }
 }

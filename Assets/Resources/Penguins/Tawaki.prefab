@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 4836813668585397964}
   - component: {fileID: 591450828154694337}
   - component: {fileID: 2045065847247423857}
+  - component: {fileID: 2458481710149767831}
   m_Layer: 0
   m_Name: Tawaki
   m_TagString: Player
@@ -407,4 +408,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAmmo: 5
-  ammoText: {fileID: 0}
+--- !u!114 &2458481710149767831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8536711974540740973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c0f7b8140fa6041a33ecb8162e6f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

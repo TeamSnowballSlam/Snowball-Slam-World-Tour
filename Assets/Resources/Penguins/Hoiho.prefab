@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 4118576890739995107}
   - component: {fileID: -5056133026739208781}
   - component: {fileID: 2273485193787676842}
+  - component: {fileID: -4543488377431544228}
   m_Layer: 0
   m_Name: Hoiho
   m_TagString: Player
@@ -407,4 +408,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAmmo: 5
-  ammoText: {fileID: 0}
+--- !u!114 &-4543488377431544228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8536711974540740973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c0f7b8140fa6041a33ecb8162e6f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

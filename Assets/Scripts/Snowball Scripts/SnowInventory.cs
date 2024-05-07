@@ -10,11 +10,11 @@ using TMPro;
 public class SnowInventory : MonoBehaviour
 {
     public int currentAmmo = 5;
-    private string name;
+    private string penguinName;
 
     void Start()
     {
-        name = gameObject.name; // for debugging purposes
+        penguinName = gameObject.name; // for debugging purposes
     }
 
     /// <summary>
@@ -23,6 +23,6 @@ public class SnowInventory : MonoBehaviour
     public void DecreaseAmmo()
     {
         currentAmmo--;
-        Debug.Log($"{name} Snowballs: {currentAmmo}");
+        Debug.Log($"{penguinName} Snowballs: {currentAmmo}");
     }
 }
