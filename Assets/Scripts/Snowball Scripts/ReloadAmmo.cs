@@ -22,8 +22,11 @@ public class ReloadAmmo : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            Debug.Log("More snowballs pleathe!");
             snowInventory = other.gameObject.GetComponent<SnowInventory>();
+            Debug.Log("Before Snowballs: " + snowInventory.currentAmmo);
             snowInventory.currentAmmo = 5;
+            Debug.Log("After Snowballs: " + snowInventory.currentAmmo);
         }
     }
 }
