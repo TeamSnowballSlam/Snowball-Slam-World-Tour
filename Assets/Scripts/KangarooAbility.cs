@@ -14,11 +14,13 @@ using UnityEngine;
 
 public class KangarooAbility : MonoBehaviour
 {
-
+    private float abiltyCooldown = 10f; //The cooldown time for the ability
+    private const float TURRETOFFSET = 1.5f;
     public GameObject joeyPrefab; //The joey prefab
     public bool hasActiveTurret; //The list of active turrets
+
      [Range(0, 100)]
-    public int turretSpawnChance = 50;
+    public int turretSpawnChance = 50; //percentage chance of spawning a turret
     
     // Start is called before the first frame update
     void Start()
@@ -31,9 +33,10 @@ public class KangarooAbility : MonoBehaviour
     public void PlaceTurret()
     {
         if (hasActiveTurret) { return; }
-        Instantiate(joeyPrefab, transform.position, transform.rotation);
+        Instantiate(joeyPrefab, transform.position + transform.forward * TURRETOFFSET, transform.rotation);
         JoeyTurret joeyTurret = joeyPrefab.GetComponent<JoeyTurret>();
         joeyTurret.parent = gameObject;
+
         hasActiveTurret = true;
     }
 

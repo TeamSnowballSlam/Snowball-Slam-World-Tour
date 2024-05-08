@@ -11,16 +11,16 @@ using UnityEngine;
 
 public class JoeyTurret : MonoBehaviour
 {
-    public int fireRate; //The rate of fire for the ability
     public float expireTime = 15f; //The time before the ability expires
     public GameObject parent; //The parent object of the ability
     private float throwTime; //The time to throw the snowball
-    private float delayTime = 0.75f; //The delay time between throws
+    private float delayTime = 0.4f; //The delay time between throws
 
     private float spawnTime; //The time the ability was spawned
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = new Vector3(transform.position.x, 0.65f, transform.position.z); //Sets the position of the ability to the parent's position
         spawnTime = Time.time; //Sets the spawn time to the current time
         Debug.Log("Ability Spawned at: " + spawnTime);
         
