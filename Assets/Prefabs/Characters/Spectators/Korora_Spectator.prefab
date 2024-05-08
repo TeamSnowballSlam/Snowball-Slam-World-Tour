@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.377262
+      value: -11.912176
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 2.249999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: -10.6811905
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
@@ -66,7 +66,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       propertyPath: m_Name
-      value: Korora
+      value: Korora_Spectator
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 750c74749f5b7e249b8668cf88f61160,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
@@ -77,7 +82,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 5efd2e530214bff4292b5b83cc123fad, type: 2}
+      objectReference: {fileID: 9100000, guid: 9a3a8788b3378c841928f236375135a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
