@@ -178,7 +178,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
+        if (GameSettings.currentGameState != GameStates.InGame)
+        {
+            isMoving = false;
+            return;        
+        }
+            moveInput = context.ReadValue<Vector2>();
         moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         IsMoving = moveInput != Vector2.zero; //If the move input is not zero then the player is moving
         //If there was an action performed
