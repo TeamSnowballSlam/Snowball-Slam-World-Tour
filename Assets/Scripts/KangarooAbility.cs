@@ -14,10 +14,11 @@ using UnityEngine;
 
 public class KangarooAbility : MonoBehaviour
 {
-    private float abiltyCooldown = 10f; //The cooldown time for the ability
+    private float abiltyCooldown = 25f; //The cooldown time for the ability starts from the time the ability is used
     private const float TURRETOFFSET = 1.5f;
     public GameObject joeyPrefab; //The joey prefab
-    public bool hasActiveTurret; //The list of active turrets
+    public bool canUseTurret; //Whether or not the ability is active
+    private float abilityTime; //The time the ability was used
 
      [Range(0, 100)]
     public int turretSpawnChance = 50; //percentage chance of spawning a turret
@@ -25,19 +26,40 @@ public class KangarooAbility : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hasActiveTurret = false;
+        canUseTurret = true;
     }
 /// <summary>
 /// Places the turret on the map
 /// </summary>
     public void PlaceTurret()
-    {
-        if (hasActiveTurret) { return; }
-        Instantiate(joeyPrefab, transform.position + transform.forward * TURRETOFFSET, transform.rotation);
-        JoeyTurret joeyTurret = joeyPrefab.GetComponent<JoeyTurret>();
-        joeyTurret.parent = gameObject;
+    {//If the ability is on cooldown or there is already an active turret, return
+        if (canUseTurret) 
+        { 
+            Instantiate(joeyPrefab, transform.position + transform.forward * TURRETOFFSET, transform.rotation);
+            JoeyTurret joeyTurret = joeyPrefab.GetComponent<JoeyTurret>();
+            joeyTurret.parent = gameObject;
+            abilityTime = Time.time;
+            canUseTurret = false;
 
-        hasActiveTurret = true;
+         } 
+    }
+
+
+    void Update()
+    {
+        Debug.Log("canUSeTurret: "  + canUseTurret);
+        if (canUseTurret == false)
+        {
+            CheckAbilityCooldown();
+        }
+   
+    }
+    public void CheckAbilityCooldown()
+    {
+        if (Time.time - abilityTime >= abiltyCooldown)
+        {
+            canUseTurret = true;
+        }
     }
 
 }
