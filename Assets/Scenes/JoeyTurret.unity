@@ -2143,6 +2143,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
+      propertyPath: abiltyCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
       propertyPath: turretSpawnChance
       value: 15
       objectReference: {fileID: 0}

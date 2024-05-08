@@ -14,7 +14,7 @@ using UnityEngine;
 
 public class KangarooAbility : MonoBehaviour
 {
-    [SerializeField] private float abiltyCooldown; //The cooldown time for the ability from after the turret expires
+    [SerializeField] private float abiltyCooldown = 10f; //The cooldown time for the ability from after the turret expires
     private const float TURRETOFFSET = 1.5f;
     public GameObject joeyPrefab; //The joey prefab
     private JoeyTurret activeTurret; //The active turret
