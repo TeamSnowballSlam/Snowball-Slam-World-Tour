@@ -14,10 +14,11 @@ using UnityEngine;
 
 public class KangarooAbility : MonoBehaviour
 {
-    private float abiltyCooldown = 25f; //The cooldown time for the ability starts from the time the ability is used
+    [SerializeField] private float abiltyCooldown; //The cooldown time for the ability from after the turret expires
     private const float TURRETOFFSET = 1.5f;
     public GameObject joeyPrefab; //The joey prefab
-    public bool canUseTurret; //Whether or not the ability is active
+    private JoeyTurret activeTurret; //The active turret
+    [HideInInspector] public bool canUseTurret; //Whether or not the ability is active
     private float abilityTime; //The time the ability was used
 
      [Range(0, 100)]
@@ -39,6 +40,7 @@ public class KangarooAbility : MonoBehaviour
             JoeyTurret joeyTurret = joeyPrefab.GetComponent<JoeyTurret>();
             joeyTurret.parent = gameObject;
             abilityTime = Time.time;
+            activeTurret = joeyTurret;
             canUseTurret = false;
 
          } 
@@ -56,7 +58,8 @@ public class KangarooAbility : MonoBehaviour
     }
     public void CheckAbilityCooldown()
     {
-        if (Time.time - abilityTime >= abiltyCooldown)
+        
+        if (Time.time - abilityTime >= (abiltyCooldown + activeTurret.expireTime ))
         {
             canUseTurret = true;
         }
