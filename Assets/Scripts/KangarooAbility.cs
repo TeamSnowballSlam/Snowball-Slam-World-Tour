@@ -56,6 +56,10 @@ public class KangarooAbility : MonoBehaviour
         }
    
     }
+
+    /// <summary>
+    /// Checks whether the ability is on cooldown
+    /// </summary>
     public void CheckAbilityCooldown()
     {
         
