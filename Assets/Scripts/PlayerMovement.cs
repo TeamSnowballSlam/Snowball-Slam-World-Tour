@@ -11,11 +11,38 @@ public class PlayerMovement : MonoBehaviour
 
     private const int SLIDINGSPEED = 20; //Placeholder values. Will change after testing
     private int slowingDownSpeed = 0; //The speed the player is at during the slowing down process
+    private double MaxSlowdown = MOVEMENTSPEED / 4.0; //The maximum speed the player can slow down to on the road
+
+    public double TouchingRoadSpeed //Returns the current speed reduction when touching the road
+    {
+        get
+        {
+            return ElapsedSlowdownPercentage * MaxSlowdown; //Return the percentage of the maximum slow down speed
+        }
+    }
+
+    //The elapsed percentage of the level minus the max slowdown remaining time
+    public double ElapsedSlowdownPercentage
+    {
+        get
+        {            
+            return (double)LevelManager.instance.secondsRemaining / (double)LevelManager.instance.LevelLength;
+        }
+    }
 
     public int CurrentSpeed //Returns the movement speed, sliding speed, or 0 depending on the player's state
     {
         get
         {
+            if (TouchingRoad())
+            {
+                touchingRoad = true;
+                isSliding = false;
+            }
+            else if (touchingRoad)
+            {
+                touchingRoad = false;
+            }
             if (IsSlowingDown)
             {
                 //Slowing down speed
@@ -29,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
             if (IsMoving)
             {
                 //Moving Speed
+                if (touchingRoad)
+                {
+                    Debug.Log("Touching Road Speed: " + (MOVEMENTSPEED - TouchingRoadSpeed));
+                    return MOVEMENTSPEED;
+                }
                 return MOVEMENTSPEED;
             }
             else
@@ -70,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 slowingDown = false;
             }
-            if (!value && !slowingDown && isSliding) //If it gets set to false and the player was not slowing down and was sliding
+            if (!value && !slowingDown && isSliding && !touchingRoad) //If it gets set to false and the player was not slowing down and was sliding
             {
                 IsSlowingDown = true; //The player gets set to slowing down
             }
@@ -105,12 +137,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 lastInput; //The previous input
     private Vector2 secondLastInput; //The input before the last input
     private double lastTime; //The time of the last input
-    private double secondLastTime; //The time of the input before the last input
     private double startSlowingDownTime; //The time the player started slowing down
     private bool slowingDown = false; //If the coroutine for slowing the player down is running
     private Vector3 moveDirection; //Move input converted to a Vector3
     private float lastUpdate; //The time since the last direction update
-    private IEnumerator coroutine; //The coroutine for slowing down
+    private bool touchingRoad; //If the player is touching the road
 
     void Awake()
     {
@@ -168,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
         slowingDown = true;
         startSlowingDownTime = Time.time;
         slowingDownSpeed = SLIDINGSPEED;
-        while (slowingDownSpeed > MOVEMENTSPEED && slowingDown)
+        while (slowingDownSpeed > MOVEMENTSPEED && slowingDown && !TouchingRoad())
         {
             slowingDownSpeed--;
             yield return new WaitForFixedUpdate();
@@ -204,5 +235,22 @@ public class PlayerMovement : MonoBehaviour
             lastInput = moveInput;
             lastTime = Time.time;
         }
+    }
+
+    /// <summary>
+    /// Returns true if the player is touching the road
+    /// </summary>
+    /// <returns>Returns if the player is touching the road</returns>
+    public bool TouchingRoad() //Returns true if the player is touching the road
+    {
+        //Checks if the player is standing on a gameobject with the tag "Road"
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1f))
+        {
+            if (hit.collider.CompareTag("Road"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
