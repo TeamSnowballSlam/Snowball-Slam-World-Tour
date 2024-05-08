@@ -56,7 +56,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _DistortionSpeed: 0
-    - _HeatDistortion: 0.02
+    - _HeatDistortion: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
