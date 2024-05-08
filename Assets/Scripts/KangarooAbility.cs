@@ -31,7 +31,7 @@ public class KangarooAbility : MonoBehaviour
     public void PlaceTurret()
     {
         if (hasActiveTurret) { return; }
-        Instantiate(joeyPrefab, transform.position, Quaternion.identity);
+        Instantiate(joeyPrefab, transform.position, transform.rotation);
         JoeyTurret joeyTurret = joeyPrefab.GetComponent<JoeyTurret>();
         joeyTurret.parent = gameObject;
         hasActiveTurret = true;
