@@ -15,6 +15,7 @@ public enum EnemyStates //The states of the enemy
     ThrowingSnowball
 }
 
+
 public class EnemyMovement : MonoBehaviour
 {
     private NavMeshAgent agent; //The NavMeshAgent component
