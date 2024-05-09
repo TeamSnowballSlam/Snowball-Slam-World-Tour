@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2162,6 +2162,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
+      propertyPath: delayTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
+        type: 3}
       propertyPath: enemyTeam
       value: 1
       objectReference: {fileID: 0}
@@ -2178,7 +2183,7 @@ PrefabInstance:
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
       propertyPath: secondsRemaining
-      value: 120
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
