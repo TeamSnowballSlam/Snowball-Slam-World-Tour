@@ -332,7 +332,19 @@ MonoBehaviour:
     m_ActionId: b5b6239f-af51-4b7d-84f8-15c6c4c1117e
     m_ActionName: Player/Fire[/Keyboard/g,/Keyboard/period]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -4543488377431544228}
+        m_TargetAssemblyTypeName: ReloadAmmo, Assembly-CSharp
+        m_MethodName: OnHold
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5e801d91-4a1c-4540-b25e-7decfe316a71
     m_ActionName: Player/Interact[/Keyboard/h,/Keyboard/slash]
   - m_PersistentCalls:
