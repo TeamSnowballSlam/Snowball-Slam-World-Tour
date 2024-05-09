@@ -26,10 +26,11 @@ public class EnemyMovement : MonoBehaviour
     private float throwTime; //The time to throw the snowball
     private float delayTime = 1.5f; //The delay time between throws
 
-    private int turretChance = 2; // the chance of spawning a turret is 1 in turretChance
+    private int turretChance;
 
     void Start()
     {
+        turretChance = GetComponent<KangarooAbility>().turretSpawnChance;
         throwTime = Time.time; //Sets the throw time to the current time
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -55,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
             }
             else
             {
-                int randomMultiplier = Random.Range(1, 5); //Randomizes the multiplier
+                int randomMultiplier = Random.Range(1, 15); //Randomizes the multiplier
                 Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
                 randomPosition = transform.position + (randomMultiplier * randomDir); //Calculates the random position
                 Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
@@ -74,18 +75,16 @@ public class EnemyMovement : MonoBehaviour
         {
             if (agent.remainingDistance <= 0.001f) //Checks if the agent has reached the target within a certain distance
             {
-                if (!GetComponent<KangarooAbility>().hasActiveTurret) //Checks if the agent has the KangarooAbility component and does not have an active turret
+                if (GetComponent<KangarooAbility>().canUseTurret) //Checks if the agent has the KangarooAbility component and does not have an active turret
                 {
-                    int random = Random.Range(1, turretChance+1); //Randomizes the number between 1 and the turretChance
+                    int random = Random.Range(1, 101); //Randomizes the number between 1 and the 100
                     Debug.Log(random);
-                    if ( random == turretChance)
+                    if ( random <= turretChance)
                     {
-                        Debug.Log("Placing turret");
                         GetComponent<KangarooAbility>().PlaceTurret();
                     }
                     else
                     {
-                        Debug.Log("Not placing turret");
                     }
                 }
                     state = EnemyStates.Idle; //Sets the state to Idle

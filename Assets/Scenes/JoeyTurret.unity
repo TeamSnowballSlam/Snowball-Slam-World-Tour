@@ -268,6 +268,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: joeyPrefab
+      value: 
+      objectReference: {fileID: 4411431618142465773, guid: 3cb461ff64a7b534eb39c863f32cf184,
+        type: 3}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: turretSpawnChance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: surface
@@ -1126,6 +1142,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: joeyPrefab
+      value: 
+      objectReference: {fileID: 4411431618142465773, guid: 3cb461ff64a7b534eb39c863f32cf184,
+        type: 3}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: turretSpawnChance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: surface
@@ -1870,6 +1902,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: joeyPrefab
+      value: 
+      objectReference: {fileID: 4411431618142465773, guid: 3cb461ff64a7b534eb39c863f32cf184,
+        type: 3}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: turretSpawnChance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: surface
@@ -2087,6 +2135,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: joeyPrefab
+      value: 
+      objectReference: {fileID: 4411431618142465773, guid: 3cb461ff64a7b534eb39c863f32cf184,
+        type: 3}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: abiltyCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: turretSpawnChance
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: surface
@@ -2177,13 +2241,18 @@ PrefabInstance:
       objectReference: {fileID: 28682201}
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
+      propertyPath: targetScore
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
+        type: 3}
       propertyPath: endGameCamera
       value: 
       objectReference: {fileID: 839019070}
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
       propertyPath: secondsRemaining
-      value: 3
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}

@@ -14,25 +14,59 @@ using UnityEngine;
 
 public class KangarooAbility : MonoBehaviour
 {
-
+    [SerializeField] private float abiltyCooldown = 10f; //The cooldown time for the ability from after the turret expires
+    private const float TURRETOFFSET = 1.5f;
     public GameObject joeyPrefab; //The joey prefab
-    public bool hasActiveTurret; //The list of active turrets
+    private JoeyTurret activeTurret; //The active turret
+    [HideInInspector] public bool canUseTurret; //Whether or not the ability is active
+    private float abilityTime; //The time the ability was used
+
+     [Range(0, 100)]
+    public int turretSpawnChance = 50; //percentage chance of spawning a turret
     
     // Start is called before the first frame update
     void Start()
     {
-        hasActiveTurret = false;
+        canUseTurret = true;
     }
 /// <summary>
 /// Places the turret on the map
 /// </summary>
     public void PlaceTurret()
+    {//If the ability is on cooldown or there is already an active turret, return
+        if (canUseTurret) 
+        { 
+            Instantiate(joeyPrefab, transform.position + transform.forward * TURRETOFFSET, transform.rotation);
+            JoeyTurret joeyTurret = joeyPrefab.GetComponent<JoeyTurret>();
+            joeyTurret.parent = gameObject;
+            abilityTime = Time.time;
+            activeTurret = joeyTurret;
+            canUseTurret = false;
+
+         } 
+    }
+
+
+    void Update()
     {
-        if (hasActiveTurret) { return; }
-        Instantiate(joeyPrefab, transform.position, Quaternion.identity);
-        JoeyTurret joeyTurret = joeyPrefab.GetComponent<JoeyTurret>();
-        joeyTurret.parent = gameObject;
-        hasActiveTurret = true;
+        Debug.Log("canUSeTurret: "  + canUseTurret);
+        if (canUseTurret == false)
+        {
+            CheckAbilityCooldown();
+        }
+   
+    }
+
+    /// <summary>
+    /// Checks whether the ability is on cooldown
+    /// </summary>
+    public void CheckAbilityCooldown()
+    {
+        
+        if (Time.time - abilityTime >= (abiltyCooldown + activeTurret.expireTime ))
+        {
+            canUseTurret = true;
+        }
     }
 
 }
