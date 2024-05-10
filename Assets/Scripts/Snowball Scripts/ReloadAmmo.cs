@@ -14,6 +14,8 @@ public class ReloadAmmo : MonoBehaviour
     private Slider sliderComponent;
     private bool isReloading = false;
 
+    private SnowTrayInventory snowTrayInventory;
+
     void Start()
     {
         snowInventory = GetComponent<SnowInventory>();
@@ -21,6 +23,7 @@ public class ReloadAmmo : MonoBehaviour
         reloadSlider = snowPile.transform.Find("Canvas/Progress").gameObject;
         sliderComponent = reloadSlider.GetComponent<Slider>();
         reloadSlider.SetActive(false);
+        snowTrayInventory = snowPile.GetComponent<SnowTrayInventory>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -70,8 +73,9 @@ public class ReloadAmmo : MonoBehaviour
                 isReloading = false;
                 sliderComponent.value = 0;
                 reloadSlider.SetActive(false);
+                snowTrayInventory.snowTrayInv -= 1;
+                Debug.Log("Snow Tray: " + snowTrayInventory.snowTrayInv);
             }
         }
     }
-
 }
