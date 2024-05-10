@@ -11,11 +11,14 @@ public class ReloadAmmo : MonoBehaviour
     private GameObject snowPile;
     [SerializeField]private GameObject reloadSlider;
     private double timeHeld;
+    private Slider sliderComponent;
+    private bool isReloading = false;
 
     void Start()
     {
         snowPile = GameObject.Find("Player Snow Pile");
         reloadSlider = snowPile.transform.Find("Canvas/Progress").gameObject;
+        sliderComponent = reloadSlider.GetComponent<Slider>();
         reloadSlider.SetActive(false);
     }
 
@@ -40,8 +43,29 @@ public class ReloadAmmo : MonoBehaviour
         if (canReload)
         {
             reloadSlider.SetActive(true);
-            timeHeld = context.time;
-            reloadSlider.GetComponent<Slider>().value = (float)context.time;
+            //StartCoroutine(Reload(context));
+            //timeHeld = context.time;
+            //Debug.Log("Time Held: " + context.duration);
+            //reloadSlider.GetComponent<Slider>().value = (float)context.time;
+            //reloadSlider.GetComponent<Slider>().value = (float)context.duration;
+
+            isReloading = true;
         }
     }
+
+    void Update()
+    {
+        if (isReloading)
+        {
+            sliderComponent.value += Time.deltaTime;
+            if (sliderComponent.value >= sliderComponent.maxValue)
+            {
+                snowInventory.currentAmmo += 1;
+                isReloading = false;
+                sliderComponent.value = 0;
+                reloadSlider.SetActive(false);
+            }
+        }
+    }
+
 }
