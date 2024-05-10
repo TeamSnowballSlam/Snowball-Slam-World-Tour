@@ -42,14 +42,19 @@ public class ReloadAmmo : MonoBehaviour
     {
         if (canReload)
         {
-            reloadSlider.SetActive(true);
-            //StartCoroutine(Reload(context));
-            //timeHeld = context.time;
-            //Debug.Log("Time Held: " + context.duration);
-            //reloadSlider.GetComponent<Slider>().value = (float)context.time;
-            //reloadSlider.GetComponent<Slider>().value = (float)context.duration;
-
-            isReloading = true;
+            if (context.started)
+            {
+                timeHeld = context.time;
+                reloadSlider.SetActive(true);
+                isReloading = true;
+            }
+            else if (context.canceled)
+            {
+                //timeHeld = context.time - timeHeld;
+                sliderComponent.value = 0;
+                isReloading = false;
+                reloadSlider.SetActive(false);
+            }
         }
     }
 
@@ -60,7 +65,8 @@ public class ReloadAmmo : MonoBehaviour
             sliderComponent.value += Time.deltaTime;
             if (sliderComponent.value >= sliderComponent.maxValue)
             {
-                snowInventory.currentAmmo += 1;
+                //snowInventory.currentAmmo += 1;
+                //Debug.Log("Snowballs: " + snowInventory.currentAmmo);
                 isReloading = false;
                 sliderComponent.value = 0;
                 reloadSlider.SetActive(false);
