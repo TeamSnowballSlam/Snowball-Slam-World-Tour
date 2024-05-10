@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ReloadAmmo : MonoBehaviour
 {
-    private SnowInventory snowInventory;
+    public SnowInventory snowInventory;
     private bool canReload = false;
     private GameObject snowPile;
     [SerializeField]private GameObject reloadSlider;
@@ -16,6 +16,7 @@ public class ReloadAmmo : MonoBehaviour
 
     void Start()
     {
+        snowInventory = GetComponent<SnowInventory>();
         snowPile = GameObject.Find("Player Snow Pile");
         reloadSlider = snowPile.transform.Find("Canvas/Progress").gameObject;
         sliderComponent = reloadSlider.GetComponent<Slider>();
@@ -50,7 +51,6 @@ public class ReloadAmmo : MonoBehaviour
             }
             else if (context.canceled)
             {
-                //timeHeld = context.time - timeHeld;
                 sliderComponent.value = 0;
                 isReloading = false;
                 reloadSlider.SetActive(false);
@@ -65,8 +65,8 @@ public class ReloadAmmo : MonoBehaviour
             sliderComponent.value += Time.deltaTime;
             if (sliderComponent.value >= sliderComponent.maxValue)
             {
-                //snowInventory.currentAmmo += 1;
-                //Debug.Log("Snowballs: " + snowInventory.currentAmmo);
+                snowInventory.currentAmmo += 1;
+                Debug.Log("Snowballs: " + snowInventory.currentAmmo);
                 isReloading = false;
                 sliderComponent.value = 0;
                 reloadSlider.SetActive(false);
