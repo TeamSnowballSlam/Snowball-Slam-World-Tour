@@ -13,6 +13,7 @@ public class ReloadAmmo : MonoBehaviour
     private double timeHeld;
     private Slider sliderComponent;
     private bool isReloading = false;
+    private static int MAXAMMO = 5;
 
     void Start()
     {
@@ -65,7 +66,7 @@ public class ReloadAmmo : MonoBehaviour
             sliderComponent.value += Time.deltaTime;
             if (sliderComponent.value >= sliderComponent.maxValue)
             {
-                snowInventory.currentAmmo += 1;
+                snowInventory.currentAmmo = MAXAMMO;
                 Debug.Log("Snowballs: " + snowInventory.currentAmmo);
                 isReloading = false;
                 sliderComponent.value = 0;
