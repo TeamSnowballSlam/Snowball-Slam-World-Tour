@@ -11,10 +11,12 @@ public class SnowInventory : MonoBehaviour
 {
     public int currentAmmo = 5;
     private string penguinName;
+    private TextMeshProUGUI snowballText;
 
     void Start()
     {
         penguinName = gameObject.name; // for debugging purposes
+        snowballText = GameObject.Find("Snowball Text").GetComponent<TextMeshProUGUI>();
     }
 
     /// <summary>
@@ -23,6 +25,6 @@ public class SnowInventory : MonoBehaviour
     public void DecreaseAmmo()
     {
         currentAmmo--;
-        Debug.Log($"{penguinName} Snowballs: {currentAmmo}");
+        snowballText.text = "Snowballs: " + currentAmmo.ToString();
     }
 }
