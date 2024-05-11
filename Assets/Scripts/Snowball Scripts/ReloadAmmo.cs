@@ -46,7 +46,7 @@ public class ReloadAmmo : MonoBehaviour
     {
         if (canReload)
         {
-            if (context.started)
+            if (context.started && snowTrayInventory.snowTrayInv > 0)
             {
                 timeHeld = context.time;
                 reloadSlider.SetActive(true);
