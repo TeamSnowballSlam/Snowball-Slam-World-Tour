@@ -15,6 +15,7 @@ public class SnowInventory : MonoBehaviour
     void Start()
     {
         penguinName = gameObject.name; // for debugging purposes
+        snowballText = GameObject.Find("Snowball Text").GetComponent<TextMeshProUGUI>();
     }
 
     /// <summary>
