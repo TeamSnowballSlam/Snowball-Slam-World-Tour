@@ -52,7 +52,7 @@ public class ReloadAmmo : MonoBehaviour
     /// <summary>
     /// When the player exits the collider of the snow pile, they can no longer reload their ammo.
     /// </summary>
-    void onTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if(other.gameObject.name == "Snow Tray")
         {
