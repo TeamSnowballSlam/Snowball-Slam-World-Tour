@@ -15,8 +15,9 @@ public class ReloadAmmo : MonoBehaviour
     private bool isReloading = false;
 
     // GameObjects
-    [SerializeField]private GameObject reloadSlider;
-    private GameObject snowPile;
+    [SerializeField]private GameObject snowTray;
+    [SerializeField]private GameObject reloadMeter;
+    public SnowTrayInventory snowTrayInv;
 
     // UI Components
     private Slider sliderComponent;
@@ -25,16 +26,16 @@ public class ReloadAmmo : MonoBehaviour
     // Constants
     private static int MAXAMMO = 5;
 
-    public int snowTrayInv;
-
     void Start()
     {
         snowInventory = GetComponent<SnowInventory>();
-        snowPile = GameObject.Find("Player Snow Pile");
-        reloadSlider = snowPile.transform.Find("Canvas/Progress").gameObject;
-        sliderComponent = reloadSlider.GetComponent<Slider>();
-        reloadSlider.SetActive(false);
-        snowTrayInv = 3;
+        snowTray = GameObject.Find("Snow Tray");
+        reloadMeter = snowTray.transform.Find("Canvas/Progress").gameObject;
+        sliderComponent = reloadMeter.GetComponent<Slider>();
+        reloadMeter.SetActive(false);
+        snowTrayInv = snowTray.GetComponent<SnowTrayInventory>();
+        snowballText = GameObject.Find("Canvas/Snowball Text").GetComponent<TextMeshProUGUI>();
+        snowballText.text = "Snowballs: " + snowInventory.currentAmmo.ToString();
     }
 
     /// <summary>
@@ -42,7 +43,7 @@ public class ReloadAmmo : MonoBehaviour
     /// </summary>
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Player Snow Pile")
+        if(other.gameObject.name == "Snow Tray")
         {
             canReload = true;
         }
@@ -53,7 +54,7 @@ public class ReloadAmmo : MonoBehaviour
     /// </summary>
     void onTriggerExit(Collider other)
     {
-        if(other.gameObject.name == "Player Snow Pile")
+        if(other.gameObject.name == "Snow Tray")
         {
             canReload = false;
         }
@@ -66,16 +67,16 @@ public class ReloadAmmo : MonoBehaviour
     {
         if (canReload)
         {
-            if (context.started && snowTrayInv > 0)
+            if (context.started && snowTrayInv.inventory > 0)
             {
-                reloadSlider.SetActive(true);
+                reloadMeter.SetActive(true);
                 isReloading = true;
             }
             else if (context.canceled)
             {
                 sliderComponent.value = 0;
                 isReloading = false;
-                reloadSlider.SetActive(false);
+                reloadMeter.SetActive(false);
             }
         }
     }
@@ -90,14 +91,13 @@ public class ReloadAmmo : MonoBehaviour
             sliderComponent.value += Time.deltaTime;
             if (sliderComponent.value >= sliderComponent.maxValue)
             {
-                snowInventory.currentAmmo += 1;
+                snowInventory.currentAmmo = MAXAMMO;
                 snowballText.text = "Snowballs: " + snowInventory.currentAmmo.ToString();
                 isReloading = false;
                 sliderComponent.value = 0;
-                reloadSlider.SetActive(false);
+                reloadMeter.SetActive(false);
 
-                snowTrayInv -= 1;
-                Debug.Log("Snow Tray: " + snowTrayInv);
+                snowTrayInv.inventory -= 1;
             }
         }
     }

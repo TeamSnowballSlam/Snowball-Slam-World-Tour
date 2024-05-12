@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class SnowMachine : MonoBehaviour
 {    
     private Slider sliderComponent;
-    public ReloadAmmo reloadAmmo;
+    [SerializeField]private GameObject snowTray;
+    public SnowTrayInventory snowTrayInv;
 
     // Start is called before the first frame update
     void Start()
     {
         sliderComponent = GameObject.Find("Snowball Machine/Canvas/Progress").GetComponent<Slider>();
-        reloadAmmo = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<ReloadAmmo>();
+        snowTrayInv = snowTray.GetComponent<SnowTrayInventory>();
     }
 
     // Update is called once per frame
@@ -22,7 +23,8 @@ public class SnowMachine : MonoBehaviour
         if (sliderComponent.value >= sliderComponent.maxValue)
         {
             sliderComponent.value = 0;
-            reloadAmmo.snowTrayInv += 1;
+            snowTrayInv.inventory += 1;
+            Debug.Log("Snow Tray: " + snowTrayInv.inventory);
         }
     }
 }
