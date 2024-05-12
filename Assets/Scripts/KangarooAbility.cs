@@ -49,7 +49,6 @@ public class KangarooAbility : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("canUSeTurret: "  + canUseTurret);
         if (canUseTurret == false)
         {
             CheckAbilityCooldown();
