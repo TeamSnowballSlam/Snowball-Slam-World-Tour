@@ -6,16 +6,25 @@ using UnityEngine.UI;
 
 public class ReloadAmmo : MonoBehaviour
 {
-    public SnowInventory snowInventory;
+    // Classes
+    public SnowInventory snowInventory; // The player's snowball inventory
+
+    // Booleans
     private bool canReload = false;
-    private GameObject snowPile;
-    [SerializeField]private GameObject reloadSlider;
-    private double timeHeld;
-    private Slider sliderComponent;
     private bool isReloading = false;
 
-    public int snowTrayInv;
+    // GameObjects
+    [SerializeField]private GameObject reloadSlider;
+    private GameObject snowPile;
 
+    // UI Components
+    private Slider sliderComponent;
+    private TextMeshProUGUI snowballText;
+
+    // Constants
+    private static int MAXAMMO = 5;
+
+    public int snowTrayInv;
 
     void Start()
     {
@@ -27,6 +36,9 @@ public class ReloadAmmo : MonoBehaviour
         snowTrayInv = 3;
     }
 
+    /// <summary>
+    /// When the player enters the collider of the snow pile, they can reload their ammo.
+    /// </summary>
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "Player Snow Pile")
@@ -35,6 +47,9 @@ public class ReloadAmmo : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// When the player exits the collider of the snow pile, they can no longer reload their ammo.
+    /// </summary>
     void onTriggerExit(Collider other)
     {
         if(other.gameObject.name == "Player Snow Pile")
@@ -43,13 +58,15 @@ public class ReloadAmmo : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Holding down the 'E' key for a certain amount of time will reload the player's ammo to max.
+    /// </summary>
     public void OnHold(InputAction.CallbackContext context)
     {
         if (canReload)
         {
             if (context.started && snowTrayInv > 0)
             {
-                timeHeld = context.time;
                 reloadSlider.SetActive(true);
                 isReloading = true;
             }
@@ -62,6 +79,9 @@ public class ReloadAmmo : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the slider value when the player is reloading.
+    /// </summary>
     void Update()
     {
         if (isReloading)
@@ -70,10 +90,11 @@ public class ReloadAmmo : MonoBehaviour
             if (sliderComponent.value >= sliderComponent.maxValue)
             {
                 snowInventory.currentAmmo += 1;
-                Debug.Log("Snowballs: " + snowInventory.currentAmmo);
+                snowballText.text = "Snowballs: " + snowInventory.currentAmmo.ToString();
                 isReloading = false;
                 sliderComponent.value = 0;
                 reloadSlider.SetActive(false);
+
                 snowTrayInv -= 1;
                 Debug.Log("Snow Tray: " + snowTrayInv);
             }
