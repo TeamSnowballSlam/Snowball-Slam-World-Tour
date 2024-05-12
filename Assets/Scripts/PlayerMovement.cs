@@ -11,18 +11,20 @@ public class PlayerMovement : MonoBehaviour
 
     private const int SLIDINGSPEED = 20; //Placeholder values. Will change after testing
     private int slowingDownSpeed = 0; //The speed the player is at during the slowing down process
-    private double MaxSlowdown = MOVEMENTSPEED / 4.0; //The maximum speed the player can slow down to on the road
-
-    public double TouchingRoadSpeed //Returns the current speed reduction when touching the road
+    private const double MAXSLOWDOWN = MOVEMENTSPEED - 2; //The maximum speed the road can  slow you by
+    
+    //Returns the current speed reduction when touching the road
+    public double TouchingRoadSpeed 
     {
         get
         {
-            return ElapsedSlowdownPercentage * MaxSlowdown; //Return the percentage of the maximum slow down speed
+            //This increases from a 0 slowdown at the start of the level to the max slowdown at the end of the level
+            return MAXSLOWDOWN * (1 - RemainingLevelPercentage); 
         }
     }
 
-    //The elapsed percentage of the level minus the max slowdown remaining time
-    public double ElapsedSlowdownPercentage
+    //The % of the level remaining
+    public double RemainingLevelPercentage
     {
         get
         {            
@@ -58,8 +60,8 @@ public class PlayerMovement : MonoBehaviour
                 //Moving Speed
                 if (touchingRoad)
                 {
-                    Debug.Log("Touching Road Speed: " + (MOVEMENTSPEED - TouchingRoadSpeed));
-                    return MOVEMENTSPEED;
+                    Debug.Log("Touching Road Speed: " +  (MOVEMENTSPEED - (int)TouchingRoadSpeed));
+                    return MOVEMENTSPEED - (int)TouchingRoadSpeed;
                 }
                 return MOVEMENTSPEED;
             }
