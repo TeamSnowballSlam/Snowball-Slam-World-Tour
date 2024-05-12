@@ -60,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
                 //Moving Speed
                 if (touchingRoad)
                 {
-                    Debug.Log("Touching Road Speed: " +  (MOVEMENTSPEED - (int)TouchingRoadSpeed));
                     return MOVEMENTSPEED - (int)TouchingRoadSpeed;
                 }
                 return MOVEMENTSPEED;
