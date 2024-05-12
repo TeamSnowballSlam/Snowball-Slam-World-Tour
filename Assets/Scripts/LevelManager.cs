@@ -201,6 +201,11 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(snowball);
         }
+        GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
+        foreach (GameObject turret in turrets)
+        {
+            Destroy(turret);
+        }
         if (winner == "Player")
         {
             restartButton.SetActive(false);
