@@ -36,6 +36,10 @@ public class KangarooAbility : MonoBehaviour
     {//If the ability is on cooldown or there is already an active turret, return
         if (canUseTurret) 
         { 
+            if(Physics.CheckBox(transform.position + transform.forward * TURRETOFFSET, new Vector3(0.5f, 0.5f, 0.5f), Quaternion.identity)) 
+            {
+                return;
+            }
             Instantiate(joeyPrefab, transform.position + transform.forward * TURRETOFFSET, transform.rotation);
             JoeyTurret joeyTurret = joeyPrefab.GetComponent<JoeyTurret>();
             joeyTurret.parent = gameObject;

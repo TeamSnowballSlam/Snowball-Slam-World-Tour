@@ -21,7 +21,11 @@ public class JoeyTurret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(transform.position.x, 0.65f, transform.position.z); //Sets the position of the ability to the parent's position
+        if(Physics.CheckBox(transform.position, new Vector3(0.5f, 0.5f, 0.5f), Quaternion.identity)) 
+        {
+            
+        }
+        transform.position = new Vector3(transform.position.x, 0.65f, transform.position.z);
         spawnTime = Time.time; //Sets the spawn time to the current time
     }
 
