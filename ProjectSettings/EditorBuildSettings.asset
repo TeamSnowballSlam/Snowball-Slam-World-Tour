@@ -9,14 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: c4a4396de0caad14fa8d3c62ad255b2c
   - enabled: 1
-    path: Assets/Scenes/LevelScenes/SouthAmerica.unity
-    guid: 1584b4f78d7c05f4ebda79e1495bb056
-  - enabled: 1
     path: Assets/Scenes/LevelScenes/Australia.unity
     guid: 113ba9e215cb3ce4e94f56515f5b7852
-  - enabled: 1
-    path: Assets/Scenes/LevelScenes/Asia.unity
-    guid: c17d2b1abda7d8f48a7993ca4d960c9c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ee0b8a024e3a7ad4c8a0fd7d65516d25,
       type: 2}
