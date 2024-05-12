@@ -16,7 +16,7 @@ public class SnowMachine : MonoBehaviour
     {
         sliderComponent = GameObject.Find("Snowball Machine/Canvas/Progress").GetComponent<Slider>();
         snowTrayInv = snowTray.GetComponent<SnowTrayInventory>();
-        prodSpeed = 5;
+        prodSpeed = 6;
     }
 
     // Update is called once per frame

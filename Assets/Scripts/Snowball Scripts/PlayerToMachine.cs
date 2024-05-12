@@ -36,13 +36,14 @@ public class PlayerToMachine : MonoBehaviour
     {
         if (canInteract)
         {
-           if(context.performed)
+           if(context.started)
            {
                snowMachine.prodSpeed = 3;
+               Debug.Log("Should be faster");
            }
            else if(context.canceled)
            {
-                snowMachine.prodSpeed = 5;
+                snowMachine.prodSpeed = 6;
            }
         }
     }
