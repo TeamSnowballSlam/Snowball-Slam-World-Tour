@@ -9,19 +9,21 @@ public class ReloadAmmo : MonoBehaviour
 {
     // Classes
     public SnowInventory snowInventory; // The player's snowball inventory
+    public SnowTrayInventory snowTrayInv; // The snow tray's snowball inventory
 
     // Booleans
     private bool canReload = false;
     private bool isReloading = false;
 
     // GameObjects
-    [SerializeField]private GameObject snowTray;
-    [SerializeField]private GameObject reloadMeter;
-    public SnowTrayInventory snowTrayInv;
+    private GameObject snowTray;
+    private GameObject reloadMeter;
+
 
     // UI Components
     private Slider sliderComponent;
     private TextMeshProUGUI snowballText;
+    [SerializeField]private TextMeshProUGUI trayAmountText;
 
     // Constants
     private static int MAXAMMO = 5;
@@ -38,6 +40,8 @@ public class ReloadAmmo : MonoBehaviour
         snowTrayInv = snowTray.GetComponent<SnowTrayInventory>();
         snowballText = GameObject.Find("Canvas/Snowball Text").GetComponent<TextMeshProUGUI>();
         snowballText.text = "Snowballs: " + snowInventory.currentAmmo.ToString();
+        trayAmountText = snowTray.transform.Find("Canvas/Amount").GetComponent<TextMeshProUGUI>();
+        trayAmountText.text = snowTrayInv.inventory.ToString();
     }
 
     /// <summary>
@@ -103,9 +107,9 @@ public class ReloadAmmo : MonoBehaviour
                 reloadMeter.SetActive(false);
 
                 snowTrayInv.inventory -= amount; // 
-                Debug.Log("Snow Tray: " + snowTrayInv.inventory);
-                Debug.Log("Snowballs: " + snowInventory.currentAmmo);
-
+                //Debug.Log("Snow Tray: " + snowTrayInv.inventory);
+                //Debug.Log("Snowballs: " + snowInventory.currentAmmo);
+                trayAmountText.text = snowTrayInv.inventory.ToString();
             }
         }
     }
