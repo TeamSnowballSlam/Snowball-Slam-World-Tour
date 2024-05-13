@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Snowball
   - Enemy
+  - Turret
+  - Road
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
   - Water
   - UI
   - 
