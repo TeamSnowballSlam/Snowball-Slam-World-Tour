@@ -17,6 +17,8 @@ public class AudienceMember : MonoBehaviour
     public int powerUpSpawnChance;
     private const int POWERUPDELAY = 15;
     private float lastSpawnTime = 0;
+
+    [SerializeField] private GameObject powerUpPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +35,15 @@ public class AudienceMember : MonoBehaviour
             if(Random.Range(0, 100) < powerUpSpawnChance)
             {
                 PickPowerUp();
+                SpawnPowerUp();
             }
         }
     }
+
+    /// <summary>
+    /// Parses the power up type to a string
+    /// </summary>
+    /// <returns>The Type of power up as a string</returns>
     private string ParsePowerUpType()
     {
         switch (powerUpType)
@@ -52,10 +60,18 @@ public class AudienceMember : MonoBehaviour
                 return "Unknown";
         }
     }
+    /// <summary>
+    /// Picks a random power up type
+    /// </summary>
     private void PickPowerUp()
     {
         int random = Random.Range(0, 3);
         powerUpType = (PowerUpType)random;
         Debug.Log("Picked power up: " + ParsePowerUpType());
+    }
+
+    private void SpawnPowerUp()
+    {
+        GameObject powerUp = Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
     }
 }
