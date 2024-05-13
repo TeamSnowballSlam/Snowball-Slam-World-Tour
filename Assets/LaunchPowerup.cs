@@ -1,7 +1,7 @@
 /// <remarks>
 /// Author: asperatology
 /// Date Created: Unknown
-/// Bugs: None known at this time.
+/// Bugs: Sometimes the powerup will launch in a random direction completely missing the target
 /// Source: https://forum.unity.com/threads/sharing-a-projectile-arc-kinematic-motion-arc-script.542775/
 /// </remarks>
 // <summary>
@@ -29,7 +29,7 @@ public class LaunchPowerup : MonoBehaviour
      */
 
     public new Rigidbody rigidbody;
-    private Transform target;
+    public Transform target;
     public Vector3 InitialVelocity;
 
     public float maximumHeightOfArc;
@@ -127,26 +127,21 @@ public class LaunchPowerup : MonoBehaviour
         this.maximumHeightOfArc = 10;
         this.gravity = -9.81f;
         Debug.Log("Target Position: " + this.target.position);
-    }
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                DrawPath();
-                Launch();
-            }
-            if (showDebugPath && !this.isLaunching)
-            {
-                DrawPath();
-            }
-        }
 
-        void OnValidate()
-        {
-            if (showDebugPath && !this.isLaunching)
-            {
-                DrawPath();
-            }
-        }
+
+        if(this.target != null)
+            DrawPath();
+            Launch();
 
     }
+
+
+    void OnValidate()
+    {
+        if (showDebugPath && !this.isLaunching)
+        {
+            DrawPath();
+        }
+    }
+
+}
