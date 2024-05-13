@@ -67,7 +67,7 @@ public class ReloadAmmo : MonoBehaviour
     {
         if (canReload)
         {
-            if (context.started && snowTrayInv.inventory > 0)
+            if (context.started && snowTrayInv.inventory >= 5)
             {
                 reloadMeter.SetActive(true);
                 isReloading = true;
@@ -97,7 +97,7 @@ public class ReloadAmmo : MonoBehaviour
                 sliderComponent.value = 0;
                 reloadMeter.SetActive(false);
 
-                snowTrayInv.inventory -= 1;
+                snowTrayInv.inventory -= 5;
             }
         }
     }

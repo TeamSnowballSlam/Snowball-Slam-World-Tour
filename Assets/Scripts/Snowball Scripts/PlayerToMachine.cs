@@ -39,7 +39,6 @@ public class PlayerToMachine : MonoBehaviour
            if(context.started)
            {
                snowMachine.prodSpeed = 3;
-               Debug.Log("Should be faster");
            }
            else if(context.canceled)
            {
