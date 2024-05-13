@@ -203,6 +203,11 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(snowball);
         }
+        GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
+        foreach (GameObject turret in turrets)
+        {
+            Destroy(turret);
+        }
         if (winner == "Player")
         {
             restartButton.SetActive(false);
@@ -226,6 +231,7 @@ public class LevelManager : MonoBehaviour
                 e.transform.parent = endGameLoserSpawnPoints[i];
                 e.transform.localPosition = Vector3.zero;
                 e.transform.localRotation = Quaternion.Euler(Vector3.zero);
+
                 e.GetComponent<NavMeshAgent>().isStopped = true;
                 e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
             }

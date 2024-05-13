@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 7929835254539914982}
   - component: {fileID: 5249024573824510301}
   - component: {fileID: 795823579640245495}
+  - component: {fileID: 1565112128986504816}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -265,4 +266,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snowballPrefab: {fileID: 8950912869131290729, guid: e3470e932c4611d4b92aa4819b1dbced,
+    type: 3}
+  snowInventory: {fileID: 0}
+--- !u!114 &1565112128986504816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8668212180024149981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83091653079023479257ebf6d7d4200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0
+  expireTime: 15
+  joeyPrefab: {fileID: 3657889275645270786, guid: 6d61729d34369424186a1c46c9db0d0c,
     type: 3}

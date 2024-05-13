@@ -29,6 +29,7 @@ public class ThrowSnowballs : MonoBehaviour
             snowballPosition + transform.forward,
             Quaternion.identity
         ); // snowballPrefab is instantiated
+        snowball.GetComponent<SnowballCollision>().owner = "Player"; // owner of snowball is the player
         snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
         snowInventory.DecreaseAmmo();
     }
@@ -41,6 +42,8 @@ public class ThrowSnowballs : MonoBehaviour
             snowballPosition + transform.forward,
             Quaternion.identity
         ); // snowballPrefab is instantiated
+        snowball.GetComponent<SnowballCollision>().owner = "Enemy"; // owner of snowball is the player
+
         snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
     }
 }
