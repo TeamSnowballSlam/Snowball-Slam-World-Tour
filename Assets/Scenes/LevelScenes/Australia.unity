@@ -268,6 +268,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: turretSpawnChance
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: surface
@@ -1126,6 +1131,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: turretSpawnChance
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: surface
@@ -1870,6 +1880,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: turretSpawnChance
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: surface
@@ -2087,6 +2102,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: turretSpawnChance
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: surface
@@ -2170,6 +2190,11 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 28682201}
+    - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
+        type: 3}
+      propertyPath: LevelLength
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
       propertyPath: endGameCamera

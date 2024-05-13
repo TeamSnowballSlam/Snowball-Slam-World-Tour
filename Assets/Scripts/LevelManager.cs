@@ -206,6 +206,7 @@ public class LevelManager : MonoBehaviour
         GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
         foreach (GameObject turret in turrets)
         {
+            Debug.Log("Destroying turret");
             Destroy(turret);
         }
         if (winner == "Player")
