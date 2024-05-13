@@ -25,8 +25,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private int enemyScore = 0;
 
-    [SerializeField]
-    private int secondsRemaining = 60; //The time remaining in the level
+    public int LevelLength = 60; //How long the level will last in seconds
+    [HideInInspector]
+    public int secondsRemaining; //The time remaining in the level
 
     [SerializeField]
     private float delayTime = 10; //The delay time before the level starts
@@ -101,6 +102,7 @@ public class LevelManager : MonoBehaviour
         timerTitle.text = "Starting in ";
         timerText.text = delayTime.ToString();
         currentTime = Time.time;
+        secondsRemaining = LevelLength;
     }
 
     void Update()
@@ -229,9 +231,9 @@ public class LevelManager : MonoBehaviour
                 e.transform.parent = endGameLoserSpawnPoints[i];
                 e.transform.localPosition = Vector3.zero;
                 e.transform.localRotation = Quaternion.Euler(Vector3.zero);
-                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
 
                 e.GetComponent<NavMeshAgent>().isStopped = true;
+                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
             }
         }
         else if (winner == "Enemy")
