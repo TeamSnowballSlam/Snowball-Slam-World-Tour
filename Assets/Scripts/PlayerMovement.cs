@@ -130,6 +130,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameSettings.currentGameState != GameStates.InGame)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
         if (slowingDown) //If the player is slowing down from sliding
         {
             //If the second to last input was diagonal and the last input was straight and the time between the two inputs is very short
@@ -178,12 +183,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (GameSettings.currentGameState != GameStates.InGame)
-        {
-            isMoving = false;
-            return;        
-        }
-            moveInput = context.ReadValue<Vector2>();
+        moveInput = context.ReadValue<Vector2>();
         moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         IsMoving = moveInput != Vector2.zero; //If the move input is not zero then the player is moving
         //If there was an action performed
