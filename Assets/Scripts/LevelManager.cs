@@ -11,7 +11,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -62,6 +64,9 @@ public class LevelManager : MonoBehaviour
     public GameObject restartButton;
     public GameObject continueButton;
     public GameObject addPlayerButton;
+    [HideInInspector] public Bounds bounds;
+    public NavMeshSurface surface;
+
 
     void Awake()
     {
@@ -73,6 +78,7 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
     }
 
     // Start is called before the first frame update
