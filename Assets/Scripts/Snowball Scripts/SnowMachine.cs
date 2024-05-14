@@ -1,3 +1,9 @@
+/// <remarks>
+/// Author: Erika Stuart
+/// </remarks>
+/// <summary>
+/// This script allows the snow machine to produce snowballs.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +28,7 @@ public class SnowMachine : MonoBehaviour
         prodSpeed = 6;
     }
 
-    // Update is called once per frame
+    // Continuous filling of its meter until the tray is fully stocked (15)
     void Update()
     {
         if (snowTrayInv.Inventory < FULLYSTOCKED)
@@ -40,5 +46,4 @@ public class SnowMachine : MonoBehaviour
             sliderComponent.gameObject.SetActive(false);
         }
     }
-
 }

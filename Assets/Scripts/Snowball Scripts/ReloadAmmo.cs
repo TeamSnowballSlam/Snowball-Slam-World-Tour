@@ -1,3 +1,9 @@
+/// <remarks>
+/// Author: Erika Stuart
+/// </remarks>
+/// <summary>
+/// This script allows the player to reload their ammo from the snowball tray
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,10 +25,8 @@ public class ReloadAmmo : MonoBehaviour
     private GameObject snowTray;
     private GameObject reloadMeter;
 
-
     // UI Components
     private Slider sliderComponent;
-    //public TextMeshProUGUI trayAmountText; //used in snowmachine.cs
 
     // Constants
     private static int MAXAMMO = 5;
@@ -32,7 +36,6 @@ public class ReloadAmmo : MonoBehaviour
     void Start()
     {
         snowInventory = gameObject.GetComponent<SnowInventory>();
-        //trayAmountText = snowTray.transform.Find("Canvas/Amount").GetComponent<TextMeshProUGUI>();
     }
 
     /// <summary>
@@ -106,6 +109,9 @@ public class ReloadAmmo : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Calculates the amount of snow to take from the tray.
+    /// </summary>
     private void SnowToTake()
     {
         int difference = MAXAMMO - snowInventory.CurrentAmmo; // the difference between the max ammo and the current ammo

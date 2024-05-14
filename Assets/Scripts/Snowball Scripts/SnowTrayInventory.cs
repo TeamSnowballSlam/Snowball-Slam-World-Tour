@@ -1,3 +1,9 @@
+/// <remarks>
+/// Author: Erika Stuart
+/// </remarks>
+/// <summary>
+/// This script manages the player's snow tray inventory.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +22,7 @@ public class SnowTrayInventory : MonoBehaviour
         set
         {
             inventory = value;
-            trayAmountText.text = inventory.ToString();
+            trayAmountText.text = inventory.ToString(); // text changes when updated
         }
     }
     public GameObject meter;
@@ -25,6 +31,6 @@ public class SnowTrayInventory : MonoBehaviour
     {
         meter = gameObject.transform.GetChild(0).Find("Progress").gameObject;
         trayAmountText = gameObject.transform.GetChild(0).Find("Amount").GetComponent<TextMeshProUGUI>();
-        meter.SetActive(false);
+        meter.SetActive(false); // set false here so it only shows when used
     }
 }

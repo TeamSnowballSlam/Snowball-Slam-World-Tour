@@ -1,3 +1,9 @@
+/// <remarks>
+/// Author: Erika Stuart
+/// </remarks>
+/// <summary>
+/// This script allows the player to interact with the snowball machine.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,13 +25,13 @@ public class PlayerToMachine : MonoBehaviour
         if (other.gameObject.name == "Snowball Machine")
         {
             canInteract = true;
-            snowMachine = other.gameObject.GetComponent<SnowMachine>();
+            snowMachine = other.gameObject.GetComponent<SnowMachine>(); // the specific snow machine
         }
 
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.name == "Snowball Machine")
         {
             canInteract = false;
         }
@@ -37,7 +43,7 @@ public class PlayerToMachine : MonoBehaviour
         {
            if(context.started)
            {
-               snowMachine.prodSpeed = 3;
+               snowMachine.prodSpeed = 3; // faster production
            }
            else if(context.canceled)
            {

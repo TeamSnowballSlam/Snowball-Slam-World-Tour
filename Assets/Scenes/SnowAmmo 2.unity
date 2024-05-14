@@ -1655,6 +1655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: 0
+  meter: {fileID: 0}
 --- !u!65 &566847971
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2096,7 +2097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90ffd1f8e1294e41b145f65fe6d3e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snowTray: {fileID: 566847962}
   snowTrayInv: {fileID: 0}
   reloadAmmo: {fileID: 0}
   prodSpeed: 0
@@ -2119,7 +2119,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1, z: 2}
+  m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1087735173
 GameObject:
@@ -2279,7 +2279,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1, z: 2}
+  m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1092493744
 MonoBehaviour:
@@ -2293,7 +2293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90ffd1f8e1294e41b145f65fe6d3e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snowTray: {fileID: 1539715609}
   snowTrayInv: {fileID: 0}
   reloadAmmo: {fileID: 0}
   prodSpeed: 0
@@ -3433,6 +3432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: 0
+  meter: {fileID: 0}
 --- !u!65 &1539715611
 BoxCollider:
   m_ObjectHideFlags: 0

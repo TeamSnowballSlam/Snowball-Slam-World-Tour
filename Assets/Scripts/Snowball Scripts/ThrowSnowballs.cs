@@ -1,3 +1,9 @@
+/// <remarks>
+/// Author: Erika Stuart
+/// </remarks>
+/// <summary>
+/// This script allows the player to throw snowballs.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
