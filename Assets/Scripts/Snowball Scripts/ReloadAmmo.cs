@@ -23,7 +23,7 @@ public class ReloadAmmo : MonoBehaviour
     // UI Components
     private Slider sliderComponent;
     private TextMeshProUGUI snowballText;
-    [SerializeField]private TextMeshProUGUI trayAmountText;
+    public TextMeshProUGUI trayAmountText; //used in snowmachine.cs
 
     // Constants
     private static int MAXAMMO = 5;
@@ -107,8 +107,6 @@ public class ReloadAmmo : MonoBehaviour
                 reloadMeter.SetActive(false);
 
                 snowTrayInv.inventory -= amount; // 
-                //Debug.Log("Snow Tray: " + snowTrayInv.inventory);
-                //Debug.Log("Snowballs: " + snowInventory.currentAmmo);
                 trayAmountText.text = snowTrayInv.inventory.ToString();
             }
         }

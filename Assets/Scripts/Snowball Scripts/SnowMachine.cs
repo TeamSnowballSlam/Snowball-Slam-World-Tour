@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class SnowMachine : MonoBehaviour
 {    
     private Slider sliderComponent;
     [SerializeField]private GameObject snowTray;
     public SnowTrayInventory snowTrayInv;
+    public ReloadAmmo reloadAmmo;
     public int prodSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
-        sliderComponent = GameObject.Find("Snowball Machine/Canvas/Progress").GetComponent<Slider>();
+        //sliderComponent = GameObject.Find("Snowball Machine/Canvas/Progress").GetComponent<Slider>();
+        sliderComponent = this.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Slider>();
         snowTrayInv = snowTray.GetComponent<SnowTrayInventory>();
         prodSpeed = 6;
     }
@@ -27,7 +30,6 @@ public class SnowMachine : MonoBehaviour
         {
             sliderComponent.value = 0;
             snowTrayInv.inventory += 1;
-            Debug.Log("Snow Tray: " + snowTrayInv.inventory);
         }
     }
 
