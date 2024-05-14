@@ -16,7 +16,7 @@ public class ThrowSnowballs : MonoBehaviour
     private GameObject snowballPrefab;
     private GameObject snowball; // instantiate of snowballPrefab
     private Vector3 snowballPosition;
-    public SnowInventory snowInventory;
+    private SnowInventory snowInventory;
 
     void Start()
     {
