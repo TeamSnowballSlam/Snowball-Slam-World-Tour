@@ -22,7 +22,7 @@ public class ReloadAmmo : MonoBehaviour
 
     // UI Components
     private Slider sliderComponent;
-    public TextMeshProUGUI trayAmountText; //used in snowmachine.cs
+    //public TextMeshProUGUI trayAmountText; //used in snowmachine.cs
 
     // Constants
     private static int MAXAMMO = 5;
@@ -32,7 +32,7 @@ public class ReloadAmmo : MonoBehaviour
     void Start()
     {
         snowInventory = gameObject.GetComponent<SnowInventory>();
-        trayAmountText = snowTray.transform.Find("Canvas/Amount").GetComponent<TextMeshProUGUI>();
+        //trayAmountText = snowTray.transform.Find("Canvas/Amount").GetComponent<TextMeshProUGUI>();
     }
 
     /// <summary>
@@ -45,6 +45,7 @@ public class ReloadAmmo : MonoBehaviour
             canReload = true;
 
             snowTray = other.gameObject; // finds the specific snow tray
+            snowTrayInv = snowTray.GetComponent<SnowTrayInventory>(); // gets the snow tray's inventory
             sliderComponent = snowTrayInv.meter.GetComponent<Slider>();
         }
     }
@@ -69,14 +70,14 @@ public class ReloadAmmo : MonoBehaviour
         {
             if (context.started && snowTrayInv.Inventory >= 1) // when the hold has started and there is snow in the tray
             {
-                reloadMeter.SetActive(true); // show the meter when used
+                snowTrayInv.meter.SetActive(true); // turn on the reload meter
                 isReloading = true; // for the update
             }
             else if (context.canceled) // when the hold has ended or interrupted
             {
                 sliderComponent.value = 0; // reset the slider value
                 isReloading = false;
-                reloadMeter.SetActive(false); // hides the meter
+                snowTrayInv.meter.SetActive(false); // turn off the reload meter
             }
         }
     }
@@ -93,15 +94,12 @@ public class ReloadAmmo : MonoBehaviour
             {
                 SnowToTake(); // starts a difference calculation
 
-                snowInventory.CurrentAmmo += amount; // adds the difference to the player's ammo
-
                 // turn off
                 isReloading = false;
                 sliderComponent.value = 0;
-                reloadMeter.SetActive(false);
 
+                snowInventory.CurrentAmmo += amount; // adds the difference to the player's ammo
                 snowTrayInv.Inventory -= amount; // 
-                trayAmountText.text = snowTrayInv.Inventory.ToString();
             }
         }
     }
@@ -109,13 +107,13 @@ public class ReloadAmmo : MonoBehaviour
     private void SnowToTake()
     {
         int difference = MAXAMMO - snowInventory.CurrentAmmo; // the difference between the max ammo and the current ammo
-        if (snowTrayInv.inventory >= difference) // if the tray has more snow than the difference / less than max
+        if (snowTrayInv.Inventory >= difference) // if the tray has more snow than the difference / less than max
         {
             amount = difference; // the amount to take is the difference
         }
         else
         {
-            amount = snowTrayInv.inventory; // else take the rest
+            amount = snowTrayInv.Inventory; // else take the rest
         }
 
     }
