@@ -28,14 +28,11 @@ public class LaunchPowerup : MonoBehaviour {
         t = duration time
      */
  
-    public Rigidbody rigidbody;
+    public Rigidbody rigidBbody;
     public Transform target;
     public GameObject targetObject;
-    public Vector3 InitialVelocity;
- 
     public float maximumHeightOfArc;
     public float gravity;
-    public int pathResolution; 
     private bool isLaunching;
     private Vector3 savedPosition;
  
@@ -49,9 +46,9 @@ public class LaunchPowerup : MonoBehaviour {
         }
     }
  
-    LaunchData CalculateLaunchData() {
-        float displacementY = target.position.y - rigidbody.position.y;
-        Vector3 displacementXZ = new Vector3(target.position.x - rigidbody.position.x, 0, target.position.z - rigidbody.position.z);
+    private LaunchData CalculateLaunchData() {
+        float displacementY = target.position.y - rigidBbody.position.y;
+        Vector3 displacementXZ = new Vector3(target.position.x - rigidBbody.position.x, 0, target.position.z - rigidBbody.position.z);
  
         Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * maximumHeightOfArc);
         Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * maximumHeightOfArc / gravity) + Mathf.Sqrt(2 * (displacementY - maximumHeightOfArc)/gravity));
@@ -61,34 +58,38 @@ public class LaunchPowerup : MonoBehaviour {
         return new LaunchData(velocityXZ + velocityY * -Mathf.Sign(gravity), time);
     }
  
+    /// <summary>
+    /// This method will launch the powerup towards the target position
+    /// </summary>
     void Launch() {
         this.isLaunching = true;
-        this.savedPosition = rigidbody.position;
+        this.savedPosition = rigidBbody.position;
         Physics.gravity = Vector3.up * this.gravity;
-        rigidbody.useGravity = true;
+        rigidBbody.useGravity = true;
  
         LaunchData data = CalculateLaunchData();
         if (!float.IsNaN(data.initialVelocity.y) && !float.IsInfinity(data.initialVelocity.y))
-            rigidbody.velocity = data.initialVelocity;
+            rigidBbody.velocity = data.initialVelocity;
         else {
             this.isLaunching = false;
-            rigidbody.useGravity = false;
-            rigidbody.position = new Vector3(Random.insideUnitCircle.x * Random.Range(-100, 100), 0, Random.insideUnitCircle.y * Random.Range(-100, 100));
+            rigidBbody.useGravity = false;
+            rigidBbody.position = new Vector3(Random.insideUnitCircle.x * Random.Range(-100, 100), 0, Random.insideUnitCircle.y * Random.Range(-100, 100));
             this.maximumHeightOfArc = Random.Range(this.target.position.y + 1, this.target.position.y + 30);
-            rigidbody.velocity = Vector3.zero;
+            rigidBbody.velocity = Vector3.zero;
         }
     }
  
 
  
     void Awake() {
-        this.rigidbody = GetComponent<Rigidbody>();
+        this.rigidBbody = GetComponent<Rigidbody>(); 
     }
  
     void Start()
     {
-        rigidbody.useGravity = false;
+        rigidBbody.useGravity = false; 
         this.isLaunching = false;
+
         Bounds bounds = LevelManager.instance.bounds;
         Debug.Log("Bounds for powerup: " + bounds);
         float randomX = Random.Range(bounds.min.x, bounds.max.x);
@@ -96,6 +97,7 @@ public class LaunchPowerup : MonoBehaviour {
         Debug.Log("RandomX: " + randomX + " RandomZ: " + randomZ);
         Vector3 randomPosition = new Vector3(randomX, 0, randomZ);
        GameObject tO = Instantiate(targetObject, randomPosition, Quaternion.identity);
+
         tO.transform.position = randomPosition;
         this.target = tO.transform;
         this.maximumHeightOfArc = 10;
@@ -106,13 +108,8 @@ public class LaunchPowerup : MonoBehaviour {
 
 
     }
+    
  
-    void Update () {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            Launch();
-        }
-
-    }
  
 
 }
