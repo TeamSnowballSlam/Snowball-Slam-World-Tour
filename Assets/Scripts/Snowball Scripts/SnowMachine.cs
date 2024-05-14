@@ -12,6 +12,8 @@ public class SnowMachine : MonoBehaviour
     public ReloadAmmo reloadAmmo;
     public int prodSpeed;
 
+    private static int FULLYSTOCKED = 15; // so it doesn't produce infinitely
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +25,19 @@ public class SnowMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sliderComponent.value += Time.deltaTime / prodSpeed;
-        if (sliderComponent.value >= sliderComponent.maxValue)
+        if (snowTrayInv.Inventory < FULLYSTOCKED)
         {
-            sliderComponent.value = 0;
-            snowTrayInv.Inventory += 1;
+            sliderComponent.gameObject.SetActive(true);
+            sliderComponent.value += Time.deltaTime / prodSpeed;
+            if (sliderComponent.value >= sliderComponent.maxValue)
+            {
+                sliderComponent.value = 0;
+                snowTrayInv.Inventory += 1;
+            }
+        }
+        else
+        {
+            sliderComponent.gameObject.SetActive(false);
         }
     }
 
