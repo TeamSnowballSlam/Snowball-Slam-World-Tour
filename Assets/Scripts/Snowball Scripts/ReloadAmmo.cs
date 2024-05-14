@@ -68,7 +68,9 @@ public class ReloadAmmo : MonoBehaviour
     {
         if (canReload) // if the player is in the collider of the snow pile
         {
-            if (context.started && snowTrayInv.Inventory >= 1) // when the hold has started and there is snow in the tray
+            if (context.started
+            && snowTrayInv.Inventory >= 1
+            && snowInventory.CurrentAmmo < MAXAMMO) // when the hold has started and there is snow in the tray
             {
                 snowTrayInv.meter.SetActive(true); // turn on the reload meter
                 isReloading = true; // for the update

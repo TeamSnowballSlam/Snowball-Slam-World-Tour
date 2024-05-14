@@ -28,7 +28,7 @@ public class ThrowSnowballs : MonoBehaviour
             Quaternion.identity
         ); // snowballPrefab is instantiated
         snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
-        snowInventory.DecreaseAmmo();
+        snowInventory.CurrentAmmo--;
     }
 
     public void ThrowSnowball()

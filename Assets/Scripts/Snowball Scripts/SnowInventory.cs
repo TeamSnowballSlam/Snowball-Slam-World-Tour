@@ -32,14 +32,8 @@ public class SnowInventory : MonoBehaviour
     void Start()
     {
         penguinName = gameObject.name; // for debugging purposes
+        currentAmmo = 5;
         snowballText = GameObject.Find("Snowball Text").GetComponent<TextMeshProUGUI>();
-    }
-
-    /// <summary>
-    /// Decreases the amount of ammo the player has.
-    /// </summary>
-    public void DecreaseAmmo()
-    {
-        currentAmmo--;
+        snowballText.text = "Snowballs: " + currentAmmo.ToString();
     }
 }
