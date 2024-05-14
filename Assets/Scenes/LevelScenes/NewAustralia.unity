@@ -21256,6 +21256,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4733630613825887644, guid: 590b02aec8e3e044097dd4e6cb07cc30,
         type: 3}
+      propertyPath: ShapeModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733630613825887644, guid: 590b02aec8e3e044097dd4e6cb07cc30,
+        type: 3}
       propertyPath: ShapeModule.m_Scale.x
       value: 30
       objectReference: {fileID: 0}
