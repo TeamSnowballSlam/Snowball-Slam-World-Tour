@@ -466,6 +466,7 @@ GameObject:
   - component: {fileID: 379945230}
   - component: {fileID: 379945229}
   - component: {fileID: 379945228}
+  - component: {fileID: 379945232}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -553,12 +554,28 @@ Transform:
   m_GameObject: {fileID: 379945227}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -14.987038, y: 0, z: 2.4200003}
-  m_LocalScale: {x: 100, y: 5, z: 1}
+  m_LocalPosition: {x: -15, y: 0, z: 0}
+  m_LocalScale: {x: 30, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!208 &379945232
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379945227}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &388269998
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +831,7 @@ GameObject:
   - component: {fileID: 565584657}
   - component: {fileID: 565584656}
   - component: {fileID: 565584655}
+  - component: {fileID: 565584659}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -901,12 +919,28 @@ Transform:
   m_GameObject: {fileID: 565584654}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 15.012962, y: 0, z: 2.420002}
-  m_LocalScale: {x: 100, y: 5, z: 1}
+  m_LocalPosition: {x: 15, y: 0, z: 0}
+  m_LocalScale: {x: 30, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!208 &565584659
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565584654}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &602368076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,6 +1358,7 @@ GameObject:
   - component: {fileID: 1031596006}
   - component: {fileID: 1031596005}
   - component: {fileID: 1031596004}
+  - component: {fileID: 1031596008}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1411,12 +1446,28 @@ Transform:
   m_GameObject: {fileID: 1031596003}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.237038, y: 0, z: -14.08}
-  m_LocalScale: {x: 100, y: 5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -15}
+  m_LocalScale: {x: 30, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &1031596008
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031596003}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1092606574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,6 +1542,7 @@ GameObject:
   - component: {fileID: 1205445702}
   - component: {fileID: 1205445701}
   - component: {fileID: 1205445700}
+  - component: {fileID: 1205445704}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -1578,12 +1630,28 @@ Transform:
   m_GameObject: {fileID: 1205445699}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.237038, y: 0, z: 16.17}
-  m_LocalScale: {x: 100, y: 5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 15}
+  m_LocalScale: {x: 30, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &1205445704
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205445699}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1361000931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,8 +1895,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
+  m_CollectObjects: 1
+  m_Size: {x: 28, y: 10, z: 28}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
@@ -2269,6 +2337,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudienceMember
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832354585688022379, guid: ef38fd614041ee94db03c6e6a042aed4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

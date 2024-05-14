@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e28bd8fc8291ca64bb7019d019a83efe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,7 +132,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &990844025044154028
 MonoBehaviour:
@@ -147,8 +147,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 2756684931844124348}
+  target: {fileID: 0}
+  targetObject: {fileID: 5496353477961909995, guid: 683aa7d264550ba40901f2a079ebd573,
+    type: 3}
   InitialVelocity: {x: 0, y: 0, z: 0}
+  lineRenderer: {fileID: 0}
   maximumHeightOfArc: 5
   gravity: -10
   pathResolution: 0
-  showDebugPath: 0

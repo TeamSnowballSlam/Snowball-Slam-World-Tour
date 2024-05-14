@@ -84,6 +84,9 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
+        Debug.Log(bounds);
+        Debug.Log("From X= " + bounds.min.x + " to X= " + bounds.max.x + " From Z= " + bounds.min.z + " to Z= " + bounds.max.z);
         restartButton.SetActive(false);
         continueButton.SetActive(false);
         mainCamera.SetActive(true);
