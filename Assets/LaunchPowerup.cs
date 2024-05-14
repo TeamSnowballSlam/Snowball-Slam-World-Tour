@@ -126,6 +126,11 @@ public class LaunchPowerup : MonoBehaviour
         Invoke("Launch", 1.0f); //Invoke the launch method after 1 second to ensure the target is set
     }
 
+/// <summary>
+/// Generates a random position within the bounds of the level
+/// </summary>
+/// <param name="bounds">The Bounds that the Vector3 can be within</param>
+/// <returns>The Position as a Vector3</returns>
     private Vector3 GenerateRandomPosition(Bounds bounds)
     {
         Debug.Log("Bounds for powerup: " + bounds);
