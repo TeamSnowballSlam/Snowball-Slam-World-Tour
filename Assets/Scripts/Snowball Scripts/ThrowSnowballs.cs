@@ -36,6 +36,7 @@ public class ThrowSnowballs : MonoBehaviour
 
     public void ThrowSnowball()
     {
+        if (GameSettings.currentGameState == GameStates.PostGame) return; // if game is over, don't throw snowball
         snowballPosition = new Vector3(transform.position.x, 1.5f, transform.position.z); // thrown at face level
         snowball = Instantiate(
             snowballPrefab,

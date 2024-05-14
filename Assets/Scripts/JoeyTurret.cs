@@ -6,7 +6,6 @@
 // <summary>
 ///Manages the Joey Turret Object
 ////// </summary>
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class JoeyTurret : MonoBehaviour
@@ -48,7 +47,7 @@ public class JoeyTurret : MonoBehaviour
                 throwTime = Time.time; //Sets the throw time to the current time
             }
         }
-        if (Time.time - spawnTime >= expireTime) //If the ability has expired
+        if (Time.time - spawnTime >= expireTime || GameSettings.currentGameState == GameStates.PostGame) //If the ability has expired
         {
             Destroy(gameObject); //Destroy the ability
         }
