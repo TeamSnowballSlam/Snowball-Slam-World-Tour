@@ -6,7 +6,6 @@
 // <summary>
 ///Manages the Joey Turret Object
 ////// </summary>
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class JoeyTurret : MonoBehaviour
