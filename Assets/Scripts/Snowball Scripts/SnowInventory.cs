@@ -9,9 +9,25 @@ using TMPro;
 /// </summary>
 public class SnowInventory : MonoBehaviour
 {
-    public int currentAmmo = 5;
+
+    [SerializeField]private TextMeshProUGUI snowballText;
+
+    private int currentAmmo;
+    public int CurrentAmmo
+    {
+        get
+        { 
+            return currentAmmo;
+        }
+        set
+        {
+            currentAmmo = value;
+            snowballText.text = "Snowballs: " + currentAmmo.ToString();
+        }
+    }
+
+
     private string penguinName;
-    private TextMeshProUGUI snowballText;
 
     void Start()
     {
@@ -25,6 +41,5 @@ public class SnowInventory : MonoBehaviour
     public void DecreaseAmmo()
     {
         currentAmmo--;
-        snowballText.text = "Snowballs: " + currentAmmo.ToString();
     }
 }

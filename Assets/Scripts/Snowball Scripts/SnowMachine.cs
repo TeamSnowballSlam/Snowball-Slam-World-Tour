@@ -8,7 +8,7 @@ using TMPro;
 public class SnowMachine : MonoBehaviour
 {    
     private Slider sliderComponent;
-    [SerializeField]private GameObject snowTray;
+    //[SerializeField]private GameObject snowTray;
     public SnowTrayInventory snowTrayInv;
     public ReloadAmmo reloadAmmo;
     public int prodSpeed;
@@ -18,7 +18,8 @@ public class SnowMachine : MonoBehaviour
     {
         //sliderComponent = GameObject.Find("Snowball Machine/Canvas/Progress").GetComponent<Slider>();
         sliderComponent = this.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Slider>();
-        snowTrayInv = snowTray.GetComponent<SnowTrayInventory>();
+        //snowTrayInv = snowTray.GetComponent<SnowTrayInventory>();
+        snowTrayInv = transform.parent.Find("Snow Tray").GetComponent<SnowTrayInventory>();
         prodSpeed = 6;
     }
 

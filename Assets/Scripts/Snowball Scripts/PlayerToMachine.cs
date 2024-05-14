@@ -12,7 +12,7 @@ public class PlayerToMachine : MonoBehaviour
     void Start()
     {
         canInteract = false;
-        snowMachine = GameObject.Find("Snowball Machine").GetComponent<SnowMachine>();
+        //snowMachine = GameObject.Find("Snowball Machine").GetComponent<SnowMachine>();
     }
 
      void OnTriggerEnter(Collider other)
@@ -21,6 +21,7 @@ public class PlayerToMachine : MonoBehaviour
         {
             canInteract = true;
             Debug.Log("Can interact");
+            snowMachine = other.gameObject.GetComponent<SnowMachine>();
         }
 
     }

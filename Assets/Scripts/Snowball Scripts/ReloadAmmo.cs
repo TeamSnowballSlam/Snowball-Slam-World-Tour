@@ -22,7 +22,7 @@ public class ReloadAmmo : MonoBehaviour
 
     // UI Components
     private Slider sliderComponent;
-    private TextMeshProUGUI snowballText;
+    //private TextMeshProUGUI snowballText;
     public TextMeshProUGUI trayAmountText; //used in snowmachine.cs
 
     // Constants
@@ -32,16 +32,8 @@ public class ReloadAmmo : MonoBehaviour
 
     void Start()
     {
-        snowInventory = GetComponent<SnowInventory>();
-        snowTray = GameObject.Find("Snow Tray");
-        reloadMeter = snowTray.transform.Find("Canvas/Progress").gameObject;
-        sliderComponent = reloadMeter.GetComponent<Slider>();
-        reloadMeter.SetActive(false);
-        snowTrayInv = snowTray.GetComponent<SnowTrayInventory>();
-        snowballText = GameObject.Find("Canvas/Snowball Text").GetComponent<TextMeshProUGUI>();
-        snowballText.text = "Snowballs: " + snowInventory.currentAmmo.ToString();
+        snowInventory = gameObject.GetComponent<SnowInventory>();
         trayAmountText = snowTray.transform.Find("Canvas/Amount").GetComponent<TextMeshProUGUI>();
-        trayAmountText.text = snowTrayInv.inventory.ToString();
     }
 
     /// <summary>
@@ -52,6 +44,9 @@ public class ReloadAmmo : MonoBehaviour
         if(other.gameObject.name == "Snow Tray")
         {
             canReload = true;
+
+            snowTray = other.gameObject; // finds the specific snow tray
+            sliderComponent = snowTrayInv.meter.GetComponent<Slider>();
         }
     }
 
@@ -98,8 +93,9 @@ public class ReloadAmmo : MonoBehaviour
             if (sliderComponent.value >= sliderComponent.maxValue) // if it reaches the end
             {
                 SnowToTake(); // starts a difference calculation
-                snowInventory.currentAmmo += amount; // adds the difference to the player's ammo
-                snowballText.text = "Snowballs: " + snowInventory.currentAmmo.ToString();
+
+                snowInventory.CurrentAmmo += amount; // adds the difference to the player's ammo
+                //snowballText.text = "Snowballs: " + snowInventory.CurrentAmmo.ToString();
 
                 // turn off
                 isReloading = false;
@@ -114,7 +110,7 @@ public class ReloadAmmo : MonoBehaviour
 
     private void SnowToTake()
     {
-        int difference = MAXAMMO - snowInventory.currentAmmo; // the difference between the max ammo and the current ammo
+        int difference = MAXAMMO - snowInventory.CurrentAmmo; // the difference between the max ammo and the current ammo
         if (snowTrayInv.inventory >= difference) // if the tray has more snow than the difference / less than max
         {
             amount = difference; // the amount to take is the difference
