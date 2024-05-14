@@ -12,7 +12,7 @@ using TMPro;
 public class SnowTrayInventory : MonoBehaviour
 {
     private TextMeshProUGUI trayAmountText;
-    public int inventory;
+    private int inventory;
     public int Inventory
     {
         get
