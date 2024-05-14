@@ -268,6 +268,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 795823579640245495, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: surface
+      value: 
+      objectReference: {fileID: 1387974699}
+    - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8365738364325036822, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -322,6 +342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8668212180024149981, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1121,6 +1146,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 795823579640245495, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: surface
+      value: 
+      objectReference: {fileID: 1387974699}
+    - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8365738364325036822, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1175,6 +1220,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8668212180024149981, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1860,6 +1910,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 795823579640245495, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: surface
+      value: 
+      objectReference: {fileID: 1387974699}
+    - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8365738364325036822, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1914,6 +1984,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8668212180024149981, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2072,6 +2147,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 795823579640245495, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565112128986504816, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: surface
+      value: 
+      objectReference: {fileID: 1387974699}
+    - target: {fileID: 5249024573824510301, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8365738364325036822, guid: 0118e5f1320324f46abb3c4928e2bd44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2127,6 +2222,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8668212180024149981, guid: 0118e5f1320324f46abb3c4928e2bd44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2142,6 +2242,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
+      propertyPath: delayTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
+        type: 3}
       propertyPath: enemyTeam
       value: 1
       objectReference: {fileID: 0}
@@ -2150,6 +2255,16 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 28682201}
+    - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
+        type: 3}
+      propertyPath: LevelLength
+      value: 300000
+      objectReference: {fileID: 0}
+    - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
+        type: 3}
+      propertyPath: targetScore
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
       propertyPath: endGameCamera

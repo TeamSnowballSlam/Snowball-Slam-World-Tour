@@ -11,6 +11,7 @@ public class SnowballCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Snowball hit: " + collision.gameObject.tag + " with owner: " + owner);
         if (!collision.gameObject.CompareTag(owner))
         {
             if (collision.gameObject.CompareTag("Enemy")) //If the snowball hits an enemy
