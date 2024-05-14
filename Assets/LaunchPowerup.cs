@@ -101,6 +101,7 @@ public class LaunchPowerup : MonoBehaviour {
         this.maximumHeightOfArc = 10;
         this.gravity = -9.81f;
         Debug.Log("Target Position: " + this.target.position);
+        Invoke("Launch", 1.0f);
 
 
 

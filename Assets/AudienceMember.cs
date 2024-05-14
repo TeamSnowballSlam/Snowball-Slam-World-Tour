@@ -15,7 +15,7 @@ public class AudienceMember : MonoBehaviour
 
     [Range(0, 100)]
     public int powerUpSpawnChance;
-    private const int POWERUPDELAY = 15;
+    private const int POWERUPDELAY = 5;
     private float lastSpawnTime = 0;
 
     [SerializeField] private GameObject powerUpPrefab;
