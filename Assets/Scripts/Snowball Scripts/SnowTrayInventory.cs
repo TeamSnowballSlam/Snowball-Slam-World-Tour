@@ -1,15 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SnowTrayInventory : MonoBehaviour
 {
+    private TextMeshProUGUI trayAmountText;
     public int inventory;
+    public int Inventory
+    {
+        get
+        {
+            return inventory;
+        }
+        set
+        {
+            inventory = value;
+            trayAmountText.text = inventory.ToString();
+        }
+    }
     public GameObject meter;
 
     void Start()
     {
-        meter = gameObject.transform.GetChild(0).GetChild(0).gameObject; // Canvas > Progress
+        meter = gameObject.transform.GetChild(0).Find("Progress").gameObject;
+        trayAmountText = gameObject.transform.GetChild(0).Find("Amount").GetComponent<TextMeshProUGUI>();
         meter.SetActive(false);
     }
 }

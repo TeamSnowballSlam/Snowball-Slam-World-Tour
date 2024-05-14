@@ -22,7 +22,6 @@ public class ReloadAmmo : MonoBehaviour
 
     // UI Components
     private Slider sliderComponent;
-    //private TextMeshProUGUI snowballText;
     public TextMeshProUGUI trayAmountText; //used in snowmachine.cs
 
     // Constants
@@ -68,7 +67,7 @@ public class ReloadAmmo : MonoBehaviour
     {
         if (canReload) // if the player is in the collider of the snow pile
         {
-            if (context.started && snowTrayInv.inventory >= 1) // when the hold has started and there is snow in the tray
+            if (context.started && snowTrayInv.Inventory >= 1) // when the hold has started and there is snow in the tray
             {
                 reloadMeter.SetActive(true); // show the meter when used
                 isReloading = true; // for the update
@@ -95,15 +94,14 @@ public class ReloadAmmo : MonoBehaviour
                 SnowToTake(); // starts a difference calculation
 
                 snowInventory.CurrentAmmo += amount; // adds the difference to the player's ammo
-                //snowballText.text = "Snowballs: " + snowInventory.CurrentAmmo.ToString();
 
                 // turn off
                 isReloading = false;
                 sliderComponent.value = 0;
                 reloadMeter.SetActive(false);
 
-                snowTrayInv.inventory -= amount; // 
-                trayAmountText.text = snowTrayInv.inventory.ToString();
+                snowTrayInv.Inventory -= amount; // 
+                trayAmountText.text = snowTrayInv.Inventory.ToString();
             }
         }
     }
