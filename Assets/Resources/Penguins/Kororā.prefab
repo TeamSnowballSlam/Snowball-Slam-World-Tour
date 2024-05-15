@@ -227,7 +227,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -187078064807162140}
+      addedObject: {fileID: -6562412165964003528}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 750c74749f5b7e249b8668cf88f61160,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7594281202096090984}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 750c74749f5b7e249b8668cf88f61160,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -761579000524595754}
   m_SourcePrefab: {fileID: 100100000, guid: 750c74749f5b7e249b8668cf88f61160, type: 3}
 --- !u!4 &5360695777459846775 stripped
 Transform:
@@ -361,9 +369,9 @@ MonoBehaviour:
     m_ActionName: Player/Move
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7300853269631483991}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: OnMove
+      - m_Target: {fileID: 4193235427383844115}
+        m_TargetAssemblyTypeName: ThrowSnowballs, Assembly-CSharp
+        m_MethodName: ThrowSnowball
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -377,13 +385,25 @@ MonoBehaviour:
     m_ActionName: Player/Fire
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: -6562412165964003528}
+        m_TargetAssemblyTypeName: ReloadAmmo, Assembly-CSharp
+        m_MethodName: OnHold
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -7594281202096090984}
+        m_TargetAssemblyTypeName: PlayerToMachine, Assembly-CSharp
+        m_MethodName: OnHold
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -450,8 +470,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowballPrefab: {fileID: 380627630326163080, guid: f961f415f92502740a7797120d3b1b30,
     type: 3}
-  snowInventory: {fileID: -187078064807162140}
---- !u!114 &-187078064807162140
+  snowInventory: {fileID: 0}
+--- !u!114 &-6562412165964003528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005665015610063796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c0f7b8140fa6041a33ecb8162e6f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snowInventory: {fileID: 0}
+  snowTrayInv: {fileID: 0}
+--- !u!114 &-7594281202096090984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005665015610063796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba0e19889f0e2a44a9dbb2aa08bfa0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-761579000524595754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -463,4 +509,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1ec78b65a4f6f41b3cfb84c8ee011c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAmmo: 5

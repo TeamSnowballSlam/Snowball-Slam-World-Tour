@@ -5108,7 +5108,7 @@ PrefabInstance:
     - target: {fileID: 4541883776616553702, guid: 69b989691bad1bf4eb4b02be4be9f28b,
         type: 3}
       propertyPath: m_Name
-      value: Snowball_Pile_Full (3)
+      value: Snowball Pile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5175,7 +5175,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.03, y: 0.03, z: 0.013877312}
+  m_Size: {x: 0.04, y: 0.03, z: 0.013877312}
   m_Center: {x: 0.0002726051, y: 0.0045, z: 0.0041440283}
 --- !u!65 &335047402
 BoxCollider:
@@ -9020,18 +9020,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522041303}
-  m_LocalRotation: {x: -0.46174863, y: 0, z: 0, w: 0.8870109}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0052}
+  m_LocalRotation: {x: 0.96836585, y: 0, z: 0, w: 0.2495351}
+  m_LocalPosition: {x: 0, y: 0, z: 0.05}
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1357154302}
   - {fileID: 1909972027}
   m_Father: {fileID: 335047398}
-  m_LocalEulerAnglesHint: {x: -55, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 151.1, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.03}
+  m_AnchoredPosition: {x: -0.01, y: 0.05}
   m_SizeDelta: {x: 2, y: 0.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &522041305
@@ -9994,7 +9994,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.514
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -23141,7 +23141,7 @@ PrefabInstance:
     - target: {fileID: 6204937087719022169, guid: 7c5cb9f1ea0efea43842229da4519c07,
         type: 3}
       propertyPath: m_Name
-      value: Snowball_Machine
+      value: Snowball Machine
       objectReference: {fileID: 0}
     - target: {fileID: 6726000473357403363, guid: 7c5cb9f1ea0efea43842229da4519c07,
         type: 3}
@@ -23301,7 +23301,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snowTrayInv: {fileID: 0}
-  reloadAmmo: {fileID: 0}
   prodSpeed: 0
 --- !u!4 &1313099433 stripped
 Transform:
@@ -23908,7 +23907,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.277
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -31735,9 +31734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -36120,7 +36117,7 @@ PrefabInstance:
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
       propertyPath: LevelLength
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}

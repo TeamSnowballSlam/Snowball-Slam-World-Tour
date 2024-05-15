@@ -29,6 +29,7 @@ public class ThrowSnowballs : MonoBehaviour
         }
     }
 
+    // Player
     public void ThrowSnowball(InputAction.CallbackContext context)
     {
         if (snowInventory.CurrentAmmo <= 0) return; // if no ammo, don't throw snowball
@@ -44,6 +45,7 @@ public class ThrowSnowballs : MonoBehaviour
         snowball.GetComponent<SnowballCollision>().owner = "Player"; // owner of snowball is the player
         snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
         snowInventory.CurrentAmmo--;
+        Debug.Log("Current ammo: " + snowInventory.CurrentAmmo);
     }
 
     public void ThrowSnowball()

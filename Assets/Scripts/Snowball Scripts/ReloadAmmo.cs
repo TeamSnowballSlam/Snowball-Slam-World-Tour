@@ -24,7 +24,7 @@ public class ReloadAmmo : MonoBehaviour
     // UI Components
     private Slider sliderComponent;
     private TextMeshProUGUI snowballText;
-    public TextMeshProUGUI trayAmountText; //used in snowmachine.cs
+    //public TextMeshProUGUI trayAmountText; //used in snowmachine.cs
 
     // Constants
     private static int MAXAMMO = 5;
@@ -44,7 +44,7 @@ public class ReloadAmmo : MonoBehaviour
     /// </summary>
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Snow Tray")
+        if(other.gameObject.name == "Snowball Pile")
         {
             canReload = true;
 
@@ -52,7 +52,7 @@ public class ReloadAmmo : MonoBehaviour
             snowTrayInv = snowTray.GetComponent<SnowTrayInventory>(); // gets the snow tray's inventory
             sliderComponent = snowTrayInv.meter.GetComponent<Slider>();
             snowInventory = gameObject.GetComponent<SnowInventory>();
-            trayAmountText = snowTray.transform.Find("Canvas/Amount").GetComponent<TextMeshProUGUI>();
+            //trayAmountText = snowTray.transform.Find("Canvas/Amount").GetComponent<TextMeshProUGUI>();
         }
     }
 
@@ -61,7 +61,7 @@ public class ReloadAmmo : MonoBehaviour
     /// </summary>
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.name == "Snow Tray")
+        if(other.gameObject.name == "Snowball Pile")
         {
             canReload = false;
         }
@@ -80,6 +80,7 @@ public class ReloadAmmo : MonoBehaviour
             {
                 snowTrayInv.meter.SetActive(true); // turn on the reload meter
                 isReloading = true; // for the update
+                Debug.Log("meter should be active");
             }
             else if (context.canceled) // when the hold has ended or interrupted
             {
