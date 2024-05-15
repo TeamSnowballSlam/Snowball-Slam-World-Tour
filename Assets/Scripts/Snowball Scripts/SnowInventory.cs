@@ -13,7 +13,6 @@ using TMPro;
 public class SnowInventory : MonoBehaviour
 {
     [SerializeField]private TextMeshProUGUI snowballText;   
-    private string penguinName;
 
     private int currentAmmo;
     public int CurrentAmmo
@@ -35,5 +34,6 @@ public class SnowInventory : MonoBehaviour
         penguinName = gameObject.name; // for debugging purposes
         currentAmmo = 5;
         snowballText = GameObject.Find("Snowball Text").GetComponent<TextMeshProUGUI>();
+        snowballText.text = "Snowballs: " + currentAmmo.ToString();
     }
 }

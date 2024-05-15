@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -487,7 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1654,7 +1654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e1f1dde07ca824781635bf14ac8b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: 0
   meter: {fileID: 0}
 --- !u!65 &566847971
 BoxCollider:
@@ -1803,7 +1802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3431,7 +3430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e1f1dde07ca824781635bf14ac8b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: 0
   meter: {fileID: 0}
 --- !u!65 &1539715611
 BoxCollider:
