@@ -16,26 +16,35 @@ public class ReloadAmmo : MonoBehaviour
     // Classes
     public SnowInventory snowInventory; // The player's snowball inventory
     public SnowTrayInventory snowTrayInv; // The snow tray's snowball inventory
-
+    
     // Booleans
     private bool canReload = false;
     private bool isReloading = false;
 
     // GameObjects
-    private GameObject snowTray;
-    private GameObject reloadMeter;
+    [SerializeField]private GameObject reloadSlider;
 
     // UI Components
     private Slider sliderComponent;
+    private TextMeshProUGUI snowballText;
 
     // Constants
     private static int MAXAMMO = 5;
+
+    // GameObjects
+    private GameObject snowTray;
+    private GameObject reloadMeter;
 
     private int amount;
 
     void Start()
     {
-        snowInventory = gameObject.GetComponent<SnowInventory>();
+        snowInventory = GetComponent<SnowInventory>();
+        snowPile = GameObject.Find("Player Snow Pile");
+        reloadSlider = snowPile.transform.Find("Canvas/Progress").gameObject;
+        snowballText = GameObject.Find("Snowball Text").GetComponent<TextMeshProUGUI>();
+        sliderComponent = reloadSlider.GetComponent<Slider>();
+        reloadSlider.SetActive(false);
     }
 
     /// <summary>
@@ -99,7 +108,6 @@ public class ReloadAmmo : MonoBehaviour
             {
                 SnowToTake(); // starts a difference calculation
 
-                // turn off
                 isReloading = false;
                 sliderComponent.value = 0;
 
