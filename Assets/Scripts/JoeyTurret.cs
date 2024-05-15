@@ -51,11 +51,12 @@ public class JoeyTurret : MonoBehaviour
         }
         if (Time.time - spawnTime >= expireTime || GameSettings.currentGameState == GameStates.PostGame) //If the ability has expired
         {
-            animator.SetTrigger("doDestroyJoey"); 
+            animator.SetTrigger("doDespawn"); 
+            Debug.Log("Despawned");
             //This needs to be triggered by the animation not instant
-            Destroy(gameObject); //Destroy the ability
         }
     }
+
 
     private GameObject GetClosestPlayer()
     {

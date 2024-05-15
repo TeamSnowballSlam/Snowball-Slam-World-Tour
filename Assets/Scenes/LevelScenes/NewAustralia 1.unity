@@ -953,7 +953,7 @@ PrefabInstance:
     - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
@@ -10104,7 +10104,7 @@ PrefabInstance:
     - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
@@ -10936,74 +10936,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 741589269}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &653169465
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4411431618142465773, guid: 3cb461ff64a7b534eb39c863f32cf184,
-        type: 3}
-      propertyPath: m_Name
-      value: JoeyTurret
-      objectReference: {fileID: 0}
-    - target: {fileID: 5842437540083532008, guid: 3cb461ff64a7b534eb39c863f32cf184,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.7905188
-      objectReference: {fileID: 0}
-    - target: {fileID: 5842437540083532008, guid: 3cb461ff64a7b534eb39c863f32cf184,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.0500021
-      objectReference: {fileID: 0}
-    - target: {fileID: 5842437540083532008, guid: 3cb461ff64a7b534eb39c863f32cf184,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 16.335577
-      objectReference: {fileID: 0}
-    - target: {fileID: 5842437540083532008, guid: 3cb461ff64a7b534eb39c863f32cf184,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5842437540083532008, guid: 3cb461ff64a7b534eb39c863f32cf184,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5842437540083532008, guid: 3cb461ff64a7b534eb39c863f32cf184,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5842437540083532008, guid: 3cb461ff64a7b534eb39c863f32cf184,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5842437540083532008, guid: 3cb461ff64a7b534eb39c863f32cf184,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5842437540083532008, guid: 3cb461ff64a7b534eb39c863f32cf184,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5842437540083532008, guid: 3cb461ff64a7b534eb39c863f32cf184,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3cb461ff64a7b534eb39c863f32cf184, type: 3}
 --- !u!1001 &654212001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26973,7 +26905,7 @@ PrefabInstance:
     - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
@@ -28494,7 +28426,7 @@ PrefabInstance:
     - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
@@ -35154,7 +35086,7 @@ PrefabInstance:
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
       propertyPath: targetScore
-      value: 15
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
@@ -35473,4 +35405,3 @@ SceneRoots:
   - {fileID: 65225147}
   - {fileID: 599240565}
   - {fileID: 1750380885}
-  - {fileID: 653169465}
