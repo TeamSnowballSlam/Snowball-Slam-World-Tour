@@ -35046,7 +35046,7 @@ PrefabInstance:
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
       propertyPath: delayTime
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
@@ -35061,7 +35061,7 @@ PrefabInstance:
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
       propertyPath: LevelLength
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
@@ -35153,6 +35153,11 @@ PrefabInstance:
       propertyPath: endGameWinnerSpawnPoints.Array.data[3]
       value: 
       objectReference: {fileID: 731739677}
+    - target: {fileID: 846626289398261013, guid: ca055bc1e547a4f48b1c4194ed003bac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 1591517258359735245, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
       propertyPath: m_Pivot.x
@@ -35253,15 +35258,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1732507377921223929, guid: ca055bc1e547a4f48b1c4194ed003bac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 2943478018497788306, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1549669379}
+    - target: {fileID: 4832219657660536395, guid: ca055bc1e547a4f48b1c4194ed003bac,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 175
+      objectReference: {fileID: 0}
     - target: {fileID: 4930404031362543776, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655770625671364090, guid: ca055bc1e547a4f48b1c4194ed003bac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
