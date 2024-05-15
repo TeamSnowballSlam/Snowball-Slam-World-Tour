@@ -134,6 +134,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8852492189630171637}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c783104df62eee54fbdf6dadbbe6cdf0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1133856678165595988}
   m_SourcePrefab: {fileID: 100100000, guid: c783104df62eee54fbdf6dadbbe6cdf0, type: 3}
 --- !u!1 &5126145504706846894 stripped
 GameObject:
@@ -265,11 +269,35 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9097659955827778366}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e1c8d5f0-3cdd-4ff1-a8c6-95f6e37c4e5f
     m_ActionName: Player/Move
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8852492189630171637}
+        m_TargetAssemblyTypeName: ThrowSnowballs, Assembly-CSharp
+        m_MethodName: ThrowSnowball
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: b5b6239f-af51-4b7d-84f8-15c6c4c1117e
     m_ActionName: Player/Fire
   - m_PersistentCalls:
@@ -335,7 +363,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowballPrefab: {fileID: 380627630326163080, guid: f961f415f92502740a7797120d3b1b30,
     type: 3}
-  snowInventory: {fileID: 0}
+  snowInventory: {fileID: -1133856678165595988}
+--- !u!114 &-1133856678165595988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5126145504706846894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1ec78b65a4f6f41b3cfb84c8ee011c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmo: 5
 --- !u!4 &7345425762469198088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3319964556498035959, guid: c783104df62eee54fbdf6dadbbe6cdf0,

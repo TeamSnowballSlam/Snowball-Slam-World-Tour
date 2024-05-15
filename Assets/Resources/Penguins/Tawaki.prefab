@@ -373,6 +373,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8602650144753550310}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 87a2a73d387946b4293e73710f0890a2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7652499467892607858}
   m_SourcePrefab: {fileID: 100100000, guid: 87a2a73d387946b4293e73710f0890a2, type: 3}
 --- !u!4 &446134297055128542 stripped
 Transform:
@@ -510,15 +514,51 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7911754224603637371}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e1c8d5f0-3cdd-4ff1-a8c6-95f6e37c4e5f
     m_ActionName: Player/Move
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8602650144753550310}
+        m_TargetAssemblyTypeName: ThrowSnowballs, Assembly-CSharp
+        m_MethodName: ThrowSnowball
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: b5b6239f-af51-4b7d-84f8-15c6c4c1117e
     m_ActionName: Player/Fire
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5e801d91-4a1c-4540-b25e-7decfe316a71
     m_ActionName: Player/Interact
   - m_PersistentCalls:
@@ -580,4 +620,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowballPrefab: {fileID: 380627630326163080, guid: f961f415f92502740a7797120d3b1b30,
     type: 3}
-  snowInventory: {fileID: 0}
+  snowInventory: {fileID: -7652499467892607858}
+--- !u!114 &-7652499467892607858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6943971823805139022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1ec78b65a4f6f41b3cfb84c8ee011c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmo: 5
