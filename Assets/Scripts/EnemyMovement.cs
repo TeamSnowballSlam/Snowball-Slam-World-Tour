@@ -84,9 +84,11 @@ public class EnemyMovement : MonoBehaviour
                     if ( random <= turretChance)
                     {
                         GetComponent<KangarooAbility>().PlaceTurret();
+                        Debug.Log("Turret spawned " + random);
                     }
                     else
                     {
+                        return;
                     }
                 }
                     state = EnemyStates.Idle; //Sets the state to Idle

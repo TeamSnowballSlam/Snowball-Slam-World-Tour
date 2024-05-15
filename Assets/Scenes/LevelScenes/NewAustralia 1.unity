@@ -943,7 +943,7 @@ PrefabInstance:
     - target: {fileID: 500062845999461811, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: turretSpawnChance
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
@@ -10094,7 +10094,7 @@ PrefabInstance:
     - target: {fileID: 500062845999461811, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: turretSpawnChance
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
@@ -26895,7 +26895,7 @@ PrefabInstance:
     - target: {fileID: 500062845999461811, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: turretSpawnChance
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
@@ -28416,7 +28416,7 @@ PrefabInstance:
     - target: {fileID: 500062845999461811, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: turretSpawnChance
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}

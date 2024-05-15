@@ -18,8 +18,8 @@ public class KangarooAbility : MonoBehaviour
     private const float TURRETOFFSET = 1.5f;
     public GameObject joeyPrefab; //The joey prefab
     private JoeyTurret activeTurret; //The active turret
-    [HideInInspector] public bool canUseTurret; //Whether or not the ability is active
-    private float abilityTime; //The time the ability was used
+    public bool canUseTurret; //Whether or not the ability is active
+    private float abilityTime = 0; //The time the ability was used
 
      [Range(0, 100)]
     public int turretSpawnChance = 50; //percentage chance of spawning a turret
@@ -28,7 +28,7 @@ public class KangarooAbility : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canUseTurret = true;
+        canUseTurret = false;
         animator = GetComponent<Animator>();
     }
 /// <summary>
@@ -68,10 +68,23 @@ public class KangarooAbility : MonoBehaviour
     /// </summary>
     public void CheckAbilityCooldown()
     {
-        
-        if (Time.time - abilityTime >= (abiltyCooldown + activeTurret.expireTime ))
+        if(activeTurret)
         {
-            canUseTurret = true;
+            if (Time.time - abilityTime >= (abiltyCooldown + activeTurret.expireTime ))
+            {
+                canUseTurret = true;
+            }
+        }
+        else
+        {
+            if (Time.time - abilityTime >= abiltyCooldown)
+            {
+                canUseTurret = true;
+            }
+            else
+            {
+                Debug.Log(Time.time - abilityTime + "<<>>" + abiltyCooldown);
+            }
         }
     }
 
