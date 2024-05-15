@@ -101,7 +101,7 @@ public class LaunchPowerup : MonoBehaviour
     private LaunchData CalculateLaunchData()
     {
         float displacementY = target.position.y - rigidBbody.position.y;
-        Vector3 displacementXZ = new Vector3(
+        Vector3 displacementXZ = new (
             target.position.x - rigidBbody.position.x,
             0,
             target.position.z - rigidBbody.position.z
@@ -119,7 +119,7 @@ public class LaunchPowerup : MonoBehaviour
             Mathf.Sqrt(-2 * maximumHeightOfArc / gravity)
             + Mathf.Sqrt(2 * (displacementY - maximumHeightOfArc) / gravity);
 
-        return new LaunchData(velocityXZ + velocityY * -Mathf.Sign(gravity), time);
+        return new (velocityXZ + velocityY * -Mathf.Sign(gravity), time);
     }
 
     /// <summary>
@@ -138,7 +138,7 @@ public class LaunchPowerup : MonoBehaviour
         {
             this.isLaunching = false;
             rigidBbody.useGravity = false;
-            rigidBbody.position = new Vector3(
+            rigidBbody.position = new (
                 Random.insideUnitCircle.x * Random.Range(-100, 100),
                 0,
                 Random.insideUnitCircle.y * Random.Range(-100, 100)
@@ -150,11 +150,11 @@ public class LaunchPowerup : MonoBehaviour
             rigidBbody.velocity = Vector3.zero;
             Debug.LogError("Something went wrong with the launch data");
         }
-        Debug.Log("Velocity: " + rigidBbody.velocity);
-        Debug.Log("Gravity: " + Physics.gravity);
-        Debug.Log("Position: " + rigidBbody.position);
-        Debug.Log("Target Position: " + this.target.position);
-        Debug.Log("Maximum Height: " + this.maximumHeightOfArc);
+        // Debug.Log("Velocity: " + rigidBbody.velocity);
+        // Debug.Log("Gravity: " + Physics.gravity);
+        // Debug.Log("Position: " + rigidBbody.position);
+        // Debug.Log("Target Position: " + this.target.position);
+        // Debug.Log("Maximum Height: " + this.maximumHeightOfArc);
     }
 
     /// <summary>
@@ -164,12 +164,12 @@ public class LaunchPowerup : MonoBehaviour
     /// <returns>The Position as a Vector3</returns>
     private Vector3 GenerateRandomPosition(Bounds bounds)
     {
-        Debug.Log("Bounds for powerup: " + bounds);
+        // Debug.Log("Bounds for powerup: " + bounds);
 
         float randomX = Random.Range(bounds.min.x, bounds.max.x);
         float randomZ = Random.Range(bounds.min.z, bounds.max.z);
-        Debug.Log("RandomX: " + randomX + " RandomZ: " + randomZ);
+        // Debug.Log("RandomX: " + randomX + " RandomZ: " + randomZ);
 
-        return new Vector3(randomX, 0, randomZ);
+        return new (randomX, 0, randomZ);
     }
 }
