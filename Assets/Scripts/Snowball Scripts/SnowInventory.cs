@@ -11,7 +11,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class SnowInventory : MonoBehaviour
-
+{
     [SerializeField]private TextMeshProUGUI snowballText;   
 
     private int currentAmmo;
