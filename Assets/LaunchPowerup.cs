@@ -17,27 +17,27 @@ public class LaunchPowerup : MonoBehaviour
     /// <summary>
     /// The Rigidbody component of the powerup
     /// </summary>
-    public Rigidbody rigidBbody;
+    private Rigidbody rigidBbody;
 
     /// <summary>
     /// The target transform that the powerup will be launched towards
     /// </summary>
-    public Transform target;
+    private Transform target;
 
     /// <summary>
     /// an empty gameobject that will be instantiated at a random position within the bounds of the level
     /// </summary>
-    public GameObject targetObject;
+    [SerializeField] private GameObject targetObject;
 
     /// <summary>
     /// The maximum height of the arc that the powerup will travel
     /// </summary>
-    public float maximumHeightOfArc;
+    [SerializeField] private float maximumHeightOfArc;
 
     /// <summary>
     /// The strength of gravity that will be applied to the powerup
     /// </summary>
-    public float gravity;
+    private float gravity;
 
     /// <summary>
     /// A boolean to check if the powerup is currently being launched
@@ -70,7 +70,7 @@ public class LaunchPowerup : MonoBehaviour
     /// <summary>
     /// Struct to hold the data required to launch the powerup to the target position
     /// </summary>
-    private struct LaunchData
+    private readonly struct LaunchData
     {
         /// <summary>
         /// The initial velocity of the powerup when launched
@@ -125,7 +125,7 @@ public class LaunchPowerup : MonoBehaviour
     /// <summary>
     /// This method will launch the powerup towards the target position created by asperatology
     /// </summary>
-    void Launch()
+    private void Launch()
     {
         this.isLaunching = true;
         Physics.gravity = Vector3.up * this.gravity;
