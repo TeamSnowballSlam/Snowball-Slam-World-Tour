@@ -148,7 +148,7 @@
                     "name": "",
                     "id": "9f97a159-3505-4c45-8c0d-30dc159099e2",
                     "path": "<Keyboard>/e",
-                    "interactions": "",
+                    "interactions": "Hold(duration=2)",
                     "processors": "",
                     "groups": "WASD",
                     "action": "Interact",
