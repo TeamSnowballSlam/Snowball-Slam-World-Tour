@@ -68,6 +68,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1311052643304611983, guid: c4a45a5bd6c1b8545a762debc61161b4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1cfa1c9df91b86e469c99e40f49a065b, type: 2}
     - target: {fileID: 1824914126785225520, guid: c4a45a5bd6c1b8545a762debc61161b4,
         type: 3}
       propertyPath: m_Name
@@ -92,6 +97,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -142,6 +162,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -270441002484771425, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -161,7 +186,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Avatar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9000000, guid: 750c74749f5b7e249b8668cf88f61160, type: 3}
     - target: {fileID: 5866666021909216657, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       propertyPath: m_Controller
@@ -202,7 +227,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4214962899439876040}
+      addedObject: {fileID: -187078064807162140}
   m_SourcePrefab: {fileID: 100100000, guid: 750c74749f5b7e249b8668cf88f61160, type: 3}
 --- !u!4 &5360695777459846775 stripped
 Transform:
@@ -336,9 +361,9 @@ MonoBehaviour:
     m_ActionName: Player/Move
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4193235427383844115}
-        m_TargetAssemblyTypeName: ThrowSnowballs, Assembly-CSharp
-        m_MethodName: ThrowSnowball
+      - m_Target: {fileID: 7300853269631483991}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -352,25 +377,13 @@ MonoBehaviour:
     m_ActionName: Player/Fire
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2285202151113533728}
-        m_TargetAssemblyTypeName: ReloadAmmo, Assembly-CSharp
-        m_MethodName: OnHold
-        m_Mode: 0
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: -2915602055214431011}
-        m_TargetAssemblyTypeName: PlayerToMachine, Assembly-CSharp
-        m_MethodName: OnHold
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -418,7 +431,7 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9c65686e-b943-4f43-96ab-6e8220bc4ffe
     m_ActionName: UI/TrackedDeviceOrientation
-  m_NeverAutoSwitchControlSchemes: 1
+  m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -437,8 +450,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowballPrefab: {fileID: 380627630326163080, guid: f961f415f92502740a7797120d3b1b30,
     type: 3}
-  snowInventory: {fileID: 0}
---- !u!114 &4214962899439876040
+  snowInventory: {fileID: -187078064807162140}
+--- !u!114 &-187078064807162140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

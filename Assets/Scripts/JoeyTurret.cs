@@ -16,6 +16,7 @@ public class JoeyTurret : MonoBehaviour
     private float delayTime = 0.75f; //The delay time between throws
 
     private float spawnTime; //The time the ability was spawned
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class JoeyTurret : MonoBehaviour
         }
         transform.position = new Vector3(transform.position.x, 0.65f, transform.position.z);
         spawnTime = Time.time; //Sets the spawn time to the current time
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -49,6 +51,8 @@ public class JoeyTurret : MonoBehaviour
         }
         if (Time.time - spawnTime >= expireTime || GameSettings.currentGameState == GameStates.PostGame) //If the ability has expired
         {
+            animator.SetTrigger("doDestroyJoey"); 
+            //This needs to be triggered by the animation not instant
             Destroy(gameObject); //Destroy the ability
         }
     }

@@ -27,6 +27,7 @@ public class EnemyMovement : MonoBehaviour
     private float delayTime = 1.5f; //The delay time between throws
 
     private int turretChance;
+    private Animator animator;
 
     void Start()
     {
@@ -34,10 +35,12 @@ public class EnemyMovement : MonoBehaviour
         throwTime = Time.time; //Sets the throw time to the current time
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
+        animator.SetFloat("movementSpeed", agent.velocity.magnitude);
         if (GameSettings.currentGameState != GameStates.InGame)
         {
             agent.isStopped = true;

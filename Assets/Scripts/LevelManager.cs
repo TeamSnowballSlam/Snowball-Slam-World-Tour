@@ -63,7 +63,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public GameObject restartButton;
     public GameObject continueButton;
-    public GameObject addPlayerButton;
+    //public GameObject addPlayerButton;
 
     void Awake()
     {
@@ -196,7 +196,7 @@ public class LevelManager : MonoBehaviour
     {
         mainCamera.SetActive(false);
         endGameCamera.SetActive(true);
-        addPlayerButton.SetActive(false);
+        //addPlayerButton.SetActive(false);
 
         GameObject[] snowballs = GameObject.FindGameObjectsWithTag("Snowball");
         foreach (GameObject snowball in snowballs)

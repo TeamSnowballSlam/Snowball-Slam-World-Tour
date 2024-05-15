@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private const float UPDATEDELAY = 0.05f; //The delay between direction facing updates
     private const double DOUBLETAPDELAY = 0.25; //The amount of delay allowed between taps
-    private const int MOVEMENTSPEED = 7; //Placeholder values. Will change after testing
+    private const int MOVEMENTSPEED = 12; //Placeholder values. Will change after testing
 
     private const int SLIDINGSPEED = 20; //Placeholder values. Will change after testing
     private int slowingDownSpeed = 0; //The speed the player is at during the slowing down process
@@ -48,11 +48,13 @@ public class PlayerMovement : MonoBehaviour
             if (IsSlowingDown)
             {
                 //Slowing down speed
+                animator.SetFloat("movementSpeed", (float)slowingDownSpeed);
                 return slowingDownSpeed;
             }
             if (IsSliding)
             {
                 //Sliding speed
+                animator.SetFloat("movementSpeed", (float)SLIDINGSPEED);
                 return SLIDINGSPEED;
             }
             if (IsMoving)
@@ -60,13 +62,16 @@ public class PlayerMovement : MonoBehaviour
                 //Moving Speed
                 if (touchingRoad)
                 {
+                    animator.SetFloat("movementSpeed", (float)MOVEMENTSPEED - (int)TouchingRoadSpeed);
                     return MOVEMENTSPEED - (int)TouchingRoadSpeed;
                 }
+                animator.SetFloat("movementSpeed", (float)MOVEMENTSPEED);
                 return MOVEMENTSPEED;
             }
             else
             {
                 //Idle Speed
+                animator.SetFloat("movementSpeed", 0.0f);
                 return 0;
             }
         }
@@ -82,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
         private set
         {
             isMoving = value;
-            animator.SetBool("IsMoving", value);
             if (!value) //If the player is not moving then they are not sliding either
             {
                 IsSliding = value;
@@ -107,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 IsSlowingDown = true; //The player gets set to slowing down
             }
-            else
+            else if (!touchingRoad)
             {
                 isSliding = value;
                 animator.SetBool("IsSliding", value);
@@ -245,10 +249,11 @@ public class PlayerMovement : MonoBehaviour
     public bool TouchingRoad() //Returns true if the player is touching the road
     {
         //Checks if the player is standing on a gameobject with the tag "Road"
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1f))
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f))
         {
             if (hit.collider.CompareTag("Road"))
             {
+                IsSliding = false;
                 return true;
             }
         }

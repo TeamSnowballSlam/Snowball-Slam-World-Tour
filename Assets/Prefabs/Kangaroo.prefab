@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1311052643304611983, guid: c4a45a5bd6c1b8545a762debc61161b4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1cfa1c9df91b86e469c99e40f49a065b, type: 2}
     - target: {fileID: 1824914126785225520, guid: c4a45a5bd6c1b8545a762debc61161b4,
         type: 3}
       propertyPath: m_Name
@@ -99,13 +104,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
         type: 3}
@@ -147,6 +167,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fac4156c6ed86244d8298a02f33413b8,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -5900572701946122095, guid: fac4156c6ed86244d8298a02f33413b8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -166,6 +191,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Kangaroo
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fac4156c6ed86244d8298a02f33413b8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2236237030686087061, guid: fac4156c6ed86244d8298a02f33413b8,
         type: 3}
@@ -203,7 +233,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fac4156c6ed86244d8298a02f33413b8,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -8899636432603667563}
+      addedObject: {fileID: 500062845999461811}
   m_SourcePrefab: {fileID: 100100000, guid: fac4156c6ed86244d8298a02f33413b8, type: 3}
 --- !u!1 &2387896443102519406 stripped
 GameObject:
@@ -221,7 +251,7 @@ Animator:
   m_GameObject: {fileID: 2387896443102519406}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 750c74749f5b7e249b8668cf88f61160, type: 3}
-  m_Controller: {fileID: 9100000, guid: 017c71217bc4e5d48a659fc59b7aea8c, type: 2}
+  m_Controller: {fileID: 9100000, guid: d3c1b4cfe82861642a646f6c34c13047, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -254,7 +284,7 @@ CapsuleCollider:
   m_Radius: 0.7798625
   m_Height: 2.73099
   m_Direction: 1
-  m_Center: {x: -0.04914224, y: 0.15701175, z: -0.1214906}
+  m_Center: {x: 0, y: 0.15701175, z: 0}
 --- !u!195 &7236593136866158991
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -303,10 +333,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2784e00fde0ae746bb955637e5a4894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snowballPrefab: {fileID: 8950912869131290729, guid: e3470e932c4611d4b92aa4819b1dbced,
+  snowballPrefab: {fileID: 380627630326163080, guid: f961f415f92502740a7797120d3b1b30,
     type: 3}
   snowInventory: {fileID: 0}
---- !u!114 &-8899636432603667563
+--- !u!114 &500062845999461811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -319,10 +349,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abiltyCooldown: 10
-  joeyPrefab: {fileID: 3657889275645270786, guid: 6d61729d34369424186a1c46c9db0d0c,
+  joeyPrefab: {fileID: 4411431618142465773, guid: 3cb461ff64a7b534eb39c863f32cf184,
     type: 3}
   canUseTurret: 0
-  turretSpawnChance: 50
+  turretSpawnChance: 25
 --- !u!4 &6754948714907492904 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8096501162788568855, guid: fac4156c6ed86244d8298a02f33413b8,

@@ -68,6 +68,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.001
       objectReference: {fileID: 0}
+    - target: {fileID: 1311052643304611983, guid: c4a45a5bd6c1b8545a762debc61161b4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1cfa1c9df91b86e469c99e40f49a065b, type: 2}
     - target: {fileID: 1824914126785225520, guid: c4a45a5bd6c1b8545a762debc61161b4,
         type: 3}
       propertyPath: m_Name
@@ -106,6 +111,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 98.89587
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 87a2a73d387946b4293e73710f0890a2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 87a2a73d387946b4293e73710f0890a2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 87a2a73d387946b4293e73710f0890a2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87a2a73d387946b4293e73710f0890a2,
         type: 3}
@@ -156,6 +176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 87a2a73d387946b4293e73710f0890a2,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7424507524287867659, guid: 87a2a73d387946b4293e73710f0890a2,
         type: 3}
@@ -356,7 +381,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 87a2a73d387946b4293e73710f0890a2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -1726675039815138081}
+      addedObject: {fileID: -7652499467892607858}
   m_SourcePrefab: {fileID: 100100000, guid: 87a2a73d387946b4293e73710f0890a2, type: 3}
 --- !u!4 &446134297055128542 stripped
 Transform:
@@ -508,7 +533,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: e1c8d5f0-3cdd-4ff1-a8c6-95f6e37c4e5f
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/rightArrow,/Keyboard/leftArrow,/Keyboard/downArrow]
+    m_ActionName: Player/Move
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8602650144753550310}
@@ -524,67 +549,55 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: b5b6239f-af51-4b7d-84f8-15c6c4c1117e
-    m_ActionName: Player/Fire[/Keyboard/g,/Keyboard/period]
+    m_ActionName: Player/Fire
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2458481710149767831}
-        m_TargetAssemblyTypeName: ReloadAmmo, Assembly-CSharp
-        m_MethodName: OnHold
-        m_Mode: 0
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: -1118397298977077886}
-        m_TargetAssemblyTypeName: PlayerToMachine, Assembly-CSharp
-        m_MethodName: OnHold
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 5e801d91-4a1c-4540-b25e-7decfe316a71
-    m_ActionName: Player/Interact[/Keyboard/h,/Keyboard/slash]
+    m_ActionName: Player/Interact
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: d127efa7-32a8-45ec-8c4a-9e50843a6588
-    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+    m_ActionName: UI/Navigate
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 4ee716e0-7aac-4a9d-9d21-9be7aedbd7af
-    m_ActionName: UI/Submit[/Keyboard/enter]
+    m_ActionName: UI/Submit
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 2d604931-9e5a-4be5-b9cc-599e30944004
-    m_ActionName: UI/Cancel[/Keyboard/escape]
+    m_ActionName: UI/Cancel
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 2e6fb3d7-5184-4a55-bff3-a051c1c92318
-    m_ActionName: UI/Point[/Mouse/position]
+    m_ActionName: UI/Point
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: a05c8676-75b7-4ad2-8212-6d664eea2ef6
-    m_ActionName: UI/Click[/Mouse/leftButton]
+    m_ActionName: UI/Click
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: b66b3378-1490-48b6-9bd0-19bdd27b0b48
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+    m_ActionName: UI/ScrollWheel
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 51bb0bf8-5c66-42a7-8735-c4a872196e63
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+    m_ActionName: UI/MiddleClick
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 2aec0d50-b4fc-4a9d-8a7a-896b3d9e3d0c
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
+    m_ActionName: UI/RightClick
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: fc381da4-9f11-4ce0-bb7d-15e9c7b7dfd5
@@ -593,7 +606,7 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9c65686e-b943-4f43-96ab-6e8220bc4ffe
     m_ActionName: UI/TrackedDeviceOrientation
-  m_NeverAutoSwitchControlSchemes: 1
+  m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -612,8 +625,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowballPrefab: {fileID: 380627630326163080, guid: f961f415f92502740a7797120d3b1b30,
     type: 3}
-  snowInventory: {fileID: 0}
---- !u!114 &-1726675039815138081
+  snowInventory: {fileID: -7652499467892607858}
+--- !u!114 &-7652499467892607858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
