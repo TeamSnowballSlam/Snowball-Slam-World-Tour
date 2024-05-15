@@ -377,7 +377,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 6943971823805139022, guid: 495b999eecd45604b9374abafa4c2edf,
         type: 3}
@@ -439,6 +439,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 495b999eecd45604b9374abafa4c2edf, type: 3}
+--- !u!4 &25292743 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7716391543909274356, guid: 495b999eecd45604b9374abafa4c2edf,
+    type: 3}
+  m_PrefabInstance: {fileID: 25292742}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &26527400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 158060047091370133, guid: 89ce5ae30719137489b475d46a23882a,
@@ -1941,12 +1947,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 2387896443102519406, guid: f2c01239975c2aa47b30647e1a43458c,
         type: 3}
       propertyPath: m_Name
       value: Kangaroo_Spectator
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5000001
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
         type: 3}
@@ -2003,6 +2019,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2c01239975c2aa47b30647e1a43458c, type: 3}
+--- !u!4 &160909286 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
+    type: 3}
+  m_PrefabInstance: {fileID: 160909285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &163946552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4859,12 +4881,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 2387896443102519406, guid: f2c01239975c2aa47b30647e1a43458c,
         type: 3}
       propertyPath: m_Name
       value: Kangaroo_Spectator (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4999999
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
         type: 3}
@@ -4921,6 +4953,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2c01239975c2aa47b30647e1a43458c, type: 3}
+--- !u!4 &337872807 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
+    type: 3}
+  m_PrefabInstance: {fileID: 337872806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &339300652 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3877239995337897042, guid: ca837312e561f494781c785b71a21592,
@@ -7915,7 +7953,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 2387896443102519406, guid: 42483abd91abc6a42a14f274b3ef9b7b,
         type: 3}
@@ -7977,6 +8015,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42483abd91abc6a42a14f274b3ef9b7b, type: 3}
+--- !u!4 &500568831 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3055784179095255764, guid: 42483abd91abc6a42a14f274b3ef9b7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 500568830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &502847723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8642,10 +8686,23 @@ Transform:
   m_GameObject: {fileID: 530446236}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9098256, y: -19.07, z: 26.42389}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 690835706}
+  - {fileID: 1958297779}
+  - {fileID: 2051571683}
+  - {fileID: 1230221635}
+  - {fileID: 1429282588}
+  - {fileID: 25292743}
+  - {fileID: 160909286}
+  - {fileID: 1139532470}
+  - {fileID: 1854364794}
+  - {fileID: 337872807}
+  - {fileID: 862927655}
+  - {fileID: 500568831}
+  - {fileID: 2036361181}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &532399990
@@ -11566,12 +11623,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 5126145504706846894, guid: 83ef629de12c3464ab409eab002360cb,
         type: 3}
       propertyPath: m_Name
       value: Hoiho_Spectator
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505767650127788564, guid: 83ef629de12c3464ab409eab002360cb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505767650127788564, guid: 83ef629de12c3464ab409eab002360cb,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5000001
       objectReference: {fileID: 0}
     - target: {fileID: 5505767650127788564, guid: 83ef629de12c3464ab409eab002360cb,
         type: 3}
@@ -11628,6 +11695,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83ef629de12c3464ab409eab002360cb, type: 3}
+--- !u!4 &690835706 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5505767650127788564, guid: 83ef629de12c3464ab409eab002360cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 690835705}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &693450064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4944457962473742997, guid: 2f63ecbd09853da44ae77bb7df60d9f0,
@@ -14658,12 +14731,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 2387896443102519406, guid: 42483abd91abc6a42a14f274b3ef9b7b,
         type: 3}
       propertyPath: m_Name
       value: Kangaroo_Spectator (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055784179095255764, guid: 42483abd91abc6a42a14f274b3ef9b7b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055784179095255764, guid: 42483abd91abc6a42a14f274b3ef9b7b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4999999
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 42483abd91abc6a42a14f274b3ef9b7b,
         type: 3}
@@ -14720,6 +14803,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42483abd91abc6a42a14f274b3ef9b7b, type: 3}
+--- !u!4 &862927655 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3055784179095255764, guid: 42483abd91abc6a42a14f274b3ef9b7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 862927654}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &868092394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18604,12 +18693,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 2387896443102519406, guid: f2c01239975c2aa47b30647e1a43458c,
         type: 3}
       propertyPath: m_Name
       value: Kangaroo_Spectator (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4999998
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
         type: 3}
@@ -18666,6 +18765,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2c01239975c2aa47b30647e1a43458c, type: 3}
+--- !u!4 &1139532470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1139532469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1139817148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20021,12 +20126,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 5126145504706846894, guid: d967be066266bbe4e903a0e9e41ca742,
         type: 3}
       propertyPath: m_Name
       value: Hoiho_Spectator (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505767650127788564, guid: d967be066266bbe4e903a0e9e41ca742,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505767650127788564, guid: d967be066266bbe4e903a0e9e41ca742,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5000002
       objectReference: {fileID: 0}
     - target: {fileID: 5505767650127788564, guid: d967be066266bbe4e903a0e9e41ca742,
         type: 3}
@@ -20083,6 +20198,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d967be066266bbe4e903a0e9e41ca742, type: 3}
+--- !u!4 &1230221635 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5505767650127788564, guid: d967be066266bbe4e903a0e9e41ca742,
+    type: 3}
+  m_PrefabInstance: {fileID: 1230221634}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1232754583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22887,7 +23008,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 7005665015610063796, guid: c6e3dc7f8b59e1b4d8fa70ee168c99b2,
         type: 3}
@@ -22949,6 +23070,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6e3dc7f8b59e1b4d8fa70ee168c99b2, type: 3}
+--- !u!4 &1429282588 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7670421377112989966, guid: c6e3dc7f8b59e1b4d8fa70ee168c99b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1429282587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1431811201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28787,12 +28914,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 2387896443102519406, guid: f2c01239975c2aa47b30647e1a43458c,
         type: 3}
       propertyPath: m_Name
       value: Kangaroo_Spectator (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4999999
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
         type: 3}
@@ -28849,6 +28986,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2c01239975c2aa47b30647e1a43458c, type: 3}
+--- !u!4 &1854364794 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3055784179095255764, guid: f2c01239975c2aa47b30647e1a43458c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1854364793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1865244556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30234,7 +30377,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 7005665015610063796, guid: e3bf4f42b7f35804f9b778e02fea863d,
         type: 3}
@@ -30296,6 +30439,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3bf4f42b7f35804f9b778e02fea863d, type: 3}
+--- !u!4 &1958297779 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7670421377112989966, guid: e3bf4f42b7f35804f9b778e02fea863d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1958297778}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1961371655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31652,12 +31801,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 2387896443102519406, guid: 42483abd91abc6a42a14f274b3ef9b7b,
         type: 3}
       propertyPath: m_Name
       value: Kangaroo_Spectator (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055784179095255764, guid: 42483abd91abc6a42a14f274b3ef9b7b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055784179095255764, guid: 42483abd91abc6a42a14f274b3ef9b7b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4999999
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 42483abd91abc6a42a14f274b3ef9b7b,
         type: 3}
@@ -31714,6 +31873,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42483abd91abc6a42a14f274b3ef9b7b, type: 3}
+--- !u!4 &2036361181 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3055784179095255764, guid: 42483abd91abc6a42a14f274b3ef9b7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2036361180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2040531432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31882,7 +32047,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 530446237}
     m_Modifications:
     - target: {fileID: 6943971823805139022, guid: e86eabb6cf9076a4bb5b5753071d4656,
         type: 3}
@@ -31944,6 +32109,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e86eabb6cf9076a4bb5b5753071d4656, type: 3}
+--- !u!4 &2051571683 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7716391543909274356, guid: e86eabb6cf9076a4bb5b5753071d4656,
+    type: 3}
+  m_PrefabInstance: {fileID: 2051571682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2054584537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33682,17 +33853,4 @@ SceneRoots:
   - {fileID: 150291286}
   - {fileID: 1667190781}
   - {fileID: 530446237}
-  - {fileID: 690835705}
-  - {fileID: 1958297778}
-  - {fileID: 2051571682}
-  - {fileID: 1230221634}
-  - {fileID: 1429282587}
-  - {fileID: 25292742}
-  - {fileID: 160909285}
-  - {fileID: 1139532469}
-  - {fileID: 1854364793}
-  - {fileID: 337872806}
-  - {fileID: 862927654}
-  - {fileID: 500568830}
-  - {fileID: 2036361180}
   - {fileID: 319082340579902903}
