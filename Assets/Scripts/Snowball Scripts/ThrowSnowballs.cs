@@ -11,10 +11,16 @@ public class ThrowSnowballs : MonoBehaviour
     private GameObject snowball; // instantiate of snowballPrefab
     private Vector3 snowballPosition;
     public SnowInventory snowInventory;
+    private Animator animator;
 
     void Start()
     {
         snowInventory = GetComponent<SnowInventory>();
+        animator = GetComponent<Animator>();
+        if (animator == null) //If the animator is null it's in the children
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
     }
 
     public void ThrowSnowball(InputAction.CallbackContext context)
@@ -22,8 +28,8 @@ public class ThrowSnowballs : MonoBehaviour
         if (snowInventory.currentAmmo <= 0) return; // if no ammo, don't throw snowball
         if (context.phase != InputActionPhase.Started) return; // only throw snowball once--when phase is started
         if (GetComponent<PlayerMovement>().IsSliding) return; // if player is sliding, don't throw snowball
-
-        snowballPosition = new Vector3(transform.position.x, 1.5f, transform.position.z); // thrown at face level
+        animator.SetTrigger("doThrow"); // trigger animation
+        snowballPosition = new Vector3(transform.position.x + 1.0f, 1.5f, transform.position.z); // thrown at face level
         snowball = Instantiate(
             snowballPrefab,
             snowballPosition + transform.forward,
@@ -37,7 +43,8 @@ public class ThrowSnowballs : MonoBehaviour
     public void ThrowSnowball()
     {
         if (GameSettings.currentGameState == GameStates.PostGame) return; // if game is over, don't throw snowball
-        snowballPosition = new Vector3(transform.position.x, 1.5f, transform.position.z); // thrown at face level
+        animator.SetTrigger("doThrow"); // trigger animation
+        snowballPosition = new Vector3(transform.position.x + 2.0f, 1.5f, transform.position.z); // thrown at face level
         snowball = Instantiate(
             snowballPrefab,
             snowballPosition + transform.forward,

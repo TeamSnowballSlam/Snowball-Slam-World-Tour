@@ -23,11 +23,13 @@ public class KangarooAbility : MonoBehaviour
 
      [Range(0, 100)]
     public int turretSpawnChance = 50; //percentage chance of spawning a turret
-    
+    //Animator
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         canUseTurret = true;
+        animator = GetComponent<Animator>();
     }
 /// <summary>
 /// Places the turret on the map
@@ -40,6 +42,7 @@ public class KangarooAbility : MonoBehaviour
             {
                 return;
             }
+            animator.SetTrigger("doSpawnJoey");
             Instantiate(joeyPrefab, transform.position + transform.forward * TURRETOFFSET, transform.rotation);
             JoeyTurret joeyTurret = joeyPrefab.GetComponent<JoeyTurret>();
             joeyTurret.parent = gameObject;
