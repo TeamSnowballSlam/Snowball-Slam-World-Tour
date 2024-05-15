@@ -1,3 +1,9 @@
+/// <remarks>
+/// Author: Erika Stuart
+/// </remarks>
+/// <summary>
+/// This script allows the player to reload their ammo from the snowball tray
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,14 +15,14 @@ public class ReloadAmmo : MonoBehaviour
 {
     // Classes
     public SnowInventory snowInventory; // The player's snowball inventory
-
+    public SnowTrayInventory snowTrayInv; // The snow tray's snowball inventory
+    
     // Booleans
     private bool canReload = false;
     private bool isReloading = false;
 
     // GameObjects
     [SerializeField]private GameObject reloadSlider;
-    private GameObject snowPile;
 
     // UI Components
     private Slider sliderComponent;
@@ -24,6 +30,12 @@ public class ReloadAmmo : MonoBehaviour
 
     // Constants
     private static int MAXAMMO = 5;
+
+    // GameObjects
+    private GameObject snowTray;
+    private GameObject reloadMeter;
+
+    private int amount;
 
     void Start()
     {
@@ -40,18 +52,22 @@ public class ReloadAmmo : MonoBehaviour
     /// </summary>
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Player Snow Pile")
+        if(other.gameObject.name == "Snow Tray")
         {
             canReload = true;
+
+            snowTray = other.gameObject; // finds the specific snow tray
+            snowTrayInv = snowTray.GetComponent<SnowTrayInventory>(); // gets the snow tray's inventory
+            sliderComponent = snowTrayInv.meter.GetComponent<Slider>();
         }
     }
 
     /// <summary>
     /// When the player exits the collider of the snow pile, they can no longer reload their ammo.
     /// </summary>
-    void onTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.name == "Player Snow Pile")
+        if(other.gameObject.name == "Snow Tray")
         {
             canReload = false;
         }
@@ -62,18 +78,20 @@ public class ReloadAmmo : MonoBehaviour
     /// </summary>
     public void OnHold(InputAction.CallbackContext context)
     {
-        if (canReload)
+        if (canReload) // if the player is in the collider of the snow pile
         {
-            if (context.started)
+            if (context.started
+            && snowTrayInv.Inventory >= 1
+            && snowInventory.CurrentAmmo < MAXAMMO) // when the hold has started and there is snow in the tray
             {
-                reloadSlider.SetActive(true);
-                isReloading = true;
+                snowTrayInv.meter.SetActive(true); // turn on the reload meter
+                isReloading = true; // for the update
             }
-            else if (context.canceled)
+            else if (context.canceled) // when the hold has ended or interrupted
             {
-                sliderComponent.value = 0;
+                sliderComponent.value = 0; // reset the slider value
                 isReloading = false;
-                reloadSlider.SetActive(false);
+                snowTrayInv.meter.SetActive(false); // turn off the reload meter
             }
         }
     }
@@ -85,16 +103,34 @@ public class ReloadAmmo : MonoBehaviour
     {
         if (isReloading)
         {
-            sliderComponent.value += Time.deltaTime;
-            if (sliderComponent.value >= sliderComponent.maxValue)
+            sliderComponent.value += Time.deltaTime; // increases the slider value over time
+            if (sliderComponent.value >= sliderComponent.maxValue) // if it reaches the end
             {
-                snowInventory.currentAmmo = MAXAMMO;
-                snowballText.text = "Snowballs: " + snowInventory.currentAmmo.ToString();
+                SnowToTake(); // starts a difference calculation
+
                 isReloading = false;
                 sliderComponent.value = 0;
-                reloadSlider.SetActive(false);
+
+                snowInventory.CurrentAmmo += amount; // adds the difference to the player's ammo
+                snowTrayInv.Inventory -= amount; // 
             }
         }
     }
 
+    /// <summary>
+    /// Calculates the amount of snow to take from the tray.
+    /// </summary>
+    private void SnowToTake()
+    {
+        int difference = MAXAMMO - snowInventory.CurrentAmmo; // the difference between the max ammo and the current ammo
+        if (snowTrayInv.Inventory >= difference) // if the tray has more snow than the difference / less than max
+        {
+            amount = difference; // the amount to take is the difference
+        }
+        else
+        {
+            amount = snowTrayInv.Inventory; // else take the rest
+        }
+
+    }
 }
