@@ -9769,7 +9769,7 @@ GameObject:
   - component: {fileID: 541737253}
   m_Layer: 0
   m_Name: Snowball Pile
-  m_TagString: Untagged
+  m_TagString: Snow Pile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9825,8 +9825,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.04, y: 0.03, z: 0.013877312}
-  m_Center: {x: 0.0002726051, y: 0.0045, z: 0.0041440283}
+  m_Size: {x: 3, y: 2, z: 4}
+  m_Center: {x: 0.5, y: 1, z: 0}
 --- !u!65 &541737255
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9846,8 +9846,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02, y: 0.02, z: 0.013877312}
-  m_Center: {x: 0, y: 0, z: 0.005}
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!4 &542559930 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9021893993405749253, guid: ca82277368ff66c4987a87fe60e5cb84,
@@ -19639,11 +19639,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1041053167}
   - component: {fileID: 1041053170}
-  - component: {fileID: 1041053169}
   - component: {fileID: 1041053168}
+  - component: {fileID: 1041053171}
   m_Layer: 0
   m_Name: Snowball Pile
-  m_TagString: Untagged
+  m_TagString: Snow Pile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19680,27 +19680,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meter: {fileID: 0}
---- !u!65 &1041053169
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041053166}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.04, y: 0.03, z: 0.013877312}
-  m_Center: {x: 0.0002726051, y: 0.0045, z: 0.0041440283}
 --- !u!65 &1041053170
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19720,8 +19699,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02, y: 0.02, z: 0.013877312}
-  m_Center: {x: 0, y: 0, z: 0.005}
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!65 &1041053171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041053166}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 2, z: 4}
+  m_Center: {x: 0.5, y: 1, z: 0}
 --- !u!1001 &1041367834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31245,7 +31245,7 @@ GameObject:
   - component: {fileID: 1704178783}
   m_Layer: 0
   m_Name: Snowball Pile
-  m_TagString: Untagged
+  m_TagString: Snow Pile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31301,8 +31301,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.04, y: 0.03, z: 0.013877312}
-  m_Center: {x: 0.0002726051, y: 0.0045, z: 0.0041440283}
+  m_Size: {x: 3, y: 2, z: 4}
+  m_Center: {x: 0.5, y: 1, z: 0}
 --- !u!65 &1704178785
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31322,8 +31322,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02, y: 0.02, z: 0.013877312}
-  m_Center: {x: 0, y: 0, z: 0.005}
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1705138796
 GameObject:
   m_ObjectHideFlags: 0
@@ -39448,7 +39448,7 @@ GameObject:
   - component: {fileID: 2126910151}
   m_Layer: 0
   m_Name: Snowball Pile
-  m_TagString: Untagged
+  m_TagString: Snow Pile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39504,8 +39504,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.04, y: 0.03, z: 0.013877312}
-  m_Center: {x: 0.0002726051, y: 0.0045, z: 0.0041440283}
+  m_Size: {x: 4, y: 2, z: 3}
+  m_Center: {x: 0, y: 1, z: -0.5}
 --- !u!65 &2126910153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39525,8 +39525,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02, y: 0.02, z: 0.013877312}
-  m_Center: {x: 0, y: 0, z: 0.005}
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &2127185775
 PrefabInstance:
   m_ObjectHideFlags: 0

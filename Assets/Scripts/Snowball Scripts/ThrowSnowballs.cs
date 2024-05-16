@@ -45,7 +45,6 @@ public class ThrowSnowballs : MonoBehaviour
         snowball.GetComponent<SnowballCollision>().owner = "Player"; // owner of snowball is the player
         snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
         snowInventory.CurrentAmmo--;
-        Debug.Log("Current ammo: " + snowInventory.CurrentAmmo);
     }
 
     public void ThrowSnowball()
