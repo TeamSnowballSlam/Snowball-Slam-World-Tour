@@ -147,7 +147,7 @@
                 {
                     "name": "",
                     "id": "9f97a159-3505-4c45-8c0d-30dc159099e2",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/#(R)",
                     "interactions": "Hold(duration=2)",
                     "processors": "",
                     "groups": "WASD",
@@ -158,7 +158,7 @@
                 {
                     "name": "",
                     "id": "c6d1c982-ebcb-489b-9bfc-f3c42359102f",
-                    "path": "<Keyboard>/rightCtrl",
+                    "path": "<Keyboard>/#(.)",
                     "interactions": "",
                     "processors": "",
                     "groups": "Arrows",
@@ -169,7 +169,7 @@
                 {
                     "name": "",
                     "id": "b304edcb-f1ea-4c50-bdbd-06971e70b9c0",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/#(T)",
                     "interactions": "",
                     "processors": "",
                     "groups": "WASD",
@@ -180,7 +180,7 @@
                 {
                     "name": "",
                     "id": "ad25ac63-94c7-43d8-8a9c-2033cae3bc98",
-                    "path": "<Keyboard>/rightShift",
+                    "path": "<Keyboard>/#(/)",
                     "interactions": "",
                     "processors": "",
                     "groups": "Arrows",

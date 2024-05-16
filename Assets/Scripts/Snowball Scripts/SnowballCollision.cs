@@ -21,8 +21,8 @@ public class SnowballCollision : MonoBehaviour
             {
                 LevelManager.instance.UpdateScore("Enemy"); //Update the enemy's score
             }
+        Destroy(gameObject); //destroys itself no matter what it hits, snowball or border
         }
 
-        Destroy(gameObject); //destroys itself no matter what it hits, snowball or border
     }
 }
