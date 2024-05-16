@@ -254,7 +254,7 @@ public class DisplayManager : MonoBehaviour
     /// <summary>
     /// Saves the current settings to PlayerPrefs
     /// </summary>
-    private void SaveSettings()
+    public void SaveSettings()
     {
         PlayerPrefs.SetInt("DisplayMode", displayModeDropdown.value);
         PlayerPrefs.SetInt("Resolution", resolutionDropdown.value);
