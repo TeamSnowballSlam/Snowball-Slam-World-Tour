@@ -46,7 +46,6 @@ public class ReloadAmmo : MonoBehaviour
         if(other.gameObject.tag == "Snow Pile")
         {
             canReload = true;
-            Debug.Log("Entered collider");
             snowTray = other.gameObject; // finds the specific snow tray
             snowTrayInv = snowTray.GetComponent<SnowTrayInventory>(); // gets the snow tray's inventory
             sliderComponent = snowTrayInv.meter.GetComponent<Slider>();
@@ -78,7 +77,6 @@ public class ReloadAmmo : MonoBehaviour
             {
                 snowTrayInv.meter.SetActive(true); // turn on the reload meter
                 isReloading = true; // for the update
-                Debug.Log("meter should be active");
             }
             else if (context.canceled) // when the hold has ended or interrupted
             {

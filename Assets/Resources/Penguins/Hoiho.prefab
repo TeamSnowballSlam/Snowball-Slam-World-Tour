@@ -138,6 +138,18 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -1133856678165595988}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c783104df62eee54fbdf6dadbbe6cdf0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6049622809188260689}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c783104df62eee54fbdf6dadbbe6cdf0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5600870436572048076}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c783104df62eee54fbdf6dadbbe6cdf0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3447939241454991287}
   m_SourcePrefab: {fileID: 100100000, guid: c783104df62eee54fbdf6dadbbe6cdf0, type: 3}
 --- !u!1 &5126145504706846894 stripped
 GameObject:
@@ -302,8 +314,8 @@ MonoBehaviour:
     m_ActionName: Player/Fire
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -4543488377431544228}
-        m_TargetAssemblyTypeName: ReloadAmmo, Assembly-CSharp
+      - m_Target: {fileID: -6049622809188260689}
+        m_TargetAssemblyTypeName: PlayerToMachine, Assembly-CSharp
         m_MethodName: OnHold
         m_Mode: 0
         m_Arguments:
@@ -314,8 +326,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2041178325988984971}
-        m_TargetAssemblyTypeName: PlayerToMachine, Assembly-CSharp
+      - m_Target: {fileID: -5600870436572048076}
+        m_TargetAssemblyTypeName: ReloadAmmo, Assembly-CSharp
         m_MethodName: OnHold
         m_Mode: 0
         m_Arguments:
@@ -400,7 +412,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1ec78b65a4f6f41b3cfb84c8ee011c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAmmo: 5
+--- !u!114 &-6049622809188260689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5126145504706846894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba0e19889f0e2a44a9dbb2aa08bfa0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5600870436572048076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5126145504706846894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c0f7b8140fa6041a33ecb8162e6f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snowInventory: {fileID: 0}
+  snowTrayInv: {fileID: 0}
+--- !u!114 &3447939241454991287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5126145504706846894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1ec78b65a4f6f41b3cfb84c8ee011c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7345425762469198088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3319964556498035959, guid: c783104df62eee54fbdf6dadbbe6cdf0,
