@@ -235,6 +235,7 @@ public class LevelManager : MonoBehaviour
 
                 e.GetComponent<NavMeshAgent>().isStopped = true;
                 e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
+                Debug.Log("Enemy " + i + " position: " + e.transform.position + " destination: " + e.GetComponent<NavMeshAgent>().destination);
             }
         }
         else if (winner == "Enemy")
@@ -258,8 +259,10 @@ public class LevelManager : MonoBehaviour
                 e.transform.parent = endGameWinnerSpawnPoints[i];
                 e.transform.localPosition = Vector3.zero;
                 e.transform.localRotation = Quaternion.Euler(Vector3.zero);
-                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
+                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.localPosition);
                 e.GetComponent<NavMeshAgent>().isStopped = true;
+                Debug.Log("Enemy " + i + " position: " + e.transform.localPosition + " destination: " + e.GetComponent<NavMeshAgent>().destination);
+
             }
             timerText.text = "Penguins Lost!";
             timerText.color = criticalColor;
@@ -288,8 +291,12 @@ public class LevelManager : MonoBehaviour
                 e.transform.parent = endGameDrawSpawnPoints[i + 2];
                 e.transform.localPosition = Vector3.zero;
                 e.transform.localRotation = Quaternion.Euler(Vector3.zero);
-                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
+                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.localPosition);
                 e.GetComponent<NavMeshAgent>().isStopped = true;
+                Debug.Log("Enemy " + i + " position: " + e.transform.localPosition + " destination: " + e.GetComponent<NavMeshAgent>().destination);
+                e.GetComponent<NavMeshAgent>().enabled = false;
+                e.GetComponent<EnemyMovement>().enabled = false;
+
             }
         }
     }
