@@ -24,7 +24,6 @@ public class ReloadAmmo : MonoBehaviour
     // UI Components
     private Slider sliderComponent;
     private TextMeshProUGUI snowballText;
-    public TextMeshProUGUI trayAmountText; //used in snowmachine.cs
 
     // Constants
     private static int MAXAMMO = 5;
@@ -44,15 +43,13 @@ public class ReloadAmmo : MonoBehaviour
     /// </summary>
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Snow Tray")
+        if(other.gameObject.tag == "Snow Pile")
         {
             canReload = true;
-
             snowTray = other.gameObject; // finds the specific snow tray
             snowTrayInv = snowTray.GetComponent<SnowTrayInventory>(); // gets the snow tray's inventory
             sliderComponent = snowTrayInv.meter.GetComponent<Slider>();
             snowInventory = gameObject.GetComponent<SnowInventory>();
-            trayAmountText = snowTray.transform.Find("Canvas/Amount").GetComponent<TextMeshProUGUI>();
         }
     }
 
@@ -61,7 +58,7 @@ public class ReloadAmmo : MonoBehaviour
     /// </summary>
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.name == "Snow Tray")
+        if(other.gameObject.tag == "Snow Pile")
         {
             canReload = false;
         }

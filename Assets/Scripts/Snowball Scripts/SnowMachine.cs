@@ -15,7 +15,6 @@ public class SnowMachine : MonoBehaviour
 {    
     private Slider sliderComponent;
     public SnowTrayInventory snowTrayInv;
-    public ReloadAmmo reloadAmmo;
     public int prodSpeed;
 
     private static int FULLYSTOCKED = 15; // so it doesn't produce infinitely
@@ -23,8 +22,8 @@ public class SnowMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sliderComponent = this.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Slider>();
-        snowTrayInv = transform.parent.Find("Snow Tray").GetComponent<SnowTrayInventory>();
+        sliderComponent = transform.Find("Canvas/Progress").GetComponent<Slider>();
+        snowTrayInv = transform.parent.Find("Snowball Pile").GetComponent<SnowTrayInventory>();
         prodSpeed = 6;
     }
 

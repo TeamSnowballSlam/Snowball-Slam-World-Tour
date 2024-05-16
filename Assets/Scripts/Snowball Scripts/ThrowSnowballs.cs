@@ -29,6 +29,7 @@ public class ThrowSnowballs : MonoBehaviour
         }
     }
 
+    // Player
     public void ThrowSnowball(InputAction.CallbackContext context)
     {
         if (snowInventory.CurrentAmmo <= 0) return; // if no ammo, don't throw snowball

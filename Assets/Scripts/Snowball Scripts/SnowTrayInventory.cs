@@ -23,14 +23,44 @@ public class SnowTrayInventory : MonoBehaviour
         {
             inventory = value;
             trayAmountText.text = inventory.ToString(); // text changes when updated
+
+            if (inventory <= 15 && inventory > 10)
+            {
+                snowballPileFull.SetActive(true);
+                snowballPileTwoThirds.SetActive(false);
+                snowballPileOneThird.SetActive(false);
+            }
+            else if (inventory <= 10 && inventory > 5)
+            {
+                snowballPileFull.SetActive(false);
+                snowballPileTwoThirds.SetActive(true);
+                snowballPileOneThird.SetActive(false);
+            }
+            else if(inventory <= 5 && inventory > 0)
+            {
+                snowballPileFull.SetActive(false);
+                snowballPileTwoThirds.SetActive(false);
+                snowballPileOneThird.SetActive(true);
+            }
         }
     }
     public GameObject meter;
 
+    private GameObject snowballPileFull;
+    private GameObject snowballPileTwoThirds;
+    private GameObject snowballPileOneThird;
+
     void Start()
     {
-        meter = gameObject.transform.GetChild(0).Find("Progress").gameObject;
-        trayAmountText = gameObject.transform.GetChild(0).Find("Amount").GetComponent<TextMeshProUGUI>();
+        meter = transform.Find("Canvas/Progress").gameObject;
+        trayAmountText = transform.Find("Canvas/Amount").GetComponent<TextMeshProUGUI>();
         meter.SetActive(false); // set false here so it only shows when used
+
+        snowballPileFull = transform.Find("Snowball Pile Full").gameObject;
+        snowballPileTwoThirds = transform.Find("Snowball Pile Two Thirds").gameObject;
+        snowballPileOneThird = transform.Find("Snowball Pile One Third").gameObject;
+
+        snowballPileFull.SetActive(false);
+        snowballPileTwoThirds.SetActive(false);
     }
 }
