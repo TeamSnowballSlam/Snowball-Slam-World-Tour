@@ -44,7 +44,7 @@ public class ReloadAmmo : MonoBehaviour
     /// </summary>
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Snowball Pile")
+        if(other.gameObject.tag == "Snowball Pile")
         {
             canReload = true;
 
@@ -52,7 +52,6 @@ public class ReloadAmmo : MonoBehaviour
             snowTrayInv = snowTray.GetComponent<SnowTrayInventory>(); // gets the snow tray's inventory
             sliderComponent = snowTrayInv.meter.GetComponent<Slider>();
             snowInventory = gameObject.GetComponent<SnowInventory>();
-            //trayAmountText = snowTray.transform.Find("Canvas/Amount").GetComponent<TextMeshProUGUI>();
         }
     }
 
@@ -61,7 +60,7 @@ public class ReloadAmmo : MonoBehaviour
     /// </summary>
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.name == "Snowball Pile")
+        if(other.gameObject.tag == "Snowball Pile")
         {
             canReload = false;
         }
