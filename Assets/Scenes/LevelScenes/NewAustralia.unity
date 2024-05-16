@@ -381,6 +381,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -865,6 +870,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 602236533}
     m_Modifications:
+    - target: {fileID: 2682897364991404358, guid: 8dec7f80f1c28414298b7b07687480e6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8003560783182494285, guid: 8dec7f80f1c28414298b7b07687480e6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1861,10 +1871,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6999570675258713619, guid: 2be48ef6c5d3cbc4fbef8af3b8911ac4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1273964012646061484, guid: 2be48ef6c5d3cbc4fbef8af3b8911ac4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1009487116}
+    - targetCorrespondingSourceObject: {fileID: 1273964012646061484, guid: 2be48ef6c5d3cbc4fbef8af3b8911ac4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1009487115}
   m_SourcePrefab: {fileID: 100100000, guid: 2be48ef6c5d3cbc4fbef8af3b8911ac4, type: 3}
 --- !u!1001 &147925901
 PrefabInstance:
@@ -8682,7 +8705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 469089761}
   m_Layer: 0
-  m_Name: distortions
+  m_Name: Distortions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9012,6 +9035,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 179.998
       objectReference: {fileID: 0}
+    - target: {fileID: 3142698503210262577, guid: a1e170716de132c4caaa934f3a7ed5e4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9327,6 +9355,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10650,6 +10683,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11296,6 +11334,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5720263300058732697, guid: 9d982a1533dd0be4e80d712097834c68,
     type: 3}
   m_PrefabInstance: {fileID: 605485320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &606604998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1273964012646061484, guid: 2be48ef6c5d3cbc4fbef8af3b8911ac4,
+    type: 3}
+  m_PrefabInstance: {fileID: 141669799}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &609754350
 GameObject:
@@ -12096,6 +12140,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12271,6 +12320,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 602236533}
     m_Modifications:
+    - target: {fileID: 2682897364991404358, guid: 8dec7f80f1c28414298b7b07687480e6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8363923726080236440, guid: 8dec7f80f1c28414298b7b07687480e6,
         type: 3}
       propertyPath: m_Name
@@ -13624,6 +13678,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13716,6 +13775,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13947,6 +14011,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14695,6 +14764,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15188,6 +15262,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15269,6 +15348,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 602236533}
     m_Modifications:
+    - target: {fileID: 2682897364991404358, guid: 8dec7f80f1c28414298b7b07687480e6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8363923726080236440, guid: 8dec7f80f1c28414298b7b07687480e6,
         type: 3}
       propertyPath: m_Name
@@ -16006,6 +16090,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 179.998
       objectReference: {fileID: 0}
+    - target: {fileID: 3142698503210262577, guid: a1e170716de132c4caaa934f3a7ed5e4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16587,7 +16676,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851775849}
   m_LocalRotation: {x: 0.50829, y: -0, z: -0, w: 0.861186}
-  m_LocalPosition: {x: 0, y: 0, z: -8.500002}
+  m_LocalPosition: {x: 0, y: 0, z: -5.05}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -16597,7 +16686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 151.1, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1, y: 5}
+  m_AnchoredPosition: {x: -2.8, y: 6.91}
   m_SizeDelta: {x: 2, y: 0.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &851775851
@@ -17797,6 +17886,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17958,6 +18052,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18660,6 +18759,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18870,7 +18974,7 @@ Transform:
   m_GameObject: {fileID: 968403036}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.25, y: 0, z: -31.65}
+  m_LocalPosition: {x: 52.62, y: 0, z: -31.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19417,6 +19521,48 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 141669799}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1009487115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606604998}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.012, y: 0.004, z: 0.000040000006}
+  m_Center: {x: 0, y: 0, z: 0.000020000003}
+--- !u!65 &1009487116
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606604998}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.004, y: 0.008, z: 0.000040000006}
+  m_Center: {x: 0, y: 0.0019999994, z: 0.000020000003}
 --- !u!4 &1021319131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6335944678972455209, guid: 24edce201e458c643a70435f2122657f,
@@ -20812,6 +20958,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22862,6 +23013,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23202,6 +23358,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25150,6 +25311,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3142698503210262577, guid: a1e170716de132c4caaa934f3a7ed5e4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25317,6 +25483,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25650,6 +25821,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27999,6 +28175,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28310,6 +28491,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29185,6 +29371,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.001
       objectReference: {fileID: 0}
+    - target: {fileID: 3142698503210262577, guid: a1e170716de132c4caaa934f3a7ed5e4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29984,6 +30175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34635,6 +34831,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34791,6 +34992,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142698503210262577, guid: a1e170716de132c4caaa934f3a7ed5e4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35710,6 +35916,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35925,6 +36136,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36421,6 +36637,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36685,6 +36906,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 602236533}
     m_Modifications:
+    - target: {fileID: 2682897364991404358, guid: 8dec7f80f1c28414298b7b07687480e6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8363923726080236440, guid: 8dec7f80f1c28414298b7b07687480e6,
         type: 3}
       propertyPath: m_Name
@@ -39363,6 +39589,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510268211351116400, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
