@@ -7,33 +7,71 @@ public class PlayerMovement : MonoBehaviour
 {
     private const float UPDATEDELAY = 0.05f; //The delay between direction facing updates
     private const double DOUBLETAPDELAY = 0.25; //The amount of delay allowed between taps
-    private const int MOVEMENTSPEED = 7; //Placeholder values. Will change after testing
+    private const int MOVEMENTSPEED = 12; //Placeholder values. Will change after testing
 
     private const int SLIDINGSPEED = 20; //Placeholder values. Will change after testing
     private int slowingDownSpeed = 0; //The speed the player is at during the slowing down process
+    private const double MAXSLOWDOWN = MOVEMENTSPEED - 2; //The maximum speed the road can  slow you by
+    
+    //Returns the current speed reduction when touching the road
+    public double TouchingRoadSpeed 
+    {
+        get
+        {
+            //This increases from a 0 slowdown at the start of the level to the max slowdown at the end of the level
+            return MAXSLOWDOWN * (1 - RemainingLevelPercentage); 
+        }
+    }
+
+    //The % of the level remaining
+    public double RemainingLevelPercentage
+    {
+        get
+        {            
+            return (double)LevelManager.instance.secondsRemaining / (double)LevelManager.instance.LevelLength;
+        }
+    }
 
     public int CurrentSpeed //Returns the movement speed, sliding speed, or 0 depending on the player's state
     {
         get
         {
+            if (TouchingRoad())
+            {
+                touchingRoad = true;
+                isSliding = false;
+            }
+            else if (touchingRoad)
+            {
+                touchingRoad = false;
+            }
             if (IsSlowingDown)
             {
                 //Slowing down speed
+                animator.SetFloat("movementSpeed", (float)slowingDownSpeed);
                 return slowingDownSpeed;
             }
             if (IsSliding)
             {
                 //Sliding speed
+                animator.SetFloat("movementSpeed", (float)SLIDINGSPEED);
                 return SLIDINGSPEED;
             }
             if (IsMoving)
             {
                 //Moving Speed
+                if (touchingRoad)
+                {
+                    animator.SetFloat("movementSpeed", (float)MOVEMENTSPEED - (int)TouchingRoadSpeed);
+                    return MOVEMENTSPEED - (int)TouchingRoadSpeed;
+                }
+                animator.SetFloat("movementSpeed", (float)MOVEMENTSPEED);
                 return MOVEMENTSPEED;
             }
             else
             {
                 //Idle Speed
+                animator.SetFloat("movementSpeed", 0.0f);
                 return 0;
             }
         }
@@ -49,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
         private set
         {
             isMoving = value;
-            animator.SetBool("IsMoving", value);
             if (!value) //If the player is not moving then they are not sliding either
             {
                 IsSliding = value;
@@ -70,11 +107,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 slowingDown = false;
             }
-            if (!value && !slowingDown && isSliding) //If it gets set to false and the player was not slowing down and was sliding
+            if (!value && !slowingDown && isSliding && !touchingRoad) //If it gets set to false and the player was not slowing down and was sliding
             {
                 IsSlowingDown = true; //The player gets set to slowing down
             }
-            else
+            else if (!touchingRoad)
             {
                 isSliding = value;
                 animator.SetBool("IsSliding", value);
@@ -105,12 +142,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 lastInput; //The previous input
     private Vector2 secondLastInput; //The input before the last input
     private double lastTime; //The time of the last input
-    private double secondLastTime; //The time of the input before the last input
     private double startSlowingDownTime; //The time the player started slowing down
     private bool slowingDown = false; //If the coroutine for slowing the player down is running
     private Vector3 moveDirection; //Move input converted to a Vector3
     private float lastUpdate; //The time since the last direction update
-    private IEnumerator coroutine; //The coroutine for slowing down
+    private bool touchingRoad; //If the player is touching the road
 
     void Awake()
     {
@@ -130,6 +166,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameSettings.currentGameState != GameStates.InGame)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
         if (slowingDown) //If the player is slowing down from sliding
         {
             //If the second to last input was diagonal and the last input was straight and the time between the two inputs is very short
@@ -163,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
         slowingDown = true;
         startSlowingDownTime = Time.time;
         slowingDownSpeed = SLIDINGSPEED;
-        while (slowingDownSpeed > MOVEMENTSPEED && slowingDown)
+        while (slowingDownSpeed > MOVEMENTSPEED && slowingDown && !TouchingRoad())
         {
             slowingDownSpeed--;
             yield return new WaitForFixedUpdate();
@@ -178,12 +219,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (GameSettings.currentGameState != GameStates.InGame)
-        {
-            isMoving = false;
-            return;        
-        }
-            moveInput = context.ReadValue<Vector2>();
+        moveInput = context.ReadValue<Vector2>();
         moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         IsMoving = moveInput != Vector2.zero; //If the move input is not zero then the player is moving
         //If there was an action performed
@@ -204,5 +240,23 @@ public class PlayerMovement : MonoBehaviour
             lastInput = moveInput;
             lastTime = Time.time;
         }
+    }
+
+    /// <summary>
+    /// Returns true if the player is touching the road
+    /// </summary>
+    /// <returns>Returns if the player is touching the road</returns>
+    public bool TouchingRoad() //Returns true if the player is touching the road
+    {
+        //Checks if the player is standing on a gameobject with the tag "Road"
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f))
+        {
+            if (hit.collider.CompareTag("Road"))
+            {
+                IsSliding = false;
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -5,12 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Snowball
+  - Snow Pile
   - Enemy
+  - Turret
+  - Road
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
   - Water
   - UI
   - 
