@@ -206,7 +206,6 @@ public class LevelManager : MonoBehaviour
         GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
         foreach (GameObject turret in turrets)
         {
-            Debug.Log("Destroying turret");
             Destroy(turret);
         }
         if (winner == "Player")
@@ -219,23 +218,27 @@ public class LevelManager : MonoBehaviour
 
             p1.transform.parent = endGameWinnerSpawnPoints[0];
             p1.transform.localPosition = Vector3.zero;
+            p1.transform.localRotation = Quaternion.Euler(new(0,180,0));
 
             if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
             {
                 GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
                 p2.transform.parent = endGameWinnerSpawnPoints[1];
                 p2.transform.localPosition = Vector3.zero;
+                p2.transform.localRotation = Quaternion.Euler(new(0,180,0));
+
             }
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
             {
                 GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
                 e.transform.parent = endGameLoserSpawnPoints[i];
                 e.transform.localPosition = Vector3.zero;
-                e.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                e.transform.localRotation = Quaternion.Euler(new(0,180,0));
 
                 e.GetComponent<NavMeshAgent>().isStopped = true;
                 e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
-            }
+                e.GetComponent<NavMeshAgent>().enabled = false;
+                e.GetComponent<EnemyMovement>().enabled = false;            }
         }
         else if (winner == "Enemy")
         {
@@ -244,12 +247,15 @@ public class LevelManager : MonoBehaviour
             GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
             p1.transform.parent = endGameLoserSpawnPoints[0];
             p1.transform.localPosition = Vector3.zero;
+            p1.transform.localRotation = Quaternion.Euler(new(0,180,0));
 
             if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
             {
                 GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
                 p2.transform.parent = endGameLoserSpawnPoints[1];
                 p2.transform.localPosition = Vector3.zero;
+                p2.transform.localRotation = Quaternion.Euler(new(0,180,0));
+
             }
 
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
@@ -258,8 +264,12 @@ public class LevelManager : MonoBehaviour
                 e.transform.parent = endGameWinnerSpawnPoints[i];
                 e.transform.localPosition = Vector3.zero;
                 e.transform.localRotation = Quaternion.Euler(Vector3.zero);
-                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
+                e.transform.localRotation = Quaternion.Euler(new(0,180,0));
+
+                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.localPosition);
                 e.GetComponent<NavMeshAgent>().isStopped = true;
+                e.GetComponent<NavMeshAgent>().enabled = false;
+                e.GetComponent<EnemyMovement>().enabled = false;
             }
             timerText.text = "Penguins Lost!";
             timerText.color = criticalColor;
@@ -274,12 +284,15 @@ public class LevelManager : MonoBehaviour
 
             p1.transform.parent = endGameDrawSpawnPoints[1];
             p1.transform.localPosition = Vector3.zero;
+                p1.transform.localRotation = Quaternion.Euler(new(0,180,0));
 
             if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
             {
                 GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
                 p2.transform.parent = endGameDrawSpawnPoints[0];
                 p2.transform.localPosition = Vector3.zero;
+                                p2.transform.localRotation = Quaternion.Euler(new(0,180,0));
+
             }
 
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
@@ -287,9 +300,13 @@ public class LevelManager : MonoBehaviour
                 GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
                 e.transform.parent = endGameDrawSpawnPoints[i + 2];
                 e.transform.localPosition = Vector3.zero;
-                e.transform.localRotation = Quaternion.Euler(Vector3.zero);
-                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
+                e.transform.localRotation = Quaternion.Euler(new(0,180,0));
+                
+                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.localPosition);
                 e.GetComponent<NavMeshAgent>().isStopped = true;
+                e.GetComponent<NavMeshAgent>().enabled = false;
+                e.GetComponent<EnemyMovement>().enabled = false;
+
             }
         }
     }
