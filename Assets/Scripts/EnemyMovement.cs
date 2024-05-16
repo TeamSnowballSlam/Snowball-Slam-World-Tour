@@ -87,6 +87,7 @@ public class EnemyMovement : MonoBehaviour
                     }
                     else
                     {
+                        return;
                     }
                 }
                     state = EnemyStates.Idle; //Sets the state to Idle
