@@ -46,7 +46,7 @@ public class JoeyTurret : MonoBehaviour
 
                 GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
                 throwTime = Time.time; //Sets the throw time to the current time
-                animator.SetTrigger("doThrow");
+               // animator.SetTrigger("doThrow");
             }
         }
         if (Time.time - spawnTime >= expireTime || GameSettings.currentGameState == GameStates.PostGame) //If the ability has expired
