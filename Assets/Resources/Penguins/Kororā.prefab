@@ -227,15 +227,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -6562412165964003528}
+      addedObject: {fileID: 1287461179049185254}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -7594281202096090984}
+      addedObject: {fileID: 1092924529716638694}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -761579000524595754}
+      addedObject: {fileID: -1048701886574743257}
   m_SourcePrefab: {fileID: 100100000, guid: 750c74749f5b7e249b8668cf88f61160, type: 3}
 --- !u!4 &5360695777459846775 stripped
 Transform:
@@ -385,7 +385,7 @@ MonoBehaviour:
     m_ActionName: Player/Fire
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6562412165964003528}
+      - m_Target: {fileID: 1287461179049185254}
         m_TargetAssemblyTypeName: ReloadAmmo, Assembly-CSharp
         m_MethodName: OnHold
         m_Mode: 0
@@ -397,7 +397,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -7594281202096090984}
+      - m_Target: {fileID: 1092924529716638694}
         m_TargetAssemblyTypeName: PlayerToMachine, Assembly-CSharp
         m_MethodName: OnHold
         m_Mode: 0
@@ -471,7 +471,7 @@ MonoBehaviour:
   snowballPrefab: {fileID: 380627630326163080, guid: f961f415f92502740a7797120d3b1b30,
     type: 3}
   snowInventory: {fileID: 0}
---- !u!114 &-6562412165964003528
+--- !u!114 &1287461179049185254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowInventory: {fileID: 0}
   snowTrayInv: {fileID: 0}
---- !u!114 &-7594281202096090984
+--- !u!114 &1092924529716638694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba0e19889f0e2a44a9dbb2aa08bfa0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-761579000524595754
+--- !u!114 &-1048701886574743257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
