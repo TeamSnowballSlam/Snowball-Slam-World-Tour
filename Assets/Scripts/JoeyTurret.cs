@@ -35,8 +35,6 @@ public class JoeyTurret : MonoBehaviour
     {
         if (Time.time > throwTime + delayTime)
         {
-            Debug.Log("Is this actially running");
-            // if (CheckForPlayerDirection() != Vector3.zero) //If the player is in a direction
             {
                 transform.forward = (
                     new Vector3(
@@ -49,13 +47,11 @@ public class JoeyTurret : MonoBehaviour
                 GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
                 throwTime = Time.time; //Sets the throw time to the current time
                 animator.SetTrigger("doThrow");
-                Debug.Log("Throwing Snowball at " + throwTime);
             }
         }
         if (Time.time - spawnTime >= expireTime || GameSettings.currentGameState == GameStates.PostGame) //If the ability has expired
         {
             animator.SetTrigger("doDespawn"); 
-            Debug.Log("Despawned");
             //This needs to be triggered by the animation not instant
         }
     }

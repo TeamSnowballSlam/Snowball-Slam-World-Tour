@@ -81,10 +81,7 @@ public class KangarooAbility : MonoBehaviour
             {
                 canUseTurret = true;
             }
-            else
-            {
-                Debug.Log(Time.time - abilityTime + "<<>>" + abiltyCooldown);
-            }
+
         }
     }
 
