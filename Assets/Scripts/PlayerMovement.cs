@@ -103,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
         }
         private set
         {
+            if(GameSettings.currentGameState != GameStates.InGame) return; //If the game is not in the in game state then the player cannot slide
             if (value && slowingDown) //If it gets set to true and the player was in the process of slowing down
             {
                 slowingDown = false;
@@ -219,6 +220,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+
         moveInput = context.ReadValue<Vector2>();
         moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         IsMoving = moveInput != Vector2.zero; //If the move input is not zero then the player is moving

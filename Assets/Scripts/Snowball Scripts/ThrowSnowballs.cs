@@ -32,6 +32,7 @@ public class ThrowSnowballs : MonoBehaviour
     // Player
     public void ThrowSnowball(InputAction.CallbackContext context)
     {
+        if (GameSettings.currentGameState == GameStates.PostGame) return; // if game is over, don't throw snowball
         if (snowInventory.CurrentAmmo <= 0) return; // if no ammo, don't throw snowball
         if (context.phase != InputActionPhase.Started) return; // only throw snowball once--when phase is started
         if (GetComponent<PlayerMovement>().IsSliding) return; // if player is sliding, don't throw snowball
