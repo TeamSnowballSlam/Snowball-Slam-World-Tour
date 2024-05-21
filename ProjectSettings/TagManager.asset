@@ -14,8 +14,9 @@ TagManager:
   - TransparentFX
   - Ignore Raycast
   - Water
+  - Water
   - UI
-  - 
+  - Ignore Navmesh
   - 
   - 
   - 
