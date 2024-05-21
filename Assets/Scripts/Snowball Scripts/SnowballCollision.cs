@@ -9,6 +9,8 @@ public class SnowballCollision : MonoBehaviour
     [HideInInspector]
     public string owner; //The owner of the snowball
 
+    private bool isOtherSnowball;
+
     void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag(owner))
@@ -21,8 +23,12 @@ public class SnowballCollision : MonoBehaviour
             {
                 LevelManager.instance.UpdateScore("Enemy"); //Update the enemy's score
             }
+            else if (collision.gameObject.CompareTag("Snowball")) //If the snowball hits another snowball
+            {
+                return; //snowballs ignore each other
+            }
+
         Destroy(gameObject); //destroys itself no matter what it hits, snowball or border
         }
-
     }
 }
