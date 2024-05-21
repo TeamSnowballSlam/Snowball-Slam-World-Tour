@@ -45,7 +45,6 @@ public class ReloadAmmo : MonoBehaviour
     {
         if(other.gameObject.tag == "Snowball Machine")
         {
-            Debug.Log("Entered Trigger");
             canReload = true;
             snowTray = other.gameObject; // finds the specific snow tray
             snowTrayInv = snowTray.GetComponent<SnowTrayInventory>(); // gets the snow tray's inventory
@@ -61,7 +60,6 @@ public class ReloadAmmo : MonoBehaviour
     {
         if(other.gameObject.tag == "Snowball Machine")
         {
-            Debug.Log("Exited Trigger");
             canReload = false;
         }
     }
