@@ -4,6 +4,7 @@ using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering.Universal.Internal;
 
 public enum EnemyStates //The states of the enemy
 {
@@ -37,10 +38,47 @@ public class EnemyMovement : MonoBehaviour
         agent.updateRotation = false;
         animator = GetComponent<Animator>();
     }
+   
+private void GetNewLocation()
+    {
+                int randomMultiplier = Random.Range(1, 15); //Randomizes the multiplier
+               // Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
+                Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
+               randomPosition = new Vector3( //Calculates the random position
+                    Random.Range(bounds.min.x, bounds.max.x),
+                    transform.position.y,
+                    Random.Range(bounds.min.z, bounds.max.z)
+                );
+                if ( //Checks if the random position is within the bounds
+                    randomPosition.x > bounds.min.x
+                    && randomPosition.x < bounds.max.x
+                    && randomPosition.z > bounds.min.z
+                    && randomPosition.z < bounds.max.z
+                    && !Physics.CheckBox(randomPosition, new Vector3(0.5f, 0.5f, 0.5f))
+                )
+                {
+                    GoToTarget(randomPosition); //Moves the agent to the random position
+                    Debug.Log("Random position in bounds");
+                    Debug.Log("Bounds min: " + bounds.min);
+                    Debug.Log("Bounds Max: " + bounds.max);
+                    Debug.Log("Random " + randomPosition);
 
+                }
+                else
+                {
+                    Debug.Log("Random position out of bounds");
+                    Debug.Log(bounds.min);
+                    Debug.Log(bounds.max);
+                    Debug.Log(randomPosition);
+                }
+    }
     void Update()
     {
+        Debug.Log("Remaining distance: " + agent.remainingDistance);
+        Debug.Log("Remaining distance less than: " + ((agent.remainingDistance <= 0.001) && state == EnemyStates.Moving) );
+        Debug.Log("State: " + state);
         animator.SetFloat("movementSpeed", agent.velocity.magnitude);
+        
         if (GameSettings.currentGameState != GameStates.InGame)
         {
             agent.isStopped = true;
@@ -59,70 +97,54 @@ public class EnemyMovement : MonoBehaviour
             }
             else
             {
-                int randomMultiplier = Random.Range(1, 15); //Randomizes the multiplier
-               // Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
-                Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
-               randomPosition = new Vector3( //Calculates the random position
-                    Random.Range(bounds.min.x, bounds.max.x),
-                    transform.position.y,
-                    Random.Range(bounds.min.z, bounds.max.z)
-                );
-                if ( //Checks if the random position is within the bounds
-                    randomPosition.x > bounds.min.x
-                    && randomPosition.x < bounds.max.x
-                    && randomPosition.z > bounds.min.z
-                    && randomPosition.z < bounds.max.z
-                )
-                {
-                    GoToTarget(randomPosition); //Moves the agent to the random position
-                    Debug.Log("Random position in bounds");
-                    Debug.Log(bounds.min);
-                    Debug.Log(bounds.max);
-                    Debug.Log(randomPosition);
+                GetNewLocation();
 
-                }
-                else
-                {
-                    Debug.Log("Random position out of bounds");
-                    Debug.Log(bounds.min);
-                    Debug.Log(bounds.max);
-                    Debug.Log(randomPosition);
-                    state = EnemyStates.Idle; //Sets the state to Idle
-                }
+
+
+
             }
         }
-        else if (state == EnemyStates.Moving)
+         if (state == EnemyStates.Moving)
         {
-            if (agent.remainingDistance <= 0.001f) //Checks if the agent has reached the target within a certain distance
+            if (agent.remainingDistance <= 0.001) //Checks if the agent has reached the target within a certain distance
             {
-                if (GetComponent<KangarooAbility>().canUseTurret) //Checks if the agent has the KangarooAbility component and does not have an active turret
-                {
-                    int random = Random.Range(1, 101); //Randomizes the number between 1 and the 100
-                    if ( random <= turretChance)
-                    {
-                        GetComponent<KangarooAbility>().PlaceTurret();
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
+                // if (GetComponent<KangarooAbility>().canUseTurret) //Checks if the agent has the KangarooAbility component and does not have an active turret
+                // {
+                //     int random = Random.Range(1, 101); //Randomizes the number between 1 and the 100
+                //     if ( random <= turretChance)
+                //     {
+                //         GetComponent<KangarooAbility>().PlaceTurret();
+                //     }
+                //     else
+                //     {
+                //         return;
+                //     }
+                // }
+                    Debug.Log("Reached target should go to idle");
                     state = EnemyStates.Idle; //Sets the state to Idle
+                    GetNewLocation(); //Gets a new location to move to
+                    return; 
             }
             else if (CheckForPlayerDirection() != Vector3.zero)
             {
-                state = EnemyStates.TargetingPlayer;
+
+                if(Physics.Raycast(transform.position, CheckForPlayerDirection(), out RaycastHit hit, 10f))
+                {
+                    if(hit.collider.CompareTag("Player"))
+                    {
+
+                        state = EnemyStates.TargetingPlayer;
+                    }
+                }
             }
+
         }
         else if (state == EnemyStates.TargetingPlayer)
         {
             agent.isStopped = true; //Stops the agent
-            Debug.DrawLine(
-                transform.position,
-                GetClosestPlayer().transform.position,
-                Color.blue,
-                1f
-            ); //Draws a line to the player
+
+      
+
             transform.forward = (
                 new Vector3(
                     GetClosestPlayer().transform.position.x,
