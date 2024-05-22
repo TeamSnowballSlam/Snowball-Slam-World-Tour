@@ -116,6 +116,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else if (state == EnemyStates.TargetingPlayer)
         {
+            agent.isStopped = true; //Stops the agent
             Debug.DrawLine(
                 transform.position,
                 GetClosestPlayer().transform.position,
@@ -131,6 +132,9 @@ public class EnemyMovement : MonoBehaviour
             ).normalized; //Sets the forward direction of the agent to the direction to the player
             if (Time.time > throwTime + delayTime)
             {
+                agent.isStopped = true; //Stops the agent
+                Debug.Log(agent.velocity.magnitude);
+                agent.velocity = Vector3.zero; //Sets the velocity of the agent to zero
                 GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
                 throwTime = Time.time; //Sets the throw time to the current time
             }
