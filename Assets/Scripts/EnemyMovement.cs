@@ -108,18 +108,18 @@ private void GetNewLocation()
         {
             if (agent.remainingDistance <= 0.001) //Checks if the agent has reached the target within a certain distance
             {
-                // if (GetComponent<KangarooAbility>().canUseTurret) //Checks if the agent has the KangarooAbility component and does not have an active turret
-                // {
-                //     int random = Random.Range(1, 101); //Randomizes the number between 1 and the 100
-                //     if ( random <= turretChance)
-                //     {
-                //         GetComponent<KangarooAbility>().PlaceTurret();
-                //     }
-                //     else
-                //     {
-                //         return;
-                //     }
-                // }
+                if (GetComponent<KangarooAbility>().canUseTurret) //Checks if the agent has the KangarooAbility component and does not have an active turret
+                {
+                    int random = Random.Range(1, 101); //Randomizes the number between 1 and the 100
+                    if ( random <= turretChance)
+                    {
+                        GetComponent<KangarooAbility>().PlaceTurret();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
                     Debug.Log("Reached target should go to idle");
                     state = EnemyStates.Idle; //Sets the state to Idle
                     GetNewLocation(); //Gets a new location to move to
