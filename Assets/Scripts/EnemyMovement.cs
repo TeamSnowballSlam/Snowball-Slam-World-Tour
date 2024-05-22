@@ -60,9 +60,13 @@ public class EnemyMovement : MonoBehaviour
             else
             {
                 int randomMultiplier = Random.Range(1, 15); //Randomizes the multiplier
-                Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
-                randomPosition = transform.position + (randomMultiplier * randomDir); //Calculates the random position
+               // Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
                 Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
+               randomPosition = new Vector3( //Calculates the random position
+                    Random.Range(bounds.min.x, bounds.max.x),
+                    transform.position.y,
+                    Random.Range(bounds.min.z, bounds.max.z)
+                );
                 if ( //Checks if the random position is within the bounds
                     randomPosition.x > bounds.min.x
                     && randomPosition.x < bounds.max.x
@@ -71,6 +75,19 @@ public class EnemyMovement : MonoBehaviour
                 )
                 {
                     GoToTarget(randomPosition); //Moves the agent to the random position
+                    Debug.Log("Random position in bounds");
+                    Debug.Log(bounds.min);
+                    Debug.Log(bounds.max);
+                    Debug.Log(randomPosition);
+
+                }
+                else
+                {
+                    Debug.Log("Random position out of bounds");
+                    Debug.Log(bounds.min);
+                    Debug.Log(bounds.max);
+                    Debug.Log(randomPosition);
+                    state = EnemyStates.Idle; //Sets the state to Idle
                 }
             }
         }
