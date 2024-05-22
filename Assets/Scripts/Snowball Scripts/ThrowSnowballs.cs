@@ -42,34 +42,37 @@ public class ThrowSnowballs : MonoBehaviour
         animator.SetTrigger("doThrow"); // trigger animation
 
         snowInventory.CurrentAmmo--;
+
     }
 
     public void ThrowSnowball()
     {
         if (GameSettings.currentGameState == GameStates.PostGame) return; // if game is over, don't throw snowball
         animator.SetTrigger("doThrow"); // trigger animation
-        snowballPosition = new Vector3(transform.position.x + 2.0f, 1.5f, transform.position.z); // thrown at face level
-        snowball = Instantiate(
-            snowballPrefab,
-            snowballPosition + transform.forward,
-            Quaternion.identity
-        ); // snowballPrefab is instantiated
-        snowball.GetComponent<SnowballCollision>().owner = "Enemy"; // owner of snowball is the player
-
-        snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
+        
     }
 
-    public void SnowballAnimation()
+    // <summary>
+    // Called during a frame of the throwing animation
+    // </summary>
+    public void SnowballAnimation(string name)
     {
-        //snowballPosition = new Vector3(transform.localPosition.x - 1f, transform.localPosition.y + 2.5f, transform.localPosition.z - 2f); // thrown at face level
         snowballPosition = snowballWP.transform.position;
         snowball = Instantiate(
             snowballPrefab,
             snowballPosition + transform.forward,
             Quaternion.identity
         );
-        //Time.timeScale = 0f; // slow down time
         snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
-        snowball.GetComponent<SnowballCollision>().owner = "Player"; // owner of snowball is the player
+
+        if (name == "Player")
+        {
+            snowball.GetComponent<SnowballCollision>().owner = "Player"; // owner of snowball is the player
+        }
+        else if (name == "Enemy")
+        {
+            snowball.GetComponent<SnowballCollision>().owner = "Enemy"; // owner of snowball is the enemy
+        }
     }
+
 }
