@@ -4,13 +4,18 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class DisplayManager : MonoBehaviour
+public class SettingsManager : MonoBehaviour
 {
     [Header("Inputs")]
     [SerializeField] private TMP_Dropdown displayModeDropdown;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     [SerializeField] private TMP_Dropdown frameRateDropdown;
     [SerializeField] private Toggle vsyncToggle;
+    [SerializeField] private GameObject MusicNumber;
+    [SerializeField] private GameObject SoundEffectsNumber;
+    [SerializeField] private GameObject MusicSlider;
+    [SerializeField] private GameObject SoundEffectsSlider;
+    [SerializeField] private GameObject MuteToggle;
 
     private List<Resolution> resolutions = new List<Resolution>();
 
@@ -62,6 +67,41 @@ public class DisplayManager : MonoBehaviour
     public void OnVsyncChanged(bool value)
     {
         ApplyVsync(value);
+    }
+
+    /// <summary>
+    /// When the music slider is changed
+    /// </summary>
+    /// <param name="value">Value being passed through from 0 to 1</param>
+    public void OnMusicChanged(float value)
+    {
+        GameSettings.MusicVolume = value;
+        onNumberChanged(value, MusicNumber);
+    }
+
+    public void OnSoundEffectsChanged(float value)
+    {
+        GameSettings.SoundEffectsVolume = value;
+        onNumberChanged(value, SoundEffectsNumber);
+    }
+
+    /// <summary>
+    /// Toggles the mute
+    /// </summary>
+    /// <param name="value">If true then mute</param>
+    public void OnMuteToggle(bool value)
+    {
+        GameSettings.Mute = value;
+    }
+
+    /// <summary>
+    /// When the number is changed this updates the text
+    /// </summary>
+    /// <param name="value">Number to change to</param>
+    /// <param name="numberObject">Text to update</param>
+    private void onNumberChanged(float value, GameObject numberObject)
+    {
+        numberObject.GetComponent<TMPro.TextMeshProUGUI>().text = Mathf.Round(value * 100).ToString("0");
     }
 
     /// <summary>
@@ -237,7 +277,7 @@ public class DisplayManager : MonoBehaviour
         }
         vsyncToggle.isOn = vsyncEnabled;                            //Default value is no VSync
         ApplyVsync(vsyncEnabled);
-
+        
         int displayModeIndex = 0; //Default is borderless full screen in case the PlayerPrefs value is invalid
         try
         {
@@ -249,6 +289,39 @@ public class DisplayManager : MonoBehaviour
         }
         displayModeDropdown.value = displayModeIndex;
         ApplyDisplayMode(displayModeIndex);
+        
+        try
+        {
+            GameSettings.MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f); //Default is 50% volume
+        }
+        catch
+        {
+            GameSettings.MusicVolume = 0.5f; //Default is 50% volume in case the PlayerPrefs value is invalid
+            Debug.LogWarning("Music volume set to invalid value, setting to default.");
+        }
+        MusicSlider.GetComponent<Slider>().value = GameSettings.MusicVolume;
+        
+        try
+        {
+            GameSettings.SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume", 0.5f); //Default is 50% volume
+        }
+        catch
+        {
+            GameSettings.SoundEffectsVolume = 0.5f; //Default is 50% volume in case the PlayerPrefs value is invalid
+            Debug.LogWarning("Sound effects volume set to invalid value, setting to default.");
+        }
+        SoundEffectsSlider.GetComponent<Slider>().value = GameSettings.SoundEffectsVolume;
+        
+        try
+        {
+            GameSettings.Mute = PlayerPrefs.GetInt("Mute", 0) == 1; //PlayerPrefs doesn't support bools so this converts a 1 to true and a 0 to false (If the return value is a 1 then == 1 will be true)
+        }
+        catch
+        {
+            GameSettings.Mute = false; //Default is not muted in case the PlayerPrefs value is invalid
+            Debug.LogWarning("Mute set to invalid value, setting to default.");
+        }
+        MuteToggle.GetComponent<Toggle>().SetIsOnWithoutNotify(GameSettings.Mute);
     }
 
     /// <summary>
@@ -260,6 +333,9 @@ public class DisplayManager : MonoBehaviour
         PlayerPrefs.SetInt("Resolution", resolutionDropdown.value);
         PlayerPrefs.SetInt("FrameRate", frameRateDropdown.value);
         PlayerPrefs.SetInt("Vsync", vsyncToggle.isOn ? 1 : 0); //PlayerPrefs doesn't support bools so this converts a 1 to true and a 0 to false
+        PlayerPrefs.SetFloat("MusicVolume", GameSettings.MusicVolume);
+        PlayerPrefs.SetFloat("SoundEffectsVolume", GameSettings.SoundEffectsVolume);
+        PlayerPrefs.SetInt("Mute", GameSettings.Mute ? 1 : 0); //PlayerPrefs doesn't support bools so this converts a 1 to true and a 0 to false
         PlayerPrefs.Save();
     }
 

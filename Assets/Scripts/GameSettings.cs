@@ -9,4 +9,7 @@ public static class GameSettings
     public static bool Player2Exists = false; // If player 2 exists. This is set in character select or when player 2 hot joins
     public static Levels SelectedLevel = Levels.None; // The level selected for the game
     public static GameStates currentGameState = GameStates.PreGame; // The current state of the game
+    public static float MusicVolume = 0.5f; // The volume of the music
+    public static float SoundEffectsVolume = 0.5f; // The volume of the sound effects
+    public static bool Mute = false; // If the game is muted
 }
