@@ -13,16 +13,23 @@ public class SnowballCollision : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag(owner))
         {
-            if (collision.gameObject.CompareTag("Enemy")) //If the snowball hits an enemy
+            if (collision.gameObject.GetComponent<ThrowSnowballs>() != null) //If the snowball hits another snowball
             {
-                LevelManager.instance.UpdateScore("Player"); //Update the player's score
+                ThrowSnowballs ts = collision.gameObject.GetComponent<ThrowSnowballs>();
+                if (!ts.Invulnerable)
+                {
+                    if (collision.gameObject.CompareTag("Enemy")) //If the snowball hits an enemy
+                    {
+                        LevelManager.instance.UpdateScore("Player"); //Update the player's score
+                    }
+                    else if (collision.gameObject.CompareTag("Player")) //If the snowball hits the player
+                    {
+                        LevelManager.instance.UpdateScore("Enemy"); //Update the enemy's score
+                    }
+                    ts.Invulnerable = true; //Makes the snowball invulnerable
+                }
             }
-            else if (collision.gameObject.CompareTag("Player")) //If the snowball hits the player
-            {
-                LevelManager.instance.UpdateScore("Enemy"); //Update the enemy's score
-            }
-        Destroy(gameObject); //destroys itself no matter what it hits, snowball or border
+            Destroy(gameObject); //destroys itself no matter what it hits, snowball or border
         }
-
     }
 }
