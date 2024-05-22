@@ -210,6 +210,7 @@ public class LevelManager : MonoBehaviour
         }
         if (winner == "Player")
         {
+            MusicManager.Instance.SetTrack("Win");
             restartButton.SetActive(false);
             continueButton.SetActive(true);
             timerText.text = "Penguins Win!";
@@ -242,6 +243,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (winner == "Enemy")
         {
+            MusicManager.Instance.SetTrack("Lose");
             restartButton.SetActive(true);
             continueButton.SetActive(true);
             GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
@@ -276,6 +278,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            MusicManager.Instance.SetTrack("Draw");
             restartButton.SetActive(true);
             continueButton.SetActive(true);
             timerText.text = "Draw!";
@@ -391,6 +394,7 @@ public class LevelManager : MonoBehaviour
 
     public void Continue()
     {
+        MusicManager.Instance.SetTrack("Menu");
         GameSettings.Player2Exists = false;
         SceneManager.LoadScene("MainMenu"); //Commented out until we merge
     }
