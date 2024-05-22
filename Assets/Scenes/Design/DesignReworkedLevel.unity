@@ -4795,6 +4795,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_Wall_Connector (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 4911638866236277283, guid: 9d982a1533dd0be4e80d712097834c68,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5720263300058732697, guid: 9d982a1533dd0be4e80d712097834c68,
         type: 3}
       propertyPath: m_LocalScale.y
