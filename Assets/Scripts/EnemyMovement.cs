@@ -43,9 +43,12 @@ public class EnemyMovement : MonoBehaviour
 
     private void GetNewLocation()
     {
-        if (state == EnemyStates.GettingNewLocation) return; //If the state is getting new location, return
-        if (state == EnemyStates.TargetingPlayer) return; //If the state is targeting player, return
-        if (state == EnemyStates.ThrowingSnowball) return; //If the state is throwing snowball, return
+        if (state == EnemyStates.GettingNewLocation)
+            return; //If the state is getting new location, return
+        if (state == EnemyStates.TargetingPlayer)
+            return; //If the state is targeting player, return
+        if (state == EnemyStates.ThrowingSnowball)
+            return; //If the state is throwing snowball, return
         state = EnemyStates.GettingNewLocation; //Sets the state
         Debug.Log("METHOD Getting new location");
         state = EnemyStates.Idle; //Sets the state to moving
@@ -88,7 +91,7 @@ public class EnemyMovement : MonoBehaviour
             agent.isStopped = true;
             return;
         }
-        else if (GameSettings.currentGameState == GameStates.InGame && state != EnemyStates.ThrowingSnowball)
+        else if (GameSettings.currentGameState == GameStates.InGame)
         {
             agent.isStopped = false;
         }
@@ -136,9 +139,6 @@ public class EnemyMovement : MonoBehaviour
                 GetNewLocation(); //Gets a new location
                 return;
             }
-            // else if (CheckForPlayerDirection() != Vector3.zero)
-            // {
-            //Sets the forward direction of the agent to the direction to the player
             else if (
                 Physics.Raycast(
                     transform.position,
@@ -191,26 +191,28 @@ public class EnemyMovement : MonoBehaviour
                     GetClosestPlayer().transform.position.z
                 ) - new Vector3(transform.position.x, 0, transform.position.z)
             ).normalized; //Sets the forward direction of the agent to the direction to the player
-            if (Time.time > throwTime + delayTime)
+
+            for (int i = 0; i < 5; i++)
             {
-                state = EnemyStates.ThrowingSnowball; //Sets the state to throwing snowball
-                throwTime = Time.time; //Sets the throw time to the current time
+                agent.isStopped = true; //Stops the agent
+                Debug.Log("VELOCITY" + agent.velocity.magnitude);
+                agent.velocity = Vector3.zero; //Sets the velocity of the agent to zero
+                if (Time.time > throwTime + delayTime)
+                {
+                    GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
+                    throwTime = Time.time; //Sets the throw time to the current time
+                }
             }
+            state = EnemyStates.Idle;
+            GetNewLocation();
         }
         else if (state == EnemyStates.ThrowingSnowball)
         {
             agent.isStopped = true; //Stops the agent
             Debug.Log("VELOCITY" + agent.velocity.magnitude);
             agent.velocity = Vector3.zero; //Sets the velocity of the agent to zero
-            do
-            {
-                if (Time.time > throwTime + delayTime)
-                {
-                    GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
-                    throwTime = Time.time; //Sets the throw time to the current time
-                }
-            } while (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 10f) && hit.collider.CompareTag("Player"));
-            state = EnemyStates.Idle; //Sets the state to idle
+
+            GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
         }
     }
 
