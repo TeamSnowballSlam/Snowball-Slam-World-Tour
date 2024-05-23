@@ -3,25 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using TMPro;
 
 [System.Serializable]
-public class TutorialEvent
+public class TutorialEvent // class that holds tutorial event data
 {
-    public UnityEvent eventAction = new UnityEvent();
+    public UnityEvent _eventAction = new UnityEvent();
     public bool _doSlide;
-    public KeyCode[] requiredAction;
+    public KeyCode[] _requiredAction;
 }
-
-//public enum action
-//{
-//    movement,
-//    dash,
-//    reload,
-//    throwBall
-//}
 
 public class TutorialManager : MonoBehaviour
 {
+    public static TutorialManager instance;
+
     public List<TutorialEvent> _tutorialEvents = new List<TutorialEvent>();
     int _eventIndex;
     bool _eventsLeft = true;
@@ -34,24 +29,33 @@ public class TutorialManager : MonoBehaviour
     private Vector2 lastInput;
     private bool _doublePress;
 
+    public TextMeshProUGUI _scoreText;
+    public TextMeshProUGUI _timerText;
+
+    public float _shakedownDuration = 30;
+
+    private int _score;
+    public UnityEvent _tutorialEnd = new UnityEvent();
+
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         InvokeCurrentTutorialEvent();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_eventsLeft)
+        if (_eventsLeft) // if there are still events leftover
         {
-            if (_tutorialEvents[_eventIndex]._doSlide && _doublePress)
+            if (_tutorialEvents[_eventIndex]._doSlide && _doublePress) // check  if it is the double tap to slide event
             {
                 _doublePress = false;
                 Debug.Log("Double Press");
                 NextTutorialEvent();
             }
-            else if (CheckForAction(_tutorialEvents[_eventIndex].requiredAction))
+            else if (CheckForAction(_tutorialEvents[_eventIndex]._requiredAction)) // check if required action is entered to proceed
             {
                 Debug.Log("Correct Key Entered");
                 NextTutorialEvent();
@@ -60,7 +64,7 @@ public class TutorialManager : MonoBehaviour
         
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context) // method that takes player input for movement keys and checks if it is a double press
     {
 
         moveInput = context.ReadValue<Vector2>();
@@ -82,10 +86,10 @@ public class TutorialManager : MonoBehaviour
 
     void InvokeCurrentTutorialEvent()
     {
-        _tutorialEvents[_eventIndex].eventAction.Invoke();
+        _tutorialEvents[_eventIndex]._eventAction.Invoke();
     }
 
-    private bool CheckForAction(KeyCode[] keyCodes)
+    private bool CheckForAction(KeyCode[] keyCodes) // check if relevant keycode/s have been entered
     {
         foreach(KeyCode key in keyCodes)
         {
@@ -98,20 +102,45 @@ public class TutorialManager : MonoBehaviour
         return false;
     }
 
-    
+    public void UpdateScore()
+    {
+        if (!_eventsLeft) // verify if during shakedown time
+        {
+            _score++;
+            _scoreText.text = _score.ToString();
+        }
+    }
 
-    private void NextTutorialEvent()
+    private void NextTutorialEvent() // go to next event
     {
         _eventIndex++;
-        if(_eventIndex > _tutorialEvents.Count - 1)
+        if(_eventIndex > _tutorialEvents.Count - 1) // if no more events remaining
         {
-            Debug.Log("Done");
             _eventsLeft = false;
         }
         else
         {
-            InvokeCurrentTutorialEvent();
+            InvokeCurrentTutorialEvent(); // otherwise go next event
         }
 
+    }
+
+    public void StartShakedown()
+    {
+        StartCoroutine(ShakedownTime());
+    }
+
+    private IEnumerator ShakedownTime() // after the last event free time to get used to controls, lasts 30 seconds
+    {
+        float time = 0;
+
+        while ( time < _shakedownDuration) 
+        {
+            _timerText.text = $"{_shakedownDuration - Mathf.Round(time)}"; // update timer text
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        _tutorialEnd.Invoke(); // end tutorial
     }
 }
