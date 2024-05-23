@@ -208,6 +208,7 @@ public class LevelManager : MonoBehaviour
         }
         if (winner == "Player")
         {
+            PlayAnnouncerSounds.Instance.PlayVictory();
             MusicManager.Instance.SetTrack("Win");
             restartButton.SetActive(false);
             continueButton.SetActive(true);
@@ -242,6 +243,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (winner == "Enemy")
         {
+            PlayAnnouncerSounds.Instance.PlayDefeat();
             MusicManager.Instance.SetTrack("Lose");
             restartButton.SetActive(true);
             continueButton.SetActive(true);
@@ -277,6 +279,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            PlayAnnouncerSounds.Instance.PlayDraw();
             MusicManager.Instance.SetTrack("Draw");
             restartButton.SetActive(true);
             continueButton.SetActive(true);

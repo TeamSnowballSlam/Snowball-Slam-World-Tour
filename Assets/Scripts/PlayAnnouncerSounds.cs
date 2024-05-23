@@ -34,7 +34,6 @@ public class PlayAnnouncerSounds : MonoBehaviour
 
     private IEnumerator AustraliaIntro()
     {
-        Debug.Log("Australia Intro");
         playSFX.playSound("WelcomeToAustralia");
         yield return new WaitForSeconds(1.5f);
         playSFX.playSound("321GO");
@@ -42,6 +41,28 @@ public class PlayAnnouncerSounds : MonoBehaviour
 
     public void FinalCountdown()
     {
+        StartCoroutine(EndGame());
+    }
+
+    private IEnumerator EndGame()
+    {
         playSFX.playSound("54321");
+        yield return new WaitForSeconds(5f);
+        playSFX.playSound("GameOver");
+    }
+
+    public void PlayVictory()
+    {
+        playSFX.playSound("PenguinsWin");
+    }
+
+    public void PlayDefeat()
+    {
+        playSFX.playSound("KangaroosWin");
+    }
+
+    public void PlayDraw()
+    {
+        playSFX.playSound("Draw");
     }
 }
