@@ -18,10 +18,12 @@ public class SnowballCollision : MonoBehaviour
             if (collision.gameObject.CompareTag("Enemy")) //If the snowball hits an enemy
             {
                 LevelManager.instance.UpdateScore("Player"); //Update the player's score
+                //TutorialManager.instance.UpdateScore();
             }
             else if (collision.gameObject.CompareTag("Player")) //If the snowball hits the player
             {
                 LevelManager.instance.UpdateScore("Enemy"); //Update the enemy's score
+                //TutorialManager.instance.UpdateScore();
             }
             else if (collision.gameObject.CompareTag("Snowball")) //If the snowball hits another snowball
             {
