@@ -49,21 +49,21 @@ public class TutorialInputs : MonoBehaviour
         }
     }
 
-    public void OnThrow(InputAction.CallbackContext context) // method that takes player input for movement keys and checks if it is a double press
+    public void OnThrow(InputAction.CallbackContext context) // method that takes player input for throw key
     {
         //If there was an action performed
         if (context.performed)
         {
-            tm.PlayerInput(this.playerNumber, inputType.throwing);
+            tm.PlayerInput(this.playerNumber, inputType.throwing); // run method on tutorial manager
         }
     }
 
-    public void OnInteract(InputAction.CallbackContext context) // method that takes player input for movement keys and checks if it is a double press
+    public void OnInteract(InputAction.CallbackContext context) // method that takes player input for interact key
     {
         //If there was an action performed
         if (context.performed)
         {
-            tm.PlayerInput(this.playerNumber, inputType.interact);
+            tm.PlayerInput(this.playerNumber, inputType.interact); // run method on tutorial manager
         }
     }
 
