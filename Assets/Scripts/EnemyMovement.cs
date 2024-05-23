@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
 using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -42,20 +43,22 @@ public class EnemyMovement : MonoBehaviour
 
     private void GetNewLocation()
     {
+        if (state == EnemyStates.GettingNewLocation) return; //If the state is getting new location, return
+        if (state == EnemyStates.TargetingPlayer) return; //If the state is targeting player, return
+        if (state == EnemyStates.ThrowingSnowball) return; //If the state is throwing snowball, return
         state = EnemyStates.GettingNewLocation; //Sets the state
         Debug.Log("METHOD Getting new location");
         state = EnemyStates.Idle; //Sets the state to moving
         int randomMultiplier = Random.Range(1, 15); //Randomizes the multiplier
-                                                    // Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
+        // Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
         Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
         do
         {
-
             randomPosition = new Vector3( //Calculates the random position
-                 Random.Range((bounds.min.x + 2f), (bounds.max.x - 2f)),
-                 transform.position.y,
-                 Random.Range((bounds.min.z + 2f), (bounds.max.z - 2f))
-             );
+                Random.Range((bounds.min.x + 2f), (bounds.max.x - 2f)),
+                transform.position.y,
+                Random.Range((bounds.min.z + 2f), (bounds.max.z - 2f))
+            );
         } while ( //Checks if the random position is within the bounds
             randomPosition.x < (bounds.min.x + 2f)
             || randomPosition.x > (bounds.max.x - 2f)
@@ -63,18 +66,18 @@ public class EnemyMovement : MonoBehaviour
             || randomPosition.z > (bounds.max.z - 2f)
         );
 
-       GoToTarget(randomPosition); //Moves the agent to the random position
+        GoToTarget(randomPosition); //Moves the agent to the random position
 
         Debug.Log("Random " + randomPosition + "Current Position: " + transform.position);
-
-
     }
 
     void Update()
     {
-
         Debug.Log("Remaining distance: " + agent.remainingDistance);
-        Debug.Log("Remaining distance less than: " + ((agent.remainingDistance <= 0.001) && state == EnemyStates.Moving));
+        Debug.Log(
+            "Remaining distance less than: "
+                + ((agent.remainingDistance <= 0.001) && state == EnemyStates.Moving)
+        );
         Debug.Log("State: " + state);
         animator.SetFloat("movementSpeed", agent.velocity.magnitude);
         Debug.Log("Target Position: " + agent.destination);
@@ -85,20 +88,29 @@ public class EnemyMovement : MonoBehaviour
             agent.isStopped = true;
             return;
         }
-        else if (GameSettings.currentGameState == GameStates.InGame)
+        else if (GameSettings.currentGameState == GameStates.InGame && state != EnemyStates.ThrowingSnowball)
         {
             agent.isStopped = false;
         }
 
         if (state == EnemyStates.Idle)
         {
-            if (CheckForPlayerDirection() != Vector3.zero)
+            if (
+                Physics.Raycast(
+                    transform.position,
+                    (
+                        new Vector3(
+                            GetClosestPlayer().transform.position.x,
+                            0,
+                            GetClosestPlayer().transform.position.z
+                        )
+                    ),
+                    out RaycastHit hit,
+                    10f
+                ) && hit.collider.CompareTag("Player")
+            )
             {
                 state = EnemyStates.TargetingPlayer;
-            }
-            else
-            {
-
             }
         }
         else if (state == EnemyStates.Moving)
@@ -124,30 +136,53 @@ public class EnemyMovement : MonoBehaviour
                 GetNewLocation(); //Gets a new location
                 return;
             }
-            else if (CheckForPlayerDirection() != Vector3.zero)
+            // else if (CheckForPlayerDirection() != Vector3.zero)
+            // {
+            //Sets the forward direction of the agent to the direction to the player
+            else if (
+                Physics.Raycast(
+                    transform.position,
+                    (
+                        new Vector3(
+                            GetClosestPlayer().transform.position.x,
+                            0,
+                            GetClosestPlayer().transform.position.z
+                        ) - new Vector3(transform.position.x, 0, transform.position.z)
+                    ).normalized,
+                    out RaycastHit hit,
+                    10f
+                )
+            )
             {
+                Vector3 dir = (
+                    new Vector3(
+                        GetClosestPlayer().transform.position.x,
+                        0,
+                        GetClosestPlayer().transform.position.z
+                    ) - new Vector3(transform.position.x, 0, transform.position.z)
+                ).normalized;
 
-                if (Physics.Raycast(transform.position, CheckForPlayerDirection(), out RaycastHit hit, 10f))
+                if (hit.collider.CompareTag("Player"))
                 {
-                    if (hit.collider.CompareTag("Player"))
-                    {
-
-                        state = EnemyStates.TargetingPlayer;
-                    }
+                    state = EnemyStates.TargetingPlayer;
+                    Debug.DrawRay(transform.position, dir, Color.green);
+                }
+                else
+                {
+                    state = EnemyStates.Moving;
+                    Debug.DrawRay(transform.position, dir, Color.red);
                 }
             }
+            //}
             if (agent.velocity.magnitude == 0.0f)
             {
                 Debug.Log("Agent velocity is 0");
                 state = EnemyStates.Idle;
             }
-
         }
         else if (state == EnemyStates.TargetingPlayer)
         {
             agent.isStopped = true; //Stops the agent
-
-
 
             transform.forward = (
                 new Vector3(
@@ -158,16 +193,24 @@ public class EnemyMovement : MonoBehaviour
             ).normalized; //Sets the forward direction of the agent to the direction to the player
             if (Time.time > throwTime + delayTime)
             {
-                agent.isStopped = true; //Stops the agent
-                Debug.Log(agent.velocity.magnitude);
-                agent.velocity = Vector3.zero; //Sets the velocity of the agent to zero
-                GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
+                state = EnemyStates.ThrowingSnowball; //Sets the state to throwing snowball
                 throwTime = Time.time; //Sets the throw time to the current time
             }
         }
         else if (state == EnemyStates.ThrowingSnowball)
         {
-            GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
+            agent.isStopped = true; //Stops the agent
+            Debug.Log("VELOCITY" + agent.velocity.magnitude);
+            agent.velocity = Vector3.zero; //Sets the velocity of the agent to zero
+            do
+            {
+                if (Time.time > throwTime + delayTime)
+                {
+                    GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
+                    throwTime = Time.time; //Sets the throw time to the current time
+                }
+            } while (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 10f) && hit.collider.CompareTag("Player"));
+            state = EnemyStates.Idle; //Sets the state to idle
         }
     }
 
