@@ -23,7 +23,7 @@ public class SnowMachine : MonoBehaviour
     void Start()
     {
         sliderComponent = transform.Find("Canvas/Progress").GetComponent<Slider>();
-        snowTrayInv = transform.parent.Find("Snowball Pile").GetComponent<SnowTrayInventory>();
+        snowTrayInv = transform.parent.GetComponent<SnowTrayInventory>();
         prodSpeed = 6;
     }
 
