@@ -330,6 +330,9 @@ public class TutorialManager : MonoBehaviour
         _eventIndex++;
         p1check = false;
         p2check = false;
+        pOneInputHeld = false;
+        pTwoInputHeld = false;
+
         if (_eventIndex > _tutorialEvents.Count - 1) // if no more events remaining
         {
             _eventsLeft = false;
