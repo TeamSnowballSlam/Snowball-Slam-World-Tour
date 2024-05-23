@@ -15,7 +15,9 @@ public class PlayerMovement : MonoBehaviour
 
     //particle effects
     [SerializeField]private GameObject dustTrail;
+    private ParticleSystem dustTrailParticles;
     [SerializeField]private GameObject iceTrail;
+    private ParticleSystem iceTrailParticles;
     [SerializeField]private ParticleSystem tarTrail;
     
     //Returns the current speed reduction when touching the road
@@ -59,10 +61,11 @@ public class PlayerMovement : MonoBehaviour
             if (IsSliding)
             {
                 //Sliding speed
-                //iceTrail.transform.Find("Ice").gameObject.GetComponent<ParticleSystem>().Play();
+                iceTrailParticles.Play();
+                dustTrailParticles.Stop();
+                tarTrail.Stop();
                 animator.SetFloat("movementSpeed", (float)SLIDINGSPEED);
                 return SLIDINGSPEED;
-                //ice particle effect
 
             }
             if (IsMoving)
@@ -77,12 +80,19 @@ public class PlayerMovement : MonoBehaviour
                     return MOVEMENTSPEED - (int)TouchingRoadSpeed;
                 }
                 //dust trail
-                //dustTrail.transform.Find("Dust").gameObject.GetComponent<ParticleSystem>().Play();
+                iceTrailParticles.Stop();
+                tarTrail.Stop();
+                dustTrailParticles.Play();
+                
                 animator.SetFloat("movementSpeed", (float)MOVEMENTSPEED);
                 return MOVEMENTSPEED;
             }
             else
             {
+                tarTrail.Stop();
+                iceTrailParticles.Stop();
+                dustTrailParticles.Stop();
+                
                 //Idle Speed
                 animator.SetFloat("movementSpeed", 0.0f);
                 return 0;
@@ -176,6 +186,14 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogWarning("No Animator component found.");
         }
         lastInput = Vector2.zero;
+
+        dustTrailParticles = dustTrail.transform.Find("Dust").gameObject.GetComponent<ParticleSystem>();
+        iceTrailParticles = iceTrail.transform.Find("Ice").gameObject.GetComponent<ParticleSystem>();
+
+        //Stop the particle effects from playing at the start
+        iceTrailParticles.Stop();
+        dustTrailParticles.Stop();
+        tarTrail.Stop();
     }
 
     void FixedUpdate()
