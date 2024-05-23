@@ -32,7 +32,7 @@ public class InputStatus : MonoBehaviour
         }
         else if (ready && currentType == inputType.interact && greenSprite.fillAmount > 0)
         {
-            greenSprite.fillAmount -= Time.deltaTime;
+            greenSprite.fillAmount -= Time.deltaTime * 5f;
         }
         else
         {

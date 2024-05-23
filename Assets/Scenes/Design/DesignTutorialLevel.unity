@@ -3982,6 +3982,8 @@ MonoBehaviour:
   actionComplete: 0
   greenSprite: {fileID: 1669444517}
   holding: 0
+  ready: 0
+  currentType: 0
 --- !u!114 &873782062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7812,6 +7814,8 @@ MonoBehaviour:
   actionComplete: 0
   greenSprite: {fileID: 1033088981}
   holding: 0
+  ready: 0
+  currentType: 0
 --- !u!114 &1945670915
 MonoBehaviour:
   m_ObjectHideFlags: 0
