@@ -13,7 +13,8 @@ public enum EnemyStates //The states of the enemy
     Rotating,
     Searching,
     TargetingPlayer,
-    ThrowingSnowball
+    ThrowingSnowball,
+    GettingNewLocation
 }
 
 public class EnemyMovement : MonoBehaviour
@@ -38,52 +39,47 @@ public class EnemyMovement : MonoBehaviour
         agent.updateRotation = false;
         animator = GetComponent<Animator>();
     }
-   
-private void GetNewLocation()
+
+    private void GetNewLocation()
     {
+        state = EnemyStates.GettingNewLocation; //Sets the state
         Debug.Log("METHOD Getting new location");
         state = EnemyStates.Idle; //Sets the state to moving
-                int randomMultiplier = Random.Range(1, 15); //Randomizes the multiplier
-               // Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
-                Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
-               randomPosition = new Vector3( //Calculates the random position
-                    Random.Range((bounds.min.x+2f),( bounds.max.x-2f)),
-                    transform.position.y,
-                    Random.Range((bounds.min.z+2f), (bounds.max.z-2f))
-                );
-                if ( //Checks if the random position is within the bounds
-                    randomPosition.x > bounds.min.x
-                    && randomPosition.x < bounds.max.x
-                    && randomPosition.z > bounds.min.z
-                    && randomPosition.z < bounds.max.z
-                    && !Physics.CheckBox(randomPosition, new Vector3(0.5f, 0.5f, 0.5f))
-                )
-                {
-                    GoToTarget(randomPosition); //Moves the agent to the random position
-                    Debug.Log("Random position in bounds");
-                    Debug.Log("Bounds min: " + bounds.min);
-                    Debug.Log("Bounds Max: " + bounds.max);
-                    Debug.Log("Random " + randomPosition);
+        int randomMultiplier = Random.Range(1, 15); //Randomizes the multiplier
+                                                    // Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
+        Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
+        do
+        {
 
-                }
-                else
-                {
-                    Debug.Log("Random position out of bounds");
-                    Debug.Log(bounds.min);
-                    Debug.Log(bounds.max);
-                    Debug.Log(randomPosition);
-                    GetNewLocation(); //Gets a new location
-                }
+            randomPosition = new Vector3( //Calculates the random position
+                 Random.Range((bounds.min.x + 2f), (bounds.max.x - 2f)),
+                 transform.position.y,
+                 Random.Range((bounds.min.z + 2f), (bounds.max.z - 2f))
+             );
+        } while ( //Checks if the random position is within the bounds
+            randomPosition.x < (bounds.min.x + 2f)
+            || randomPosition.x > (bounds.max.x - 2f)
+            || randomPosition.z < (bounds.min.z + 2f)
+            || randomPosition.z > (bounds.max.z - 2f)
+        );
+
+       GoToTarget(randomPosition); //Moves the agent to the random position
+
+        Debug.Log("Random " + randomPosition + "Current Position: " + transform.position);
+
+
     }
+
     void Update()
     {
+
         Debug.Log("Remaining distance: " + agent.remainingDistance);
-        Debug.Log("Remaining distance less than: " + ((agent.remainingDistance <= 0.001) && state == EnemyStates.Moving) );
+        Debug.Log("Remaining distance less than: " + ((agent.remainingDistance <= 0.001) && state == EnemyStates.Moving));
         Debug.Log("State: " + state);
         animator.SetFloat("movementSpeed", agent.velocity.magnitude);
         Debug.Log("Target Position: " + agent.destination);
         Debug.Log("Current Position: " + agent.velocity.magnitude);
-        
+
         if (GameSettings.currentGameState != GameStates.InGame)
         {
             agent.isStopped = true;
@@ -102,48 +98,43 @@ private void GetNewLocation()
             }
             else
             {
-                GetNewLocation();
-
-
-
-
 
             }
         }
-       else  if (state == EnemyStates.Moving)
+        else if (state == EnemyStates.Moving)
         {
             if (agent.remainingDistance <= 0.001) //Checks if the agent has reached the target within a certain distance
             {
                 if (GetComponent<KangarooAbility>().canUseTurret) //Checks if the agent has the KangarooAbility component and does not have an active turret
                 {
                     int random = Random.Range(1, 101); //Randomizes the number between 1 and the 100
-                    if ( random <= turretChance)
+                    if (random <= turretChance)
                     {
                         GetComponent<KangarooAbility>().PlaceTurret();
                     }
                     else
                     {
+                        GetNewLocation(); //Gets a new location
                         return;
                     }
                 }
-                    Debug.Log("Reached target should go to idle");
-                    state = EnemyStates.Idle; //Sets the state to Idle
-                    agent.ResetPath(); //Resets the path of the agent
-                    GetNewLocation(); //Gets a new location to move to
+                Debug.Log("Reached target should go to idle");
+                state = EnemyStates.Idle; //Sets the state to Idle
+                return;
             }
             else if (CheckForPlayerDirection() != Vector3.zero)
             {
 
-                if(Physics.Raycast(transform.position, CheckForPlayerDirection(), out RaycastHit hit, 10f))
+                if (Physics.Raycast(transform.position, CheckForPlayerDirection(), out RaycastHit hit, 10f))
                 {
-                    if(hit.collider.CompareTag("Player"))
+                    if (hit.collider.CompareTag("Player"))
                     {
 
                         state = EnemyStates.TargetingPlayer;
                     }
                 }
             }
-             if (agent.velocity.magnitude == 0.0f)
+            if (agent.velocity.magnitude == 0.0f)
             {
                 Debug.Log("Agent velocity is 0");
                 state = EnemyStates.Idle;
@@ -154,7 +145,7 @@ private void GetNewLocation()
         {
             agent.isStopped = true; //Stops the agent
 
-      
+
 
             transform.forward = (
                 new Vector3(
@@ -224,6 +215,7 @@ private void GetNewLocation()
     {
         state = EnemyStates.Rotating; //Sets the state to rotating
         transform.forward = targetDirection; //Sets the forward direction of the agent to the target direction
+        Debug.Log("METHOD Rotating to target");
     }
 
     private void GoToTarget(Vector3 target) //Sets the destination of the agent to the target position
