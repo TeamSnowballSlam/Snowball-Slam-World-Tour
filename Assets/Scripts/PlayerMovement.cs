@@ -16,8 +16,6 @@ public class PlayerMovement : MonoBehaviour
     //particle effects
     [SerializeField]private GameObject dustTrail;
     private ParticleSystem dustTrailParticles;
-    [SerializeField]private GameObject iceTrail;
-    private ParticleSystem iceTrailParticles;
     [SerializeField]private ParticleSystem tarTrail;
     
     //Returns the current speed reduction when touching the road
@@ -61,7 +59,6 @@ public class PlayerMovement : MonoBehaviour
             if (IsSliding)
             {
                 //Sliding speed
-                iceTrailParticles.Play();
                 dustTrailParticles.Stop();
                 tarTrail.Stop();
                 animator.SetFloat("movementSpeed", (float)SLIDINGSPEED);
@@ -74,13 +71,11 @@ public class PlayerMovement : MonoBehaviour
                 if (touchingRoad)
                 {
                     //tar particle effect
-                    tarTrail.gameObject.SetActive(true);
                     tarTrail.Play();
                     animator.SetFloat("movementSpeed", (float)MOVEMENTSPEED - (int)TouchingRoadSpeed);
                     return MOVEMENTSPEED - (int)TouchingRoadSpeed;
                 }
                 //dust trail
-                iceTrailParticles.Stop();
                 tarTrail.Stop();
                 dustTrailParticles.Play();
                 
@@ -90,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 tarTrail.Stop();
-                iceTrailParticles.Stop();
                 dustTrailParticles.Stop();
                 
                 //Idle Speed
@@ -188,10 +182,8 @@ public class PlayerMovement : MonoBehaviour
         lastInput = Vector2.zero;
 
         dustTrailParticles = dustTrail.transform.Find("Dust").gameObject.GetComponent<ParticleSystem>();
-        iceTrailParticles = iceTrail.transform.Find("Ice").gameObject.GetComponent<ParticleSystem>();
 
         //Stop the particle effects from playing at the start
-        iceTrailParticles.Stop();
         dustTrailParticles.Stop();
         tarTrail.Stop();
     }
