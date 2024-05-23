@@ -9,9 +9,29 @@ using TMPro;
 public class TutorialEvent // class that holds tutorial event data
 {
     public UnityEvent _eventAction = new UnityEvent();
-    public bool _doSlide;
-    public KeyCode[] _requiredActionPlayerOne;
-    public KeyCode[] _requiredActionPlayerTwo;
+    public inputType _inputType;
+}
+//public class TutorialEvent // class that holds tutorial event data
+//{
+//    public UnityEvent _eventAction = new UnityEvent();
+//    public bool _doSlide;
+//    public KeyCode[] _requiredActionPlayerOne;
+//    public KeyCode[] _requiredActionPlayerTwo;
+//}
+
+public enum inputType
+{
+    move,
+    slide,
+    throwing,
+    interact,
+    none
+}
+
+public enum playerNumber
+{
+    playerOne,
+    playerTwo
 }
 
 public class TutorialManager : MonoBehaviour
@@ -60,29 +80,72 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_eventsLeft && !_doingNext) // if there are still events leftover
+        //if (_eventsLeft && !_doingNext) // if there are still events leftover
+        //{
+        //    if (_tutorialEvents[_eventIndex]._doSlide)
+        //    {
+        //        if (CheckForDoubleAction(_tutorialEvents[_eventIndex])) // check  if it is the double tap to slide event
+        //        {
+        //            Debug.Log("Double Press");
+        //            _doingNext = true;
+        //            Invoke(nameof(NextTutorialEvent), 1f);
+        //        }
+        //    }
+        //    else if (CheckForAction(_tutorialEvents[_eventIndex])) // check if required action is entered to proceed
+        //    {
+        //        Debug.Log("Correct Key Entered");
+        //        _doingNext = true;
+        //        Invoke(nameof(NextTutorialEvent), 1f);
+        //        //NextTutorialEvent();
+        //    }
+        //}
+
+        pOneInputStatus.actionComplete = p1check;
+        pTwoInputStatus.actionComplete = p2check;
+
+        if (_eventsLeft && !_doingNext)
         {
-            if (_tutorialEvents[_eventIndex]._doSlide)
-            {
-                if (CheckForDoubleAction(_tutorialEvents[_eventIndex])) // check  if it is the double tap to slide event
-                {
-                    Debug.Log("Double Press");
-                    _doingNext = true;
-                    Invoke(nameof(NextTutorialEvent), 1f);
-                }
-            }
-            else if (CheckForAction(_tutorialEvents[_eventIndex])) // check if required action is entered to proceed
+            if (CheckForInput(_tutorialEvents[_eventIndex]) && _tutorialEvents[_eventIndex]._inputType != inputType.none)
             {
                 Debug.Log("Correct Key Entered");
                 _doingNext = true;
                 Invoke(nameof(NextTutorialEvent), 1f);
-                //NextTutorialEvent();
             }
         }
 
-        pOneInputStatus.actionComplete = p1check;
-        pTwoInputStatus.actionComplete = p2check;
-        
+    }
+
+    public bool CheckForInput(TutorialEvent _tutorialEvent)
+    {
+        if (twoplayer)
+        {
+            if(p1check && p2check)
+            {
+                return true;
+            }
+        }
+        else
+        {
+            if (p1check)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void PlayerInput(playerNumber pNum, inputType input)
+    {
+        if(input == _tutorialEvents[_eventIndex]._inputType)
+        {
+            switch (pNum)
+            {
+                case playerNumber.playerOne: p1check = true; break;
+                case playerNumber.playerTwo: p2check = true; break;
+                default: break;
+            }
+        }
     }
 
     //public void OnMove(InputAction.CallbackContext context) // method that takes player input for movement keys and checks if it is a double press
@@ -112,120 +175,120 @@ public class TutorialManager : MonoBehaviour
         _tutorialEvents[_eventIndex]._eventAction.Invoke();
     }
 
-    private bool CheckForDoubleAction(TutorialEvent tutorialEvent)
-    {
-        if (twoplayer) // CHANGE TO GAME SETTINGS but essentially if the game is two player check for both player inputs
-        {
-            if (!p1check)
-            {
-                foreach (KeyCode key in tutorialEvent._requiredActionPlayerOne)
-                {
-                    if (Input.GetKeyDown(key))
-                    {
-                        if (Time.time - _lastTimePlayerOne < _doubleInputDelay && key == _lastInputPlayerOne)
-                        {
-                            Debug.Log("p1 true");
-                            p1check = true;
-                        }
+    //private bool CheckForDoubleAction(TutorialEvent tutorialEvent)
+    //{
+    //    if (twoplayer) // CHANGE TO GAME SETTINGS but essentially if the game is two player check for both player inputs
+    //    {
+    //        if (!p1check)
+    //        {
+    //            foreach (KeyCode key in tutorialEvent._requiredActionPlayerOne)
+    //            {
+    //                if (Input.GetKeyDown(key))
+    //                {
+    //                    if (Time.time - _lastTimePlayerOne < _doubleInputDelay && key == _lastInputPlayerOne)
+    //                    {
+    //                        Debug.Log("p1 true");
+    //                        p1check = true;
+    //                    }
 
-                        _secondLastInputPlayerOne = _lastInputPlayerOne;
-                        _lastInputPlayerOne = key;
-                        _lastTimePlayerOne = Time.time;
-                    }
-                }
-            }
-            if (!p2check)
-            {
-                foreach (KeyCode key in tutorialEvent._requiredActionPlayerTwo)
-                {
-                    if (Input.GetKeyDown(key))
-                    {
-                        if (Time.time - _lastTimePlayerTwo < _doubleInputDelay && key == _lastInputPlayerTwo)
-                        {
-                            Debug.Log("p2 true");
-                            p2check = true;
-                        }
+    //                    _secondLastInputPlayerOne = _lastInputPlayerOne;
+    //                    _lastInputPlayerOne = key;
+    //                    _lastTimePlayerOne = Time.time;
+    //                }
+    //            }
+    //        }
+    //        if (!p2check)
+    //        {
+    //            foreach (KeyCode key in tutorialEvent._requiredActionPlayerTwo)
+    //            {
+    //                if (Input.GetKeyDown(key))
+    //                {
+    //                    if (Time.time - _lastTimePlayerTwo < _doubleInputDelay && key == _lastInputPlayerTwo)
+    //                    {
+    //                        Debug.Log("p2 true");
+    //                        p2check = true;
+    //                    }
 
-                        _secondLastInputPlayerTwo = _lastInputPlayerTwo;
-                        _lastInputPlayerTwo = key;
-                        _lastTimePlayerTwo = Time.time;
-                    }
-                }
-            }
+    //                    _secondLastInputPlayerTwo = _lastInputPlayerTwo;
+    //                    _lastInputPlayerTwo = key;
+    //                    _lastTimePlayerTwo = Time.time;
+    //                }
+    //            }
+    //        }
 
-            return p1check ? p2check ? true : false : false;
+    //        return p1check ? p2check ? true : false : false;
 
-        }
-        else // if single player only check for player two inputs
-        {
-            foreach (KeyCode key in tutorialEvent._requiredActionPlayerOne)
-            {
-                if (Input.GetKeyDown(key))
-                {
-                    if (Time.time - _lastTimePlayerOne < _doubleInputDelay && key == _lastInputPlayerOne)
-                    {
-                        Debug.Log("p1 true");
-                        p1check = true;
-                        return true;
-                    }
+    //    }
+    //    else // if single player only check for player two inputs
+    //    {
+    //        foreach (KeyCode key in tutorialEvent._requiredActionPlayerOne)
+    //        {
+    //            if (Input.GetKeyDown(key))
+    //            {
+    //                if (Time.time - _lastTimePlayerOne < _doubleInputDelay && key == _lastInputPlayerOne)
+    //                {
+    //                    Debug.Log("p1 true");
+    //                    p1check = true;
+    //                    return true;
+    //                }
 
-                    _secondLastInputPlayerOne = _lastInputPlayerOne;
-                    _lastInputPlayerOne = key;
-                    _lastTimePlayerOne = Time.time;
-                }
-            }
-        }
+    //                _secondLastInputPlayerOne = _lastInputPlayerOne;
+    //                _lastInputPlayerOne = key;
+    //                _lastTimePlayerOne = Time.time;
+    //            }
+    //        }
+    //    }
 
 
-        return false;
-    }
+    //    return false;
+    //}
 
-    private bool CheckForAction(TutorialEvent tutorialEvent) // check if relevant keycode/s have been entered
-    {
-        if (twoplayer) // CHANGE TO GAME SETTINGS but essentially if the game is two player check for both player inputs
-        {
-            if (!p1check)
-            {
-                foreach (KeyCode key in tutorialEvent._requiredActionPlayerOne)
-                {
-                    if (Input.GetKey(key))
-                    {
-                        Debug.Log("p1 true");
-                        p1check = true;
-                    }
-                }
-            }
-            if (!p2check)
-            {
-                foreach (KeyCode key in tutorialEvent._requiredActionPlayerTwo)
-                {
-                    if (Input.GetKey(key))
-                    {
-                        Debug.Log("p2 true");
-                        p2check = true;
-                    }
-                }
-            }
+    //private bool CheckForAction(TutorialEvent tutorialEvent) // check if relevant keycode/s have been entered
+    //{
+    //    if (twoplayer) // CHANGE TO GAME SETTINGS but essentially if the game is two player check for both player inputs
+    //    {
+    //        if (!p1check)
+    //        {
+    //            foreach (KeyCode key in tutorialEvent._requiredActionPlayerOne)
+    //            {
+    //                if (Input.GetKey(key))
+    //                {
+    //                    Debug.Log("p1 true");
+    //                    p1check = true;
+    //                }
+    //            }
+    //        }
+    //        if (!p2check)
+    //        {
+    //            foreach (KeyCode key in tutorialEvent._requiredActionPlayerTwo)
+    //            {
+    //                if (Input.GetKey(key))
+    //                {
+    //                    Debug.Log("p2 true");
+    //                    p2check = true;
+    //                }
+    //            }
+    //        }
 
-            return p1check ? p2check ? true : false : false;
+    //        return p1check ? p2check ? true : false : false;
             
-        }
-        else // if single player only check for player two inputs
-        {
-            foreach (KeyCode key in tutorialEvent._requiredActionPlayerOne)
-            {
-                if (Input.GetKey(key))
-                {
-                    Debug.Log("p1 true");
-                    p1check = true;
-                    return true;
-                }
-            }
-        }
+    //    }
+    //    else // if single player only check for player two inputs
+    //    {
+    //        foreach (KeyCode key in tutorialEvent._requiredActionPlayerOne)
+    //        {
+    //            if (Input.GetKey(key))
+    //            {
+    //                Debug.Log("p1 true");
+    //                p1check = true;
+    //                return true;
+    //            }
+    //        }
+    //    }
         
 
-        return false;
-    }
+    //    return false;
+    //}
 
     public void UpdateScore()
     {
