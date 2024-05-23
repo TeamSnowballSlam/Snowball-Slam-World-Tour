@@ -23,12 +23,10 @@ public class TutorialManager : MonoBehaviour
     bool _eventsLeft = true;
     bool _doingNext;
 
-    float _lastTime;
+    float _lastTimePlayerOne, _lastTimePlayerTwo;
     float _doubleInputDelay = .25f;
-    private Vector2 moveInput;
-    private Vector3 moveDirection;
-    private Vector2 secondLastInput;
-    private Vector2 lastInput;
+    private KeyCode _secondLastInputPlayerOne, _secondLastInputPlayerTwo;
+    private KeyCode _lastInputPlayerOne, _lastInputPlayerTwo;
     private bool _doublePress;
 
     public TextMeshProUGUI _scoreText;
@@ -46,6 +44,12 @@ public class TutorialManager : MonoBehaviour
 
     public InputStatus pOneInputStatus, pTwoInputStatus;
 
+    private void Awake()
+    {
+        GameSettings.Player2Exists = true; // NEED TO CHANGE WHEN LEVEL IMPLEMENTED
+        GameSettings.currentGameState = GameStates.PreGame;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,11 +62,14 @@ public class TutorialManager : MonoBehaviour
     {
         if (_eventsLeft && !_doingNext) // if there are still events leftover
         {
-            if (_doublePress) // check  if it is the double tap to slide event
+            if (_tutorialEvents[_eventIndex]._doSlide)
             {
-                _doublePress = false;
-                Debug.Log("Double Press");
-                NextTutorialEvent();
+                if (CheckForDoubleAction(_tutorialEvents[_eventIndex])) // check  if it is the double tap to slide event
+                {
+                    Debug.Log("Double Press");
+                    _doingNext = true;
+                    Invoke(nameof(NextTutorialEvent), 1f);
+                }
             }
             else if (CheckForAction(_tutorialEvents[_eventIndex])) // check if required action is entered to proceed
             {
@@ -78,36 +85,104 @@ public class TutorialManager : MonoBehaviour
         
     }
 
-    public void OnMove(InputAction.CallbackContext context) // method that takes player input for movement keys and checks if it is a double press
-    {
-        if (_tutorialEvents[_eventIndex]._doSlide)
-        {
-            moveInput = context.ReadValue<Vector2>();
-            moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
-            //If there was an action performed
-            if (context.performed)
-            {
-                //If the time between the last input and the current input is less than the double tap delay
-                //And the move input is the same as the last input
-                if (Time.time - _lastTime < _doubleInputDelay && moveInput == lastInput)
-                {
-                    _doublePress = true;
-                }
-                secondLastInput = lastInput;
-                lastInput = moveInput;
-                _lastTime = Time.time;
-            }
-        }
-    }
+    //public void OnMove(InputAction.CallbackContext context) // method that takes player input for movement keys and checks if it is a double press
+    //{
+    //    if (_tutorialEvents[_eventIndex]._doSlide)
+    //    {
+    //        moveInput = context.ReadValue<Vector2>();
+    //        moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
+    //        //If there was an action performed
+    //        if (context.performed)
+    //        {
+    //            //If the time between the last input and the current input is less than the double tap delay
+    //            //And the move input is the same as the last input
+    //            if (Time.time - _lastTime < _doubleInputDelay && moveInput == lastInput)
+    //            {
+    //                _doublePress = true;
+    //            }
+    //            secondLastInput = lastInput;
+    //            lastInput = moveInput;
+    //            _lastTime = Time.time; 
+    //        }
+    //    }
+    //}
 
     void InvokeCurrentTutorialEvent()
     {
         _tutorialEvents[_eventIndex]._eventAction.Invoke();
     }
 
+    private bool CheckForDoubleAction(TutorialEvent tutorialEvent)
+    {
+        if (twoplayer) // CHANGE TO GAME SETTINGS but essentially if the game is two player check for both player inputs
+        {
+            if (!p1check)
+            {
+                foreach (KeyCode key in tutorialEvent._requiredActionPlayerOne)
+                {
+                    if (Input.GetKeyDown(key))
+                    {
+                        if (Time.time - _lastTimePlayerOne < _doubleInputDelay && key == _lastInputPlayerOne)
+                        {
+                            Debug.Log("p1 true");
+                            p1check = true;
+                        }
+
+                        _secondLastInputPlayerOne = _lastInputPlayerOne;
+                        _lastInputPlayerOne = key;
+                        _lastTimePlayerOne = Time.time;
+                    }
+                }
+            }
+            if (!p2check)
+            {
+                foreach (KeyCode key in tutorialEvent._requiredActionPlayerTwo)
+                {
+                    if (Input.GetKeyDown(key))
+                    {
+                        if (Time.time - _lastTimePlayerTwo < _doubleInputDelay && key == _lastInputPlayerTwo)
+                        {
+                            Debug.Log("p2 true");
+                            p2check = true;
+                        }
+
+                        _secondLastInputPlayerTwo = _lastInputPlayerTwo;
+                        _lastInputPlayerTwo = key;
+                        _lastTimePlayerTwo = Time.time;
+                    }
+                }
+            }
+
+            return p1check ? p2check ? true : false : false;
+
+        }
+        else // if single player only check for player two inputs
+        {
+            foreach (KeyCode key in tutorialEvent._requiredActionPlayerOne)
+            {
+                if (Input.GetKeyDown(key))
+                {
+                    if (Time.time - _lastTimePlayerOne < _doubleInputDelay && key == _lastInputPlayerOne)
+                    {
+                        Debug.Log("p1 true");
+                        p1check = true;
+                        return true;
+                    }
+
+                    _secondLastInputPlayerOne = _lastInputPlayerOne;
+                    _lastInputPlayerOne = key;
+                    _lastTimePlayerOne = Time.time;
+                }
+            }
+        }
+
+
+        return false;
+    }
+
     private bool CheckForAction(TutorialEvent tutorialEvent) // check if relevant keycode/s have been entered
     {
-        if (twoplayer) // CHANGE TO GAME SETTINGS
+        if (twoplayer) // CHANGE TO GAME SETTINGS but essentially if the game is two player check for both player inputs
         {
             if (!p1check)
             {
@@ -134,6 +209,18 @@ public class TutorialManager : MonoBehaviour
 
             return p1check ? p2check ? true : false : false;
             
+        }
+        else // if single player only check for player two inputs
+        {
+            foreach (KeyCode key in tutorialEvent._requiredActionPlayerOne)
+            {
+                if (Input.GetKey(key))
+                {
+                    Debug.Log("p1 true");
+                    p1check = true;
+                    return true;
+                }
+            }
         }
         
 
@@ -169,6 +256,7 @@ public class TutorialManager : MonoBehaviour
     public void StartShakedown()
     {
         StartCoroutine(ShakedownTime());
+        GameSettings.currentGameState = GameStates.InGame;
     }
 
     private IEnumerator ShakedownTime() // after the last event free time to get used to controls, lasts 30 seconds
@@ -183,5 +271,7 @@ public class TutorialManager : MonoBehaviour
         }
 
         _tutorialEnd.Invoke(); // end tutorial
+
+        GameSettings.currentGameState = GameStates.PostGame;
     }
 }
