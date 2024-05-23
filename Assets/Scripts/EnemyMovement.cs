@@ -111,6 +111,8 @@ public class EnemyMovement : MonoBehaviour
                     if (random <= turretChance)
                     {
                         GetComponent<KangarooAbility>().PlaceTurret();
+                        GetNewLocation();
+                        return;
                     }
                     else
                     {
@@ -119,7 +121,7 @@ public class EnemyMovement : MonoBehaviour
                     }
                 }
                 Debug.Log("Reached target should go to idle");
-                state = EnemyStates.Idle; //Sets the state to Idle
+                GetNewLocation(); //Gets a new location
                 return;
             }
             else if (CheckForPlayerDirection() != Vector3.zero)

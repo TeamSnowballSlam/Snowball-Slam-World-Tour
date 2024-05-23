@@ -6225,7 +6225,7 @@ PrefabInstance:
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
       propertyPath: delayTime
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 232344071382295818, guid: ca055bc1e547a4f48b1c4194ed003bac,
         type: 3}
@@ -8909,7 +8909,7 @@ Transform:
   m_GameObject: {fileID: 895893913}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 2.2, z: 0}
+  m_LocalPosition: {x: -7, y: 2.2, z: 20.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11741,7 +11741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1320116122
 Transform:
   m_ObjectHideFlags: 0
