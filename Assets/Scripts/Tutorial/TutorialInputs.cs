@@ -63,7 +63,11 @@ public class TutorialInputs : MonoBehaviour
         //If there was an action performed
         if (context.started)
         {
-            tm.IsHolding(this.playerNumber, inputType.interact);
+            tm.IsHolding(true, this.playerNumber, inputType.interact);
+        }
+        else if (context.canceled)
+        {
+            tm.IsHolding(false, this.playerNumber, inputType.interact);
         }
         else if (context.performed)
         {

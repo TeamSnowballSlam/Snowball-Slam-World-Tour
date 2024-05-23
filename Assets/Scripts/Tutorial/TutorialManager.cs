@@ -67,6 +67,7 @@ public class TutorialManager : MonoBehaviour
     public InputStatus pOneInputStatus, pTwoInputStatus;
 
     public bool pOneInputHeld, pTwoInputHeld;
+    bool heldBegun;
 
     private void Awake()
     {
@@ -109,10 +110,17 @@ public class TutorialManager : MonoBehaviour
         //    }
         //}
 
-        pOneInputStatus.actionComplete = p1check;
-        pTwoInputStatus.actionComplete = p2check;
-        pOneInputStatus.holding = pOneInputHeld;
-        pTwoInputStatus.holding = pTwoInputHeld;
+        pOneInputStatus.UpdateValues(p1check, _tutorialEvents[_eventIndex]._inputType, pOneInputHeld, heldBegun);
+        pTwoInputStatus.UpdateValues(p2check, _tutorialEvents[_eventIndex]._inputType, pTwoInputHeld, heldBegun);
+
+        //pOneInputStatus.actionComplete = p1check;
+        //pTwoInputStatus.actionComplete = p2check;
+        //pOneInputStatus.holding = pOneInputHeld;
+        //pTwoInputStatus.holding = pTwoInputHeld;
+        //pOneInputStatus.currentType = _tutorialEvents[_eventIndex]._inputType;
+        //pTwoInputStatus.currentType = _tutorialEvents[_eventIndex]._inputType;
+        //pOneInputStatus.ready = heldBegun;
+        //pTwoInputStatus.ready = heldBegun;
 
         if (_eventsLeft && !_doingNext)
         {
@@ -160,9 +168,9 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    public void IsHolding(playerNumber pNum, inputType input)
+    public void IsHolding(bool holding, playerNumber pNum, inputType input)
     {
-        if(input == _tutorialEvents[_eventIndex]._inputType)
+        if(holding && input == _tutorialEvents[_eventIndex]._inputType)
         {
             switch (pNum)
             {
@@ -171,6 +179,13 @@ public class TutorialManager : MonoBehaviour
                 default: break;
             }
         }
+        else
+        {
+            pOneInputHeld = false;
+            pTwoInputHeld = false;
+        }
+
+        heldBegun = true;
     }
 
     //public void OnMove(InputAction.CallbackContext context) // method that takes player input for movement keys and checks if it is a double press
