@@ -19,8 +19,6 @@ public class PlaySFX : MonoBehaviour
         audioSource.mute = GameSettings.Mute;
         audioSource.volume = GameSettings.SoundEffectsVolume;
         AudioClip clip = Resources.Load<AudioClip>("SoundEffects/" + sound);
-        Debug.Log("Playing sound: " + sound + " with clip: " + clip);
-        Debug.Log("Audio source: " + audioSource);
         audioSource.clip = clip;
         audioSource.Play();
     }

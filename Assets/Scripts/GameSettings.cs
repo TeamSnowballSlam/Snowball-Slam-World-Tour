@@ -19,6 +19,7 @@ public static class GameSettings
         set
         {
             musicVolume = value;
+            PlayerPrefs.SetFloat("MusicVolume", musicVolume);
             if (MusicManager.Instance != null)
             {
                 MusicManager.Instance.OnVolumeChanged();
@@ -35,6 +36,7 @@ public static class GameSettings
         set
         {
             soundEffectsVolume = value;
+            PlayerPrefs.SetFloat("SoundEffectsVolume", soundEffectsVolume);
         }
     }
     private static bool mute = false; // If the game is muted
@@ -47,6 +49,7 @@ public static class GameSettings
         set
         {
             mute = value;
+            PlayerPrefs.SetInt("Mute", mute ? 1 : 0);
             if (MusicManager.Instance != null)
             {
                 MusicManager.Instance.OnMuteChanged();
