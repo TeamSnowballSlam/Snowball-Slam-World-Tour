@@ -253,11 +253,11 @@ public class SettingsManager : MonoBehaviour
         }
         resolutionDropdown.value = resolutionIndex;
         ApplyResolution(resolutionIndex);        
-
-        int frameRateIndex = frameRateDropdown.options.Count - 2; //Default is highest non uncapped in case the PlayerPrefs value is invalid
+        
+        int frameRateIndex = 60; //Default is highest non uncapped in case the PlayerPrefs value is invalid
         try
         {
-            frameRateIndex = PlayerPrefs.GetInt("FrameRate", frameRateDropdown.options.Count - 1); //Default is uncapped
+            frameRateIndex = PlayerPrefs.GetInt("FrameRate", 60); //Default is uncapped
         }
         catch
         {
