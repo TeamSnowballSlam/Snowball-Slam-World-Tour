@@ -30,4 +30,8 @@ public class PlayAnnouncerSounds : MonoBehaviour
         yield return new WaitForSeconds(1);
         playSFX.playSound("321GO");
     }
+
+    //public void 
+    //Have this get called to play the end game scripts
+    //Public reg method that calls priv IEnumerator
 }
