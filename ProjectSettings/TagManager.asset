@@ -9,10 +9,12 @@ TagManager:
   - Enemy
   - Turret
   - Road
+  - Snowball Machine
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
+  - Water
   - Water
   - UI
   - 
