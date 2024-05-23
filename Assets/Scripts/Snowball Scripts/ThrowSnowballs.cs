@@ -21,6 +21,8 @@ public class ThrowSnowballs : MonoBehaviour
     
     private GameObject snowballWP;
 
+    private bool canThrow;
+
     void Start()
     {
         snowInventory = GetComponent<SnowInventory>();
@@ -30,11 +32,13 @@ public class ThrowSnowballs : MonoBehaviour
             animator = GetComponentInChildren<Animator>();
         }
         snowballWP = this.transform.Find("SnowballPosition").gameObject;
+        canThrow = true;
     }
 
     // Player
     public void ThrowSnowball(InputAction.CallbackContext context)
     {
+        if (!canThrow) return; // if can't throw, don't throw snowball
         if (GameSettings.currentGameState != GameStates.InGame) return; // if game is over, don't throw snowball
         if (snowInventory.CurrentAmmo <= 0) return; // if no ammo, don't throw snowball
         if (context.phase != InputActionPhase.Started) return; // only throw snowball once--when phase is started
@@ -42,7 +46,9 @@ public class ThrowSnowballs : MonoBehaviour
         animator.SetTrigger("doThrow"); // trigger animation
 
         snowInventory.CurrentAmmo--;
+        canThrow = false;
 
+        //StartCoroutine(ThrowCooldown());
     }
 
     public void ThrowSnowball()
@@ -73,6 +79,18 @@ public class ThrowSnowballs : MonoBehaviour
         {
             snowball.GetComponent<SnowballCollision>().owner = "Enemy"; // owner of snowball is the enemy
         }
+    }
+
+    // private IEnumerator ThrowCooldown()
+    // {
+    //     canThrow = false;
+    //     yield return new WaitForSeconds(1.04f);
+    //     canThrow = true;
+    // }
+
+    public void SetCanThrow()
+    {
+        canThrow = true;
     }
 
 }
