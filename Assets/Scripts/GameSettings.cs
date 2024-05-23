@@ -9,7 +9,7 @@ public static class GameSettings
     public static bool Player2Exists = false; // If player 2 exists. This is set in character select or when player 2 hot joins
     public static Levels SelectedLevel = Levels.None; // The level selected for the game
     public static GameStates currentGameState = GameStates.PreGame; // The current state of the game
-    private static float musicVolume = 0.5f; // The volume of the music
+    private static float musicVolume; // The volume of the music
     public static float MusicVolume
     {
         get
@@ -19,10 +19,13 @@ public static class GameSettings
         set
         {
             musicVolume = value;
-            MusicManager.Instance.OnVolumeChanged();
+            if (MusicManager.Instance != null)
+            {
+                MusicManager.Instance.OnVolumeChanged();
+            }
         }
     }
-    private static float soundEffectsVolume = 0.5f; // The volume of the sound effects
+    private static float soundEffectsVolume; // The volume of the sound effects
     public static float SoundEffectsVolume
     {
         get
@@ -44,7 +47,10 @@ public static class GameSettings
         set
         {
             mute = value;
-            MusicManager.Instance.OnMuteChanged();
+            if (MusicManager.Instance != null)
+            {
+                MusicManager.Instance.OnMuteChanged();
+            }
         }
     }
 }
