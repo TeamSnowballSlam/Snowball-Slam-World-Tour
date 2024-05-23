@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5413747200679424810}
   - component: {fileID: 2598698272735408435}
   - component: {fileID: 4630304162801878107}
+  - component: {fileID: 6695844894530138800}
   m_Layer: 0
   m_Name: PS_Confetti_Shot_Alt
   m_TagString: Untagged
@@ -4897,3 +4898,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6695844894530138800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810113245437142993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f94c575d836ee46aabb37bbcba079c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
