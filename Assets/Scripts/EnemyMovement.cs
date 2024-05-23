@@ -41,13 +41,15 @@ public class EnemyMovement : MonoBehaviour
    
 private void GetNewLocation()
     {
+        Debug.Log("METHOD Getting new location");
+        state = EnemyStates.Idle; //Sets the state to moving
                 int randomMultiplier = Random.Range(1, 15); //Randomizes the multiplier
                // Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
                 Bounds bounds = surface.navMeshData.sourceBounds; //Gets the bounds of the navmesh
                randomPosition = new Vector3( //Calculates the random position
-                    Random.Range(bounds.min.x, bounds.max.x),
+                    Random.Range((bounds.min.x+2f),( bounds.max.x-2f)),
                     transform.position.y,
-                    Random.Range(bounds.min.z, bounds.max.z)
+                    Random.Range((bounds.min.z+2f), (bounds.max.z-2f))
                 );
                 if ( //Checks if the random position is within the bounds
                     randomPosition.x > bounds.min.x
@@ -70,6 +72,7 @@ private void GetNewLocation()
                     Debug.Log(bounds.min);
                     Debug.Log(bounds.max);
                     Debug.Log(randomPosition);
+                    GetNewLocation(); //Gets a new location
                 }
     }
     void Update()
@@ -78,6 +81,8 @@ private void GetNewLocation()
         Debug.Log("Remaining distance less than: " + ((agent.remainingDistance <= 0.001) && state == EnemyStates.Moving) );
         Debug.Log("State: " + state);
         animator.SetFloat("movementSpeed", agent.velocity.magnitude);
+        Debug.Log("Target Position: " + agent.destination);
+        Debug.Log("Current Position: " + agent.velocity.magnitude);
         
         if (GameSettings.currentGameState != GameStates.InGame)
         {
@@ -102,9 +107,10 @@ private void GetNewLocation()
 
 
 
+
             }
         }
-         if (state == EnemyStates.Moving)
+       else  if (state == EnemyStates.Moving)
         {
             if (agent.remainingDistance <= 0.001) //Checks if the agent has reached the target within a certain distance
             {
@@ -122,8 +128,8 @@ private void GetNewLocation()
                 }
                     Debug.Log("Reached target should go to idle");
                     state = EnemyStates.Idle; //Sets the state to Idle
+                    agent.ResetPath(); //Resets the path of the agent
                     GetNewLocation(); //Gets a new location to move to
-                    return; 
             }
             else if (CheckForPlayerDirection() != Vector3.zero)
             {
@@ -136,6 +142,11 @@ private void GetNewLocation()
                         state = EnemyStates.TargetingPlayer;
                     }
                 }
+            }
+             if (agent.velocity.magnitude == 0.0f)
+            {
+                Debug.Log("Agent velocity is 0");
+                state = EnemyStates.Idle;
             }
 
         }
@@ -217,6 +228,7 @@ private void GetNewLocation()
 
     private void GoToTarget(Vector3 target) //Sets the destination of the agent to the target position
     {
+        Debug.Log("METHOD Going to target");
         RotateToTarget((target - transform.position).normalized); //Rotates the agent to face the target
         agent.SetDestination(target); //Starts moving the agent to the target position
         state = EnemyStates.Moving; //Sets the state to moving
