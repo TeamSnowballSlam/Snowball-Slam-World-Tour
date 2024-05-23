@@ -36,7 +36,7 @@ public class ThrowSnowballs : MonoBehaviour
 
     private IEnumerator InvulnerabilityTimer()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         invulnerable = false;
     }
 
