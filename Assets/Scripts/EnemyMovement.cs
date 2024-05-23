@@ -91,7 +91,7 @@ public class EnemyMovement : MonoBehaviour
             agent.isStopped = true;
             return;
         }
-        else if (GameSettings.currentGameState == GameStates.InGame)
+        else if (GameSettings.currentGameState == GameStates.InGame && state == EnemyStates.Moving)
         {
             agent.isStopped = false;
         }
@@ -114,6 +114,10 @@ public class EnemyMovement : MonoBehaviour
             )
             {
                 state = EnemyStates.TargetingPlayer;
+            }
+            else
+            {
+                GetNewLocation();
             }
         }
         else if (state == EnemyStates.Moving)
@@ -182,7 +186,9 @@ public class EnemyMovement : MonoBehaviour
         }
         else if (state == EnemyStates.TargetingPlayer)
         {
-            agent.isStopped = true; //Stops the agent
+            agent.ResetPath(); //Resets the path of the agent
+            agent.SetDestination(agent.transform.position); //Sets the destination of the agent to the current position
+            agent.velocity = Vector3.zero; //Sets the velocity of the agent to zero
 
             transform.forward = (
                 new Vector3(
@@ -192,19 +198,56 @@ public class EnemyMovement : MonoBehaviour
                 ) - new Vector3(transform.position.x, 0, transform.position.z)
             ).normalized; //Sets the forward direction of the agent to the direction to the player
 
-            for (int i = 0; i < 5; i++)
+            if (Time.time > throwTime + delayTime)
             {
-                agent.isStopped = true; //Stops the agent
-                Debug.Log("VELOCITY" + agent.velocity.magnitude);
-                agent.velocity = Vector3.zero; //Sets the velocity of the agent to zero
-                if (Time.time > throwTime + delayTime)
+                for (int i = 0; i < 1; i++)
                 {
+                    agent.isStopped = true; //Stops the agent
+                    Debug.Log("VELOCITY" + agent.velocity.magnitude);
+                    agent.velocity = Vector3.zero; //Sets the velocity of the agent to zero
                     GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
                     throwTime = Time.time; //Sets the throw time to the current time
                 }
+                if (
+                    Physics.Raycast(
+                        transform.position,
+                        (GetClosestPlayer().transform.position - transform.position),
+                        out RaycastHit hit,
+                        10f
+                    )
+                )
+                {
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        // state = EnemyStates.TargetingPlayer;
+                        Debug.Log("RAYCAST SUCCESS");
+                        Debug.DrawRay(
+                            transform.position,
+                            (GetClosestPlayer().transform.position - transform.position),
+                            Color.blue
+                        );
+                    }
+                    else
+                    {
+                        // state = EnemyStates.Idle;
+                        // GetNewLocation();
+                        Debug.Log("RAYCAST FAIL");
+                        Debug.DrawRay(
+                            transform.position,
+                            (GetClosestPlayer().transform.position - transform.position),
+                            Color.red
+                        );
+                        state = EnemyStates.Idle;
+                        return;
+                    }
+                }
+                else 
+                {
+                    Debug.Log("RAYCAST FAIL WAS NOT FIRED");
+                    state = EnemyStates.Idle;
+                    return;
+                }
             }
-            state = EnemyStates.Idle;
-            GetNewLocation();
         }
         else if (state == EnemyStates.ThrowingSnowball)
         {
@@ -231,7 +274,6 @@ public class EnemyMovement : MonoBehaviour
                 closestPlayer = player; //Sets the closest player to the player
             }
         }
-        state = EnemyStates.Moving;
         return closestPlayer; //Returns the closest player
     }
 
