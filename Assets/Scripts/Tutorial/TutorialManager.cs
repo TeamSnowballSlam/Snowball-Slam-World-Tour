@@ -66,6 +66,8 @@ public class TutorialManager : MonoBehaviour
 
     public InputStatus pOneInputStatus, pTwoInputStatus;
 
+    public bool pOneInputHeld, pTwoInputHeld;
+
     private void Awake()
     {
         GameSettings.Player2Exists = true; // NEED TO CHANGE WHEN LEVEL IMPLEMENTED
@@ -109,6 +111,8 @@ public class TutorialManager : MonoBehaviour
 
         pOneInputStatus.actionComplete = p1check;
         pTwoInputStatus.actionComplete = p2check;
+        pOneInputStatus.holding = pOneInputHeld;
+        pTwoInputStatus.holding = pTwoInputHeld;
 
         if (_eventsLeft && !_doingNext)
         {
@@ -119,6 +123,7 @@ public class TutorialManager : MonoBehaviour
                 Invoke(nameof(NextTutorialEvent), 1f);
             }
         }
+
 
     }
 
@@ -150,6 +155,19 @@ public class TutorialManager : MonoBehaviour
             {
                 case playerNumber.playerOne: p1check = true; break;
                 case playerNumber.playerTwo: p2check = true; break;
+                default: break;
+            }
+        }
+    }
+
+    public void IsHolding(playerNumber pNum, inputType input)
+    {
+        if(input == _tutorialEvents[_eventIndex]._inputType)
+        {
+            switch (pNum)
+            {
+                case playerNumber.playerOne: pOneInputHeld = true; break;
+                case playerNumber.playerTwo: pTwoInputHeld = true; break;
                 default: break;
             }
         }

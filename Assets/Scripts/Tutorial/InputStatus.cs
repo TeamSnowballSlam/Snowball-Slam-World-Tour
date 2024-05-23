@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class InputStatus : MonoBehaviour
 {
     public bool actionComplete;
-    public Sprite redSprite, greenSprite;
+    public Image greenSprite;
     Image image;
+
+    public bool holding;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +20,18 @@ public class InputStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        image.sprite = actionComplete ? greenSprite : redSprite;
+        if (actionComplete)
+        {
+            greenSprite.fillAmount = 1;
+        }
+        else if (holding)
+        {
+            greenSprite.fillAmount += Time.deltaTime * .5f;
+        }
+        else
+        {
+            greenSprite.fillAmount = 0;
+        }
+        
     }
 }

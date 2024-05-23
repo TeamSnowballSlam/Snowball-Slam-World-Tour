@@ -61,7 +61,11 @@ public class TutorialInputs : MonoBehaviour
     public void OnInteract(InputAction.CallbackContext context) // method that takes player input for interact key
     {
         //If there was an action performed
-        if (context.performed)
+        if (context.started)
+        {
+            tm.IsHolding(this.playerNumber, inputType.interact);
+        }
+        else if (context.performed)
         {
             tm.DoPlayerInput(this.playerNumber, inputType.interact); // run method on tutorial manager
         }
