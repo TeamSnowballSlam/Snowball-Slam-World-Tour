@@ -18,21 +18,18 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    //Note from Palin: I went through and hid the values that don't need to be shown in the inspector anymore
+    //I also changed the values to the ones we have decided on
     [Header("Level Management")]
-    [SerializeField]
     private int playerScore = 0;
-
-    [SerializeField]
     private int enemyScore = 0;
-
-    public int LevelLength = 60; //How long the level will last in seconds
+    [HideInInspector]
+    public int LevelLength = 90; //How long the level will last in seconds
     [HideInInspector]
     public int secondsRemaining; //The time remaining in the level
 
-    [SerializeField]
-    private float delayTime = 10; //The delay time before the level starts
+    private float delayTime = 5; //The delay time before the level starts
 
-    [SerializeField]
     private int targetScore = 15; //The score needed to win the level
 
     [Header("Colors")]
@@ -117,6 +114,7 @@ public class LevelManager : MonoBehaviour
                 )
             )
             {
+                if (currentTime == 5) { PlayAnnouncerSounds.Instance.FinalCountdown(); }
                 if (delayTime > 0)
                 {
                     currentTime = Time.time;
@@ -219,14 +217,14 @@ public class LevelManager : MonoBehaviour
 
             p1.transform.parent = endGameWinnerSpawnPoints[0];
             p1.transform.localPosition = Vector3.zero;
-            p1.transform.localRotation = Quaternion.Euler(new(0,180,0));
+            p1.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
 
             if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
             {
                 GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
                 p2.transform.parent = endGameWinnerSpawnPoints[1];
                 p2.transform.localPosition = Vector3.zero;
-                p2.transform.localRotation = Quaternion.Euler(new(0,180,0));
+                p2.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
 
             }
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
@@ -234,12 +232,13 @@ public class LevelManager : MonoBehaviour
                 GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
                 e.transform.parent = endGameLoserSpawnPoints[i];
                 e.transform.localPosition = Vector3.zero;
-                e.transform.localRotation = Quaternion.Euler(new(0,180,0));
+                e.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
 
                 e.GetComponent<NavMeshAgent>().isStopped = true;
                 e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
                 e.GetComponent<NavMeshAgent>().enabled = false;
-                e.GetComponent<EnemyMovement>().enabled = false;            }
+                e.GetComponent<EnemyMovement>().enabled = false;
+            }
         }
         else if (winner == "Enemy")
         {
@@ -249,14 +248,14 @@ public class LevelManager : MonoBehaviour
             GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
             p1.transform.parent = endGameLoserSpawnPoints[0];
             p1.transform.localPosition = Vector3.zero;
-            p1.transform.localRotation = Quaternion.Euler(new(0,180,0));
+            p1.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
 
             if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
             {
                 GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
                 p2.transform.parent = endGameLoserSpawnPoints[1];
                 p2.transform.localPosition = Vector3.zero;
-                p2.transform.localRotation = Quaternion.Euler(new(0,180,0));
+                p2.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
 
             }
 
@@ -266,7 +265,7 @@ public class LevelManager : MonoBehaviour
                 e.transform.parent = endGameWinnerSpawnPoints[i];
                 e.transform.localPosition = Vector3.zero;
                 e.transform.localRotation = Quaternion.Euler(Vector3.zero);
-                e.transform.localRotation = Quaternion.Euler(new(0,180,0));
+                e.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
 
                 e.GetComponent<NavMeshAgent>().SetDestination(e.transform.localPosition);
                 e.GetComponent<NavMeshAgent>().isStopped = true;
@@ -287,14 +286,14 @@ public class LevelManager : MonoBehaviour
 
             p1.transform.parent = endGameDrawSpawnPoints[1];
             p1.transform.localPosition = Vector3.zero;
-                p1.transform.localRotation = Quaternion.Euler(new(0,180,0));
+            p1.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
 
             if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
             {
                 GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
                 p2.transform.parent = endGameDrawSpawnPoints[0];
                 p2.transform.localPosition = Vector3.zero;
-                                p2.transform.localRotation = Quaternion.Euler(new(0,180,0));
+                p2.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
 
             }
 
@@ -303,8 +302,8 @@ public class LevelManager : MonoBehaviour
                 GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
                 e.transform.parent = endGameDrawSpawnPoints[i + 2];
                 e.transform.localPosition = Vector3.zero;
-                e.transform.localRotation = Quaternion.Euler(new(0,180,0));
-                
+                e.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
+
                 e.GetComponent<NavMeshAgent>().SetDestination(e.transform.localPosition);
                 e.GetComponent<NavMeshAgent>().isStopped = true;
                 e.GetComponent<NavMeshAgent>().enabled = false;
@@ -389,6 +388,7 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
+        MusicManager.Instance.SetTrack("Fight");
         SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 

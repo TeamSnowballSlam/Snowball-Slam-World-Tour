@@ -6,9 +6,18 @@ public class PlayAnnouncerSounds : MonoBehaviour
 {
     public PlaySFX playSFX;
     // Start is called before the first frame update
+    public static PlayAnnouncerSounds Instance;
     void Start()
     {
-        Debug.Log("PlayAnnouncerSounds Start");
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        playSFX = GetComponent<PlaySFX>();
         switch (GameSettings.SelectedLevel)
         {
             case Levels.Australia:
@@ -27,11 +36,12 @@ public class PlayAnnouncerSounds : MonoBehaviour
     {
         Debug.Log("Australia Intro");
         playSFX.playSound("WelcomeToAustralia");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         playSFX.playSound("321GO");
     }
 
-    //public void 
-    //Have this get called to play the end game scripts
-    //Public reg method that calls priv IEnumerator
+    public void FinalCountdown()
+    {
+        playSFX.playSound("54321");
+    }
 }
