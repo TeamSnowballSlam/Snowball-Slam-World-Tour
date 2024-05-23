@@ -37,8 +37,8 @@ To be added
 | Action                    | Key/Button             |
 |---------------------------|------------------------|
 | Movement                   | **Player 1:** WASD  **Player 2:** Arrows                      | 
-| Throw Snowball | **Player 1:** Q  **Player 2:** Left Shift |
-| Interact |  **Player 1:** E  **Player 2:** Left Ctrl | 
+| Throw Snowball | **Player 1:** T  **Player 2:** / |
+| Interact |  **Player 1:** R  **Player 2:** . | 
 
 ## Get Involved
 
