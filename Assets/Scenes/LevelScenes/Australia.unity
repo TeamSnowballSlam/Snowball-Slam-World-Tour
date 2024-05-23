@@ -1168,11 +1168,7 @@ PrefabInstance:
       objectReference: {fileID: 261157180}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 688840621}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a51ba6cba62ef4439bda1edc9a49285, type: 3}
 --- !u!4 &72161254 stripped
@@ -8927,12 +8923,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca82277368ff66c4987a87fe60e5cb84, type: 3}
---- !u!4 &491182843 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
-    type: 3}
-  m_PrefabInstance: {fileID: 65225147}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &491198521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4315251825742018427, guid: 98fddd4b7fb52a84c9f23bfb16d24511,
@@ -9255,12 +9245,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e79b5dec885fa24081468ff06bf6145, type: 3}
---- !u!4 &505398767 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
-    type: 3}
-  m_PrefabInstance: {fileID: 599240565}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &507910298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10166,37 +10150,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 548334856}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &548380081
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 548380082}
-  m_Layer: 0
-  m_Name: SnowballPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &548380082
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548380081}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1557772193}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &548716980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11016,6 +10969,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kangaroo (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2757070868714997952, guid: 1a51ba6cba62ef4439bda1edc9a49285,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11073,11 +11031,7 @@ PrefabInstance:
       objectReference: {fileID: 261157180}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1945958051}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a51ba6cba62ef4439bda1edc9a49285, type: 3}
 --- !u!1 &602236532
@@ -13119,37 +13073,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 917521018}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &688840620
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 688840621}
-  m_Layer: 0
-  m_Name: SnowballPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &688840621
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688840620}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 491182843}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &690835705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22016,12 +21939,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca82277368ff66c4987a87fe60e5cb84, type: 3}
---- !u!4 &1160115561 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
-    type: 3}
-  m_PrefabInstance: {fileID: 1638284755}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1160137632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3841333322175498825, guid: ba7b6f0ae5593cf418fd441fd32f91d2,
@@ -25155,37 +25072,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca82277368ff66c4987a87fe60e5cb84, type: 3}
---- !u!1 &1288100180
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1288100181}
-  m_Layer: 0
-  m_Name: SnowballPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1288100181
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288100180}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1160115561}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1291211874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29850,12 +29736,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowTrayInv: {fileID: 0}
   prodSpeed: 0
---- !u!4 &1557772193 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
-    type: 3}
-  m_PrefabInstance: {fileID: 1750380885}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1563298570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31005,11 +30885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1288100181}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a51ba6cba62ef4439bda1edc9a49285, type: 3}
 --- !u!1001 &1639185539
@@ -32996,11 +32872,7 @@ PrefabInstance:
       objectReference: {fileID: 261157180}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 548380082}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a51ba6cba62ef4439bda1edc9a49285, type: 3}
 --- !u!4 &1753010970 stripped
@@ -36222,37 +36094,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1941808473}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1945958050
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1945958051}
-  m_Layer: 0
-  m_Name: SnowballPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1945958051
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945958050}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 505398767}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1946108225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4460930089380741730, guid: b97dff3f194b8824aa532c7284321ce6,
