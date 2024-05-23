@@ -62,12 +62,19 @@ public class TutorialManager : MonoBehaviour
     bool p1check = false;
     bool p2check = false;
 
+    public GameObject playerOneInput, playerTwoInput;
+
     public InputStatus pOneInputStatus, pTwoInputStatus;
 
     private void Awake()
     {
         GameSettings.Player2Exists = true; // NEED TO CHANGE WHEN LEVEL IMPLEMENTED
         GameSettings.currentGameState = GameStates.PreGame;
+
+        PlayerInput playerOne = PlayerInput.Instantiate(playerOneInput, controlScheme: "WASD", pairWithDevice: Keyboard.current);
+        playerOne.gameObject.GetComponent<TutorialInputs>().tm = this;
+        PlayerInput playerTwo = PlayerInput.Instantiate(playerTwoInput, controlScheme: "Arrows", pairWithDevice: Keyboard.current);
+        playerTwo.gameObject.GetComponent<TutorialInputs>().tm = this;
     }
 
     // Start is called before the first frame update
@@ -135,7 +142,7 @@ public class TutorialManager : MonoBehaviour
         return false;
     }
 
-    public void PlayerInput(playerNumber pNum, inputType input)
+    public void DoPlayerInput(playerNumber pNum, inputType input)
     {
         if(input == _tutorialEvents[_eventIndex]._inputType)
         {

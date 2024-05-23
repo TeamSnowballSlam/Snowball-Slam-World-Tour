@@ -36,11 +36,11 @@ public class TutorialInputs : MonoBehaviour
             //And the move input is the same as the last input
             if (Time.time - _lastTime < _doubleInputDelay && moveInput == lastInput)
             {
-                tm.PlayerInput(this.playerNumber, inputType.slide);
+                tm.DoPlayerInput(this.playerNumber, inputType.slide);
             }
             else
             {
-                tm.PlayerInput(this.playerNumber, inputType.move); // only pressed once is move
+                tm.DoPlayerInput(this.playerNumber, inputType.move); // only pressed once is move
             }
 
             lastInput = moveInput;
@@ -54,7 +54,7 @@ public class TutorialInputs : MonoBehaviour
         //If there was an action performed
         if (context.performed)
         {
-            tm.PlayerInput(this.playerNumber, inputType.throwing); // run method on tutorial manager
+            tm.DoPlayerInput(this.playerNumber, inputType.throwing); // run method on tutorial manager
         }
     }
 
@@ -63,7 +63,7 @@ public class TutorialInputs : MonoBehaviour
         //If there was an action performed
         if (context.performed)
         {
-            tm.PlayerInput(this.playerNumber, inputType.interact); // run method on tutorial manager
+            tm.DoPlayerInput(this.playerNumber, inputType.interact); // run method on tutorial manager
         }
     }
 
