@@ -12,6 +12,11 @@ public class PlayerMovement : MonoBehaviour
     private const int SLIDINGSPEED = 20; //Placeholder values. Will change after testing
     private int slowingDownSpeed = 0; //The speed the player is at during the slowing down process
     private const double MAXSLOWDOWN = MOVEMENTSPEED - 2; //The maximum speed the road can  slow you by
+
+    //particle effects
+    [SerializeField]private GameObject dustTrail;
+    [SerializeField]private GameObject iceTrail;
+    [SerializeField]private ParticleSystem tarTrail;
     
     //Returns the current speed reduction when touching the road
     public double TouchingRoadSpeed 
@@ -54,17 +59,25 @@ public class PlayerMovement : MonoBehaviour
             if (IsSliding)
             {
                 //Sliding speed
+                //iceTrail.transform.Find("Ice").gameObject.GetComponent<ParticleSystem>().Play();
                 animator.SetFloat("movementSpeed", (float)SLIDINGSPEED);
                 return SLIDINGSPEED;
+                //ice particle effect
+
             }
             if (IsMoving)
             {
                 //Moving Speed
                 if (touchingRoad)
                 {
+                    //tar particle effect
+                    tarTrail.gameObject.SetActive(true);
+                    tarTrail.Play();
                     animator.SetFloat("movementSpeed", (float)MOVEMENTSPEED - (int)TouchingRoadSpeed);
                     return MOVEMENTSPEED - (int)TouchingRoadSpeed;
                 }
+                //dust trail
+                //dustTrail.transform.Find("Dust").gameObject.GetComponent<ParticleSystem>().Play();
                 animator.SetFloat("movementSpeed", (float)MOVEMENTSPEED);
                 return MOVEMENTSPEED;
             }

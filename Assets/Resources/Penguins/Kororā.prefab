@@ -389,6 +389,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d71eceb4161003489f50c0c095b8efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dustTrail: {fileID: 0}
+  iceTrail: {fileID: 0}
+  tarTrail: {fileID: 907139480731535984, guid: 869105261d460dd4385bdd385de58fe5, type: 3}
 --- !u!114 &5096198271553889069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,6 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1ec78b65a4f6f41b3cfb84c8ee011c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 0}
 --- !u!4 &7670421377112989966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
