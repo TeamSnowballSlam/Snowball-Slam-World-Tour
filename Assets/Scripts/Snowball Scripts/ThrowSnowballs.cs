@@ -32,6 +32,10 @@ public class ThrowSnowballs : MonoBehaviour
     private Vector3 snowballPosition;
     public SnowInventory snowInventory;
     private Animator animator;
+    
+    private GameObject snowballWP;
+
+    private bool canThrow;
 
     private const int SPEED = 20;
     
@@ -49,39 +53,65 @@ public class ThrowSnowballs : MonoBehaviour
         {
             animator = GetComponentInChildren<Animator>();
         }
+        snowballWP = this.transform.Find("SnowballPosition").gameObject;
+        canThrow = true;
     }
 
     // Player
     public void ThrowSnowball(InputAction.CallbackContext context)
     {
+        if (!canThrow) return; // if can't throw, don't throw snowball
         if (GameSettings.currentGameState != GameStates.InGame) return; // if game is over, don't throw snowball
         if (snowInventory.CurrentAmmo <= 0) return; // if no ammo, don't throw snowball
         if (context.phase != InputActionPhase.Started) return; // only throw snowball once--when phase is started
         if (GetComponent<PlayerMovement>().IsSliding) return; // if player is sliding, don't throw snowball
-       // animator.SetTrigger("doThrow"); // trigger animation
-        snowballPosition = new Vector3(transform.position.x + 1.0f, 1.5f, transform.position.z); // thrown at face level
-        snowball = Instantiate(
-            snowballPrefab,
-            snowballPosition + transform.forward,
-            Quaternion.identity
-        ); // snowballPrefab is instantiated
-        snowball.GetComponent<SnowballCollision>().owner = "Player"; // owner of snowball is the player
-        snowball.GetComponent<Rigidbody>().AddForce(transform.forward * SPEED, ForceMode.Impulse); // snowball moves at a constant rate
+        animator.SetTrigger("doThrow"); // trigger animation
         snowInventory.CurrentAmmo--;
+        canThrow = false;
+
+        //StartCoroutine(ThrowCooldown());
     }
 
     public void ThrowSnowball()
     {
         if (GameSettings.currentGameState == GameStates.PostGame) return; // if game is over, don't throw snowball
-      //  animator.SetTrigger("doThrow"); // trigger animation
-        snowballPosition = new Vector3(transform.position.x + 2.0f, 1.5f, transform.position.z); // thrown at face level
+        animator.SetTrigger("doThrow"); // trigger animation
+        
+    }
+
+    // <summary>
+    // Called during a frame of the throwing animation
+    // </summary>
+    public void SnowballAnimation(string name)
+    {
+        snowballPosition = snowballWP.transform.position;
         snowball = Instantiate(
             snowballPrefab,
             snowballPosition + transform.forward,
             Quaternion.identity
-        ); // snowballPrefab is instantiated
-        snowball.GetComponent<SnowballCollision>().owner = "Enemy"; // owner of snowball is the player
+        );
+        snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
 
-        snowball.GetComponent<Rigidbody>().AddForce(transform.forward * SPEED, ForceMode.Impulse); // snowball moves at a constant rate
+        if (name == "Player")
+        {
+            snowball.GetComponent<SnowballCollision>().owner = "Player"; // owner of snowball is the player
+        }
+        else if (name == "Enemy")
+        {
+            snowball.GetComponent<SnowballCollision>().owner = "Enemy"; // owner of snowball is the enemy
+        }
     }
+
+    // private IEnumerator ThrowCooldown()
+    // {
+    //     canThrow = false;
+    //     yield return new WaitForSeconds(1.04f);
+    //     canThrow = true;
+    // }
+
+    public void SetCanThrow()
+    {
+        canThrow = true;
+    }
+
 }
