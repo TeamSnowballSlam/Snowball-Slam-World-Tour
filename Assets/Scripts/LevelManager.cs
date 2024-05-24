@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     [Header("Level Management")]
     private int playerScore = 0;
     private int enemyScore = 0;
-    [HideInInspector]
+
     public int LevelLength = 90; //How long the level will last in seconds
     [HideInInspector]
     public int secondsRemaining; //The time remaining in the level

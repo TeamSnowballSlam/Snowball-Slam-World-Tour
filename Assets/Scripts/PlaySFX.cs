@@ -28,6 +28,13 @@ public class PlaySFX : MonoBehaviour
     }
     public string GetSoundName()
     {
-        return audioSource.clip.name;
+        try
+        {
+            return audioSource.clip.name;
+        }
+        catch
+        {
+            return "";
+        }
     }
 }
