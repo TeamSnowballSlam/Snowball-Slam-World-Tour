@@ -10,6 +10,12 @@ public class SnowballCollision : MonoBehaviour
     public string owner; //The owner of the snowball
 
     private bool isOtherSnowball;
+    private PlaySFX playSFX;
+
+    private void Start()
+    {
+        playSFX = GetComponent<PlaySFX>();
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -36,6 +42,7 @@ public class SnowballCollision : MonoBehaviour
                     ts.Invulnerable = true; //Makes the snowball invulnerable
                 }
             }
+            playSFX.playSound("SnowballHit");
             Destroy(gameObject); //destroys itself no matter what it hits, snowball or border
         }
     }
