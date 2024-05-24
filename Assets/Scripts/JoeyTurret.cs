@@ -78,31 +78,6 @@ public class JoeyTurret : MonoBehaviour
         return closestPlayer; //Returns the closest player
     }
 
-    private Vector3 CheckForPlayerDirection() //WIP METHOD NOT CURRENTLY WORKING
-    {
-        if (GetClosestPlayer() == null)
-            return Vector3.zero; //If there is no player, return zero vector
-        Transform player = GetClosestPlayer().transform; //Gets the closest player
 
-        Vector3 direction = player.position - gameObject.transform.position;
-        direction = direction.normalized;
 
-        direction.y = 0;
-
-        // Check if player is aligned with any of the predefined directions
-        foreach (Vector3 dir in Directions.directions)
-        {
-            if (Vector3.Dot(direction.normalized, dir.normalized) > 0.99f) //Check if the player is aligned with the predefined direction within a certain threshold 0.99
-            {
-                return dir;
-            }
-        }
-
-        return Vector3.zero;
-    }
-
-    private void RotateToTarget(Vector3 targetDirection) //Rotates the agent to face the target given the target direction and speed
-    {
-        transform.forward = targetDirection; //Sets the forward direction of the agent to the target direction
-    }
 }
