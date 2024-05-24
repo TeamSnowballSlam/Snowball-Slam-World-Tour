@@ -26,7 +26,7 @@ public class ReloadAmmo : MonoBehaviour
     private TextMeshProUGUI snowballText;
 
     // Constants
-    private static int MAXAMMO = 5;
+    private static int MAXAMMO = 10;
 
     // GameObjects
     private GameObject snowTray;
@@ -43,7 +43,7 @@ public class ReloadAmmo : MonoBehaviour
     /// </summary>
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Snow Pile")
+        if(other.gameObject.tag == "Snowball Machine")
         {
             canReload = true;
             snowTray = other.gameObject; // finds the specific snow tray
@@ -58,7 +58,7 @@ public class ReloadAmmo : MonoBehaviour
     /// </summary>
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Snow Pile")
+        if(other.gameObject.tag == "Snowball Machine")
         {
             canReload = false;
         }

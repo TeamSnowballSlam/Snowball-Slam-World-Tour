@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &349278625094119768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544166636105769521}
+  m_Layer: 0
+  m_Name: SnowballPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1544166636105769521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349278625094119768}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.5, y: 1, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7670421377112989966}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &866193977372816813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -272,6 +303,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       insertIndex: 0
+      addedObject: {fileID: 1544166636105769521}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
+        type: 3}
+      insertIndex: 1
       addedObject: {fileID: 8379179372351677655}
     - targetCorrespondingSourceObject: {fileID: 2854563699051640978, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
@@ -587,6 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1ec78b65a4f6f41b3cfb84c8ee011c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 0}
 --- !u!4 &7670421377112989966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,

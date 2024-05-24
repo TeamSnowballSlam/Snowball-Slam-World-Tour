@@ -10969,11 +10969,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kangaroo (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 2757070868714997952, guid: 1a51ba6cba62ef4439bda1edc9a49285,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: m_LocalPosition.x
