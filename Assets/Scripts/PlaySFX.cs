@@ -22,4 +22,12 @@ public class PlaySFX : MonoBehaviour
         audioSource.clip = clip;
         audioSource.Play();
     }
+    public void StopSound()
+    {
+        audioSource.Stop();
+    }
+    public string GetSoundName()
+    {
+        return audioSource.clip.name;
+    }
 }
