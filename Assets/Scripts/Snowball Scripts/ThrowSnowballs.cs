@@ -38,6 +38,9 @@ public class ThrowSnowballs : MonoBehaviour
     private bool canThrow;
 
     private const int SPEED = 20;
+
+    private List<AudioClip> audioClips = new List<AudioClip>();
+    public PlaySFX playSFX;
     
     private IEnumerator InvulnerabilityTimer()
     {
@@ -47,6 +50,7 @@ public class ThrowSnowballs : MonoBehaviour
 
     void Start()
     {
+        playSFX = GetComponent<PlaySFX>();
         snowInventory = GetComponent<SnowInventory>();
         animator = GetComponent<Animator>();
         if (animator == null) //If the animator is null it's in the children
@@ -55,6 +59,7 @@ public class ThrowSnowballs : MonoBehaviour
         }
         snowballWP = this.transform.Find("SnowballPosition").gameObject;
         canThrow = true;
+        audioClips.AddRange(Resources.LoadAll<AudioClip>("SoundEffects/Throws"));
     }
 
     // Player
@@ -84,6 +89,8 @@ public class ThrowSnowballs : MonoBehaviour
     // </summary>
     public void SnowballAnimation(string name)
     {
+        //Triggers a random throw sound using the name of a random object in the audioClips list
+        playSFX.playSound(audioClips[Random.Range(0, audioClips.Count)].name);
         snowballPosition = snowballWP.transform.position;
         snowball = Instantiate(
             snowballPrefab,

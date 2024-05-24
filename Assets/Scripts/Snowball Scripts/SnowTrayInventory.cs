@@ -11,6 +11,7 @@ using TMPro;
 
 public class SnowTrayInventory : MonoBehaviour
 {
+    private PlaySFX playSFX;
     private TextMeshProUGUI trayAmountText;
     private int inventory;
     public int Inventory
@@ -21,6 +22,10 @@ public class SnowTrayInventory : MonoBehaviour
         }
         set
         {
+            if (Inventory != inventory)
+            {
+                playSFX.playSound("SnowballPickup");
+            }
             inventory = value;
             trayAmountText.text = inventory.ToString(); // text changes when updated
 
@@ -53,6 +58,7 @@ public class SnowTrayInventory : MonoBehaviour
 
     void Start()
     {
+        playSFX = GetComponent<PlaySFX>();
         meter = transform.Find("Canvas/Progress").gameObject;
         trayAmountText = transform.Find("Canvas/Amount").GetComponent<TextMeshProUGUI>();
         meter.SetActive(false); // set false here so it only shows when used

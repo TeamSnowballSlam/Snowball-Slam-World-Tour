@@ -17,12 +17,14 @@ public class JoeyTurret : MonoBehaviour
 
     private float spawnTime; //The time the ability was spawned
     private Animator animator;
+    public PlaySFX playSFX;
 
     [SerializeField] private ParticleSystem magicianPoof;
 
     // Start is called before the first frame update
     void Start()
     {
+        playSFX = GetComponent<PlaySFX>();
         if(Physics.CheckBox(transform.position, new Vector3(0.5f, 0.5f, 0.5f), Quaternion.identity)) 
         {
             
@@ -31,6 +33,7 @@ public class JoeyTurret : MonoBehaviour
         spawnTime = Time.time; //Sets the spawn time to the current time
         animator = GetComponentInChildren<Animator>();
         magicianPoof.Play();
+        playSFX.playSound("JoeySpawn");
     }
 
     // Update is called once per frame
@@ -54,6 +57,7 @@ public class JoeyTurret : MonoBehaviour
         }
         if (Time.time - spawnTime >= expireTime || GameSettings.currentGameState == GameStates.PostGame) //If the ability has expired
         {
+            playSFX.playSound("JoeyDespawn");
             animator.SetTrigger("doDespawn"); 
             //This needs to be triggered by the animation not instant
         }
