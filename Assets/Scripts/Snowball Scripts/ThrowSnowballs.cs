@@ -6,11 +6,26 @@
 /// </summary>
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ThrowSnowballs : MonoBehaviour
 {
+    private bool invulnerable = false;
+
+    public bool Invulnerable
+    {
+        get { return invulnerable; }
+        set { 
+            if (value == true)
+            {
+                invulnerable = value;
+                StartCoroutine(InvulnerabilityTimer());
+            }
+         }
+    }
+    
     [SerializeField]
     private GameObject snowballPrefab;
     private GameObject snowball; // instantiate of snowballPrefab
@@ -19,6 +34,12 @@ public class ThrowSnowballs : MonoBehaviour
     private Animator animator;
 
     private const int SPEED = 20;
+    
+    private IEnumerator InvulnerabilityTimer()
+    {
+        yield return new WaitForSeconds(1.5f);
+        invulnerable = false;
+    }
 
     void Start()
     {
