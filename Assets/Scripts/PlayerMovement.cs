@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]private GameObject dustTrail;
     private ParticleSystem dustTrailParticles;
     [SerializeField]private ParticleSystem tarTrail;
+    [SerializeField]private GameObject iceTrail;
+    private ParticleSystem iceTrailParticles;
     
     //Returns the current speed reduction when touching the road
     public double TouchingRoadSpeed 
@@ -61,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
                 //Sliding speed
                 dustTrailParticles.Stop();
                 tarTrail.Stop();
+                iceTrailParticles.Play();
                 animator.SetFloat("movementSpeed", (float)SLIDINGSPEED);
                 return SLIDINGSPEED;
 
@@ -77,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 //dust trail
                 tarTrail.Stop();
+                iceTrailParticles.Stop();
                 dustTrailParticles.Play();
                 
                 animator.SetFloat("movementSpeed", (float)MOVEMENTSPEED);
@@ -86,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 tarTrail.Stop();
                 dustTrailParticles.Stop();
+                iceTrailParticles.Stop();
                 
                 //Idle Speed
                 animator.SetFloat("movementSpeed", 0.0f);
@@ -182,10 +187,12 @@ public class PlayerMovement : MonoBehaviour
         lastInput = Vector2.zero;
 
         dustTrailParticles = dustTrail.transform.Find("Dust").gameObject.GetComponent<ParticleSystem>();
+        iceTrailParticles = iceTrail.transform.Find("Ice").gameObject.GetComponent<ParticleSystem>();
 
         //Stop the particle effects from playing at the start
-        dustTrailParticles.Stop();
+        dustTrailParticles.Play();
         tarTrail.Stop();
+        iceTrailParticles.Stop();
     }
 
     void FixedUpdate()

@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 8726231784134292234}
   - {fileID: 4700957586051844986}
+  - {fileID: 2179437171456555862}
   m_Father: {fileID: 7716391543909274356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2668550725900085309
@@ -187,6 +188,86 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3672963213766693271}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4368000133421288753
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3239938511796749121}
+    m_Modifications:
+    - target: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332700669568842538, guid: 12d205007e57a31439ce787b242c6629,
+        type: 3}
+      propertyPath: m_Name
+      value: PS_IceTrail
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12d205007e57a31439ce787b242c6629, type: 3}
+--- !u!4 &2179437171456555862 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
+    type: 3}
+  m_PrefabInstance: {fileID: 4368000133421288753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5709988075201902107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8332700669568842538, guid: 12d205007e57a31439ce787b242c6629,
+    type: 3}
+  m_PrefabInstance: {fileID: 4368000133421288753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5439685822319724887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -302,7 +383,7 @@ PrefabInstance:
     - target: {fileID: 2787125788628765041, guid: 869105261d460dd4385bdd385de58fe5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2787125788628765041, guid: 869105261d460dd4385bdd385de58fe5,
         type: 3}
@@ -782,8 +863,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dustTrail: {fileID: 3433523149777077984}
-  iceTrail: {fileID: 0}
   tarTrail: {fileID: 7711915917730138235}
+  iceTrail: {fileID: 5709988075201902107}
 --- !u!114 &7058040194714946152
 MonoBehaviour:
   m_ObjectHideFlags: 0
