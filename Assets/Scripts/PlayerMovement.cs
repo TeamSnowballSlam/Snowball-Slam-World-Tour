@@ -11,6 +11,12 @@ public class PlayerMovement : MonoBehaviour
 
     private const int SLIDINGSPEED = 20; //Placeholder values. Will change after testing
     private int slowingDownSpeed = 0; //The speed the player is at during the slowing down process
+    //particle effects
+    [SerializeField]private GameObject dustTrail;
+    private ParticleSystem dustTrailParticles;
+    [SerializeField]private ParticleSystem tarTrail;
+    [SerializeField]private GameObject iceTrail;
+    private ParticleSystem iceTrailParticles;
     private const int ROADSPEED = 5; //Speed when on the road
     
 
@@ -36,22 +42,37 @@ public class PlayerMovement : MonoBehaviour
             if (IsSliding)
             {
                 //Sliding speed
+                dustTrailParticles.Stop();
+                tarTrail.Stop();
+                iceTrailParticles.Play();
                 animator.SetFloat("movementSpeed", (float)SLIDINGSPEED);
                 return SLIDINGSPEED;
+
             }
             if (IsMoving)
             {
                 //Moving Speed
                 if (touchingRoad)
                 {
+                    //tar particle effect
+                    tarTrail.Play();
                     animator.SetFloat("movementSpeed", (float)ROADSPEED);
                     return ROADSPEED;
                 }
+                //dust trail
+                tarTrail.Stop();
+                iceTrailParticles.Stop();
+                dustTrailParticles.Play();
+                
                 animator.SetFloat("movementSpeed", (float)MOVEMENTSPEED);
                 return MOVEMENTSPEED;
             }
             else
             {
+                tarTrail.Stop();
+                dustTrailParticles.Stop();
+                iceTrailParticles.Stop();
+                
                 //Idle Speed
                 animator.SetFloat("movementSpeed", 0.0f);
                 return 0;
@@ -145,6 +166,14 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogWarning("No Animator component found.");
         }
         lastInput = Vector2.zero;
+
+        dustTrailParticles = dustTrail.transform.Find("Dust").gameObject.GetComponent<ParticleSystem>();
+        iceTrailParticles = iceTrail.transform.Find("Ice").gameObject.GetComponent<ParticleSystem>();
+
+        //Stop the particle effects from playing at the start
+        dustTrailParticles.Play();
+        tarTrail.Stop();
+        iceTrailParticles.Stop();
     }
 
     void FixedUpdate()

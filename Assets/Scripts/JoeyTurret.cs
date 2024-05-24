@@ -18,6 +18,8 @@ public class JoeyTurret : MonoBehaviour
     private float spawnTime; //The time the ability was spawned
     private Animator animator;
 
+    [SerializeField] private ParticleSystem magicianPoof;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class JoeyTurret : MonoBehaviour
         transform.position = new Vector3(transform.position.x, 0.65f, transform.position.z);
         spawnTime = Time.time; //Sets the spawn time to the current time
         animator = GetComponentInChildren<Animator>();
+        magicianPoof.Play();
     }
 
     // Update is called once per frame
