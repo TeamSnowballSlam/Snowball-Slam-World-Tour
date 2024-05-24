@@ -644,11 +644,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       insertIndex: 1
-      addedObject: {fileID: 4639907464954123129}
+      addedObject: {fileID: 8379179372351677655}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 8379179372351677655}
+      insertIndex: -1
+      addedObject: {fileID: 4639907464954123129}
     - targetCorrespondingSourceObject: {fileID: 2854563699051640978, guid: 750c74749f5b7e249b8668cf88f61160,
         type: 3}
       insertIndex: -1
@@ -1226,7 +1226,7 @@ PrefabInstance:
     - target: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.25
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2495181616903386727, guid: 12d205007e57a31439ce787b242c6629,
         type: 3}

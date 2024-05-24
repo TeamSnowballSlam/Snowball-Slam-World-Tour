@@ -42,7 +42,7 @@ public class SnowballCollision : MonoBehaviour
                     ts.Invulnerable = true; //Makes the snowball invulnerable
                 }
             }
-            playSFX.playSound("SnowballHit");
+            //playSFX.playSound("SnowballHit");
             Destroy(gameObject); //destroys itself no matter what it hits, snowball or border
         }
     }
