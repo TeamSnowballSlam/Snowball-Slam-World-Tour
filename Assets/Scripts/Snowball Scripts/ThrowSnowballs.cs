@@ -97,7 +97,7 @@ public class ThrowSnowballs : MonoBehaviour
             snowballPosition + transform.forward,
             Quaternion.identity
         );
-        snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
+        snowball.GetComponent<Rigidbody>().AddForce(transform.forward * SPEED, ForceMode.Impulse); // snowball moves at a constant rate
 
         if (name == "Player")
         {
@@ -108,13 +108,6 @@ public class ThrowSnowballs : MonoBehaviour
             snowball.GetComponent<SnowballCollision>().owner = "Enemy"; // owner of snowball is the enemy
         }
     }
-
-    // private IEnumerator ThrowCooldown()
-    // {
-    //     canThrow = false;
-    //     yield return new WaitForSeconds(1.04f);
-    //     canThrow = true;
-    // }
 
     public void SetCanThrow()
     {

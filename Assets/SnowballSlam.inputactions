@@ -159,7 +159,7 @@
                     "name": "",
                     "id": "c6d1c982-ebcb-489b-9bfc-f3c42359102f",
                     "path": "<Keyboard>/#(.)",
-                    "interactions": "",
+                    "interactions": "Hold(duration=2)",
                     "processors": "",
                     "groups": "Arrows",
                     "action": "Interact",
