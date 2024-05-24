@@ -14941,7 +14941,7 @@ GameObject:
   - component: {fileID: 1652558216}
   - component: {fileID: 1652558215}
   m_Layer: 0
-  m_Name: Main Camera (1)
+  m_Name: EndgameCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15058,13 +15058,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652558214}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.47022647, y: -0, z: -0, w: 0.88254577}
-  m_LocalPosition: {x: 0, y: 71.4, z: -53.165302}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000014603138}
+  m_LocalPosition: {x: -9.78, y: 3.65, z: 45.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 56.098, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &1656091942
 PrefabInstance:
   m_ObjectHideFlags: 0
