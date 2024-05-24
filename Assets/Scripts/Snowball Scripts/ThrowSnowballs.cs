@@ -6,18 +6,40 @@
 /// </summary>
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class ThrowSnowballs : MonoBehaviour
 {
+    private bool invulnerable = false;
+
+    public bool Invulnerable
+    {
+        get { return invulnerable; }
+        set { 
+            if (value == true)
+            {
+                invulnerable = value;
+                StartCoroutine(InvulnerabilityTimer());
+            }
+         }
+    }
+    
     [SerializeField]
     private GameObject snowballPrefab;
     private GameObject snowball; // instantiate of snowballPrefab
     private Vector3 snowballPosition;
     public SnowInventory snowInventory;
     private Animator animator;
+
+    private const int SPEED = 20;
+    
+    private IEnumerator InvulnerabilityTimer()
+    {
+        yield return new WaitForSeconds(1.5f);
+        invulnerable = false;
+    }
 
     void Start()
     {
@@ -44,7 +66,7 @@ public class ThrowSnowballs : MonoBehaviour
             Quaternion.identity
         ); // snowballPrefab is instantiated
         snowball.GetComponent<SnowballCollision>().owner = "Player"; // owner of snowball is the player
-        snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
+        snowball.GetComponent<Rigidbody>().AddForce(transform.forward * SPEED, ForceMode.Impulse); // snowball moves at a constant rate
         snowInventory.CurrentAmmo--;
     }
 
@@ -60,6 +82,6 @@ public class ThrowSnowballs : MonoBehaviour
         ); // snowballPrefab is instantiated
         snowball.GetComponent<SnowballCollision>().owner = "Enemy"; // owner of snowball is the player
 
-        snowball.GetComponent<Rigidbody>().AddForce(transform.forward * 10, ForceMode.Impulse); // snowball moves at a constant rate
+        snowball.GetComponent<Rigidbody>().AddForce(transform.forward * SPEED, ForceMode.Impulse); // snowball moves at a constant rate
     }
 }

@@ -26,7 +26,7 @@ public class ReloadAmmo : MonoBehaviour
     private TextMeshProUGUI snowballText;
 
     // Constants
-    private static int MAXAMMO = 5;
+    private static int MAXAMMO = 10;
 
     // GameObjects
     private GameObject snowTray;
