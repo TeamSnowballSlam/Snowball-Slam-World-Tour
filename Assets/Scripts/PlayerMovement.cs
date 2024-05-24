@@ -11,37 +11,25 @@ public class PlayerMovement : MonoBehaviour
 
     private const int SLIDINGSPEED = 20; //Placeholder values. Will change after testing
     private int slowingDownSpeed = 0; //The speed the player is at during the slowing down process
-    private const double MAXSLOWDOWN = MOVEMENTSPEED - 2; //The maximum speed the road can  slow you by
+    //particle effects
+    [SerializeField]private GameObject dustTrail;
+    private ParticleSystem dustTrailParticles;
+    [SerializeField]private ParticleSystem tarTrail;
+    [SerializeField]private GameObject iceTrail;
+    private ParticleSystem iceTrailParticles;
+    private const int ROADSPEED = 5; //Speed when on the road
     
-    //Returns the current speed reduction when touching the road
-    public double TouchingRoadSpeed 
-    {
-        get
-        {
-            //This increases from a 0 slowdown at the start of the level to the max slowdown at the end of the level
-            return MAXSLOWDOWN * (1 - RemainingLevelPercentage); 
-        }
-    }
-
-    //The % of the level remaining
-    public double RemainingLevelPercentage
-    {
-        get
-        {            
-            return (double)LevelManager.instance.secondsRemaining / (double)LevelManager.instance.LevelLength;
-        }
-    }
 
     public int CurrentSpeed //Returns the movement speed, sliding speed, or 0 depending on the player's state
     {
         get
         {
-            if (TouchingRoad())
+            if (TouchingRoad()) //If the player is touching the road
             {
                 touchingRoad = true;
                 isSliding = false;
             }
-            else if (touchingRoad)
+            else if (touchingRoad) //If the player is not touching the road anymore
             {
                 touchingRoad = false;
             }
@@ -54,22 +42,37 @@ public class PlayerMovement : MonoBehaviour
             if (IsSliding)
             {
                 //Sliding speed
+                dustTrailParticles.Stop();
+                tarTrail.Stop();
+                iceTrailParticles.Play();
                 animator.SetFloat("movementSpeed", (float)SLIDINGSPEED);
                 return SLIDINGSPEED;
+
             }
             if (IsMoving)
             {
                 //Moving Speed
                 if (touchingRoad)
                 {
-                    animator.SetFloat("movementSpeed", (float)MOVEMENTSPEED - (int)TouchingRoadSpeed);
-                    return MOVEMENTSPEED - (int)TouchingRoadSpeed;
+                    //tar particle effect
+                    tarTrail.Play();
+                    animator.SetFloat("movementSpeed", (float)ROADSPEED);
+                    return ROADSPEED;
                 }
+                //dust trail
+                tarTrail.Stop();
+                iceTrailParticles.Stop();
+                dustTrailParticles.Play();
+                
                 animator.SetFloat("movementSpeed", (float)MOVEMENTSPEED);
                 return MOVEMENTSPEED;
             }
             else
             {
+                tarTrail.Stop();
+                dustTrailParticles.Stop();
+                iceTrailParticles.Stop();
+                
                 //Idle Speed
                 animator.SetFloat("movementSpeed", 0.0f);
                 return 0;
@@ -163,6 +166,14 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogWarning("No Animator component found.");
         }
         lastInput = Vector2.zero;
+
+        dustTrailParticles = dustTrail.transform.Find("Dust").gameObject.GetComponent<ParticleSystem>();
+        iceTrailParticles = iceTrail.transform.Find("Ice").gameObject.GetComponent<ParticleSystem>();
+
+        //Stop the particle effects from playing at the start
+        dustTrailParticles.Play();
+        tarTrail.Stop();
+        iceTrailParticles.Stop();
     }
 
     void FixedUpdate()

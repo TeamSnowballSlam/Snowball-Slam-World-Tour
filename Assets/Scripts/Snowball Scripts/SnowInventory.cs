@@ -15,7 +15,6 @@ public class SnowInventory : MonoBehaviour
     [SerializeField] private Image levelManager;
     private TextMeshProUGUI ammoText1;
     private TextMeshProUGUI ammoText2;
-    //private PlayerInput playerInput;
     private int playerNumber;
 
     private int currentAmmo;
@@ -43,7 +42,7 @@ public class SnowInventory : MonoBehaviour
     void Start()
     {
         penguinName = gameObject.name; // for debugging purposes
-        currentAmmo = 5;
+        currentAmmo = 10;
         playerNumber = GetComponent<PlayerDetails>().playerID;
         if (playerNumber == 0)
         {
