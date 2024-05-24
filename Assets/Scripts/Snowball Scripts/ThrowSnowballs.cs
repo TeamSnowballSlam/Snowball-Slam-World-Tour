@@ -6,12 +6,26 @@
 /// </summary>
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class ThrowSnowballs : MonoBehaviour
 {
+    private bool invulnerable = false;
+
+    public bool Invulnerable
+    {
+        get { return invulnerable; }
+        set { 
+            if (value == true)
+            {
+                invulnerable = value;
+                StartCoroutine(InvulnerabilityTimer());
+            }
+         }
+    }
+    
     [SerializeField]
     private GameObject snowballPrefab;
     private GameObject snowball; // instantiate of snowballPrefab
@@ -22,6 +36,14 @@ public class ThrowSnowballs : MonoBehaviour
     private GameObject snowballWP;
 
     private bool canThrow;
+
+    private const int SPEED = 20;
+    
+    private IEnumerator InvulnerabilityTimer()
+    {
+        yield return new WaitForSeconds(1.5f);
+        invulnerable = false;
+    }
 
     void Start()
     {
@@ -44,7 +66,6 @@ public class ThrowSnowballs : MonoBehaviour
         if (context.phase != InputActionPhase.Started) return; // only throw snowball once--when phase is started
         if (GetComponent<PlayerMovement>().IsSliding) return; // if player is sliding, don't throw snowball
         animator.SetTrigger("doThrow"); // trigger animation
-
         snowInventory.CurrentAmmo--;
         canThrow = false;
 
