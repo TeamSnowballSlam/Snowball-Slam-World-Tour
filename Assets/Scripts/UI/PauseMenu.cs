@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     private GameObject pauseMenu;
-    private bool isPaused;
+    private bool isPaused = false;
 
     // Start is called before the first frame update
     void Start()
     {
         pauseMenu = GameObject.Find("PauseMenu");
+        //pauseMenu.transform.Find("MusicVol").GetComponent<Slider>().value = GameSettings.MusicVolume;
+        pauseMenu.transform.GetChild(0).Find("MusicVol").GetComponent<Slider>().value = GameSettings.MusicVolume;
+        //pauseMenu.transform.Find("SFXVol").GetComponent<Slider>().value = GameSettings.SoundEffectsVolume;
         pauseMenu.SetActive(false);
     }
 
