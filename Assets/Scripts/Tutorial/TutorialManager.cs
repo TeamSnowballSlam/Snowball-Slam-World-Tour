@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class TutorialEvent // class that holds tutorial event data
@@ -11,14 +12,6 @@ public class TutorialEvent // class that holds tutorial event data
     public UnityEvent _eventAction = new UnityEvent();
     public inputType _inputType;
 }
-//public class TutorialEvent // class that holds tutorial event data
-//{
-//    public UnityEvent _eventAction = new UnityEvent();
-//    public bool _doSlide;
-//    public KeyCode[] _requiredActionPlayerOne;
-//    public KeyCode[] _requiredActionPlayerTwo;
-//}
-
 public enum inputType
 {
     move,
@@ -206,5 +199,15 @@ public class TutorialManager : MonoBehaviour
         _tutorialEnd.Invoke(); // end tutorial
 
         GameSettings.currentGameState = GameStates.PostGame;
+    }
+
+    public void LoadMainMenu()
+    {
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.SetTrack("Menu");
+        }
+        GameSettings.Player2Exists = false;
+        SceneManager.LoadScene("MainMenu"); //Commented out until we merge
     }
 }
