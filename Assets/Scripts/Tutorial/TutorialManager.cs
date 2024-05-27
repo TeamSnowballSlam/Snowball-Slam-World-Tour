@@ -43,12 +43,6 @@ public class TutorialManager : MonoBehaviour
     bool _eventsLeft = true;
     bool _doingNext;
 
-    float _lastTimePlayerOne, _lastTimePlayerTwo;
-    float _doubleInputDelay = .25f;
-    private KeyCode _secondLastInputPlayerOne, _secondLastInputPlayerTwo;
-    private KeyCode _lastInputPlayerOne, _lastInputPlayerTwo;
-    private bool _doublePress;
-
     public TextMeshProUGUI _scoreText;
     public TextMeshProUGUI _timerText;
     public GameObject tutorialUI;
@@ -58,7 +52,6 @@ public class TutorialManager : MonoBehaviour
     private int _score = 0;
     public UnityEvent _tutorialEnd = new UnityEvent();
 
-    public bool twoplayer;
 
     bool p1check = false;
     bool p2check = false;
@@ -90,38 +83,9 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (_eventsLeft && !_doingNext) // if there are still events leftover
-        //{
-        //    if (_tutorialEvents[_eventIndex]._doSlide)
-        //    {
-        //        if (CheckForDoubleAction(_tutorialEvents[_eventIndex])) // check  if it is the double tap to slide event
-        //        {
-        //            Debug.Log("Double Press");
-        //            _doingNext = true;
-        //            Invoke(nameof(NextTutorialEvent), 1f);
-        //        }
-        //    }
-        //    else if (CheckForAction(_tutorialEvents[_eventIndex])) // check if required action is entered to proceed
-        //    {
-        //        Debug.Log("Correct Key Entered");
-        //        _doingNext = true;
-        //        Invoke(nameof(NextTutorialEvent), 1f);
-        //        //NextTutorialEvent();
-        //    }
-        //}
 
         pOneInputStatus.UpdateValues(p1check, _tutorialEvents[_eventIndex]._inputType, pOneInputHeld, heldBegun);
         pTwoInputStatus.UpdateValues(p2check, _tutorialEvents[_eventIndex]._inputType, pTwoInputHeld, heldBegun);
-
-        //pOneInputStatus.actionComplete = p1check;
-        //pTwoInputStatus.actionComplete = p2check;
-        //pOneInputStatus.holding = pOneInputHeld;
-        //pTwoInputStatus.holding = pTwoInputHeld;
-        //pOneInputStatus.currentType = _tutorialEvents[_eventIndex]._inputType;
-        //pTwoInputStatus.currentType = _tutorialEvents[_eventIndex]._inputType;
-        //pOneInputStatus.ready = heldBegun;
-        //pTwoInputStatus.ready = heldBegun;
-
         if (_eventsLeft && !_doingNext)
         {
             if (CheckForInput(_tutorialEvents[_eventIndex]) && _tutorialEvents[_eventIndex]._inputType != inputType.none)
@@ -195,11 +159,8 @@ public class TutorialManager : MonoBehaviour
 
     public void UpdateScore()
     {
-        if (!_eventsLeft) // verify if during shakedown time
-        {
-            _score++;
-            _scoreText.text = _score.ToString();
-        }
+        _score++;
+        _scoreText.text = _score.ToString();
     }
 
     private void NextTutorialEvent() // go to next event
