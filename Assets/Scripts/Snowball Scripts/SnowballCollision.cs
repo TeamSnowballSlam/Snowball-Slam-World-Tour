@@ -8,8 +8,6 @@ public class SnowballCollision : MonoBehaviour
 {
     // [HideInInspector]
     public string owner; //The owner of the snowball
-
-    private bool isOtherSnowball;
     private PlaySFX playSFX;
 
     private void Start()
@@ -43,6 +41,10 @@ public class SnowballCollision : MonoBehaviour
             }
             //playSFX.playSound("SnowballHit");
             Destroy(gameObject); //destroys itself no matter what it hits, snowball or border
+        }
+        else //if the snowball hits something on same team
+        {
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
         }
     }
 }
