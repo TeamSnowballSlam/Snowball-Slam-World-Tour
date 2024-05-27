@@ -45,7 +45,6 @@ public class TutorialManager : MonoBehaviour
 
     public TextMeshProUGUI _scoreText;
     public TextMeshProUGUI _timerText;
-    public GameObject tutorialUI;
 
     public float _shakedownDuration = 30;
 
@@ -57,6 +56,7 @@ public class TutorialManager : MonoBehaviour
     bool p2check = false;
 
     public GameObject playerOneInput, playerTwoInput;
+    public GameObject player2Ammo;
 
     public InputStatus pOneInputStatus, pTwoInputStatus;
 
@@ -77,6 +77,10 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         instance = this;
+        if (GameSettings.Player2Exists)
+        {
+            player2Ammo.SetActive(true);
+        }
         InvokeCurrentTutorialEvent();
     }
 
@@ -90,7 +94,6 @@ public class TutorialManager : MonoBehaviour
         {
             if (CheckForInput(_tutorialEvents[_eventIndex]) && _tutorialEvents[_eventIndex]._inputType != inputType.none)
             {
-                Debug.Log("Correct Key Entered");
                 _doingNext = true;
                 Invoke(nameof(NextTutorialEvent), 1f);
             }
