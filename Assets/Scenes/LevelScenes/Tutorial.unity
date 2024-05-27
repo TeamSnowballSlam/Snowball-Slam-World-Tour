@@ -3887,7 +3887,7 @@ MonoBehaviour:
     type: 3}
   playerTwoInput: {fileID: 8558300930843499772, guid: 647b32d9fa1c3724ba0ee82f84ed4dfa,
     type: 3}
-  player2Ammo: {fileID: 11072538}
+  player2Ammo: {fileID: 0}
   pOneInputStatus: {fileID: 873782058}
   pTwoInputStatus: {fileID: 1945670914}
   pOneInputHeld: 0
