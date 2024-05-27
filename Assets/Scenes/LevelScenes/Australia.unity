@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38317466, g: 0.5344812, b: 0.63250464, a: 1}
+  m_IndirectSpecularColor: {r: 0.38317472, g: 0.53448135, b: 0.6325048, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6271,6 +6271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kangaroo (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -8669,6 +8674,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Kangaroo (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
@@ -15054,6 +15064,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kangaroo (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -15673,6 +15688,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Kangaroo (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}

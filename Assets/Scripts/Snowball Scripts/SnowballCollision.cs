@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SnowballCollision : MonoBehaviour
 {
-    [HideInInspector]
+    // [HideInInspector]
     public string owner; //The owner of the snowball
 
     private bool isOtherSnowball;
@@ -23,7 +23,6 @@ public class SnowballCollision : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<ThrowSnowballs>() != null) //If the snowball hits another snowball
             {
-                LevelManager.instance.UpdateScore("Player"); //Update the player's score
                 ThrowSnowballs ts = collision.gameObject.GetComponent<ThrowSnowballs>();
                 if (!ts.Invulnerable)
                 {
