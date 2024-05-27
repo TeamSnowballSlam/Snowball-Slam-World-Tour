@@ -19,6 +19,12 @@ public class SnowballCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if(TutorialManager.instance != null && collision.gameObject.CompareTag("Enemy"))
+        {
+            TutorialManager.instance.UpdateScore();
+            Destroy(gameObject); //destroys itself no matter what it hits, snowball or border
+            return;
+        }
         if (!collision.gameObject.CompareTag(owner))
         {
             if (collision.gameObject.GetComponent<ThrowSnowballs>() != null) //If the snowball hits another snowball

@@ -37,22 +37,34 @@ public class SnowInventory : MonoBehaviour
             }
         }
     }
-    private string penguinName;
 
     void Start()
     {
-        penguinName = gameObject.name; // for debugging purposes
         currentAmmo = 10;
         playerNumber = GetComponent<PlayerDetails>().playerID;
         if (playerNumber == 0)
         {
-            ammoText1 = GameObject.Find("P1 Snowballs").GetComponent<TextMeshProUGUI>();
-            ammoText1.text = "P1 Snowballs - " + currentAmmo.ToString();
+            try
+            {
+                ammoText1 = GameObject.Find("P1 Snowballs").GetComponent<TextMeshProUGUI>();
+                ammoText1.text = "P1 Snowballs - " + currentAmmo.ToString();
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log("Error finding ammo text: " + e.Message);
+            }
         }
         else
         {
-            ammoText2 = GameObject.Find("P2 Snowballs").GetComponent<TextMeshProUGUI>();
-            ammoText2.text = "P2 Snowballs - " + currentAmmo.ToString();
+            try
+            {
+                ammoText2 = GameObject.Find("P2 Snowballs").GetComponent<TextMeshProUGUI>();
+                ammoText2.text = "P2 Snowballs - " + currentAmmo.ToString();
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log("Error finding ammo text: " + e.Message);
+            }
         }
     }
 }
