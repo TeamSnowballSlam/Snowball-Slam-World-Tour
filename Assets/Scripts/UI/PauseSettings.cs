@@ -29,4 +29,16 @@ public class PauseSettings : MonoBehaviour
     {
         GameSettings.SoundEffectsVolume = value;
     }
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OnHotJoin()
+    {
+        Time.timeScale = 1;
+    }
+
 }
