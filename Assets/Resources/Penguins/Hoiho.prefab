@@ -824,6 +824,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0b12a7af-002c-49d2-8044-71a9ea26040c
     m_ActionName: UI/ForceQuit[/Keyboard/x,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1184b08d-bfc4-4084-ab40-d3b476587400
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
