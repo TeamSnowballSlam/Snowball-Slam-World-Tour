@@ -8,6 +8,7 @@ public class SnowballCollision : MonoBehaviour
 {
     // [HideInInspector]
     public string owner; //The owner of the snowball
+    public GameObject ownerObject; //The owner of the snowball
     private PlaySFX playSFX;
 
     private void Start()
@@ -17,7 +18,11 @@ public class SnowballCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.CompareTag(owner))
+        if (collision.gameObject == ownerObject) //If the snowball hits the border
+        {
+            return;
+        }
+        else if (!collision.gameObject.CompareTag(owner))
         {
             if (collision.gameObject.GetComponent<ThrowSnowballs>() != null) //If the snowball hits another snowball
             {
@@ -45,6 +50,7 @@ public class SnowballCollision : MonoBehaviour
         else //if the snowball hits something on same team
         {
             Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+            Destroy(gameObject);
         }
     }
 }
