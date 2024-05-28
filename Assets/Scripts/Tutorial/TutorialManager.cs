@@ -55,6 +55,7 @@ public class TutorialManager : MonoBehaviour
 
     public bool pOneInputHeld, pTwoInputHeld;
     bool heldBegun;
+    public GameObject endgameScore;
 
     private void Awake()
     {
@@ -209,5 +210,16 @@ public class TutorialManager : MonoBehaviour
         }
         GameSettings.Player2Exists = false;
         SceneManager.LoadScene("MainMenu"); //Commented out until we merge
+    }
+
+    public void RestartTutorial()
+    {
+        GameSettings.Player2Exists = false;
+        SceneManager.LoadScene("Tutorial");
+    }
+
+    public void SetEndgameScore()
+    {
+        endgameScore.GetComponent<TextMeshProUGUI>().text = _score.ToString();
     }
 }
