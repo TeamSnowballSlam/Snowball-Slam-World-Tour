@@ -6271,6 +6271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kangaroo (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -8669,6 +8674,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Kangaroo (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
@@ -15054,6 +15064,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kangaroo (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -15667,12 +15682,17 @@ PrefabInstance:
     - target: {fileID: 500062845999461811, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: turretSpawnChance
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
       propertyPath: m_Name
       value: Kangaroo (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2387896443102519406, guid: 1a51ba6cba62ef4439bda1edc9a49285,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3055784179095255764, guid: 1a51ba6cba62ef4439bda1edc9a49285,
         type: 3}
