@@ -932,6 +932,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7805739609151156556}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 87a2a73d387946b4293e73710f0890a2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8346573660296758627}
   m_SourcePrefab: {fileID: 100100000, guid: 87a2a73d387946b4293e73710f0890a2, type: 3}
 --- !u!4 &446134297055128542 stripped
 Transform:
@@ -1176,7 +1180,19 @@ MonoBehaviour:
     m_ActionId: 0b12a7af-002c-49d2-8044-71a9ea26040c
     m_ActionName: UI/ForceQuit[/Keyboard/x,/Keyboard/escape]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8346573660296758627}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: PauseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1184b08d-bfc4-4084-ab40-d3b476587400
     m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
@@ -1347,6 +1363,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8346573660296758627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6943971823805139022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729557c5afe175d4ea264cd78190ebd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
 --- !u!4 &7716391543909274356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 87a2a73d387946b4293e73710f0890a2,
