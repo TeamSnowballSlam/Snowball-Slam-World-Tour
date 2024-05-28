@@ -41,6 +41,7 @@ public class ThrowSnowballs : MonoBehaviour
 
     private List<AudioClip> audioClips = new List<AudioClip>();
     public PlaySFX playSFX;
+
     
     private IEnumerator InvulnerabilityTimer()
     {
@@ -102,10 +103,13 @@ public class ThrowSnowballs : MonoBehaviour
         if (name == "Player")
         {
             snowball.GetComponent<SnowballCollision>().owner = "Player"; // owner of snowball is the player
+            snowball.GetComponent<SnowballCollision>().ownerObject = this.gameObject; // owner of snowball is the player
         }
         else if (name == "Enemy")
         {
             snowball.GetComponent<SnowballCollision>().owner = "Enemy"; // owner of snowball is the enemy
+            snowball.GetComponent<SnowballCollision>().ownerObject = this.gameObject; // owner of snowball is the player
+
         }
     }
 
