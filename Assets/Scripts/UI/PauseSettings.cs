@@ -74,8 +74,13 @@ public class PauseSettings : MonoBehaviour
     /// </summary>
     public void MainMenu()
     {
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.SetTrack("Menu");
+        }
+        GameSettings.Player2Exists = false;
         Time.timeScale = 1;
-       SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     /// <summary>
