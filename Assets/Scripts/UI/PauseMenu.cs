@@ -6,31 +6,28 @@ using UnityEngine.UI;
 //attached to the player
 public class PauseMenu : MonoBehaviour
 {
-    private GameObject pauseMenu;
-    private bool isPaused = false;
+    [SerializeField]private GameObject pauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         pauseMenu = GameObject.Find("PauseMenu");
-        //pauseMenu.transform.Find("MusicVol").GetComponent<Slider>().value = GameSettings.MusicVolume;
-        pauseMenu.transform.GetChild(0).Find("MusicVol").GetComponent<Slider>().value = GameSettings.MusicVolume;
-        //pauseMenu.transform.Find("SFXVol").GetComponent<Slider>().value = GameSettings.SoundEffectsVolume;
         pauseMenu.SetActive(false);
     }
 
     public void PauseGame()
     {
-        if (pauseMenu.activeSelf == false)
+        if (GameSettings.currentGameState == GameStates.InGame)
         {
-            Time.timeScale = 0;
             pauseMenu.SetActive(true);
+            Time.timeScale = 0;
+            GameSettings.currentGameState = GameStates.Paused;
         }
-        else
+        else if (GameSettings.currentGameState == GameStates.Paused)
         {
-            Time.timeScale = 1;
             pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+            GameSettings.currentGameState = GameStates.InGame;
         }
-        isPaused = !isPaused;
     }
 }
