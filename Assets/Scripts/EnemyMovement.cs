@@ -50,7 +50,6 @@ public class EnemyMovement : MonoBehaviour
         if (state == EnemyStates.ThrowingSnowball)
             return; //If the state is throwing snowball, return
         state = EnemyStates.GettingNewLocation; //Sets the state
-        Debug.Log("METHOD Getting new location");
         state = EnemyStates.Idle; //Sets the state to moving
         int randomMultiplier = Random.Range(1, 15); //Randomizes the multiplier
         // Vector3 randomDir = Directions.directions[Random.Range(0, 8)]; //Randomizes the direction
@@ -71,20 +70,12 @@ public class EnemyMovement : MonoBehaviour
 
         GoToTarget(randomPosition); //Moves the agent to the random position
 
-        Debug.Log("Random " + randomPosition + "Current Position: " + transform.position);
     }
 
     void Update()
     {
-        Debug.Log("Remaining distance: " + agent.remainingDistance);
-        Debug.Log(
-            "Remaining distance less than: "
-                + ((agent.remainingDistance <= 0.001) && state == EnemyStates.Moving)
-        );
-        Debug.Log("State: " + state);
+
         animator.SetFloat("movementSpeed", agent.velocity.magnitude);
-        Debug.Log("Target Position: " + agent.destination);
-        Debug.Log("Current Position: " + agent.velocity.magnitude);
 
         if (GameSettings.currentGameState != GameStates.InGame)
         {
@@ -139,7 +130,6 @@ public class EnemyMovement : MonoBehaviour
                         return;
                     }
                 }
-                Debug.Log("Reached target should go to idle");
                 GetNewLocation(); //Gets a new location
                 return;
             }
@@ -180,7 +170,6 @@ public class EnemyMovement : MonoBehaviour
             //}
             if (agent.velocity.magnitude == 0.0f)
             {
-                Debug.Log("Agent velocity is 0");
                 state = EnemyStates.Idle;
             }
         }
@@ -203,7 +192,6 @@ public class EnemyMovement : MonoBehaviour
                 for (int i = 0; i < 1; i++)
                 {
                     agent.isStopped = true; //Stops the agent
-                    Debug.Log("VELOCITY" + agent.velocity.magnitude);
                     agent.velocity = Vector3.zero; //Sets the velocity of the agent to zero
                     GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
                     throwTime = Time.time; //Sets the throw time to the current time
@@ -220,7 +208,6 @@ public class EnemyMovement : MonoBehaviour
                     if (hit.collider.CompareTag("Player"))
                     {
                         // state = EnemyStates.TargetingPlayer;
-                        Debug.Log("RAYCAST SUCCESS");
                         Debug.DrawRay(
                             transform.position,
                             (GetClosestPlayer().transform.position - transform.position),
@@ -231,7 +218,6 @@ public class EnemyMovement : MonoBehaviour
                     {
                         // state = EnemyStates.Idle;
                         // GetNewLocation();
-                        Debug.Log("RAYCAST FAIL");
                         Debug.DrawRay(
                             transform.position,
                             (GetClosestPlayer().transform.position - transform.position),
@@ -243,7 +229,6 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else 
                 {
-                    Debug.Log("RAYCAST FAIL WAS NOT FIRED");
                     state = EnemyStates.Idle;
                     return;
                 }
@@ -252,7 +237,6 @@ public class EnemyMovement : MonoBehaviour
         else if (state == EnemyStates.ThrowingSnowball)
         {
             agent.isStopped = true; //Stops the agent
-            Debug.Log("VELOCITY" + agent.velocity.magnitude);
             agent.velocity = Vector3.zero; //Sets the velocity of the agent to zero
 
             GetComponent<ThrowSnowballs>().ThrowSnowball(); //Throws a snowball
@@ -304,12 +288,10 @@ public class EnemyMovement : MonoBehaviour
     {
         state = EnemyStates.Rotating; //Sets the state to rotating
         transform.forward = targetDirection; //Sets the forward direction of the agent to the target direction
-        Debug.Log("METHOD Rotating to target");
     }
 
     private void GoToTarget(Vector3 target) //Sets the destination of the agent to the target position
     {
-        Debug.Log("METHOD Going to target");
         RotateToTarget((target - transform.position).normalized); //Rotates the agent to face the target
         agent.SetDestination(target); //Starts moving the agent to the target position
         state = EnemyStates.Moving; //Sets the state to moving
