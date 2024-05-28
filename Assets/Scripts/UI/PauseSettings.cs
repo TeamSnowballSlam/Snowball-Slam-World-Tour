@@ -2,11 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseSettings : MonoBehaviour
 {
     private float musicVolume;
     private float soundEffectsVolume;
+
+    [SerializeField] private GameObject musicSlider; // The slider for the music volume
+    [SerializeField] private GameObject soundEffectsSlider; // The slider for the sound effects volume
+
+    void Start()
+    {
+        musicSlider.GetComponent<Slider>().value = GameSettings.MusicVolume;
+        musicSlider.GetComponent<Slider>().value = GameSettings.SoundEffectsVolume;
+    }
 
     /// <summary>
     /// When the music slider is changed
@@ -15,7 +25,6 @@ public class PauseSettings : MonoBehaviour
     public void OnMusicChanged(float value)
     {
         GameSettings.MusicVolume = value;
-        musicVolume = value;
     }
 
     /// <summary>
@@ -23,14 +32,16 @@ public class PauseSettings : MonoBehaviour
     /// </summary>
     public void MuteMusic()
     {
-        if (GameSettings.MusicVolume > 0)
+        if (GameSettings.MusicVolume > 0) // If music is not muted
         {
-            GameSettings.MusicVolume = 0;
+            musicVolume = GameSettings.MusicVolume; // store the current volume
+            GameSettings.MusicVolume = 0; // Mute the music
         }
-        else
+        else // else if the music is at 0 (muted)
         {
-            GameSettings.MusicVolume = musicVolume;
+            GameSettings.MusicVolume = musicVolume; // set the music back to the volume it was at
         }
+        musicSlider.GetComponent<Slider>().value = GameSettings.MusicVolume; // Should change the slider value
     }
 
     /// <summary>
@@ -39,7 +50,6 @@ public class PauseSettings : MonoBehaviour
     public void OnSoundEffectsChanged(float value)
     {
         GameSettings.SoundEffectsVolume = value;
-        soundEffectsVolume = value;
     }
 
     /// <summary>
@@ -47,14 +57,16 @@ public class PauseSettings : MonoBehaviour
     /// </summary>
     public void MuteSoundEffects()
     {
-        if (GameSettings.SoundEffectsVolume > 0)
+        if (GameSettings.SoundEffectsVolume > 0) // If sound effects are not muted
         {
-            GameSettings.SoundEffectsVolume = 0;
+            soundEffectsVolume = GameSettings.SoundEffectsVolume; // store the current volume
+            GameSettings.SoundEffectsVolume = 0; // Mute the sound effects
         }
-        else
+        else // else if the sound effects are at 0 (muted)
         {
-            GameSettings.SoundEffectsVolume = soundEffectsVolume;
+            GameSettings.SoundEffectsVolume = soundEffectsVolume; // set the sound effects back to the volume it was at
         }
+        soundEffectsSlider.GetComponent<Slider>().value = GameSettings.SoundEffectsVolume; // Should change the slider value
     }
 
     /// <summary>
@@ -82,6 +94,4 @@ public class PauseSettings : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);	
     }
-
-
 }

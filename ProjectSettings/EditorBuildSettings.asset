@@ -10,6 +10,9 @@ EditorBuildSettings:
     guid: c4a4396de0caad14fa8d3c62ad255b2c
   - enabled: 1
     path: Assets/Scenes/LevelScenes/Australia.unity
+    guid: 72a52634827e49e4895fdf6652b7d425
+  - enabled: 0
+    path: Assets/Scenes/LevelScenes/Old.unity
     guid: e27c2b0cd920c264bac30f05547342d0
   - enabled: 0
     path: Assets/Scenes/LevelScenes/text-MusicAustralia.unity
