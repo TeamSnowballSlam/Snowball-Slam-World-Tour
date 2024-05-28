@@ -24,15 +24,9 @@ public class MainMenu : MonoBehaviour
     /// <summary>
     /// Sets the selected level
     /// </summary>
-    public void LevelSelect()
+    public void LevelSelect(string name)
     {
-        foreach (Toggle toggle in levelToggles)
-        {
-            if (toggle.isOn)
-            {
-                //This converts the string name of the toggle to the enum value and sets the selected level
-                GameSettings.SelectedLevel = (Levels)System.Enum.Parse(typeof(Levels), toggle.name);
-            }
-        }
+        //This converts the string name of the toggle to the enum value and sets the selected level
+        GameSettings.SelectedLevel = (Levels)System.Enum.Parse(typeof(Levels), name);
     }
 }
