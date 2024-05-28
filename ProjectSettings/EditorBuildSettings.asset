@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelScenes/Australia.unity
     guid: e27c2b0cd920c264bac30f05547342d0
-  - enabled: 0
-    path: Assets/Scenes/LevelScenes/text-MusicAustralia.unity
-    guid: 6c5cb5b4cbf3d3441bba7d50e5f615e5
+  - enabled: 1
+    path: Assets/Scenes/LevelScenes/Tutorial.unity
+    guid: 2e9e0d5ff7c26c14d8021e71628a44e4
+  - enabled: 1
+    path: Assets/Scenes/LevelScenes/Australia-New.unity
+    guid: ffb7b49d330c9cb40bf37194c9c75b33
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ee0b8a024e3a7ad4c8a0fd7d65516d25,
       type: 2}

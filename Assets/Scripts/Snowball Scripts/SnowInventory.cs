@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SnowInventory : MonoBehaviour
 {
@@ -29,30 +30,62 @@ public class SnowInventory : MonoBehaviour
             currentAmmo = value;
             if (playerNumber == 0)
             {
-                ammoText1.text = "P1 Snowballs - " + currentAmmo.ToString();
+                if (ammoText1 == null)
+                {
+                    ammoText1 = GameObject.Find("P1 Snowballs").GetComponent<TextMeshProUGUI>();
+                }
+                ammoText1.text = currentAmmo.ToString();
             }
             if (playerNumber == 1)
             {
-                ammoText2.text = "P2 Snowballs - " + currentAmmo.ToString();
+                if (ammoText2 == null)
+                {
+                    ammoText2 = GameObject.Find("P2 Snowballs").GetComponent<TextMeshProUGUI>();
+                }
+                ammoText2.text = currentAmmo.ToString();
             }
         }
     }
-    private string penguinName;
 
     void Start()
     {
-        penguinName = gameObject.name; // for debugging purposes
         currentAmmo = 10;
         playerNumber = GetComponent<PlayerDetails>().playerID;
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            //Workaround for the tutorial players being 2 and 3 because of input systems
+            if (playerNumber == 2)
+            {
+                playerNumber = 0;
+            }
+            else if (playerNumber == 3)
+            {
+                playerNumber = 1;
+            }
+        }
         if (playerNumber == 0)
         {
-            ammoText1 = GameObject.Find("P1 Snowballs").GetComponent<TextMeshProUGUI>();
-            ammoText1.text = "P1 Snowballs - " + currentAmmo.ToString();
+            try
+            {
+                ammoText1 = GameObject.Find("P1 Snowballs").GetComponent<TextMeshProUGUI>();
+                ammoText1.text = currentAmmo.ToString();
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log("Error finding ammo text: " + e.Message);
+            }
         }
         else
         {
-            ammoText2 = GameObject.Find("P2 Snowballs").GetComponent<TextMeshProUGUI>();
-            ammoText2.text = "P2 Snowballs - " + currentAmmo.ToString();
+            try
+            {
+                ammoText2 = GameObject.Find("P2 Snowballs").GetComponent<TextMeshProUGUI>();
+                ammoText2.text = currentAmmo.ToString();
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log("Error finding ammo text: " + e.Message);
+            }
         }
     }
 }
