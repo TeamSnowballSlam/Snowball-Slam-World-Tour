@@ -24,4 +24,9 @@ public class DisableChar : MonoBehaviour
         this.gameObject.SetActive(false);
         this.GetComponentInChildren<Image>().color = new Color(this.GetComponentInChildren<Image>().color.r, this.GetComponentInChildren<Image>().color.g, this.GetComponentInChildren<Image>().color.b, 1);
     }
+
+    private void DisableUI()
+    {
+        this.gameObject.SetActive(false);
+    }
 }
