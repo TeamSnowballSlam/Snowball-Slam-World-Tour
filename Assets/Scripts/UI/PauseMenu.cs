@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//attached to the player
 public class PauseMenu : MonoBehaviour
 {
     private GameObject pauseMenu;
