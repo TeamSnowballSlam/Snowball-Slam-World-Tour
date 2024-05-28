@@ -292,11 +292,11 @@ public class SettingsManager : MonoBehaviour
         
         try
         {
-            GameSettings.MusicVolume = PlayerPrefs.GetFloat("MusicVolume", .75f); //Default is 75% volume
+            GameSettings.MusicVolume = PlayerPrefs.GetFloat("MusicVolume", .5f); //Default is 50% volume
         }
         catch
         {
-            GameSettings.MusicVolume = .75f; //Default is 75% volume in case the PlayerPrefs value is invalid
+            GameSettings.MusicVolume = .5; //Default is 50% volume in case the PlayerPrefs value is invalid
             Debug.LogWarning("Music volume set to invalid value, setting to default.");
         }
         MusicSlider.GetComponent<Slider>().value = GameSettings.MusicVolume;
