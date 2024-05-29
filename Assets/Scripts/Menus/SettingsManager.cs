@@ -264,7 +264,14 @@ public class SettingsManager : MonoBehaviour
             Debug.LogWarning("Frame rate set to invalid index, setting to default.");
         }
         frameRateDropdown.value = frameRateIndex;
-        ApplyFrameRate(frameRateIndex);
+        try
+        {
+            ApplyFrameRate(frameRateIndex);
+        }
+        catch
+        {
+            ApplyFrameRate(60);
+        }
         
         bool vsyncEnabled = false;    //Default value is no VSync in case the PlayerPrefs value is invalid
         try

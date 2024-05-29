@@ -7,16 +7,13 @@ public class SpawnManager : MonoBehaviour
 {
     public Transform[] spawnPoints; //The two player spawn points
     private const string BASEPATH = "Penguins/"; //Base path for the penguin prefabs within the resources folder
-    public GameObject p2Ammo;
+    public static SpawnManager Instance;
     public void Start()
     {
+        Instance = this;
         penguinSelect(GameSettings.Player1Penguin, "WASD");
         if (GameSettings.Player2Exists)
         {
-            if(p2Ammo != null)
-            {
-                p2Ammo.SetActive(true);
-            }
             penguinSelect(GameSettings.Player2Penguin, "Arrows");
         }
     }
@@ -27,10 +24,6 @@ public class SpawnManager : MonoBehaviour
         {
             penguinSelect(GameSettings.Player2Penguin, "Arrows");
             GameSettings.Player2Exists = true;
-            if(p2Ammo != null)
-            {
-                p2Ammo.SetActive(true);
-            }
         }
     }
 

@@ -95,9 +95,16 @@ public class PauseSettings : MonoBehaviour
     /// </summary>
     public void OnHotJoin()
     {
-        P2Snowballs.SetActive(true);
+        if (GameSettings.Player2Exists)
+        {
+            return;
+        }
         GameSettings.currentGameState = GameStates.InGame;
         Time.timeScale = 1;
+        hudPause.SetActive(true);
+        hudHelp.SetActive(true);
+        P2Snowballs.SetActive(true);
+        SpawnManager.Instance.spawnPlayerTwo();
     }
 
     /// <summary>
