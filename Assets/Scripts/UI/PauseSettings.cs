@@ -105,6 +105,9 @@ public class PauseSettings : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);	
     }
 
+    /// <summary>
+    /// Shows the controls
+    /// </summary>
     public void HelpButton()
     {
         if (controls.activeSelf)

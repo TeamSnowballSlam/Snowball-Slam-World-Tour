@@ -965,7 +965,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2784e00fde0ae746bb955637e5a4894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snowballPrefab: {fileID: 380627630326163080, guid: f961f415f92502740a7797120d3b1b30,
+  playerSnowballPrefab: {fileID: 161615456617945018, guid: afe96a49f8c56d746b5f1a8bb9109e75,
+    type: 3}
+  enemySnowballPrefab: {fileID: 393657858769578735, guid: f7c5badcd3e04ac47b15fb0d9dc2c4ba,
     type: 3}
   snowInventory: {fileID: 0}
   playSFX: {fileID: 0}

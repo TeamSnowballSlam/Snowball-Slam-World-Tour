@@ -26,9 +26,10 @@ public class ThrowSnowballs : MonoBehaviour
          }
     }
     
-    [SerializeField]
-    private GameObject snowballPrefab;
+    [SerializeField] private GameObject playerSnowballPrefab;
+    [SerializeField] private GameObject enemySnowballPrefab;
     private GameObject snowball; // instantiate of snowballPrefab
+
     private Vector3 snowballPosition;
     public SnowInventory snowInventory;
     private Animator animator;
@@ -93,24 +94,28 @@ public class ThrowSnowballs : MonoBehaviour
         //Triggers a random throw sound using the name of a random object in the audioClips list
         playSFX.playSound(audioClips[Random.Range(0, audioClips.Count)].name);
         snowballPosition = snowballWP.transform.position;
-        snowball = Instantiate(
-            snowballPrefab,
-            snowballPosition + transform.forward,
-            Quaternion.identity
-        );
-        snowball.GetComponent<Rigidbody>().AddForce(transform.forward * SPEED, ForceMode.Impulse); // snowball moves at a constant rate
-
         if (name == "Player")
         {
+            snowball = Instantiate(
+                playerSnowballPrefab,
+                snowballPosition + transform.forward,
+                Quaternion.identity
+            );
             snowball.GetComponent<SnowballCollision>().owner = "Player"; // owner of snowball is the player
             snowball.GetComponent<SnowballCollision>().ownerObject = this.gameObject; // owner of snowball is the player
         }
         else if (name == "Enemy")
         {
+            snowball = Instantiate(
+                enemySnowballPrefab,
+                snowballPosition + transform.forward,
+                Quaternion.identity
+            );
             snowball.GetComponent<SnowballCollision>().owner = "Enemy"; // owner of snowball is the enemy
             snowball.GetComponent<SnowballCollision>().ownerObject = this.gameObject; // owner of snowball is the player
 
         }
+        snowball.GetComponent<Rigidbody>().AddForce(transform.forward * SPEED, ForceMode.Impulse); // snowball moves at a constant rate
     }
 
     public void SetCanThrow()
