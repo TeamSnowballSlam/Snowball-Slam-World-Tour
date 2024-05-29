@@ -31,6 +31,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "1184b08d-bfc4-4084-ab40-d3b476587400",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Force Quit",
+                    "type": "Button",
+                    "id": "1b0a4877-f3d1-410b-91ab-2621f6b9fbfb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -159,7 +177,7 @@
                     "name": "",
                     "id": "c6d1c982-ebcb-489b-9bfc-f3c42359102f",
                     "path": "<Keyboard>/#(.)",
-                    "interactions": "",
+                    "interactions": "Hold(duration=2)",
                     "processors": "",
                     "groups": "Arrows",
                     "action": "Interact",
@@ -187,6 +205,50 @@
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c77cbdd0-345a-4748-9b86-fd63e961f44a",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WASD",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "05f1baeb-192e-4bc0-89ba-26572328aa87",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Force Quit",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "b181ae29-7d4e-4a60-a246-2ebf514afb6f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WASD;Arrows",
+                    "action": "Force Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "c00ee229-4707-443f-9aa9-3dad27e43856",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WASD;Arrows",
+                    "action": "Force Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
@@ -280,6 +342,15 @@
                     "type": "PassThrough",
                     "id": "9c65686e-b943-4f43-96ab-6e8220bc4ffe",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ForceQuit",
+                    "type": "Button",
+                    "id": "0b12a7af-002c-49d2-8044-71a9ea26040c",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -424,7 +495,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "WASD",
+                    "groups": "WASD;Arrows",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -435,7 +506,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "WASD",
+                    "groups": "WASD;Arrows",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -446,7 +517,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "WASD",
+                    "groups": "WASD;Arrows",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -457,7 +528,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "WASD",
+                    "groups": "WASD;Arrows",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -468,7 +539,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "WASD",
+                    "groups": "WASD;Arrows",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -479,7 +550,7 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "WASD",
+                    "groups": "WASD;Arrows",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -490,7 +561,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "WASD",
+                    "groups": "WASD;Arrows",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -501,7 +572,7 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "WASD",
+                    "groups": "WASD;Arrows",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -512,7 +583,51 @@
                     "path": "*/{Submit}",
                     "interactions": "",
                     "processors": "",
-                    "groups": "WASD",
+                    "groups": "WASD;Arrows",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "feabaa40-f8bb-4bd9-9539-34517d7d67b8",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WASD;Arrows",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d78d07fa-37c9-405e-8595-a328907268d5",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WASD;Arrows",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "600aa9c7-3f78-4d2a-8898-17744681213c",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Arrows;WASD",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4343fff1-1ad5-4dd2-8111-9453712c3a3a",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WASD;Arrows",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -523,7 +638,7 @@
                     "path": "*/{Cancel}",
                     "interactions": "",
                     "processors": "",
-                    "groups": "WASD",
+                    "groups": "WASD;Arrows",
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -604,6 +719,39 @@
                     "action": "RightClick",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "a5ee31a2-7a7d-421a-a7b3-c876fb555a16",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ForceQuit",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "85e886f6-0d63-46ae-9788-7a286d9b119b",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WASD;Arrows",
+                    "action": "ForceQuit",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "970834cb-075e-4a56-b644-5c87435a77fa",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WASD;Arrows",
+                    "action": "ForceQuit",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

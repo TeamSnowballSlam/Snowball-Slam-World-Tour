@@ -7,9 +7,10 @@ public class SpawnManager : MonoBehaviour
 {
     public Transform[] spawnPoints; //The two player spawn points
     private const string BASEPATH = "Penguins/"; //Base path for the penguin prefabs within the resources folder
-
+    public static SpawnManager Instance;
     public void Start()
     {
+        Instance = this;
         penguinSelect(GameSettings.Player1Penguin, "WASD");
         if (GameSettings.Player2Exists)
         {
@@ -28,8 +29,15 @@ public class SpawnManager : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        playerInput.gameObject.GetComponent<PlayerDetails>().playerID = playerInput.playerIndex; //Setting the player ID to the player index
-        playerInput.gameObject.GetComponent<PlayerDetails>().startingPosition = spawnPoints[playerInput.playerIndex].position; //Setting the player's starting position to the spawn point
+        try
+        {
+            playerInput.gameObject.GetComponent<PlayerDetails>().playerID = playerInput.playerIndex; //Setting the player ID to the player index
+            playerInput.gameObject.GetComponent<PlayerDetails>().startingPosition = spawnPoints[playerInput.playerIndex].position; //Setting the player's starting position to the spawn point
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log("Error setting player details: " + e.Message);
+        }
     }
 
     /// <summary>

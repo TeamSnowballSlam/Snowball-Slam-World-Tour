@@ -21,7 +21,7 @@ public class KangarooAbility : MonoBehaviour
     public bool canUseTurret; //Whether or not the ability is active
     private float abilityTime = 0; //The time the ability was used
 
-     [Range(0, 100)]
+    [Range(0, 100)]
     public int turretSpawnChance = 50; //percentage chance of spawning a turret
     //Animator
     private Animator animator;
@@ -31,14 +31,14 @@ public class KangarooAbility : MonoBehaviour
         canUseTurret = false;
         animator = GetComponent<Animator>();
     }
-/// <summary>
-/// Places the turret on the map
-/// </summary>
+    /// <summary>
+    /// Places the turret on the map
+    /// </summary>
     public void PlaceTurret()
     {//If the ability is on cooldown or there is already an active turret, return
-        if (canUseTurret) 
-        { 
-            if(Physics.CheckBox(transform.position + transform.forward * TURRETOFFSET, new Vector3(0.05f, 0.05f, 0.05f), Quaternion.identity)) 
+        if (canUseTurret)
+        {
+            if (Physics.CheckBox(transform.position + transform.forward * TURRETOFFSET, new Vector3(0.05f, 0.05f, 0.05f), Quaternion.identity))
             {
                 return;
             }
@@ -50,7 +50,7 @@ public class KangarooAbility : MonoBehaviour
             activeTurret = joeyTurret;
             canUseTurret = false;
 
-         } 
+        }
     }
 
 
@@ -60,7 +60,15 @@ public class KangarooAbility : MonoBehaviour
         {
             CheckAbilityCooldown();
         }
-   
+        GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
+        if (turrets.Length > 2)
+        {
+            if (turrets[2] != null)
+            {
+                Destroy(turrets[2]);
+            }
+        }
+
     }
 
     /// <summary>
@@ -68,10 +76,14 @@ public class KangarooAbility : MonoBehaviour
     /// </summary>
     public void CheckAbilityCooldown()
     {
-        if(activeTurret)
+        if (activeTurret)
         {
-            if (Time.time - abilityTime >= (abiltyCooldown + activeTurret.expireTime ))
+            if (Time.time - abilityTime >= (abiltyCooldown + activeTurret.expireTime))
             {
+                if (GameObject.FindGameObjectsWithTag("Turret").Length < 2)
+                {
+                    canUseTurret = true;
+                }
                 canUseTurret = true;
             }
         }
@@ -79,7 +91,10 @@ public class KangarooAbility : MonoBehaviour
         {
             if (Time.time - abilityTime >= abiltyCooldown)
             {
-                canUseTurret = true;
+                if (GameObject.FindGameObjectsWithTag("Turret").Length < 2)
+                {
+                    canUseTurret = true;
+                }
             }
 
         }

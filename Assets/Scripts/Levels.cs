@@ -10,6 +10,7 @@ using UnityEngine;
 public enum Levels
 {
     None,
+    Tutorial,
     Australia,
     Asia,
     SouthAmerica,

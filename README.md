@@ -1,17 +1,29 @@
-# Snowball Slam: World Tour
+<h1 align="center"> Snowball Slam World Tour </h1>
 
-<!--- Need a pic here --->
+![Title_Background](https://github.com/TeamSnowballSlam/Snowball-Slam-World-Tour/assets/104808214/f543d62c-b349-4f2d-b267-92c697eaeae8)
+
 
 Aotearoa penguins competing across the globe through the legendary sport... Snowball Tag!
 
 ## Features
-
-To be added
-
-<!--- Add the info from the presentation --->
+- Throw Snowballs at your Opponents to score points!
+- Play alone or with a friend!
+- Choose from 3 different Penguins!
+    - Tawaki
+    - Hoiho
+    - Korora
+      
+- Refill ammunition with the snowball machines or snow piles!
+- Unique Hazards on each level that provide disadvantages
+    - **Australia:** Sticky Asphalt Roads slow down the players
+- Play against different animals from each continent!
+    - **Australia:** Kanagaroos!
+- Each animal has a unique ability!
+    - **Penguins:** Slide in any direction by double tapping a movement key
+    - **Kangaroos:** Spawns a baby Joey that rapid fires snowballs towards the closest player
+  
 
 ## Team Info
-
 <!--- Do design team want links to something other than GitHub? --->
 - [Palin Wiseman](https://github.com/PBWiseman)
   - Developer
@@ -62,11 +74,32 @@ Some of the most important changes for each update are as follows:
 | v1.0.0    | April 29 2024   | Character Selection, Enemy Movement, Hotjoining, Player Movement, Sliding, Throwing Snowballs     | 
 | v1.1.0 | May 07 2024 | Main Menu, Level Selection, Settings, Snowball Inventory, End Screen, Level Timer / Score UI  | 
 | v1.2.0 | May 14 2024 | Snowball Refill, Snow Production, Enviromental Hazard: Hot Road, Enemy Ability: Joey Turret |
-
+| v1.3.0 | May 29 2024 | Pause Menu, Improved Enemy AI,  Larger Snowball Inventory,  Temporary Invulnerability,  New Visuals for Menus,  Game Sound Effects and Music |
 ## Roadmap
+- More Levels!
+    - South America
+    - Asia
+    - North America
+    - Africa
+    - Antarcica
+    - Europe
+- More Enviromental Hazards
+   - **Asia:** Bamboo Blockades will grow randomly throughout the match which can eventually be destroyed by player snowballs
+- New Penguin Ability!
+    - Build a snow wall to protect from incoming snowballs
+- Each Level will have new enemies to play against!
+    - **Asia:** Red Pandas!
+    - **South America:** Capybara
+- Each animal has a unique ability!
+    - **Red Panda:** Snowball Flurry!
+    - **Capybara: ** Summons Forest Friends!
+ 
+- Unique Powerups that will be thrown in by Spectators
+      - **Eggshell helmet:** Temporarily Protects the player from snowballs!
+      - **Fish:** Gives the player a speed buff!
+      - **Snowball Cannon:** Rapid Fire snowballs for a limted time!
 
-To be added
-<!--- Add the info from the presentation --->
+- Different Match Types with Unique gameplay!
 
 ## Acknowledgements
 
