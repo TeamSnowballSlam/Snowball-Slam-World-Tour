@@ -1263,8 +1263,10 @@ MonoBehaviour:
   soundEffectsSlider: {fileID: 79886022}
   controls: {fileID: 775317965}
   pauseMenu: {fileID: 370798460}
+  pauseContainer: {fileID: 1396874856}
   hudPause: {fileID: 39750581}
   hudHelp: {fileID: 991058892}
+  P2Snowballs: {fileID: 632537406}
 --- !u!1001 &109525370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13632,6 +13634,12 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: -0.001}
   m_TimeToStationary: 0.5
+--- !u!1 &1396874856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1796137944546193686, guid: af879a29ea81e9d46bb5df2d0cafaca7,
+    type: 3}
+  m_PrefabInstance: {fileID: 79886021}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1402267337
 PrefabInstance:
   m_ObjectHideFlags: 0
