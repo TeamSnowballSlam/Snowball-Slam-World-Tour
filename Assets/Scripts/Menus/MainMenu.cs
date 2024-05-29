@@ -8,9 +8,18 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    private Toggle[] levelToggles; //Need to manually add each toggle in the inspector
+    private GameObject[] menus; //All menus to turn off at the start
 
     //Something here for only allowing later levels to be selected when they are unlocked?
+    
+    private void Start()
+    {
+        //Turn off all menus
+        foreach (GameObject menu in menus)
+        {
+            menu.SetActive(false);
+        }
+    }
 
     /// <summary>
     /// Quits the game

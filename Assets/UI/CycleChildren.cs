@@ -9,6 +9,7 @@ public class CycleChildren : MonoBehaviour
     int transType;
 
     public Button next, prev;
+    public bool isMoving;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,10 @@ public class CycleChildren : MonoBehaviour
 
     public void Next()
     {
+        if (isMoving)
+        {
+            return;
+        }
         transType = 0;
 
         if(childIndex == transform.childCount - 1)
@@ -53,6 +58,10 @@ public class CycleChildren : MonoBehaviour
 
     public void Previous()
     {
+        if (isMoving)
+        {
+            return;
+        }
         transType = 1;
 
         if (childIndex == 0)
@@ -79,13 +88,11 @@ public class CycleChildren : MonoBehaviour
 
     public void DisableButtons()
     {
-        prev.interactable = false;
-        next.interactable = false;
+        isMoving = true;
     }
 
     public void EnableButtons()
     {
-        prev.interactable = true;
-        next.interactable = true;
+        isMoving = false;
     }
 }
