@@ -55,6 +55,7 @@ public class LevelManager : MonoBehaviour
     public GameObject EndScreen;
     public GameObject WinPanel;
     public GameObject LosePanel;
+    public GameObject DrawPanel;
     public GameObject Trophy;
 
     void Awake()
@@ -222,6 +223,7 @@ public class LevelManager : MonoBehaviour
             }
             WinPanel.SetActive(false);
             LosePanel.SetActive(true);
+            DrawPanel.SetActive(false);
         }
             // GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
             // p1.transform.parent = endGameLoserSpawnPoints[0];
@@ -257,6 +259,9 @@ public class LevelManager : MonoBehaviour
             {
                 MusicManager.Instance.SetTrack("Draw");
             }
+            WinPanel.SetActive(false);
+            LosePanel.SetActive(false);
+            DrawPanel.SetActive(true);
         }
             // GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
 
