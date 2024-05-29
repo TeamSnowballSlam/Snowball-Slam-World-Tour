@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: c4a4396de0caad14fa8d3c62ad255b2c
-  - enabled: 0
-    path: Assets/Scenes/LevelScenes/PauseMenu.unity
-    guid: 6180d1d4049185143a8be370859bff32
   - enabled: 1
     path: Assets/Scenes/LevelScenes/Australia.unity
     guid: ffb7b49d330c9cb40bf37194c9c75b33
