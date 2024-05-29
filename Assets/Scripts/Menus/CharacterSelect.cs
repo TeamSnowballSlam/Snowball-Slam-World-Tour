@@ -20,6 +20,7 @@ public class CharacterSelect : MonoBehaviour
     public void SetPenguinP1()
     {
         GameSettings.Player1Penguin = penguinSwitch(findPenguins(Player1Penguins));
+        Debug.Log(GameSettings.Player1Penguin);
     }
 
     /// <summary>
@@ -29,6 +30,7 @@ public class CharacterSelect : MonoBehaviour
     public void SetPenguinP2()
     {
         GameSettings.Player2Penguin = penguinSwitch(findPenguins(Player2Penguins));
+        Debug.Log(GameSettings.Player2Penguin);
     }
     
     private string findPenguins(GameObject[] penguins)
@@ -45,6 +47,7 @@ public class CharacterSelect : MonoBehaviour
 
     private PenguinType penguinSwitch(string penguinType)
     {
+        Debug.Log(penguinType);
         switch (penguinType)
         {
             case "Hoiho":
@@ -100,6 +103,11 @@ public class CharacterSelect : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
+        SetPenguinP1();
+        if (GameSettings.Player2Exists)
+        {
+            SetPenguinP2();
+        }
         if (GameSettings.SelectedLevel == Levels.None)
         {
             Debug.LogError("No level selected");
