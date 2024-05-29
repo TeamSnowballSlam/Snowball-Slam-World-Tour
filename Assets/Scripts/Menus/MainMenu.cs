@@ -8,9 +8,18 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    private Toggle[] levelToggles; //Need to manually add each toggle in the inspector
+    private GameObject[] menus; //All menus to turn off at the start
 
     //Something here for only allowing later levels to be selected when they are unlocked?
+    
+    private void Start()
+    {
+        //Turn off all menus
+        foreach (GameObject menu in menus)
+        {
+            menu.SetActive(false);
+        }
+    }
 
     /// <summary>
     /// Quits the game
@@ -24,15 +33,9 @@ public class MainMenu : MonoBehaviour
     /// <summary>
     /// Sets the selected level
     /// </summary>
-    public void LevelSelect()
+    public void LevelSelect(string name)
     {
-        foreach (Toggle toggle in levelToggles)
-        {
-            if (toggle.isOn)
-            {
-                //This converts the string name of the toggle to the enum value and sets the selected level
-                GameSettings.SelectedLevel = (Levels)System.Enum.Parse(typeof(Levels), toggle.name);
-            }
-        }
+        //This converts the string name of the toggle to the enum value and sets the selected level
+        GameSettings.SelectedLevel = (Levels)System.Enum.Parse(typeof(Levels), name);
     }
 }

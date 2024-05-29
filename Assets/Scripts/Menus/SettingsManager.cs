@@ -254,10 +254,10 @@ public class SettingsManager : MonoBehaviour
         resolutionDropdown.value = resolutionIndex;
         ApplyResolution(resolutionIndex);        
         
-        int frameRateIndex = 60; //Default is highest non uncapped in case the PlayerPrefs value is invalid
+        int frameRateIndex = 60; //Default is 60 in case the PlayerPrefs value is invalid
         try
         {
-            frameRateIndex = PlayerPrefs.GetInt("FrameRate", 60); //Default is uncapped
+            frameRateIndex = PlayerPrefs.GetInt("FrameRate", 60); //Default is 60
         }
         catch
         {
@@ -292,22 +292,22 @@ public class SettingsManager : MonoBehaviour
         
         try
         {
-            GameSettings.MusicVolume = PlayerPrefs.GetFloat("MusicVolume", .5f); //Default is 50% volume
+            GameSettings.MusicVolume = PlayerPrefs.GetFloat("MusicVolume", .4f);
         }
         catch
         {
-            GameSettings.MusicVolume = .5f; //Default is 50% volume in case the PlayerPrefs value is invalid
+            GameSettings.MusicVolume = .4f;
             Debug.LogWarning("Music volume set to invalid value, setting to default.");
         }
         MusicSlider.GetComponent<Slider>().value = GameSettings.MusicVolume;
         
         try
         {
-            GameSettings.SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume", .75f); //Default is 75% volume
+            GameSettings.SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume", .4f); //Default is 75% volume
         }
         catch
         {
-            GameSettings.SoundEffectsVolume = .75f; //Default is 75% volume in case the PlayerPrefs value is invalid
+            GameSettings.SoundEffectsVolume = .4f; 
             Debug.LogWarning("Sound effects volume set to invalid value, setting to default.");
         }
         SoundEffectsSlider.GetComponent<Slider>().value = GameSettings.SoundEffectsVolume;
