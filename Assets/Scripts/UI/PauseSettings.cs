@@ -25,6 +25,10 @@ public class PauseSettings : MonoBehaviour
     void Start()
     {
         Instance = this;
+        if (GameSettings.Player2Exists)
+        {
+            P2Snowballs.SetActive(true);
+        }
         musicSlider.GetComponent<Slider>().value = GameSettings.MusicVolume;
         musicSlider.GetComponent<Slider>().value = GameSettings.SoundEffectsVolume;
         controls.SetActive(false);
