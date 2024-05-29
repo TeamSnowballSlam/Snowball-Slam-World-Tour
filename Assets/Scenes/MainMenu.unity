@@ -3083,7 +3083,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Korora
+  m_text: Kororaa
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc6a2aeb9ec6154bbd5ce98b6b80c58, type: 2}
   m_sharedMaterial: {fileID: -5686458089501960270, guid: ffc6a2aeb9ec6154bbd5ce98b6b80c58,
@@ -10742,7 +10742,7 @@ GameObject:
   - component: {fileID: 1014404494}
   - component: {fileID: 1014404493}
   m_Layer: 5
-  m_Name: Korora
+  m_Name: "Koror\u0101"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11657,7 +11657,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Korora
+  m_text: Kororaa
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffc6a2aeb9ec6154bbd5ce98b6b80c58, type: 2}
   m_sharedMaterial: {fileID: -5686458089501960270, guid: ffc6a2aeb9ec6154bbd5ce98b6b80c58,
@@ -15102,7 +15102,7 @@ GameObject:
   - component: {fileID: 1776972311}
   - component: {fileID: 1776972310}
   m_Layer: 5
-  m_Name: Korora
+  m_Name: "Koror\u0101"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
