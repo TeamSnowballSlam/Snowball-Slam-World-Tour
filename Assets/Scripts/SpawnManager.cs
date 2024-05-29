@@ -28,8 +28,15 @@ public class SpawnManager : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        playerInput.gameObject.GetComponent<PlayerDetails>().playerID = playerInput.playerIndex; //Setting the player ID to the player index
-        playerInput.gameObject.GetComponent<PlayerDetails>().startingPosition = spawnPoints[playerInput.playerIndex].position; //Setting the player's starting position to the spawn point
+        try
+        {
+            playerInput.gameObject.GetComponent<PlayerDetails>().playerID = playerInput.playerIndex; //Setting the player ID to the player index
+            playerInput.gameObject.GetComponent<PlayerDetails>().startingPosition = spawnPoints[playerInput.playerIndex].position; //Setting the player's starting position to the spawn point
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log("Error setting player details: " + e.Message);
+        }
     }
 
     /// <summary>
