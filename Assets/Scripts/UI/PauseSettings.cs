@@ -11,11 +11,16 @@ public class PauseSettings : MonoBehaviour
 
     [SerializeField] private GameObject musicSlider; // The slider for the music volume
     [SerializeField] private GameObject soundEffectsSlider; // The slider for the sound effects volume
+    [SerializeField] private GameObject controls;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject hudPause;
+    [SerializeField] private GameObject hudHelp;
 
     void Start()
     {
         musicSlider.GetComponent<Slider>().value = GameSettings.MusicVolume;
         musicSlider.GetComponent<Slider>().value = GameSettings.SoundEffectsVolume;
+        controls.SetActive(false);
     }
 
     /// <summary>
@@ -98,5 +103,40 @@ public class PauseSettings : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);	
+    }
+
+    public void HelpButton()
+    {
+        if (controls.activeSelf)
+        {
+            controls.SetActive(false);
+        }
+        else
+        {
+            controls.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Pauses the game. Same as on penguin but for the pause UI button
+    /// </summary>
+    public void PauseButton()
+    {
+        if (GameSettings.currentGameState == GameStates.InGame)
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0;
+            GameSettings.currentGameState = GameStates.Paused;
+            hudPause.SetActive(false);
+            hudHelp.SetActive(false);
+        }
+        else if (GameSettings.currentGameState == GameStates.Paused)
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+            GameSettings.currentGameState = GameStates.InGame;
+            hudPause.SetActive(true);
+            hudHelp.SetActive(true);
+        }
     }
 }
