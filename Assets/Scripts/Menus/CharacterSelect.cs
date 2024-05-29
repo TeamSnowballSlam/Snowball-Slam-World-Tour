@@ -10,6 +10,7 @@ public class CharacterSelect : MonoBehaviour
     public GameObject[] Player1Penguins;
     public GameObject[] Player2Penguins;
     public Selectable LeftArrow;
+    public Selectable JoinButton;
     // Start is called before the first frame update
 
     /// <summary>
@@ -72,6 +73,20 @@ public class CharacterSelect : MonoBehaviour
         {
             Navigation navigation = selectable.navigation;
             navigation.selectOnRight = LeftArrow;
+            selectable.navigation = navigation;
+        }
+        catch
+        {
+            Debug.LogError("Selectable not found");
+        }
+    }
+
+    public void ChangeBackSelectable(Selectable selectable)
+    {
+        try
+        {
+            Navigation navigation = selectable.navigation;
+            navigation.selectOnRight = JoinButton;
             selectable.navigation = navigation;
         }
         catch
