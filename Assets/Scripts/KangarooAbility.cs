@@ -67,10 +67,6 @@ public class KangarooAbility : MonoBehaviour
             {
                 Destroy(turrets[2]);
             }
-            if (turrets[3] != null)
-            {
-                Destroy(turrets[3]);
-            }
         }
 
     }
