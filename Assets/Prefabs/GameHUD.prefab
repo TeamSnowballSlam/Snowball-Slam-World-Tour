@@ -392,12 +392,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 870053156337230869}
-  - {fileID: 8805268000760434812}
   - {fileID: 3860368368287961522}
   - {fileID: 8290281047033441284}
   - {fileID: 8384594854861725507}
   - {fileID: 8676969747744986654}
+  - {fileID: 870053156337230869}
+  - {fileID: 8805268000760434812}
   m_Father: {fileID: 624496490394154502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1114,6 +1114,8 @@ MonoBehaviour:
   LosePanel: {fileID: 0}
   DrawPanel: {fileID: 0}
   Trophy: {fileID: 0}
+  ContinueButton: {fileID: 0}
+  ContinueAnimator: {fileID: 0}
 --- !u!1 &5581247174531369608
 GameObject:
   m_ObjectHideFlags: 0
