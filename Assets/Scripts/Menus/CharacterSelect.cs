@@ -49,6 +49,7 @@ public class CharacterSelect : MonoBehaviour
             case "Hoiho":
                 return PenguinType.Hoiho;
             case "Kororā":
+            case "Kororaa":
                 return PenguinType.Kororā;
             case "Tawaki":
                 return PenguinType.Tawaki;
