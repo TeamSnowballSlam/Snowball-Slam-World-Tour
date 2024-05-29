@@ -2204,6 +2204,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 287257220}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &287257224 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6853993342955062465, guid: af879a29ea81e9d46bb5df2d0cafaca7,
+    type: 3}
+  m_PrefabInstance: {fileID: 287257220}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &331939014 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 17e5a1cc802e10543b7da857778f0b1a,
@@ -3192,6 +3198,8 @@ MonoBehaviour:
   hudPause: {fileID: 4644706764213366955}
   hudHelp: {fileID: 4644706764213366954}
   P2Snowballs: {fileID: 344573009}
+  pauseSelectable: {fileID: 1481030152}
+  pauseAnimator: {fileID: 287257224}
 --- !u!4 &588415035
 Transform:
   m_ObjectHideFlags: 0
@@ -5237,7 +5245,6 @@ MonoBehaviour:
   - {fileID: 1035969233}
   - {fileID: 1732018596}
   - {fileID: 1035969233}
-  p2Ammo: {fileID: 0}
 --- !u!4 &1188074234
 Transform:
   m_ObjectHideFlags: 0

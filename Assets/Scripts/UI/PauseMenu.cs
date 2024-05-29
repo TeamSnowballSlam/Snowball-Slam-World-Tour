@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 //attached to the player
 public class PauseMenu : MonoBehaviour
@@ -25,6 +26,8 @@ public class PauseMenu : MonoBehaviour
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
             GameSettings.currentGameState = GameStates.Paused;
+            EventSystem.current.SetSelectedGameObject(PauseSettings.Instance.pauseSelectable);
+            PauseSettings.Instance.pauseAnimator.SetTrigger("pointerEnter");
         }
         else if (GameSettings.currentGameState == GameStates.Paused)
         {

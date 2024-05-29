@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 [System.Serializable]
 public class TutorialEvent // class that holds tutorial event data
@@ -56,6 +57,8 @@ public class TutorialManager : MonoBehaviour
     public bool pOneInputHeld, pTwoInputHeld;
     bool heldBegun;
     public GameObject endgameScore;
+    public GameObject exitButton;
+
 
     private void Awake()
     {
@@ -196,9 +199,11 @@ public class TutorialManager : MonoBehaviour
             yield return null;
         }
 
+
         _tutorialEnd.Invoke(); // end tutorial
 
         GameSettings.currentGameState = GameStates.PostGame;
+        EventSystem.current.SetSelectedGameObject(exitButton);
     }
 
     public void LoadMainMenu()

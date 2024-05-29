@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PauseSettings : MonoBehaviour
 {
@@ -17,9 +18,13 @@ public class PauseSettings : MonoBehaviour
     [SerializeField] private GameObject hudPause;
     [SerializeField] private GameObject hudHelp;
     [SerializeField] private GameObject P2Snowballs;
+    [SerializeField] public GameObject pauseSelectable;
+    [HideInInspector] public static PauseSettings Instance;
+    public Animator pauseAnimator;
 
     void Start()
     {
+        Instance = this;
         musicSlider.GetComponent<Slider>().value = GameSettings.MusicVolume;
         musicSlider.GetComponent<Slider>().value = GameSettings.SoundEffectsVolume;
         controls.SetActive(false);
@@ -155,6 +160,9 @@ public class PauseSettings : MonoBehaviour
             GameSettings.currentGameState = GameStates.Paused;
             hudPause.SetActive(false);
             hudHelp.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(pauseSelectable);
+            PauseSettings.Instance.pauseAnimator.SetTrigger("pointerEnter");
+
         }
         else if (GameSettings.currentGameState == GameStates.Paused)
         {
