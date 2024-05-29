@@ -185,7 +185,15 @@ public class SettingsManager : MonoBehaviour
     /// <param name="index">Frame rate index</param>
     private void ApplyFrameRate(int index)
     {
-        string selectedOption = frameRateDropdown.options[index].text;
+        string selectedOption;
+        try
+        {
+            selectedOption = frameRateDropdown.options[index].text;
+        }
+        catch
+        {
+            selectedOption = "60 FPS";
+        }
         
         switch (selectedOption)
         {
