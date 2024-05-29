@@ -3178,8 +3178,10 @@ MonoBehaviour:
   soundEffectsSlider: {fileID: 287257221}
   controls: {fileID: 4644706764213366956}
   pauseMenu: {fileID: 287257223}
+  pauseContainer: {fileID: 1481030152}
   hudPause: {fileID: 4644706764213366955}
   hudHelp: {fileID: 4644706764213366954}
+  P2Snowballs: {fileID: 344573009}
 --- !u!4 &588415035
 Transform:
   m_ObjectHideFlags: 0
@@ -6139,6 +6141,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410603035}
   m_CullTransparentMesh: 1
+--- !u!1 &1481030152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1796137944546193686, guid: af879a29ea81e9d46bb5df2d0cafaca7,
+    type: 3}
+  m_PrefabInstance: {fileID: 287257220}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1488997808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9450,6 +9458,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3669927843874912435, guid: d3f5c896d70258a40abb8c922467fd1a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860368368287961522, guid: d3f5c896d70258a40abb8c922467fd1a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5014980077339847253, guid: d3f5c896d70258a40abb8c922467fd1a,
         type: 3}

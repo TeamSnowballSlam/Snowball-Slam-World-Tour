@@ -81,7 +81,6 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         pOneInputStatus.UpdateValues(p1check, _tutorialEvents[_eventIndex]._inputType, pOneInputHeld, heldBegun);
         pTwoInputStatus.UpdateValues(p2check, _tutorialEvents[_eventIndex]._inputType, pTwoInputHeld, heldBegun);
         if (_eventsLeft && !_doingNext)

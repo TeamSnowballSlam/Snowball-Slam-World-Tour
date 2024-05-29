@@ -13,8 +13,10 @@ public class PauseSettings : MonoBehaviour
     [SerializeField] private GameObject soundEffectsSlider; // The slider for the sound effects volume
     [SerializeField] private GameObject controls;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject pauseContainer;
     [SerializeField] private GameObject hudPause;
     [SerializeField] private GameObject hudHelp;
+    [SerializeField] private GameObject P2Snowballs;
 
     void Start()
     {
@@ -93,6 +95,8 @@ public class PauseSettings : MonoBehaviour
     /// </summary>
     public void OnHotJoin()
     {
+        P2Snowballs.SetActive(true);
+        GameSettings.currentGameState = GameStates.InGame;
         Time.timeScale = 1;
     }
 
@@ -112,10 +116,22 @@ public class PauseSettings : MonoBehaviour
     {
         if (controls.activeSelf)
         {
+            if(!pauseMenu.activeSelf)
+            {
+                Time.timeScale = 1;
+                GameSettings.currentGameState = GameStates.InGame;
+            }
+            pauseContainer.SetActive(true);
             controls.SetActive(false);
         }
         else
         {
+            if (pauseMenu.activeSelf)
+            {
+                pauseContainer.SetActive(false);
+            }
+            Time.timeScale = 0;
+            GameSettings.currentGameState = GameStates.Paused;
             controls.SetActive(true);
         }
     }
