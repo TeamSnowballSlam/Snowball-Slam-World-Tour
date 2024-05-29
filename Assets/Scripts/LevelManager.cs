@@ -15,6 +15,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class LevelManager : MonoBehaviour
 {
@@ -57,6 +58,8 @@ public class LevelManager : MonoBehaviour
     public GameObject LosePanel;
     public GameObject DrawPanel;
     public GameObject Trophy;
+    public GameObject ContinueButton;
+    public Animator ContinueAnimator;
 
     void Awake()
     {
@@ -175,6 +178,9 @@ public class LevelManager : MonoBehaviour
         }
 
         EndScreen.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(ContinueButton);
+        ContinueAnimator.SetTrigger("pointerEnter");
+
         playerEndScore.text = playerScore.ToString();
         enemyEndScore.text = enemyScore.ToString();
         
