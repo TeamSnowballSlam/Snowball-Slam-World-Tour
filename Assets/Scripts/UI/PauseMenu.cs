@@ -33,4 +33,9 @@ public class PauseMenu : MonoBehaviour
             GameSettings.currentGameState = GameStates.InGame;
         }
     }
+
+    public void ForceQuit()
+    {
+        Application.Quit();
+    }
 }
