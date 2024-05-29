@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     private int playerScore = 0;
     private int enemyScore = 0;
 
-    public int LevelLength = 90; //How long the level will last in seconds
+    public int LevelLength = 1; //How long the level will last in seconds
     [HideInInspector]
     public int secondsRemaining; //The time remaining in the level
 
@@ -36,31 +36,26 @@ public class LevelManager : MonoBehaviour
     public Color mediumColor;
     public Color criticalColor;
 
-    public List<Transform> endGameWinnerSpawnPoints = new List<Transform>();
-    public List<Transform> endGameLoserSpawnPoints = new List<Transform>();
-    public List<Transform> endGameDrawSpawnPoints = new List<Transform>();
+    // Note from Palin: Removing all end game spawn points as the new screen will not have these
+    // public List<Transform> endGameWinnerSpawnPoints = new List<Transform>();
+    // public List<Transform> endGameLoserSpawnPoints = new List<Transform>();
+    // public List<Transform> endGameDrawSpawnPoints = new List<Transform>();
 
     public GameObject mainCamera;
     public GameObject endGameCamera;
-    private TextMeshProUGUI playerScoreText;
-    private TextMeshProUGUI playerScoreTitle;
-    private TextMeshProUGUI enemyScoreText;
-    private TextMeshProUGUI enemyScoreTitle;
+    public TextMeshProUGUI playerScoreText;
+    public TextMeshProUGUI enemyScoreText;
+    public TextMeshProUGUI playerEndScore;
+    public TextMeshProUGUI enemyEndScore;
 
-    private TextMeshProUGUI timerText;
-    private TextMeshProUGUI timerTitle;
+    public TextMeshProUGUI timerText;
 
     private float currentTime;
-
-    private Teams playerTeam = Teams.Penguins; //Which team the player is on
-
-    [SerializeField]
-    private Teams enemyTeam = Teams.Kangaroos; //Which team the enemy is on
-
     public static LevelManager instance;
-    public GameObject restartButton;
-    public GameObject continueButton;
-    //public GameObject addPlayerButton;
+    public GameObject EndScreen;
+    public GameObject WinPanel;
+    public GameObject LosePanel;
+    public GameObject Trophy;
 
     void Awake()
     {
@@ -77,26 +72,10 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        restartButton.SetActive(false);
-        continueButton.SetActive(false);
-        mainCamera.SetActive(true);
-        endGameCamera.SetActive(false);
         GameSettings.currentGameState = GameStates.PreGame;
-        //Initialize the text objects
-        playerScoreText = GameObject.Find("PlayerScore").GetComponent<TextMeshProUGUI>();
-        enemyScoreText = GameObject.Find("EnemyScore").GetComponent<TextMeshProUGUI>();
-        timerText = GameObject.Find("LevelTimer").GetComponent<TextMeshProUGUI>();
-
-        playerScoreTitle = GameObject.Find("PlayerScoreTitle").GetComponent<TextMeshProUGUI>();
-        enemyScoreTitle = GameObject.Find("EnemyScoreTitle").GetComponent<TextMeshProUGUI>();
-        timerTitle = GameObject.Find("LevelTimerTitle").GetComponent<TextMeshProUGUI>();
 
         playerScoreText.text = playerScore.ToString();
         enemyScoreText.text = enemyScore.ToString();
-        playerScoreTitle.text = GetTeamName(playerTeam);
-        enemyScoreTitle.text = GetTeamName(enemyTeam);
-
-        timerTitle.text = "Starting in ";
         timerText.text = delayTime.ToString();
         currentTime = Time.time;
         secondsRemaining = LevelLength;
@@ -119,7 +98,6 @@ public class LevelManager : MonoBehaviour
                 {
                     currentTime = Time.time;
                     delayTime -= 1;
-                    timerTitle.text = "Starting in ";
                     timerText.text = delayTime.ToString();
                 }
                 else
@@ -130,19 +108,18 @@ public class LevelManager : MonoBehaviour
                         secondsRemaining > 0
                         && playerScore < targetScore
                         && enemyScore < targetScore
-                        && GameSettings.currentGameState == GameStates.InGame /*!roundOver && roundStarted*/
+                        && GameSettings.currentGameState == GameStates.InGame
                     )
                     {
                         currentTime = Time.time;
                         secondsRemaining -= 1;
-                        timerTitle.text = "Time Remaining";
                         //Format the time to be displayed as MM:SS
-                        string formattedTime = string.Format(
-                            "{0:00}:{1:00}",
-                            secondsRemaining / 60,
-                            secondsRemaining % 60
-                        );
-                        timerText.text = formattedTime;
+                        // string formattedTime = string.Format(
+                        //     "{0:00}:{1:00}",
+                        //     secondsRemaining / 60,
+                        //     secondsRemaining % 60
+                        // );
+                        timerText.text = secondsRemaining.ToString();
 
                         //Once the timer reaches either threshold, change the color of the text
                         if (secondsRemaining <= 5)
@@ -165,28 +142,6 @@ public class LevelManager : MonoBehaviour
     }
 
     /// <summary>
-    /// This method will return the name of the team based on the enum value
-    /// </summary>
-    /// <param name="team">The Team to be returned as a string</param>
-    /// <returns>The specified team as a string</returns>
-    private string GetTeamName(Teams team)
-    {
-        switch (team)
-        {
-            case Teams.Penguins:
-                return "Penguins";
-            case Teams.Kangaroos:
-                return "Kangaroos";
-            case Teams.RedPandas:
-                return "Red Pandas";
-            case Teams.Capybaras:
-                return "Capybaras";
-            default:
-                return "Unknown";
-        }
-    }
-
-    /// <summary>
     /// This method will display the winner of the match
     /// </summary>
     /// <param name="winner">The team that won the match</param>
@@ -194,7 +149,18 @@ public class LevelManager : MonoBehaviour
     {
         mainCamera.SetActive(false);
         endGameCamera.SetActive(true);
-        //addPlayerButton.SetActive(false);
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
+        {
+            Destroy(player);   
+        }
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
 
         GameObject[] snowballs = GameObject.FindGameObjectsWithTag("Snowball");
         foreach (GameObject snowball in snowballs)
@@ -206,114 +172,121 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(turret);
         }
+
+        EndScreen.SetActive(true);
+        playerEndScore.text = playerScore.ToString();
+        enemyEndScore.text = enemyScore.ToString();
+        
         if (winner == "Player")
         {
             PlayAnnouncerSounds.Instance.PlayVictory();
-            MusicManager.Instance.SetTrack("Win");
-            restartButton.SetActive(false);
-            continueButton.SetActive(true);
-            timerText.text = "Penguins Win!";
-            timerText.color = Color.green;
-            GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
-
-            p1.transform.parent = endGameWinnerSpawnPoints[0];
-            p1.transform.localPosition = Vector3.zero;
-            p1.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-            if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
+            if(MusicManager.Instance != null)
             {
-                GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
-                p2.transform.parent = endGameWinnerSpawnPoints[1];
-                p2.transform.localPosition = Vector3.zero;
-                p2.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
+                MusicManager.Instance.SetTrack("Draw");
             }
-            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
-            {
-                GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
-                e.transform.parent = endGameLoserSpawnPoints[i];
-                e.transform.localPosition = Vector3.zero;
-                e.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-                e.GetComponent<NavMeshAgent>().isStopped = true;
-                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
-                e.GetComponent<NavMeshAgent>().enabled = false;
-                e.GetComponent<EnemyMovement>().enabled = false;
-            }
+            Trophy.SetActive(true);
         }
+        //     GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
+
+        //     p1.transform.parent = endGameWinnerSpawnPoints[0];
+        //     p1.transform.localPosition = Vector3.zero;
+        //     p1.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
+
+        //     if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
+        //     {
+        //         GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
+        //         p2.transform.parent = endGameWinnerSpawnPoints[1];
+        //         p2.transform.localPosition = Vector3.zero;
+        //         p2.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
+
+        //     }
+        //     for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+        //     {
+        //         GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
+        //         e.transform.parent = endGameLoserSpawnPoints[i];
+        //         e.transform.localPosition = Vector3.zero;
+        //         e.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
+
+        //         e.GetComponent<NavMeshAgent>().isStopped = true;
+        //         e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
+        //         e.GetComponent<NavMeshAgent>().enabled = false;
+        //         e.GetComponent<EnemyMovement>().enabled = false;
+        //     }
+        //
         else if (winner == "Enemy")
         {
             PlayAnnouncerSounds.Instance.PlayDefeat();
-            MusicManager.Instance.SetTrack("Lose");
-            restartButton.SetActive(true);
-            continueButton.SetActive(true);
-            GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
-            p1.transform.parent = endGameLoserSpawnPoints[0];
-            p1.transform.localPosition = Vector3.zero;
-            p1.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-            if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
+            if(MusicManager.Instance != null)
             {
-                GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
-                p2.transform.parent = endGameLoserSpawnPoints[1];
-                p2.transform.localPosition = Vector3.zero;
-                p2.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
+                MusicManager.Instance.SetTrack("Draw");
             }
-
-            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
-            {
-                GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
-                e.transform.parent = endGameWinnerSpawnPoints[i];
-                e.transform.localPosition = Vector3.zero;
-                e.transform.localRotation = Quaternion.Euler(Vector3.zero);
-                e.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.localPosition);
-                e.GetComponent<NavMeshAgent>().isStopped = true;
-                e.GetComponent<NavMeshAgent>().enabled = false;
-                e.GetComponent<EnemyMovement>().enabled = false;
-            }
-            timerText.text = "Penguins Lost!";
-            timerText.color = criticalColor;
+            WinPanel.SetActive(false);
+            LosePanel.SetActive(true);
         }
+            // GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
+            // p1.transform.parent = endGameLoserSpawnPoints[0];
+            // p1.transform.localPosition = Vector3.zero;
+            // p1.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
+
+            // if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
+            // {
+            //     GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
+            //     p2.transform.parent = endGameLoserSpawnPoints[1];
+            //     p2.transform.localPosition = Vector3.zero;
+            //     p2.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
+
+            // }
+
+            // for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+            // {
+            //     GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
+            //     e.transform.parent = endGameWinnerSpawnPoints[i];
+            //     e.transform.localPosition = Vector3.zero;
+            //     e.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            //     e.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
+
+            //     e.GetComponent<NavMeshAgent>().SetDestination(e.transform.localPosition);
+            //     e.GetComponent<NavMeshAgent>().isStopped = true;
+            //     e.GetComponent<NavMeshAgent>().enabled = false;
+            //     e.GetComponent<EnemyMovement>().enabled = false;
+            // }
         else
         {
             PlayAnnouncerSounds.Instance.PlayDraw();
-            MusicManager.Instance.SetTrack("Draw");
-            restartButton.SetActive(true);
-            continueButton.SetActive(true);
-            timerText.text = "Draw!";
-            timerText.color = Color.white;
-            GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
-
-            p1.transform.parent = endGameDrawSpawnPoints[1];
-            p1.transform.localPosition = Vector3.zero;
-            p1.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-            if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
+            if(MusicManager.Instance != null)
             {
-                GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
-                p2.transform.parent = endGameDrawSpawnPoints[0];
-                p2.transform.localPosition = Vector3.zero;
-                p2.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-            }
-
-            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
-            {
-                GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
-                e.transform.parent = endGameDrawSpawnPoints[i + 2];
-                e.transform.localPosition = Vector3.zero;
-                e.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-                e.GetComponent<NavMeshAgent>().SetDestination(e.transform.localPosition);
-                e.GetComponent<NavMeshAgent>().isStopped = true;
-                e.GetComponent<NavMeshAgent>().enabled = false;
-                e.GetComponent<EnemyMovement>().enabled = false;
-
+                MusicManager.Instance.SetTrack("Draw");
             }
         }
+            // GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
+
+            // p1.transform.parent = endGameDrawSpawnPoints[1];
+            // p1.transform.localPosition = Vector3.zero;
+            // p1.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
+
+            // if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
+            // {
+            //     GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
+            //     p2.transform.parent = endGameDrawSpawnPoints[0];
+            //     p2.transform.localPosition = Vector3.zero;
+            //     p2.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
+
+            // }
+
+            // for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
+            // {
+            //     GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
+            //     e.transform.parent = endGameDrawSpawnPoints[i + 2];
+            //     e.transform.localPosition = Vector3.zero;
+            //     e.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
+
+            //     e.GetComponent<NavMeshAgent>().SetDestination(e.transform.localPosition);
+            //     e.GetComponent<NavMeshAgent>().isStopped = true;
+            //     e.GetComponent<NavMeshAgent>().enabled = false;
+            //     e.GetComponent<EnemyMovement>().enabled = false;
+
+            // }
+        
     }
 
     /// <summary>
