@@ -146,7 +146,7 @@ public class SettingsManager : MonoBehaviour
     private void PopulateFrameRates()
     {
         frameRateDropdown.ClearOptions();
-        frameRateDropdown.AddOptions(new List<string> { "30 FPS", "60 FPS", "90 FPS", "120 FPS" , "144 FPS", "240 FPS", "Uncapped" });
+        frameRateDropdown.AddOptions(new List<string> {"60 FPS" });
     }
 
     /// <summary>
@@ -183,8 +183,10 @@ public class SettingsManager : MonoBehaviour
     /// Applies the selected frame rate
     /// </summary>
     /// <param name="index">Frame rate index</param>
-    private void ApplyFrameRate(int index)
+    private void ApplyFrameRate(int index )
     {
+        Application.targetFrameRate = 60; //Default is 60 in case the PlayerPrefs value is invalid
+        return;
         string selectedOption;
         try
         {
@@ -214,9 +216,6 @@ public class SettingsManager : MonoBehaviour
                 break;
             case "240 FPS":
                 Application.targetFrameRate = 240;
-                break;
-            case "Uncapped":
-                Application.targetFrameRate = -1; // Uncapped
                 break;
             default:
                 Debug.LogError("Invalid frame rate option selected!");
@@ -265,7 +264,7 @@ public class SettingsManager : MonoBehaviour
         int frameRateIndex = 60; //Default is 60 in case the PlayerPrefs value is invalid
         try
         {
-            frameRateIndex = PlayerPrefs.GetInt("FrameRate", 60); //Default is 60
+            frameRateIndex = 60; //Default is 60
         }
         catch
         {
@@ -274,11 +273,11 @@ public class SettingsManager : MonoBehaviour
         frameRateDropdown.value = frameRateIndex;
         try
         {
-            ApplyFrameRate(frameRateIndex);
+            ApplyFrameRate(1);
         }
         catch
         {
-            ApplyFrameRate(60);
+            ApplyFrameRate(1);
         }
         
         bool vsyncEnabled = false;    //Default value is no VSync in case the PlayerPrefs value is invalid
