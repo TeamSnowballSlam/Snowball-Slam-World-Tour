@@ -31,13 +31,13 @@ Aotearoa penguins competing across the globe through the legendary sport... Snow
   - Developer
 - [Erika Stuart](https://github.com/erokasyuart)
   - Developer
-- Emma Jackson
+- [Emma Jackson](https://github.com/EmmaKJa)
   - Concept Artist
   - UI Designer
-- Nathaniel Vernardakis
+- [Nathaniel Vernardakis](https://github.com/SpriteDSP)
   - 3D Artist
   - Sound Designer
-- Julie Ferguson
+- [Julie Ferguson](https://github.com/julieferguson)
   - Concept Artist
   - UI Designer
 - [Benjamin Mead](https://github.com/bean00173)
@@ -48,7 +48,7 @@ Aotearoa penguins competing across the globe through the legendary sport... Snow
 
 | Action                    | Key/Button             |
 |---------------------------|------------------------|
-| Movement                   | **Player 1:** WASD  **Player 2:** Arrows                      | 
+| Movement | **Player 1:** WASD  **Player 2:** Arrows | 
 | Throw Snowball | **Player 1:** T  **Player 2:** / |
 | Interact |  **Player 1:** R  **Player 2:** . | 
 
@@ -69,7 +69,7 @@ A full list of features added in each version can be seen on [this page.](https:
 
 Some of the most important changes for each update are as follows:
 
-| Version   | Release Date | Features                                           |
+| Version   | Release Date | Features |
 |-----------|--------------|----------------------------------------------------|
 | v1.0.0    | April 29 2024   | Character Selection, Enemy Movement, Hotjoining, Player Movement, Sliding, Throwing Snowballs     | 
 | v1.1.0 | May 07 2024 | Main Menu, Level Selection, Settings, Snowball Inventory, End Screen, Level Timer / Score UI  | 
@@ -92,7 +92,7 @@ Some of the most important changes for each update are as follows:
     - **South America:** Capybara
 - Each animal has a unique ability!
     - **Red Panda:** Snowball Flurry!
-    - **Capybara: ** Summons Forest Friends!
+    - **Capybara:** Summons Forest Friends!
  
 - Unique Powerups that will be thrown in by Spectators
       - **Eggshell helmet:** Temporarily Protects the player from snowballs!
@@ -104,7 +104,3 @@ Some of the most important changes for each update are as follows:
 ## Acknowledgements
 
 We extend our heartfelt gratitude to our dedicated team members and mentors who have contributed to Snowball Slam's development.
-
-<!--- ## Credits
-
-If we need to credit any outside sources --->
