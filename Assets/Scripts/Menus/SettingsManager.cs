@@ -1,3 +1,12 @@
+/// <remarks>
+/// Author: Palin Wiseman
+/// Date Created: 23/05/2024
+/// Bugs: None known at this time.
+/// </remarks>
+// <summary>
+/// This class is used to handle the settings in the game. It allows the player to change the display settings, music volume, sound effects volume and mute the game
+/// It also saves the settings to PlayerPrefs
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -79,6 +88,10 @@ public class SettingsManager : MonoBehaviour
         onNumberChanged(value, MusicNumber);
     }
 
+    /// <summary>
+    /// When the sound effects slider is changed
+    /// </summary>
+    /// <param name="value">Value being passed through from 0 to 1</param>
     public void OnSoundEffectsChanged(float value)
     {
         GameSettings.SoundEffectsVolume = value;

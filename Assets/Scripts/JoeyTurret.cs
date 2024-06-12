@@ -3,9 +3,9 @@
 /// Date Created: May 7, 2024
 /// Bugs: None known at this time.
 /// </remarks>
-// <summary>
-///Manages the Joey Turret Object
-////// </summary>
+/// <summary>
+/// Manages the Joey Turret Object
+/// </summary>
 using UnityEngine;
 
 public class JoeyTurret : MonoBehaviour
@@ -63,7 +63,10 @@ public class JoeyTurret : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Gets the closest player to the agent
+    /// </summary>
+    /// <returns>The closest player to the agent</returns>
     private GameObject GetClosestPlayer()
     {
         // state = EnemyStates.Searching; //Sets the state to searching
@@ -81,7 +84,4 @@ public class JoeyTurret : MonoBehaviour
         }
         return closestPlayer; //Returns the closest player
     }
-
-
-
 }

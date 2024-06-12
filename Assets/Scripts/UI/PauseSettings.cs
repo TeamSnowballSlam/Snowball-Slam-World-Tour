@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Erika Stuart
+/// Date Created: 27/05/2024
+/// Bugs: None known at this time.
+/// </remarks>
+/// <summary>
+/// This script manages the settings in the pause menu.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +30,7 @@ public class PauseSettings : MonoBehaviour
     [HideInInspector] public static PauseSettings Instance;
     public Animator pauseAnimator;
 
+    // Start is called before the first frame update
     void Start()
     {
         Instance = this;

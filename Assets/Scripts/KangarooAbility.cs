@@ -3,9 +3,9 @@
 /// Date Created: May 7, 2024
 /// Bugs: None known at this time.
 /// </remarks>
-// <summary>
-///This class handles the joey summoning ability for the kangaroo enemy
-////// </summary>
+/// <summary>
+/// This class is used to create a turret that the kangaroo can place on the map.
+///</summary>
 
 using System.Collections;
 using System.Collections.Generic;
@@ -35,7 +35,8 @@ public class KangarooAbility : MonoBehaviour
     /// Places the turret on the map
     /// </summary>
     public void PlaceTurret()
-    {//If the ability is on cooldown or there is already an active turret, return
+    {
+        //If the ability is on cooldown or there is already an active turret, return
         if (canUseTurret)
         {
             if (Physics.CheckBox(transform.position + transform.forward * TURRETOFFSET, new Vector3(0.05f, 0.05f, 0.05f), Quaternion.identity))
@@ -53,7 +54,7 @@ public class KangarooAbility : MonoBehaviour
         }
     }
 
-
+    // Update is called once per frame
     void Update()
     {
         if (canUseTurret == false)

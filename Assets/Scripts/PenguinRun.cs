@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Palin Wiseman
+/// Date Created: 24/05/2024
+/// Bugs: None known at this time.
+/// </remarks>
+// <summary>
+/// This script is used to play the correct sound effect for the penguin depending on what it is doing.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,5 +1,7 @@
 /// <remarks>
 /// Author: Erika Stuart
+/// Date Created: 30/04/2024
+/// Bugs: None known at this time.
 /// </remarks>
 /// <summary>
 /// Manages the player's snowball inventory. Stored on each player.
@@ -47,6 +49,7 @@ public class SnowInventory : MonoBehaviour
         }
     }
 
+    // Start is called before the first frame update
     void Start()
     {
         currentAmmo = 10;

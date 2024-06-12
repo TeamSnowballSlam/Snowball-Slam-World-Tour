@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Benjamin Mead
+/// Date Created: 23/05/2024
+/// Bugs: None known at this time.
+/// </remarks>
+/// <summary>
+/// This script enables or disables tutorial content relating to player two.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +19,5 @@ public class PlayerTwoContent : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -1,5 +1,7 @@
 /// <remarks>
 /// Author: Erika Stuart
+/// Date Created: 10/05/2024
+/// Bugs: None known at this time.
 /// </remarks>
 /// <summary>
 /// This script manages the player's snow tray inventory.
@@ -56,6 +58,7 @@ public class SnowTrayInventory : MonoBehaviour
     private GameObject snowballPileTwoThirds;
     private GameObject snowballPileOneThird;
 
+    // Start is called before the first frame update
     void Start()
     {
         playSFX = GetComponent<PlaySFX>();

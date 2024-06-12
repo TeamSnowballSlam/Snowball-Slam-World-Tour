@@ -1,5 +1,7 @@
 /// <remarks>
 /// Author: Erika Stuart
+/// Date Created: 11/05/2024
+/// Bugs: None known at this time.
 /// </remarks>
 /// <summary>
 /// This script allows the snow machine to produce snowballs.

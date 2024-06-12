@@ -1,5 +1,7 @@
 /// <remarks>
 /// Author: Erika Stuart
+/// Date Created: 30/04/2024
+/// Bugs: None known at this time.
 /// </remarks>
 /// <summary>
 /// This script allows the player to throw snowballs.
@@ -43,13 +45,16 @@ public class ThrowSnowballs : MonoBehaviour
     private List<AudioClip> audioClips = new List<AudioClip>();
     public PlaySFX playSFX;
 
-    
+    /// <summary>
+    /// Coroutine for the invulnerability timer
+    /// </summary>
     private IEnumerator InvulnerabilityTimer()
     {
         yield return new WaitForSeconds(1.5f);
         invulnerable = false;
     }
 
+    // Start is called before the first frame update
     void Start()
     {
         playSFX = GetComponent<PlaySFX>();
@@ -64,7 +69,9 @@ public class ThrowSnowballs : MonoBehaviour
         audioClips.AddRange(Resources.LoadAll<AudioClip>("SoundEffects/Throws"));
     }
 
-    // Player
+    /// <summary>
+    /// This is the method for a player throwing snowball
+    /// </summary>
     public void ThrowSnowball(InputAction.CallbackContext context)
     {
         if (!canThrow) return; // if can't throw, don't throw snowball
@@ -79,6 +86,9 @@ public class ThrowSnowballs : MonoBehaviour
         //StartCoroutine(ThrowCooldown());
     }
 
+    /// <summary>
+    /// This is the method that triggers the snowball throw animation
+    /// </summary>
     public void ThrowSnowball()
     {
         if (GameSettings.currentGameState == GameStates.PostGame) return; // if game is over, don't throw snowball
@@ -118,6 +128,9 @@ public class ThrowSnowballs : MonoBehaviour
         snowball.GetComponent<Rigidbody>().AddForce(transform.forward * SPEED, ForceMode.Impulse); // snowball moves at a constant rate
     }
 
+    /// <summary>
+    /// This is the method that sets the player to be able to throw snowballs
+    /// </summary>
     public void SetCanThrow()
     {
         canThrow = true;

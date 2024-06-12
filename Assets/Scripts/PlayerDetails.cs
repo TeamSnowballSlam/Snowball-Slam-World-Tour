@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Palin Wiseman
+/// Date Created: 11/04/2024
+/// Bugs: None known at this time.
+/// </remarks>
+/// <summary>
+/// This class is used to store the details of a player.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

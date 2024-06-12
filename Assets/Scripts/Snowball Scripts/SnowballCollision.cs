@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Erika Stuart
+/// Date Created: 30/04/2024
+/// Bugs: None known at this time.
+/// </remarks>
+/// <summary>
+/// This script allows the player to reload their ammo from the snowball tray
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,11 +19,16 @@ public class SnowballCollision : MonoBehaviour
     public GameObject ownerObject; //The owner of the snowball
     private PlaySFX playSFX;
 
+    // Start is called before the first frame update
     private void Start()
     {
         playSFX = GetComponent<PlaySFX>();
     }
 
+    /// <summary>
+    /// When the snowball collides with another object, it will be destroyed.
+    /// </summary>
+    /// <param name="collision">The collider that collided with the snowball</param>
     void OnCollisionEnter(Collision collision)
     {
         if(TutorialManager.instance != null && collision.gameObject.CompareTag("Enemy"))

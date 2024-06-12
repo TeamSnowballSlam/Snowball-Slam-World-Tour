@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Palin Wiseman
+/// Date Created: 11/04/2024
+/// Bugs: None known at this time.
+/// </remarks>
+/// <summary>
+/// This class is used to manage the spawning of players in the game.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +16,7 @@ public class SpawnManager : MonoBehaviour
     public Transform[] spawnPoints; //The two player spawn points
     private const string BASEPATH = "Penguins/"; //Base path for the penguin prefabs within the resources folder
     public static SpawnManager Instance;
+    // Start is called before the first frame update
     public void Start()
     {
         Instance = this;
@@ -18,6 +27,9 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Spawns player two if they don't already exist
+    /// </summary>
     public void spawnPlayerTwo()
     {
         if (!GameSettings.Player2Exists)
@@ -27,6 +39,10 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when a player joins the game
+    /// </summary>
+    /// <param name="playerInput">The player input component of the player that joined</param>
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         try

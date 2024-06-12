@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Chase Bennett-Hill 
+/// Date Created: 11/04/2024
+/// Bugs: None known at this time.
+/// </remarks>
+/// <summary>
+/// An Enum to represent the directions a player can move in.
+/// </summary>
 using System;
 using System.Collections;
 using System.Collections.Generic;

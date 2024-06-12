@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Erika Stuart
+/// Date Created: 27/05/2024
+/// Bugs: None known at this time.
+/// </remarks>
+/// <summary>
+/// This script manages the pause menu.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +27,9 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Pauses the game and displays the pause menu.
+    /// </summary>
     public void PauseGame()
     {
         if (GameSettings.currentGameState == GameStates.InGame)
@@ -37,6 +48,9 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Quit  the game.
+    /// </summary>
     public void ForceQuit()
     {
         Application.Quit();

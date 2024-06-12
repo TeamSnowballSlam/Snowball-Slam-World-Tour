@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Benjamin Mead
+/// Date Created: 23/05/2024
+/// Bugs: None known at this time.
+/// </remarks>
+/// <summary>
+/// This script manages the input status of the player in the tutorial
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,12 +20,6 @@ public class InputStatus : MonoBehaviour
     public bool ready;
 
     public inputType currentType;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -38,9 +40,15 @@ public class InputStatus : MonoBehaviour
         {
             greenSprite.fillAmount = 0;
         }
-        
     }
 
+    /// <summary>
+    /// Updates the values of the input status.
+    /// </summary>
+    /// <param name="action">Whether the action is complete</param>
+    /// <param name="type">The type of input</param>
+    /// <param name="hold">Whether the input is being held</param>
+    /// <param name="ready">Whether the input is ready</param>
     public void UpdateValues(bool action, inputType type, bool hold, bool ready)
     {
         this.ready = ready;
