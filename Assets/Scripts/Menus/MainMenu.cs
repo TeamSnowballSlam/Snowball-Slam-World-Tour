@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Palin Wiseman
+/// Date Created: 01/05/2024
+/// Bugs: None known at this time.
+/// </remarks>
+// <summary>
+/// This class is used to handle the main menu. It allows the player to select a level and start the game.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +18,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject[] menus; //All menus to turn off at the start
 
-    //Something here for only allowing later levels to be selected when they are unlocked?
     
     private void Start()
     {

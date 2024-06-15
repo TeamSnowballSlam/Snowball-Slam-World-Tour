@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Benjamin Mead
+/// Date Created: 22/05/2024
+/// Bugs: None known at this time.
+/// </remarks>
+/// <summary>
+/// This script manages the tutorial events and the tutorial itself.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

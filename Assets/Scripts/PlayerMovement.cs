@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Palin Wiseman
+/// Date Created: 11/04/2024
+/// Bugs: None known at this time.
+/// </remarks>
+/// <summary>
+/// This class is used to control the movement of the player.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -152,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
     private float lastUpdate; //The time since the last direction update
     private bool touchingRoad; //If the player is touching the road
 
+    // Awake is called when the script instance is being loaded
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -176,6 +185,7 @@ public class PlayerMovement : MonoBehaviour
         iceTrailParticles.Stop();
     }
 
+    // FixedUpdate is called every fixed framerate frame
     void FixedUpdate()
     {
         if (GameSettings.currentGameState != GameStates.InGame)
@@ -211,6 +221,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coroutine for slowing the player down
+    /// </summary>
     private IEnumerator SlowDown()
     {
         slowingDown = true;
@@ -229,6 +242,9 @@ public class PlayerMovement : MonoBehaviour
         slowingDown = false;
     }
 
+    /// <summary>
+    /// This method is called when the player moves
+    /// </summary>
     public void OnMove(InputAction.CallbackContext context)
     {
 

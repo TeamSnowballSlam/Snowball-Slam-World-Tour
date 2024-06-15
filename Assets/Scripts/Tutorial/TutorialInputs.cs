@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Benjamin Mead
+/// Date Created: 24/05/2024
+/// Bugs: None known at this time.
+/// </remarks>
+/// <summary>
+/// This script manages the inputs of the player in the tutorial
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,18 +21,6 @@ public class TutorialInputs : MonoBehaviour
     float _doubleInputDelay = .25f;
     private Vector2 moveInput;
     private Vector2 lastInput;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OnMove(InputAction.CallbackContext context) // method that takes player input for movement keys and checks if it is a double press
     {

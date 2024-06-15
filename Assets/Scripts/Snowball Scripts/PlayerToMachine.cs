@@ -1,5 +1,7 @@
 /// <remarks>
 /// Author: Erika Stuart
+/// Date Created: 12/05/2024
+/// Bugs: None known at this time.
 /// </remarks>
 /// <summary>
 /// This script allows the player to interact with the snowball machine.
@@ -20,6 +22,10 @@ public class PlayerToMachine : MonoBehaviour
         canInteract = false;
     }
 
+    /// <summary>
+    /// When the player enters the snowball machine's trigger, the player can interact with the machine.
+    /// </summary>
+    /// <param name="other">The collider of the object that entered the trigger</param>
      void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Snowball Machine")
@@ -29,26 +35,16 @@ public class PlayerToMachine : MonoBehaviour
         }
 
     }
+
+    /// <summary>
+    /// When the player exits the snowball machine's trigger, the player can no longer interact with the machine.
+    /// </summary>
+    /// <param name="other">The collider of the object that exited the trigger</param>
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == "Snowball Machine")
         {
             canInteract = false;
-        }
-    }
-
-    public void OnHold(InputAction.CallbackContext context)
-    {
-        if (canInteract)
-        {
-           if(context.started)
-           {
-               snowMachine.prodSpeed = 3; // faster production
-           }
-           else if(context.canceled)
-           {
-                snowMachine.prodSpeed = 6;
-           }
         }
     }
 }

@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Palin Wiseman
+/// Date Created: 23/05/2024
+/// Bugs: None known at this time.
+/// </remarks>
+// <summary>
+/// This class is used to handle the music in the game. It allows the player to change the music volume and mute the music
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,5 +1,7 @@
 /// <remarks>
 /// Author: Erika Stuart
+/// Date Created: 2/05/2024
+/// Bugs: None known at this time.
 /// </remarks>
 /// <summary>
 /// This script allows the player to reload their ammo from the snowball tray
@@ -33,6 +35,9 @@ public class ReloadAmmo : MonoBehaviour
 
     private int amount;
 
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     void Start()
     {
         snowInventory = GetComponent<SnowInventory>();

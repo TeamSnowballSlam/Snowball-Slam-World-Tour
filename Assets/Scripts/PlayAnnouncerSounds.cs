@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Palin Wiseman
+/// Date Created: 23/05/2024
+/// Bugs: None known at this time.
+/// </remarks>
+// <summary>
+/// This class is used to play the announcer sounds at the start of the game and at the end of the game.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +40,9 @@ public class PlayAnnouncerSounds : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This coroutine is used to play the intro sounds for the Australia level.
+    /// </summary>
     private IEnumerator AustraliaIntro()
     {
         playSFX.playSound("WelcomeToAustralia");
@@ -39,11 +50,17 @@ public class PlayAnnouncerSounds : MonoBehaviour
         playSFX.playSound("321GO");
     }
 
+    /// <summary>
+    /// This coroutine is used to play the intro sounds for the Tutorial level.
+    /// </summary>
     public void FinalCountdown()
     {
         StartCoroutine(EndGame());
     }
 
+    /// <summary>
+    /// This coroutine is used to play the end game sounds for the Tutorial level.
+    /// </summary>
     private IEnumerator EndGame()
     {
         playSFX.playSound("54321");
@@ -51,16 +68,25 @@ public class PlayAnnouncerSounds : MonoBehaviour
         playSFX.playSound("GameOver");
     }
 
+    /// <summary>
+    /// This method is used to play the victory sound.
+    /// </summary>
     public void PlayVictory()
     {
         playSFX.playSound("PenguinsWin");
     }
 
+    /// <summary>
+    /// This method is used to play the defeat sound.
+    /// </summary>
     public void PlayDefeat()
     {
         playSFX.playSound("KangaroosWin");
     }
 
+    /// <summary>
+    /// This method is used to play the draw sound.
+    /// </summary>
     public void PlayDraw()
     {
         playSFX.playSound("Draw");

@@ -4,7 +4,7 @@
 /// Bugs: None known at this time.
 /// </remarks>
 // <summary>
-/// This class manages the level, it will keep track of each teams score , the time ramaining and the current state of the level
+/// This class manages the level, it will keep track of each teams score , the time remaining and the current state of the level
 /// </summary>
 
 
@@ -37,11 +37,6 @@ public class LevelManager : MonoBehaviour
     public Color mediumColor;
     public Color criticalColor;
 
-    // Note from Palin: Removing all end game spawn points as the new screen will not have these
-    // public List<Transform> endGameWinnerSpawnPoints = new List<Transform>();
-    // public List<Transform> endGameLoserSpawnPoints = new List<Transform>();
-    // public List<Transform> endGameDrawSpawnPoints = new List<Transform>();
-
     public GameObject mainCamera;
     public GameObject endGameCamera;
     public TextMeshProUGUI playerScoreText;
@@ -61,6 +56,7 @@ public class LevelManager : MonoBehaviour
     public GameObject ContinueButton;
     public Animator ContinueAnimator;
 
+    // Awake is called when the script instance is being loaded
     void Awake()
     {
         if (instance == null)
@@ -85,6 +81,7 @@ public class LevelManager : MonoBehaviour
         secondsRemaining = LevelLength;
     }
 
+    // Update is called once per frame
     void Update()
     {
         {
@@ -117,12 +114,6 @@ public class LevelManager : MonoBehaviour
                     {
                         currentTime = Time.time;
                         secondsRemaining -= 1;
-                        //Format the time to be displayed as MM:SS
-                        // string formattedTime = string.Format(
-                        //     "{0:00}:{1:00}",
-                        //     secondsRemaining / 60,
-                        //     secondsRemaining % 60
-                        // );
                         timerText.text = secondsRemaining.ToString();
 
                         //Once the timer reaches either threshold, change the color of the text
@@ -193,33 +184,6 @@ public class LevelManager : MonoBehaviour
             }
             Trophy.SetActive(true);
         }
-        //     GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
-
-        //     p1.transform.parent = endGameWinnerSpawnPoints[0];
-        //     p1.transform.localPosition = Vector3.zero;
-        //     p1.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-        //     if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
-        //     {
-        //         GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
-        //         p2.transform.parent = endGameWinnerSpawnPoints[1];
-        //         p2.transform.localPosition = Vector3.zero;
-        //         p2.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-        //     }
-        //     for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
-        //     {
-        //         GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
-        //         e.transform.parent = endGameLoserSpawnPoints[i];
-        //         e.transform.localPosition = Vector3.zero;
-        //         e.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-        //         e.GetComponent<NavMeshAgent>().isStopped = true;
-        //         e.GetComponent<NavMeshAgent>().SetDestination(e.transform.position);
-        //         e.GetComponent<NavMeshAgent>().enabled = false;
-        //         e.GetComponent<EnemyMovement>().enabled = false;
-        //     }
-        //
         else if (winner == "Enemy")
         {
             PlayAnnouncerSounds.Instance.PlayDefeat();
@@ -231,33 +195,6 @@ public class LevelManager : MonoBehaviour
             LosePanel.SetActive(true);
             DrawPanel.SetActive(false);
         }
-            // GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
-            // p1.transform.parent = endGameLoserSpawnPoints[0];
-            // p1.transform.localPosition = Vector3.zero;
-            // p1.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-            // if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
-            // {
-            //     GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
-            //     p2.transform.parent = endGameLoserSpawnPoints[1];
-            //     p2.transform.localPosition = Vector3.zero;
-            //     p2.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-            // }
-
-            // for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
-            // {
-            //     GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
-            //     e.transform.parent = endGameWinnerSpawnPoints[i];
-            //     e.transform.localPosition = Vector3.zero;
-            //     e.transform.localRotation = Quaternion.Euler(Vector3.zero);
-            //     e.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-            //     e.GetComponent<NavMeshAgent>().SetDestination(e.transform.localPosition);
-            //     e.GetComponent<NavMeshAgent>().isStopped = true;
-            //     e.GetComponent<NavMeshAgent>().enabled = false;
-            //     e.GetComponent<EnemyMovement>().enabled = false;
-            // }
         else
         {
             PlayAnnouncerSounds.Instance.PlayDraw();
@@ -268,36 +205,7 @@ public class LevelManager : MonoBehaviour
             WinPanel.SetActive(false);
             LosePanel.SetActive(false);
             DrawPanel.SetActive(true);
-        }
-            // GameObject p1 = GameObject.FindGameObjectsWithTag("Player")[0];
-
-            // p1.transform.parent = endGameDrawSpawnPoints[1];
-            // p1.transform.localPosition = Vector3.zero;
-            // p1.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-            // if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
-            // {
-            //     GameObject p2 = GameObject.FindGameObjectsWithTag("Player")[1];
-            //     p2.transform.parent = endGameDrawSpawnPoints[0];
-            //     p2.transform.localPosition = Vector3.zero;
-            //     p2.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-            // }
-
-            // for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
-            // {
-            //     GameObject e = GameObject.FindGameObjectsWithTag("Enemy")[i];
-            //     e.transform.parent = endGameDrawSpawnPoints[i + 2];
-            //     e.transform.localPosition = Vector3.zero;
-            //     e.transform.localRotation = Quaternion.Euler(new(0, 180, 0));
-
-            //     e.GetComponent<NavMeshAgent>().SetDestination(e.transform.localPosition);
-            //     e.GetComponent<NavMeshAgent>().isStopped = true;
-            //     e.GetComponent<NavMeshAgent>().enabled = false;
-            //     e.GetComponent<EnemyMovement>().enabled = false;
-
-            // }
-        
+        }   
     }
 
     /// <summary>
@@ -373,12 +281,18 @@ public class LevelManager : MonoBehaviour
             return;
     }
 
+    /// <summary>
+    /// This method will restart the level
+    /// </summary>
     public void RestartLevel()
     {
         MusicManager.Instance.SetTrack("Fight");
         SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
+    /// <summary>
+    /// This method will return to the main menu
+    /// </summary>
     public void Continue()
     {
         MusicManager.Instance.SetTrack("Menu");

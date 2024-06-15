@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Palin
+/// Date Created: 01/05/2024
+/// Bugs: None known at this time.
+/// </remarks>
+// <summary>
+/// This class is used to handle the character select screen. It allows the player to select their penguin and start the game.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +41,11 @@ public class CharacterSelect : MonoBehaviour
         Debug.Log(GameSettings.Player2Penguin);
     }
     
+    /// <summary>
+    /// Finds the penguin that is currently active
+    /// </summary>
+    /// <param name="penguins">Array of penguins</param>
+    /// <returns>String of the penguin name</returns>
     private string findPenguins(GameObject[] penguins)
     {
         foreach (GameObject penguin in penguins)
@@ -45,6 +58,11 @@ public class CharacterSelect : MonoBehaviour
         return "None";
     }
 
+    /// <summary>
+    /// Switch statement to return the penguin type
+    /// </summary>
+    /// <param name="penguinType">String of the penguin name</param>
+    /// <returns>The PenguinType</returns>
     private PenguinType penguinSwitch(string penguinType)
     {
         Debug.Log(penguinType);
@@ -70,6 +88,9 @@ public class CharacterSelect : MonoBehaviour
         GameSettings.Player2Exists = true;
     }
 
+    /// <summary>
+    /// Changes the selectable object for keyboard navigation when the join button is pressed
+    /// </summary>
     public void ChangeSelectable(Selectable selectable)
     {
         try
@@ -84,6 +105,9 @@ public class CharacterSelect : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes the selectable object for keyboard navigation when the join button is pressed
+    /// </summary>
     public void ChangeBackSelectable(Selectable selectable)
     {
         try
@@ -115,6 +139,10 @@ public class CharacterSelect : MonoBehaviour
         }
         SceneManager.LoadScene(GameSettings.SelectedLevel.ToString());
     }
+
+    /// <summary>
+    /// Resets the player penguins to none
+    /// </summary>
     public void BackToLevel()
     {
         GameSettings.Player2Exists = false;

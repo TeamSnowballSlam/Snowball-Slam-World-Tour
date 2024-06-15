@@ -1,3 +1,11 @@
+/// <remarks>
+/// Author: Chase Bennett-Hill 
+/// Date Created: 9/04/2024
+/// Bugs: None known at this time.
+/// </remarks>
+/// <summary>
+/// Enemy states enum and the logic for enemy movement.
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using System.Resources;
@@ -7,6 +15,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering.Universal.Internal;
 
+/// <summary>
+/// The states the enemy can be in.
+/// </summary>
 public enum EnemyStates //The states of the enemy
 {
     Idle,
@@ -18,6 +29,9 @@ public enum EnemyStates //The states of the enemy
     GettingNewLocation
 }
 
+/// <summary>
+/// The class that controls the movement of the enemy.
+/// </summary>
 public class EnemyMovement : MonoBehaviour
 {
     private NavMeshAgent agent; //The NavMeshAgent component
@@ -32,6 +46,7 @@ public class EnemyMovement : MonoBehaviour
     private int turretChance;
     private Animator animator;
 
+    // Start is called before the first frame update
     void Start()
     {
         turretChance = GetComponent<KangarooAbility>().turretSpawnChance;
@@ -41,6 +56,9 @@ public class EnemyMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    /// <summary>
+    /// Gets a new location for the enemy to move to.
+    /// </summary>
     private void GetNewLocation()
     {
         if (state == EnemyStates.GettingNewLocation)
@@ -72,6 +90,7 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
+    // Update is called once per frame
     void Update()
     {
 
@@ -243,6 +262,10 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets the closest player to the enemy.
+    /// </summary>
+    /// <returns>The closest player to the enemy.</returns>
     private GameObject GetClosestPlayer()
     {
         // state = EnemyStates.Searching; //Sets the state to searching
@@ -261,7 +284,11 @@ public class EnemyMovement : MonoBehaviour
         return closestPlayer; //Returns the closest player
     }
 
-    private Vector3 CheckForPlayerDirection() //WIP METHOD NOT CURRENTLY WORKING
+    /// <summary>
+    /// Checks the direction of the player.
+    /// </summary>
+    /// <returns>The direction of the player.</returns>
+    private Vector3 CheckForPlayerDirection()
     {
         if (GetClosestPlayer() == null)
             return Vector3.zero; //If there is no player, return zero vector
@@ -284,12 +311,20 @@ public class EnemyMovement : MonoBehaviour
         return Vector3.zero;
     }
 
+    /// <summary>
+    /// Rotates the agent to face the target given the target direction and speed.
+    /// </summary>
+    /// <param name="targetDirection">The direction to face.</param>
     private void RotateToTarget(Vector3 targetDirection) //Rotates the agent to face the target given the target direction and speed
     {
         state = EnemyStates.Rotating; //Sets the state to rotating
         transform.forward = targetDirection; //Sets the forward direction of the agent to the target direction
     }
 
+    /// <summary>
+    /// Moves the agent to the target position.
+    /// </summary>
+    /// <param name="target">The target position to move to.</param>
     private void GoToTarget(Vector3 target) //Sets the destination of the agent to the target position
     {
         RotateToTarget((target - transform.position).normalized); //Rotates the agent to face the target
